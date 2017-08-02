@@ -266,6 +266,8 @@ With that out of the way, this column records:
 You can access this data as follows using beeline:
 
 ~~~
+beeline -u 'jdbc:hive2://sandbox.hortonworks.com:2181/;serviceDiscoveryMode=zooKeeper;zooKeeperNamespace=hiveserver2'
+
 0: jdbc:hive2://sandbox.hortonworks.com:2181/> select row__id from hello_acid;
 ~~~
 
@@ -275,8 +277,8 @@ Ouptut should look like:
 +---------------------------------------------+
 |                   row__id                   |
 +---------------------------------------------+
-| {"transactionid":5,"bucketid":1,"rowid":0}  |
-| {"transactionid":7,"bucketid":0,"rowid":0}  |
+| {"transactionid":1,"bucketid":1,"rowid":0}  |
+| {"transactionid":3,"bucketid":0,"rowid":0}  |
 +---------------------------------------------+
 ~~~
 
@@ -290,3 +292,9 @@ select count(*) from hello_acid where row__id.transactionid = X;
 Keep in mind that data from this transaction may have been deleted by a subsequent UPDATE or DELETE statement, so if the counts don’t match, consider if records may be altered some other way.
 
 Use information related to this hidden field very carefully.
+
+You can exit beeline by issuing the command:
+
+~~~
+!quit
+~~~
