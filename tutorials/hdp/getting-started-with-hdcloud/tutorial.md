@@ -60,4 +60,4 @@ Now that you have your HDCloud environment set-up, here are some useful resource
 
 2) A more in-depth tutorial on [Spark SQL](https://hortonworks.com/tutorial/learning-spark-sql-with-zeppelin/)
 
-3) And a [Data Science Starter Kit](https://hortonworks.com/get-started/data-science/)
+3) And a [Data Science Starter Kit](https://hortonworks.com/info/data-science-cloud/) with pre-selected videos, tutorials, and white papers.
