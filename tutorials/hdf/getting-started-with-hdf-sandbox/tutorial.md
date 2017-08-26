@@ -82,7 +82,7 @@ Then save the file.
 
 Append the port number :18888 to your host address, open your browser, and access Sandbox Welcome page at `http://_host_:18888/.`
 
-Click on `Launch Dashboard` to go to Ambari with a [Analyze Traffic Patterns with Aapche NiFi tutorial](#) and `Quick Links` to view some services of HDP environment.
+Click on `Launch Dashboard` to go to Ambari with a [Analyze Traffic Patterns with Apache NiFi tutorial](#) and `Quick Links` to view some services of HDP environment.
 
 ## Multiple Ways to Execute Terminal Commands
 
