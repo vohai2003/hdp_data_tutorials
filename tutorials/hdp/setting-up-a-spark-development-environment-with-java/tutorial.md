@@ -43,9 +43,9 @@ To create a new project select File > New > Project. Then select Maven.
 
 ![intellij2](assets/intellij2.png)
 
-Make a new project called HelloWorld.
+Make a new project called SparkTutorial.
 
-![intellij3](assets/intellij3.png)
+![intellij3](assets/intellij3.jpg)
 
 IntelliJ should make a new project with a default directory structure. It may take a minute or two to generate all the folders.
 
@@ -100,7 +100,7 @@ After you save the file, IntelliJ will automatically import the libraries and do
 
 ## Create a Spark Application
 
-For our first "Hello World" application we're going to build a simple program that performs a word count on the collected works of Shakespeare. Download the text file [here](https://github.com/Gregw135/SparkTutorials/raw/master/setting-up-a-spark-development-environment-with-scala/assets/shakespeare.txt). Later we'll want to Spark to retrieve this file from HDFS (Hadoop Distributed File System), so let's place it there now.
+For our first application we're going to build a simple program that performs a word count on the collected works of Shakespeare. Download the text file [here](https://github.com/Gregw135/SparkTutorials/raw/master/setting-up-a-spark-development-environment-with-scala/assets/shakespeare.txt). Later we'll want to Spark to retrieve this file from HDFS (Hadoop Distributed File System), so let's place it there now.
 
 To upload to HDFS, first make sure the sandbox is on, then navigate to localhost:8080 and login (default username/password is maria_dev/maria_dev). Once you've logged into Ambari Manager, mouse over the drop-down menu on the upper-right hand corner and click on Files View. Then open the tmp folder and click the upload button in the upper-right corner to upload the file. Make sure it's named shakespeare.txt.
 
@@ -108,7 +108,7 @@ To upload to HDFS, first make sure the sandbox is on, then navigate to localhost
 
 Now we're ready to start making our application. In your IDE open the folder src/main/resources, which should have been generated automatically for you. Place shakespeare.txt there.
 
-Next, create a new Scala file called Main at src/main/scala. When the IDE asks whether to create a class, object or trait, choose object. Name the file Main.scala.
+Next, create a new Java Class file called Main.java in src/main/java.
 
 ![intellij5](assets/intellij5.png)
 
