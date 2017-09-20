@@ -16,13 +16,13 @@ With the HDF Sandbox, Apache NiFi comes preinstalled in the Ambari Stack and pre
 
 ## Outline
 -   [Step 1: Open HDF Splash Page](#step-1-open-hdf-splash-page)
--   [Approach 1: Launch NiFi HTML UI from HDF Splash Quick Links](#access-nifi-html-ui-from-hdf-splash-page)
--   [Approach 2: Access NiFi HTML UI via Ambari](#access-nifi-html-ui-via-ambari)
+-   [Approach 1: Launch NiFi HTML UI from HDF Splash Quick Links](#approach-1-launch-nifi-html-ui-from-hdf-splash-quick-links)
+-   [Approach 2: Access NiFi HTML UI via Ambari](#approach-2-access-nifi-html-ui-via-ambari)
 -   [Summary](#summary)
 
 ### Step 1: Open HDF Splash Page
 
-1\. Open `sandbox-hdf.hortonworks.com:18888` with your favorite web browser:
+1\. Open `sandbox-hdf.hortonworks.com:8888` with your favorite web browser:
 
 ![hdf_splash_screen](assets/tutorial-2-launch-nifi-html-ui/hdf_splash_screen.png)
 
