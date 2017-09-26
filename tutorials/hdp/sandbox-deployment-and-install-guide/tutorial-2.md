@@ -19,22 +19,35 @@ This tutorial walks through the general approach for installing the Hortonworks 
 
 ## Outline
 
--   [Import the Hortonworks Sandbox](#import-the-hortonworks-sandbox)
+-   [Import Hortonworks Sandbox on Windows](#import-hortonworks-sandbox-on-windows)
+-   [Import Hortonworks Sandbox on macOS](#import-hortonworks-sandbox-on-macos)
 -   [Further Reading](#further-reading)
 
-## Import the Hortonworks Sandbox
+## Import Hortonworks Sandbox on Windows
 
-Open your VMWare product and elect to add a new virtual machine.
+Open VMWare and select "**Open a Virtual Machine**":
 
-On Mac OSX:
+![vmware-win-open](assets/vmware-win-open.jpg)
+
+Browse and select the sandbox image you downloaded and click **Open**.
+
+Next, you're given the opportunity to save the virtual machine under a different name and/or location. After changes are made, click **Import**. You should then see the importing progress dialog:
+
+![vmware-win-importing](assets/vmware-win-importing.jpg)
+
+Once import is complete, you will see the newly imported machine listed:
+
+![vmware-win-select](assets/vmware-win-select.jpg)
+
+## Import Hortonworks Sandbox on macOS
+
+Open VMWare and select "**Import an existing virtual machine**" and click **Continue**.
 
 ![VMWare Installation Method](assets/vmware-install.jpg)
 
-Select "**Import an existing virtual machine**" and click the **Continue** button.
+"**Choose File...**" to browse to and select the sandbox image you downloaded.  Click the **Continue** button.
 
 ![choose_existing](assets/vmware-choose.jpg)
-
-"**Choose File...**" to browse to and select the sandbox image you downloaded.  Click the **Continue** button.
 
 Next, you're given the opportunity to save the virtual machine under a different name.  If you have no preference in renaming, you can just leave the default name and click Save.  You should then see the importing progress dialog:
 
