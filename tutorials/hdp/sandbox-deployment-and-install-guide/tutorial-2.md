@@ -45,7 +45,7 @@ When the virtual machine fully boots up, you will see a similar screen as below.
 
 You are ready to begin using the sandbox.
 
-![vmware-win-started](assets/vmware-win-started.jpg)
+![vmware-win-start](assets/vmware-win-start.jpg)
 
 Welcome to the Hortonworks Sandbox!
 
