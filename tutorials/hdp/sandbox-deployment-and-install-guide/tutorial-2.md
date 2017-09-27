@@ -35,9 +35,19 @@ Next, you're given the opportunity to save the virtual machine under a different
 
 ![vmware-win-importing](assets/vmware-win-importing.jpg)
 
-Once import is complete, you will see the newly imported machine listed:
+Once import is complete, you will see the newly imported machine listed.
+
+Select the virtual machine you want to start and click **Play virtual machine**.
 
 ![vmware-win-select](assets/vmware-win-select.jpg)
+
+When the virtual machine fully boots up, you will see a similar screen as below.
+
+You are ready to begin using the sandbox.
+
+![vmware-win-started](assets/vmware-win-started.jpg)
+
+Welcome to the Hortonworks Sandbox!
 
 ## Import Hortonworks Sandbox on macOS
 
