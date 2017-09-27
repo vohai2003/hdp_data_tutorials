@@ -1,11 +1,10 @@
 ---
-title: Trucking IoT on HDF
-tutorial-id: 805
-platform: hdf-2.1.0
-tags: [storm, trucking, iot, kafka]
+title: Trucking IoT Use Case
 ---
 
-# Trucking IoT Use Case
+# Trucking IoT on HDF
+
+## Trucking IoT Use Case
 
 ## Outline
 
