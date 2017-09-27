@@ -1,11 +1,10 @@
 ---
-title: Trucking IoT on HDF
-tutorial-id: 805
-platform: hdf-2.1.0
-tags: [storm, trucking, iot, kafka]
+title: Building a Storm Topology
 ---
 
-# Building a Storm Topology
+# Trucking IoT on HDF
+
+## Building a Storm Topology
 
 ## Introduction
 
