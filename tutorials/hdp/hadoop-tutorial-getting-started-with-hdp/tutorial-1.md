@@ -92,7 +92,7 @@ The Hortonworks **Sandbox** is a single node implementation of HDP. It is packag
 
 ## 2. Concept: HDFS <a id="concepts-hdfs"></a>
 
-A single physical machine gets saturated with its storage capacity as data grows. With this growth comes the impending need to partition your data across separate machines. This type of File system that manages storage of data across a network of machines is called a Distributed File System. [HDFS](https://hortonworks.com/blog/thinking-about-the-hdfs-vs-other-storage-technologies/) is a core component of Apache Hadoop and is designed to store large files with streaming data access patterns, running on clusters of commodity hardware. With Hortonworks Data Platform HDP 2.2, HDFS is now expanded to support [heterogeneous storage](https://hortonworks.com/blog/heterogeneous-storage-policies-hdp-2-2/)  media within the HDFS cluster.
+A single physical machine gets saturated with its storage capacity as data grows. With this growth comes the impending need to partition your data across separate machines. This type of File system that manages storage of data across a network of machines is called a Distributed File System. [HDFS](https://hortonworks.com/blog/thinking-about-the-hdfs-vs-other-storage-technologies/) is a core component of Apache Hadoop and is designed to store large files with streaming data access patterns, running on clusters of commodity hardware. With Hortonworks Data Platform (HDP), HDFS is now expanded to support [heterogeneous storage](https://hortonworks.com/blog/heterogeneous-storage-policies-hdp-2-2/)  media within the HDFS cluster.
 
 ### 2.1 Goals of this module
 
@@ -122,7 +122,7 @@ The NameNode does not directly send requests to DataNodes. It sends instructions
 
 -   For more details on HDFS: [https://hortonworks.com/hadoop/hdfs/](https://hortonworks.com/hadoop/hdfs/)
 
-With the [next generation HDFS data architecture](https://hortonworks.com/blog/hdfs-2-0-next-generation-architecture/) that comes with HDP 2.4, HDFS has evolved to provide [automated failure](https://hortonworks.com/blog/namenode-high-availability-in-hdp-2-0/) with a hot standby, with full stack resiliency. The video provides more clarity on HDFS.
+With the [next generation HDFS data architecture](https://hortonworks.com/blog/hdfs-2-0-next-generation-architecture/) that comes with HDP, HDFS has evolved to provide [automated failure](https://hortonworks.com/blog/namenode-high-availability-in-hdp-2-0/) with a hot standby, with full stack resiliency. The video provides more clarity on HDFS.
 
 <iframe width="500" height="281" src="https://www.youtube.com/embed/1_ly9dZnmWc?feature=oembed&amp;enablejsapi=1" frameborder="0" allowfullscreen="" id="player1"></iframe>
 
@@ -388,7 +388,6 @@ The following screenshot shows and describes the various components and features
 
 -   [Apache ORC Launches as a Top-Level Project](https://hortonworks.com/blog/apache-orc-launches-as-a-top-level-project/)
 -   [ORCFile in HDP 2: Better Compression, Better Performance](https://hortonworks.com/blog/orcfile-in-hdp-2-better-compression-better-performance/)
--   To learn more about HDFS watch the following [HDFS introduction video](https://www.youtube.com/watch?v=1_ly9dZnmWc).
 
 
 **HDFS Blogs:**
@@ -399,6 +398,7 @@ The following screenshot shows and describes the various components and features
 -   [HDFS 2.0 Next Generation Architecture](https://hortonworks.com/blog/hdfs-2-0-next-generation-architecture/)
 -   [NameNode High Availability in HDP 2.0](https://hortonworks.com/blog/namenode-high-availability-in-hdp-2-0/)
 -   [Introducing… Tez: Accelerating processing of data stored in HDFS](https://hortonworks.com/blog/introducing-tez-faster-hadoop-processing/)
+-   To learn more about HDFS watch the following [HDFS introduction video](https://www.youtube.com/watch?v=1_ly9dZnmWc).
 
 **YARN Blogs:**
 
