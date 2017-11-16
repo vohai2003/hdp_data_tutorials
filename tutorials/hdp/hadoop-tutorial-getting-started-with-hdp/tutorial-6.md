@@ -14,12 +14,12 @@ In this tutorial you will be introduced to Apache Zeppelin and teach you to visu
 
 The tutorial is a part of series of hands on tutorial to get you started on HDP using the Hortonworks sandbox. Please ensure you complete the prerequisites before proceeding with this tutorial.
 
--   Hortonworks Sandbox
+-   Downloaded and Installed [Hortonworks Sandbox](https://hortonworks.com/downloads/#sandbox)
 -   [Learning the Ropes of the Hortonworks Sandbox](https://hortonworks.com/tutorial/learning-the-ropes-of-the-hortonworks-sandbox/)
--   Loading Sensor Data into HDFS
--   Hive - Data ETL
--   Pig - Risk Factor
--   Spark - Risk Factor
+-   [Loading Sensor Data into HDFS](https://hortonworks.com/tutorial/hadoop-tutorial-getting-started-with-hdp/section/2/)
+-   [Hive - Data ETL](https://hortonworks.com/tutorial/hadoop-tutorial-getting-started-with-hdp/section/3/)
+-   [Pig - Risk Factor](https://hortonworks.com/tutorial/hadoop-tutorial-getting-started-with-hdp/section/4/)
+-   [Spark - Risk Factor](https://hortonworks.com/tutorial/hadoop-tutorial-getting-started-with-hdp/section/5/)
 
 ## Outline
 
@@ -37,8 +37,6 @@ Behind the scenes it supports Spark distributed contexts as well as other langua
 
 In this tutorial we will be using Apache Zeppelin to run SQL queries on our geolocation, trucks, and
 riskfactor data that we've collected earlier and visualize the result through graphs and charts.
-
-NOTE: We can also run queries via various interpreters for the following (but not limited to) spark, hawq and postgresql.
 
 ## Create a Zeppelin Notebook
 
