@@ -14,10 +14,10 @@ In this tutorial, you will be introduced to [Apache Pig](https://hortonworks.com
 
 The tutorial is a part of series of hands on tutorial to get you started on HDP using Hortonworks sandbox. Please ensure you complete the prerequisites before proceeding with this tutorial.
 
--   Hortonworks Sandbox
+-   Downloaded and Installed [Hortonworks Sandbox](https://hortonworks.com/downloads/#sandbox)
 -   [Learning the Ropes of the Hortonworks Sandbox](https://hortonworks.com/tutorial/learning-the-ropes-of-the-hortonworks-sandbox/)
--   Loading Sensor Data into HDFS
--   Hive - Data ETL
+-   [Loading Sensor Data into HDFS](https://hortonworks.com/tutorial/hadoop-tutorial-getting-started-with-hdp/section/2/)
+-   [Hive - Data ETL](https://hortonworks.com/tutorial/hadoop-tutorial-getting-started-with-hdp/section/3/)
 
 ## Outline
 
@@ -70,6 +70,12 @@ This will bring up the Ambari Pig User View interface. Your Pig View does not ha
 On the left is a list of your scripts, and on the right is a composition box for writing scripts. A **special interface feature** is the _Pig helper_ located below the name of your script file. The _Pig helper_ provides us with templates for the statements, functions, I/O statements, HCatLoader() and Python user defined functions. At the very bottom are status areas that will show the results of our script and log files.
 
 The following screenshot shows and describes the various components and features of the Pig View:
+
+1.  Quick link to view existing scripts, UDFs, or History of prior runs
+2.  View your current script or prior History
+3.  Helper functions to help write your scripts
+4.  Arguments needed for script execution
+5.  Execute button to run your script
 
 ![Lab3_5](assets/pig_user_view_components_hello_hdp.png)
 
@@ -175,7 +181,7 @@ h = join e by driverid, g by driverid;
 
 Copy-and-paste the above two Pig codes into the riskfactor.pig window.
 
-> Note: Refer to [Pig Latin Basics - join](http://pig.apache.org/docs/r0.14.0/basic.html#join) to learn more about the **join** operator.
+> Note: Refer to [Pig Latin Basics - join](http://pig.apache.org/docs/r0.14.0/basic.html#join-inner) to learn more about the **join** operator.
 
 ### Compute Driver Risk factor
 
@@ -292,8 +298,7 @@ Congratulations! Let’s summarize the Pig commands we learned in this tutorial 
 
 Strengthen your foundation of pig latin and reinforce why this scripting platform is benficial for processing and analyzing massive data sets with these resources:
 
--   To practice more pig programming, visit [Pig Tutorials](https://hortonworks.com/hadoop/pig/#tutorials)
+-   To practice more pig programming, visit [Pig Tutorials](https://hortonworks.com/tutorials/?filters=apache-pig)
 -   [Apache Pig](https://hortonworks.com/hadoop/pig/)
 -   [Programming Pig](http://www.amazon.com/Programming-Pig-Alan-Gates/dp/1449302645/ref=sr_1_2?ie=UTF8&qid=1455994738&sr=8-2&keywords=pig+latin&refinements=p_72%3A2661618011)
--   learn more about the various Pig operators, refer to [Pig Latin Basics](http://pig.apache.org/docs/r0.14.0/basic.html)
 -   [HDP DEVELOPER: APACHE PIG AND HIVE](https://hortonworks.com/training/class/hadoop-2-data-analysis-pig-hive/)

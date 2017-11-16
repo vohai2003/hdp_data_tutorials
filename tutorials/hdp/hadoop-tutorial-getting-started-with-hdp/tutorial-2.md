@@ -15,7 +15,7 @@ In this section, you will download the sensor data and load that into HDFS using
 The tutorial is a part of series of hands on tutorial to get you started on HDP using Hortonworks sandbox. Please ensure you complete the prerequisites before proceeding with this tutorial.
 
 -   Downloaded and Installed [Hortonworks Sandbox](https://hortonworks.com/downloads/#sandbox)
--   [Learning the Ropes of the Hortonworks Sandbox](https://hortonworks.com/tutorial/learning-the-ropes-of-the-hortonworks-sandbox/) (Optional)
+-   [Learning the Ropes of the Hortonworks Sandbox](https://hortonworks.com/tutorial/learning-the-ropes-of-the-hortonworks-sandbox/)
 
 ## Outline
 
@@ -32,24 +32,26 @@ A single physical machine gets saturated with its storage capacity as the data g
 
 ## Step 1 - Download and Extract Sensor Data Files <a id="step1.1"></a>
 
-1.  You can download the sample sensor data contained in a compressed (.zip) folder here:  [**Geolocation.zip**](https://app.box.com/HadoopCrashCourseData)
-2.  Save the Geolocation.zip file to your computer, then extract the files. You should see a Geolocation folder that contains the following files:
-    -   geolocation.csv – This is the collected geolocation data from the trucks. It contains **records** showing _truck location, date, time, type of event, speed, etc_.
-    -   trucks.csv – This is data was exported from a relational database and it shows **info** on _truck models, driverid, truckid, and aggregated mileage info_.
+1.  Download the sample sensor data contained in a compressed (.zip) folder here:  [**Geolocation.zip**](https://app.box.com/HadoopCrashCourseData)
+2.  Save the **Geolocation.zip** file to your computer, then extract the files. You should see a Geolocation folder that contains the following files:
+    -   **geolocation.csv** – This is the collected geolocation data from the trucks. It contains records showing _truck location, date, time, type of event, speed, etc_.
+    -   **trucks.csv** – This is data was exported from a relational database and it shows information on _truck models, driverid, truckid, and aggregated mileage info_.
 
 ## Step 2 - Load the Sensor Data into HDFS <a id="step1.2"></a>
 
-1\.   Go to Ambari Dashboard and open **Files View**.
+1\.   Logon to Ambari using: **maria_dev**/**maria_dev**
+
+2\.   Go to Ambari Dashboard and open **Files View**.
 
 ![Screen Shot 2015-07-21 at 10.17.21 AM](assets/files_view_lab1.png)
 
-2\.  Start from the top root of the HDFS file system, you will see all the files the logged in user (_maria_dev_ in this case) has access to see:
+3\.  Start from the top root of the HDFS file system, you will see all the files the logged in user (_maria_dev_ in this case) has access to see:
 
 ![Lab2_2](assets/root_files_view_folder_lab1.png)
 
-3\. Navigate to `/user/maria_dev` directory by clicking on the directory links.
+4\. Navigate to `/user/maria_dev` directory by clicking on the directory links.
 
-4\.  Let's create a data directory to upload the data that we are going to use for this use case.  Click the ![Lab2_3](assets/new_folder_icon_lab1.png) button to create the `data` directory inside the `maria_dev` directory. Now navigate into the `data` directory.
+5\.  Let's create a data directory to upload the data that we are going to use for this use case.  Click the ![Lab2_3](assets/new_folder_icon_lab1.png) button to create the `data` directory inside the `maria_dev` directory. Now navigate into the `data` directory.
 
 ![add_new_folder_data_lab1](assets/add_new_folder_data_lab1.png)
 
@@ -88,7 +90,6 @@ Congratulations! Let’s summarize the skills and knowledge we acquired from thi
 
 ## Further Reading
 -   [HDFS](https://hortonworks.com/hadoop/hdfs/)
--   [Tutorial: Manage Files on HDFS via Cli/Ambari Files View](https://hortonworks.com/tutorial/manage-files-on-hdfs-via-cli-ambari-files-view/)
 -   [HDFS User Guide](https://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/HdfsUserGuide.html)
--   Build your HDFS Architecture Knowledge [HDFS Architecture Guide](https://hadoop.apache.org/docs/r1.0.4/hdfs_design.html)
+-   [HDFS Architecture Guide](https://hadoop.apache.org/docs/r1.0.4/hdfs_design.html)
 -   [HDP OPERATIONS: HADOOP ADMINISTRATION](https://hortonworks.com/training/class/hdp-operations-hadoop-administration-fundamentals/)

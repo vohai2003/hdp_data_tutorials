@@ -14,10 +14,10 @@ In this tutorial we will introduce Apache Spark. In the earlier section of the l
 
 This tutorial is a part of a series of hands on tutorials to get you started on HDP using the Hortonworks sandbox. Please ensure you complete the prerequisites before proceeding with this tutorial.
 
--   Hortonworks Sandbox
+-   Downloaded and Installed [Hortonworks Sandbox](https://hortonworks.com/downloads/#sandbox)
 -   [Learning the Ropes of the Hortonworks Sandbox](https://hortonworks.com/tutorial/learning-the-ropes-of-the-hortonworks-sandbox/)
--   Loading Sensor Data into HDFS
--   Hive - Data ETL
+-   [Loading Sensor Data into HDFS](https://hortonworks.com/tutorial/hadoop-tutorial-getting-started-with-hdp/section/2/)
+-   [Hive - Data ETL](https://hortonworks.com/tutorial/hadoop-tutorial-getting-started-with-hdp/section/3/)
 
 ## Outline
 
@@ -418,6 +418,7 @@ Congratulations! Let’s summarize the spark coding skills and knowledge we acqu
 ## Further Reading
 
 To learn more about Spark, checkout these resources:
+-   [Spark Tutorials](https://hortonworks.com/tutorials/?filters=apache-spark)
 -   [Apache Spark](https://hortonworks.com/hadoop/spark/)
 -   [Apache Spark Welcome](http://spark.apache.org/)
 -   [Spark Programming Guide](http://spark.apache.org/docs/latest/programming-guide.html#passing-functions-to-spark)
@@ -426,30 +427,42 @@ To learn more about Spark, checkout these resources:
 
 ## Appendix A: Run Spark in the Spark Interactive Shell <a id="run-spark-in-shell"></a>
 
-1) Open your terminal or putty.  SSH into the Sandbox using `root` as login and `hadoop` as password.
+1\.  Using the [built-in SSH Web Client](https://hortonworks.com/tutorial/learning-the-ropes-of-the-hortonworks-sandbox/#shell-web-client-method) (aka shell-in-the-box), logon using **maria_dev**/**maria_dev**
 
-~~~
-ssh root@sandbox.hortonworks.com -p 2222
-login: root
-password: hadoop
-~~~
+2\.  Let's enter the Spark interactive shell by typing the command:
+-   ```spark-shell```
 
-Optionally, if you don’t have an SSH client installed and configured you can use the built-in web client which can be accessed from:
+This will load the default Spark Scala API. Issue the command `:help` for help and `:quit` to exit.
 
-~~~
-http://sandbox.hortonworks.com:4200/
-login: root
-password: hadoop
-~~~
+![spark_shell_welcome_page](assets/spark_shell_hello_hdp_lab4.jpg)
 
-2) Let's enter the Spark interactive shell (spark repl). Type the command
+-   Execute the commands:
 
-~~~
-spark-shell
-~~~
-
-This will load the default Spark Scala API. Issue the command `exit` to drop out of the Spark Shell.
-
-![spark_shell_welcome_page](assets/spark_shell_hello_hdp_lab4.png)
-
-The coding exercise we just went through can be also completed using a Spark shell. Just as we did in Zeppelin, you can copy and paste the code.
+    -   ```val hiveContext = new org.apache.spark.sql.SparkSession.Builder().getOrCreate()```
+    -   ```hiveContext.sql("show tables").show()```
+    -   ```val geolocation_temp1 = hiveContext.sql("select * from geolocation")```
+    -   ```val drivermileage_temp1 = hiveContext.sql("select * from drivermileage")```
+    -   ```geolocation_temp1.createOrReplaceTempView("geolocation_temp1")```
+    -   ```drivermileage_temp1.createOrReplaceTempView("drivermileage_temp1")```
+    -   ```hiveContext.sql("show tables").show()```
+    -   ```val geolocation_temp2 = hiveContext.sql("SELECT driverid, count(driverid) occurance from geolocation_temp1 where event!='normal' group by driverid")```
+    -   ```geolocation_temp2.createOrReplaceTempView("geolocation_temp2")```
+    -   ```hiveContext.sql("show tables").show()```
+    -   ```geolocation_temp2.show(10)```
+    -   ```val joined = hiveContext.sql("select a.driverid,a.occurance,b.totmiles from geolocation_temp2 a,drivermileage_temp1 b where a.driverid=b.driverid")```
+    -   ```joined.createOrReplaceTempView("joined")```
+    -   ```hiveContext.sql("show tables").show()```
+    -   ```joined.show(10)```
+    -   ```val risk_factor_spark = hiveContext.sql("select driverid, occurance, totmiles, totmiles/occurance riskfactor from joined")```
+    -   ```risk_factor_spark.createOrReplaceTempView("risk_factor_spark")```
+    -   ```hiveContext.sql("show tables").show()```
+    -   ```risk_factor_spark.show(10)```
+    -   ```hiveContext.sql("DROP TABLE IF EXISTS finalresults")```
+    -   ```hiveContext.sql("create table finalresults( driverid String, occurance bigint, totmiles bigint, riskfactor double) stored as orc").toDF()```
+    -   ```hiveContext.sql("show tables").show()```
+    -   ```risk_factor_spark.write.format("orc").mode("overwrite").save("risk_factor_spark")```
+    -   ```hiveContext.sql("load data inpath 'risk_factor_spark' into table finalresults")```
+    -   ```hiveContext.sql("DROP TABLE IF EXISTS riskfactor")```
+    -   ```hiveContext.sql("create table riskfactor as select * from finalresults").toDF()```
+    -   ```val riskfactor_temp = hiveContext.sql("SELECT * from riskfactor")```
+    -   ```riskfactor_temp.show(10)```

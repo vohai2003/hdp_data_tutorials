@@ -35,7 +35,7 @@ The goal of this tutorial is to learn how to enable interactive SQL query perfor
 
 ## Prerequisites
 
--   This tutorial requires [HDP Sandbox](https://hortonworks.com/products/sandbox/).
+-   This tutorial requires [HDP Sandbox](https://hortonworks.com/downloads/#sandbox).
 -   Must have installed [Hortonworks ODBC Driver for Apache Hive](https://hortonworks.com/downloads/#addons)
 -   Must have installed [Tableau](https://www.tableau.com/). For this tutorial, we’re using Tableau version 10.2.
 -   This tutorial assumes you have a **16GB** memory (or more) computer and does its best to maximize available resources. Working on the sandbox is limited. If you’re looking to try Hive LLAP at big data scales, check out [Fast Analytics in the Cloud with Hive LLAP](https://hortonworks.com/tutorial/fast-analytics-in-the-cloud-with-hive-llap/).
@@ -164,7 +164,7 @@ Enabling Hive LLAP is a simple and require the following modifications. Start wi
 -   Confirm Dependent Configurations by pressing **OK**
 -   Confirm Configurations by pressing **Proceed Anyway**
 
-> Important: HiveServer2 Interactive will automatically start. Restart any other affected services. Wait for all services to restart continuing.
+> Important: HiveServer2 Interactive will automatically start. Restart any other affected services. Wait for all services to restart before continuing.
 
 ## 2. Connect with a BI Tool and Run Queries <a id="connect_with_bi_tool"></a>
 
