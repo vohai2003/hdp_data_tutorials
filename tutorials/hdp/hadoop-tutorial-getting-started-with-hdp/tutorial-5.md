@@ -427,7 +427,7 @@ To learn more about Spark, checkout these resources:
 
 ## Appendix A: Run Spark in the Spark Interactive Shell <a id="run-spark-in-shell"></a>
 
-1\.  Using the [built-in SSH Web Client](https://hortonworks.com/tutorial/learning-the-ropes-of-the-hortonworks-sandbox/#shell-web-client-method) (aka shell-in-the-box), logon using **maria_dev**/**maria_dev**
+1\.  Using the [built-in SSH Web Client](https://hortonworks.com/tutorial/learning-the-ropes-of-the-hortonworks-sandbox/#shell-web-client-method) (aka shell-in-a-box), logon using **maria_dev**/**maria_dev**
 
 2\.  Let's enter the Spark interactive shell by typing the command:
 -   ```spark-shell```

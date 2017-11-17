@@ -192,7 +192,7 @@ Double-click on the worksheet tab to rename the label to "sample truck data".  N
 
 ### Beeline - Command Shell
 
-Try running commands using the command line interface - Beeline. Beeline uses a JDBC connection to connect to HiveServer2. Use the [built-in SSH Web Client](https://hortonworks.com/tutorial/learning-the-ropes-of-the-hortonworks-sandbox/#shell-web-client-method) (aka shell-in-the-box):
+Try running commands using the command line interface - Beeline. Beeline uses a JDBC connection to connect to HiveServer2. Use the [built-in SSH Web Client](https://hortonworks.com/tutorial/learning-the-ropes-of-the-hortonworks-sandbox/#shell-web-client-method) (aka shell-in-a-box):
 
 1\.  Logon using **maria_dev**/**maria_dev**
 
