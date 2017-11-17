@@ -43,7 +43,7 @@ Select the virtual machine you want to start and click **Play virtual machine**.
 
 When the virtual machine fully boots up, you will see a similar screen as below.
 
-You are ready to begin using the sandbox.
+Enter the URL into your browser - you're ready to begin using the sandbox.
 
 ![vmware-win-start](assets/vmware-win-start.jpg)
 

@@ -8,14 +8,14 @@ title: Hive - Data ETL
 
 ## Introduction
 
-In this tutorial, you will be introduced to Apache Hive. In the earlier section, we covered how to load data into HDFS. So now you have **geolocation** and **trucks** files stored in HDFS as csv files. In order to use this data in Hive, we will guide you on how to create a table and how to move data into a Hive warehouse, from where it can be queried. We will analyze this data using SQL queries in Hive User Views and store it as ORC. We will also walk through Apache Tez and how a DAG is created when you specify Tez as execution engine for Hive. Let's start..!!
+In this section, you will be introduced to Apache Hive. In the earlier section, we covered how to load data into HDFS. So now you have **geolocation** and **trucks** files stored in HDFS as csv files. In order to use this data in Hive, we will guide you on how to create a table and how to move data into a Hive warehouse, from where it can be queried. We will analyze this data using SQL queries in Hive User Views and store it as ORC. We will also walk through Apache Tez and how a DAG is created when you specify Tez as execution engine for Hive. Let's begin...
 
 ## Prerequisites
 
 The tutorial is a part of a series of hands on tutorials to get you started on HDP using the Hortonworks sandbox. Please ensure you complete the prerequisites before proceeding with this tutorial.
 
--   [Learning the Ropes of the Hortonworks Sandbox](https://hortonworks.com/tutorial/learning-the-ropes-of-the-hortonworks-sandbox/)
 -   Downloaded and Installed [Hortonworks Sandbox](https://hortonworks.com/downloads/#sandbox)
+-   [Learning the Ropes of the Hortonworks Sandbox](https://hortonworks.com/tutorial/learning-the-ropes-of-the-hortonworks-sandbox/)
 -   [Sensor Data loaded into HDFS](https://hortonworks.com/tutorial/hadoop-tutorial-getting-started-with-hdp/section/2/#step-2---load-the-sensor-data-into-hdfs-)
 
 ## Outline
@@ -36,7 +36,7 @@ Apache Hive provides  SQL interface to query data stored in various databases an
 
 Apache Hive presents a relational view of data in HDFS. Hive can represent data in a tabular format managed by Hive or just stored in HDFS irrespective in the file  format their data is stored in.  Hive can query data from RCFile format, text files, ORC, JSON, parquet,  sequence files and many of other formats in a tabular view.   Through the use of SQL you can view your data as a table and create queries like you would in an RDBMS.
 
-To make it easy to interact with Hive we use a tool in the Hortonworks Sandbox called the Ambari Hive View.   [Ambari Hive View 2.0](https://docs.hortonworks.com/HDPDocuments/Ambari-2.5.0.3/bk_ambari-views/content/ch_using_hive_view.html) provides an interactive interface to Hive.   We can create, edit, save and run queries, and have Hive evaluate them for us using a series of MapReduce jobs or Tez jobs.
+To make it easy to interact with Hive we use a tool in the Hortonworks Sandbox called the Ambari Hive View.   [Ambari Hive View 2.0](https://docs.hortonworks.com/HDPDocuments/Ambari-2.6.0.0/bk_ambari-views/content/ch_using_hive_view.html) provides an interactive interface to Hive.   We can create, edit, save and run queries, and have Hive evaluate them for us using a series of MapReduce jobs or Tez jobs.
 
 Let’s now open Ambari Hive View 2.0 and get introduced to the environment. Go to the Ambari User View icon and select Hive View 2.0:
 
@@ -64,16 +64,16 @@ There are 6 tabs to interact with Hive View 2.0:
 
 Take a few minutes to explore the various Hive View sub-features.
 
-### Set hive.execution.engine as Tez
+### Modify Hive Settings within HiveView
 
-A feature we will configure before we run our hive queries is to set the hive execution engine as Tez. You can try map reduce if you like. We will use Tez in this tutorial.
+In rare occasions, you may need to modify Hive settings. Although you have the option of modifying settings through Ambari, this is a quick and simple way to make changes without having to restart Hive services. In this example, we will configure the hive execution engine to use **tez** (which is the default). You may want to try map reduce (**mr**) - do you see a difference when executing a query?
 
 1.  Click on settings tab, referred to as number 6 in the interface above.
 2.  Click on **+Add New**
 3.  Click on the KEY dropdown menu and choose ```hive.execution.engine```
-4.  Set the value as ```tez```.
+4.  Set the value to ```tez```.
 
-Now we are ready to run our queries for this tutorial.
+When you are done experimenting with this setting, delete it by clicking on the **Delete** button.
 
 ## Step 2: Create Hive Tables <a id="define-a-hive-table"></a>
 
@@ -108,13 +108,13 @@ Click **Create** button to complete table creation.
 
 Repeat the steps above with the `geolocation.csv` file to create and load the geolocation table.
 
-### Behind the Sceens
+### Behind the Scenes
 
-Before reviewing what happened behind the sceens during the Upload Table Process, let’s learn a little more about Hive file formats.
+Before reviewing what happened behind the scenes during the Upload Table Process, let’s learn a little more about Hive file formats.
 
 [Apache ORC](https://orc.apache.org/) is a fast columnar storage file format for Hadoop workloads.
 
-The **O**ptimized **R**ow **C**olumnar ([new Apache ORC project](https://hortonworks.com/blog/apache-orc-launches-as-a-top-level-project/)) file format provides a highly efficient way to store Hive data. It was designed to overcome limitations of the other Hive file formats. Using ORC files improves performance when Hive is reading, writing, and processing data.
+The **O**ptimized **R**ow **C**olumnar ([Apache ORC project](https://hortonworks.com/blog/apache-orc-launches-as-a-top-level-project/)) file format provides a highly efficient way to store Hive data. It was designed to overcome limitations of the other Hive file formats. Using ORC files improves performance when Hive is reading, writing, and processing data.
 
 To create a table using the ORC file format, use **STORED AS ORC** option. For example:
 
@@ -192,15 +192,9 @@ Double-click on the worksheet tab to rename the label to "sample truck data".  N
 
 ### Beeline - Command Shell
 
-If you want to try running some of these commands from the the command line you can use the Beeline Shell.  Beeline uses a JDBC connection to connect to HiveServer2. Follow the following steps from your shell in the box (or putty if using Windows):
+Try running commands using the command line interface - Beeline. Beeline uses a JDBC connection to connect to HiveServer2. Use the [built-in SSH Web Client](https://hortonworks.com/tutorial/learning-the-ropes-of-the-hortonworks-sandbox/#shell-web-client-method) (aka shell-in-a-box):
 
-1\.  Connect to Sandbox VM
-
-~~~
-    ssh maria_dev@127.0.0.1 -p 2222
-~~~
-
--   When prompted, use password "maria_dev"
+1\.  Logon using **maria_dev**/**maria_dev**
 
 2\. Connect to Beeline
 
@@ -283,7 +277,6 @@ Some **key resources** to **learn more about vectorization** and some of the **k
 -   [HDP Docs Vectorization docs](https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.0.9.0/bk_dataintegration/content/ch_using-hive-1a.html)
 -   [Hive Blogs](https://hortonworks.com/blog/category/hive/)
 -   [5 Ways to Make Your Hive Queries Run Faster](https://hortonworks.com/blog/5-ways-make-hive-queries-run-faster/)
--   [Interactive Query for Hadoop with Apache Hive on Apache Tez](https://hortonworks.com/tutorial/interactive-query-for-hadoop-with-apache-hive-on-apache-tez/)
 -   [Evaluating Hive with Tez as a Fast Query Engine](https://hortonworks.com/blog/evaluating-hive-with-tez-as-a-fast-query-engine/)
 
 ## Step 4: Analyze the Trucks Data <a id="analyze-truck-data"></a>

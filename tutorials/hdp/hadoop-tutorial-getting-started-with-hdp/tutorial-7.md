@@ -29,7 +29,7 @@ The tutorial is a part of series of hands on tutorial to get you started on HDP 
 
 ## Access Data in Microsoft Excel
 
-Let's bring in data from table **avg_mileage**. We created this table in the _Hive - Data ETL_ section.
+Let's bring in data from table **avg_mileage**. We created this table in the [_Hive - Data ETL_](https://hortonworks.com/tutorial/hadoop-tutorial-getting-started-with-hdp/section/3/) section.
 
 1\. Open a new blank workbook.
 
@@ -77,7 +77,7 @@ We will use Power View to visulaize our data.
 
 Moving on to our next visual...
 
-We'll be using data from table **geolocation**. We created this table in the _Hive - Data ETL_ section. We will create a geographical map describing the location of each truck. We'll use the following query to gather **driverid**, **city**, and **state** from the table.
+We'll be using data from table **geolocation**. We created this table in the [_Hive - Data ETL_](https://hortonworks.com/tutorial/hadoop-tutorial-getting-started-with-hdp/section/3/) section. We will create a geographical map describing the location of each truck. We'll use the following query to gather **driverid**, **city**, and **state** from the table.
 
 ~~~sql
 SELECT driverid, city, state FROM geolocation;
