@@ -27,6 +27,8 @@ This tutorial walks through the general approach for installing the Hortonworks 
 -   [Start Sandbox](#start-sandbox)
     -   [For HDP 2.6 Sandbox](#for-hdp-26-sandbox)
     -   [For HDF 3.0 Sandbox](#for-hdf-30-sandbox)
+-   [Stop Sandbox](#stop-sandbox)
+-   [Remove Sandbox Image](#remove-sandbox-image)
 -   [Further Reading](#further-reading)
 
 ## Configure Docker Memory
@@ -106,6 +108,26 @@ You should see something like:
 The sandbox is now created and ready for use.
 
 Welcome to the Hortonworks Sandbox!
+
+## Stop Sandbox
+
+Make sure Sandbox docker container is running by issuing command:
+
+-   ```docker ps -a```
+
+You should see something like:
+
+![docker-ps-output](assets/docker-ps-output.jpg)
+
+To **STOP** the container, issue the command:
+
+-   ```docker stop sandbox-hdp```
+
+## Remove Sandbox Image
+
+To remove the sandbox image, you must first [**stop**](#stop-sandbox) the container, then issue the command:
+
+-   ```docker rmi sandbox-hdp```
 
 ## Further Reading
 
