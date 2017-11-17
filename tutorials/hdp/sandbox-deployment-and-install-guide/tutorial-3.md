@@ -8,7 +8,6 @@ title: Deploying Hortonworks Sandbox on Docker
 
 This tutorial walks through the general approach for installing the Hortonworks Sandbox (HDP or HDF) onto Docker on your computer.
 
-
 ## Prerequisites
 
 -   [Download the Hortonworks Sandbox](https://hortonworks.com/downloads/#sandbox)
@@ -18,7 +17,6 @@ This tutorial walks through the general approach for installing the Hortonworks 
     -   [Docker For Mac](https://docs.docker.com/docker-for-mac/install/)
 -   A computer with at least **8 GB of RAM to spare**.
 
-
 ## Outline
 
 -   [Configure Docker Memory](#configure-docker-memory)
@@ -27,18 +25,15 @@ This tutorial walks through the general approach for installing the Hortonworks 
     -   [For Mac](#for-mac)
 -   [Load Sandbox Into Docker](#load-sandbox-into-docker)
 -   [Start Sandbox](#start-sandbox)
-    -   [For HDP 2.6 Sandbox](#for-hdp-2.6-sandbox)
-    -   [For HDF 3.0 Sandbox](#for-hdf-3.0-sandbox)
+    -   [For HDP 2.6 Sandbox](#for-hdp-26-sandbox)
+    -   [For HDF 3.0 Sandbox](#for-hdf-30-sandbox)
 -   [Further Reading](#further-reading)
 
-
 ## Configure Docker Memory
-
 
 ### For Linux
 
 No special configuration needed for Linux.
-
 
 ### For Windows
 
@@ -50,7 +45,6 @@ Select the **Advanced** tab and adjust the dedicated memory to **at least 8GB of
 
 ![Configure Docker RAM](assets/docker-windows-configure.jpg)
 
-
 ### For Mac
 
 After [installing Docker For Mac](https://docs.docker.com/docker-for-mac/install/), open the application and click on the Docker icon in the menu bar.  Select **Preferences**.
@@ -61,82 +55,57 @@ Select the **Advanced** tab and adjust the dedicated memory to **at least 8GB of
 
 ![Configure Docker RAM](assets/docker-mac-configure.jpg)
 
-
 ## Load Sandbox Into Docker
 
-Open up a console and use the following command to load in the sandbox image you downloaded from <https://hortonworks.com/downloads/#sandbox>.
+After you've [downloaded the sandbox](https://hortonworks.com/downloads/#sandbox), open a console/terminal and issue the following command to load the sandbox image:
 
-```
-docker load -i <sandbox-docker-image-path>
-```
+-   ```docker load -i <sandbox-docker-image-path>```
 
-To check that the image was imported successfully, run the following command.  You should see the sandbox docker image on the list.
+Make sure the image was imported successfully - run the following command:
 
-```
-docker images
-```
+-   ```docker images```
 
-### Error and Solution you may encounter
-1\. **No space left on device** similar the one below:
+You should see **sandbox-hdp** on the list.
 
-```
-Error processing tar file(exit status 1): write /usr/hdp/2.6.0.3-8/pig/lib/hive-exec-1.2.1000.2.6.0.3-8-core.jar: no space left on device
-```
+![docker images](assets/docker-images.jpg)
+
+### Error(s) you may encounter
+1\. **No space left on device**:
+
 -   Solution(s)
     -   [Increase the size of base Docker for Mac VM image](<https://community.hortonworks.com/content/kbentry/65901/how-to-increase-the-size-of-the-base-docker-for-ma.html>)
-    -   [Modify default Docker configuration for CentOS 7 to import HDP Sandbox](<https://community.hortonworks.com/content/kbentry/65714/how-to-modify-the-default-docker-configuration-on.html>)
 
-2\. **Docker Load -i** command failed for HDF 3.0
+2\. **Docker Load -i** command failed for HDF:
 
--   Solution(s)
-    -   Use Docker import as follows:
+-   Use **Docker import** as follows:
+    -   ```docker import <sandbox-docker-image-path>```
 
-~~~bash
-docker import <sandbox-docker-image-path>
-~~~
+-   If Docker image is not named **sandbox-hdf**, then tag that image to **sandbox-hdf** and remove the old image:
 
-If your Docker Image name is not **sandbox-hdf**, then run the commands:
-
-~~~bash
-docker tag [IMAGE-ID] sandbox-hdf
-~~~
-
-Untag the previous docker REPOSITORY called "sandbox":
-
-~~~bash
-docker rmi sandbox
-~~~
+    -   ```docker tag <old_image id> sandbox-hdf```
+    -   ```docker rmi <old image>```
 
 ## Start Sandbox
 
-Download one of the following scripts and save it somewhere on your computer.
+Based on your sandbox and operating system, download and execute one of these scripts:
 
-
-### For HDP 2.6 Sandbox
+#### HDP Sandbox
 
 -   For Linux/Mac: Use this [start_sandbox-hdp.sh](assets/start_sandbox-hdp.sh)
 -   For Windows: Use this [start-start_sandbox-hdp.ps1](assets/start_sandbox-hdp.ps1)
 
-
-### For HDF 3.0 Sandbox
+#### HDF Sandbox
 
 -   For Linux/Mac: Use this [start_sandbox-hdf.sh](assets/start_sandbox-hdf.sh)
 -   For Windows: Use this [start_sandbox-hdf.ps1](assets/start_sandbox-hdf.ps1)
 
-Run the script you just downloaded.  It will start the sandbox for you, creating the sandbox docker container in the process if neceesary.
-
-You should see something like the following:
+You should see something like:
 
 ![start script ouput](assets/docker-start-sandbox-output.jpg)
-
-or
-
-![start script ouput for Windows](assets/docker-start-sandbox-output-windows.jpg)
 
 The sandbox is now created and ready for use.
 
 Welcome to the Hortonworks Sandbox!
-
 
 ## Further Reading
 
