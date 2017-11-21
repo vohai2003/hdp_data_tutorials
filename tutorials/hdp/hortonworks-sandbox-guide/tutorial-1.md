@@ -1,8 +1,8 @@
 ---
-title: Sandbox Docs - HDP 2.6
+title: Sandbox Docs - HDP 2.6.3
 ---
 
-# Sandbox Docs - HDP 2.6
+# Sandbox Docs - HDP 2.6.3
 
 ## Outline
 
@@ -21,14 +21,14 @@ title: Sandbox Docs - HDP 2.6
 
 ## Release Notes
 
-Apr 2017
+November 2017
 
--   Md5 VMware Virtual Appliance - **50aab8be7ef25418d475000045abe571**
--   Md5 Virtualbox Virtual Appliance - **9cb91797dc2a53bf3799007c5c80770e**
--   Md5 Docker - **f1663bbff04721c3b1a32a39fef676e3**
+-   Md5 VMware Virtual Appliance - **05194191ca17d36f1167cb238795a4d5**
+-   Md5 Virtualbox Virtual Appliance - **2c5cca94a4d6fd1e8383abd930646f2a**
+-   Md5 Docker - **684d01736b1e323c55abe73d540a05bb**
 -   HDP Stack and Ambari: The Sandbox uses the following versions of Ambari and HDP stack. Please use the following release note links provided to view Ambari and HDP stack specific information.
-    -   [HDP 2.6 Product Release Notes](https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.6.0/bk_release-notes/content/ch_relnotes.html)
-    -   [Ambari 2.5 Release Notes](https://docs.hortonworks.com/HDPDocuments/Ambari-2.5.0.3/bk_ambari-release-notes/content/ch_relnotes-ambari-2.5.0.3.html)
+    -   [HDP 2.6.3 Product Release Notes](https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.6.3/bk_release-notes/content/ch_relnotes.html)
+    -   [Ambari 2.6 Release Notes](https://docs.hortonworks.com/HDPDocuments/Ambari-2.6.0.0/bk_ambari-release-notes/content/ch_relnotes-ambari-2.6.0.0.html)
 
 
 ## Behavior Changes
@@ -70,9 +70,9 @@ Operating System and Java versions that the Sandbox has installed.
     -   CentOS Linux release 7.2.1511 (Core)
 
 Image File Sizes:
--   VMware - 10.75 GB
+-   VMware - 10.6 GB
 -   Virtualbox - 10.4 GB
--   Docker - 12 GB
+-   Docker - 12.5 GB
 
 
 ### Databases Used
@@ -177,4 +177,4 @@ Because of the limited resources avaialble in the sandbox virtual machine enviro
 ## Further Reading
 -   <https://hortonworks.com/press-releases/hortonworks-leads-industry-performance-customer-choice-hdp-2-6/>
 -   <https://hortonworks.com/products/data-center/hdp/>
--   <https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.6.0/index.html>
+-   <https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.6.3/index.html>
