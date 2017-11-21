@@ -1,14 +1,14 @@
 ---
-title: Sandbox Port Forwards - HDP 2.6
+title: Sandbox Port Forwards - HDP 2.6.3
 ---
 
-# Sandbox Port Forwards - HDP 2.6
+# Sandbox Port Forwards - HDP 2.6.3
 
 ## Introduction
 
 Listed below are the ports that the HDP Sandbox forwards by default, and what software or purpose each port corresponds to.
 
-> Note: Last updated for HDP Sandbox 2.6.0.1.
+> Note: Last updated for HDP Sandbox 2.6.3.0.
 
 ## Port Forwards
 
