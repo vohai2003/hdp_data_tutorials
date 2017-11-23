@@ -69,13 +69,13 @@ This option is optimal if you prefer to run everything in local environment (lap
 
 Keep in mind, that you will need **8GB** of memory dedicated for the virtual machine, meaning that you should have at least **12GB** of memory on your system.
 
-2a. Download and Install [HDP Sandbox 2.6](https://hortonworks.com/products/sandbox/)
+2a. Download and Install [HDP Sandbox](https://hortonworks.com/downloads/#sandbox)
 
-2b. Review [Learning the Ropes of HDP Sandbox](https://hortonworks.com/tutorial/learning-the-ropes-of-the-hortonworks-sandbox/)
+2b. Review [Learning the Ropes of the Hortonworks Sandbox](https://hortonworks.com/tutorial/learning-the-ropes-of-the-hortonworks-sandbox/)
 
 #### Review Zeppelin Tutorial
 
-If you are new to Zeppelin, review the following tutorial [Getting Started with Apache Zeppelin](https://github.com/hortonworks/tutorials/blob/hdp-2.5/tutorials/hortonworks/getting-started-with-apache-zeppelin/tutorial.md)
+If you are new to Zeppelin, review the following tutorial [Getting Started with Apache Zeppelin](https://hortonworks.com/tutorial/getting-started-with-apache-zeppelin/)
 
 ## Notebook Preview
 
@@ -87,7 +87,7 @@ A dynamic preview (allowing code copy) can be found [here](https://www.zeppelinh
 
 ## Start the Tutorial
 
-To begin the tutorial, import the *Apache Spark in 5 Minutes* notebook into your Zeppelin environment. (If at any point you have any issues, make sure to checkout the [Getting Started with Zeppelin](https://hortonworks.com/tutorial/getting-started-with-apache-zeppelin/) tutorial.)
+To begin the tutorial, import the *Apache Spark in 5 Minutes* notebook into your Zeppelin environment. (If at any point you have any issues, make sure to checkout the [Getting Started with Apache Zeppelin](https://hortonworks.com/tutorial/getting-started-with-apache-zeppelin/) tutorial.)
 
 On the Zeppelin home screen click `Import note` -> `Add from URL` and copy and paste the following URL: [https://raw.githubusercontent.com/hortonworks-gallery/zeppelin-notebooks/hdp-2.6/2CBTZPY14/note.json](https://raw.githubusercontent.com/hortonworks-gallery/zeppelin-notebooks/hdp-2.6/2CBTZPY14/note.json)
 
@@ -100,4 +100,4 @@ Once your notebook is imported, you can open it from the Zeppelin home screen by
 
 We hope that you've been able to successfully run this short introductory notebook in either your cloud or local environment and we've got you interested and excited enough to further explore Spark with Zeppelin.
 
-Make sure to checkout other [tutorials](https://hortonworks.com/tutorials/) for more in-depth examples of the Spark SQL module, as well as other Spark modules used for Streaming and/or Machine Learning tasks. We also have a very useful [Data Science Starter Kit](https://hortonworks.com/info/data-science-cloud/) with pre-selected videos, tutorials, and white papers.
+Make sure to checkout other [tutorials](https://hortonworks.com/tutorials/?filters=apache-spark) for more in-depth examples of the Spark SQL module, as well as other Spark modules used for Streaming and/or Machine Learning tasks. We also have a very useful [Data Science Starter Kit](https://hortonworks.com/info/data-science-cloud/) with pre-selected videos, tutorials, and white papers.
