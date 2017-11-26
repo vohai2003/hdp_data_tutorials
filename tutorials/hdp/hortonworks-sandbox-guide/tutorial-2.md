@@ -16,9 +16,9 @@ title: Sandbox Docs - HDF 3.0.2.0
 ## Release Notes
 
 December 2017
--   Md5 VMware Virtual Appliance – **TODO**
--   Md5 Virtualbox Virtual Appliance – **TODO**
--   Md5 Docker – **TODO**
+-   MD5 VMware Virtual Appliance – **TODO**
+-   MD5 Virtualbox Virtual Appliance – **TODO**
+-   MD5 Docker – **TODO**
 -   The Sandbox uses the following versions of Ambari, HDF and HDP. Please use the following release note links provided to view their respective release notes.
     -   [Ambari 2.6](https://docs.hortonworks.com/HDPDocuments/Ambari-2.6.0.0/bk_ambari-release-notes/content/ch_relnotes-ambari-2.6.0.0.html)
     -   [HDF 3.0.2](https://docs.hortonworks.com/HDPDocuments/HDF3/HDF-3.0.2/bk_release-notes/content/ch_hdf_relnotes.html)
