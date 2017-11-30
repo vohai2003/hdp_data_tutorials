@@ -117,8 +117,8 @@ docker stop {sandbox-container-hdp}
 
 Download one of the following scripts and save it somewhere on your computer.
 
--   For Linux/Mac: Use this [start_sandbox-hdf.sh](assets/start_sandbox-hdf.sh)
--   For Windows: Use this [start_sandbox-hdf.ps1](assets/start_sandbox-hdf.ps1)
+-   For Linux/Mac: Use this [sandbox-hdf-deploy.sh](assets/sandbox-hdf-deploy.sh)
+-   For Windows: Use this [sandbox-hdf-deploy.ps1](assets/sandbox-hdf-deploy.ps1)
 
 Run the script you just downloaded one time.  It will setup and start the sandbox for you, creating the sandbox docker container in the process if necessary.
 
@@ -126,14 +126,14 @@ Linux/Mac:
 
 ~~~
 cd /path/to/start_sandbox-script
-sh start_sandbox-hdf.sh
+sh sandbox-hdf-deploy.sh
 ~~~
 
 Windows Powershell:
 
 ~~~
 cd /path/to/start_sandbox-script
-powershell -ExecutionPolicy ByPass -File start_sandbox-hdf.ps1
+powershell -ExecutionPolicy ByPass -File sandbox-hdf-deploy.ps1
 ~~~
 
 You should see something like the following after script completion:
