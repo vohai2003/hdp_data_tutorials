@@ -10,7 +10,7 @@ This tutorial walks through the general approach for installing the Hortonworks 
 
 ## Prerequisites
 
--   Docker Installed, version 17.09 or latest
+-   Docker Installed, version 17.09 or newer
     -   [Docker For Linux](https://docs.docker.com/engine/installation/linux/)
     -   [Docker For Windows](https://docs.docker.com/docker-for-windows/install/)
     -   [Docker For Mac](https://docs.docker.com/docker-for-mac/install/)

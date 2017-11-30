@@ -11,7 +11,7 @@ This tutorial walks through the general approach for installing the Hortonworks 
 ## Prerequisites
 
 -   [Download the Hortonworks Sandbox](https://hortonworks.com/downloads/#sandbox)
--   [Install VirtualBox](https://www.virtualbox.org/wiki/Downloads)
+-   [VirtualBox Installed](https://www.virtualbox.org/wiki/Downloads), version 5.1 or newer
 -   A computer with at least **8 GB of RAM to spare**.
 
 ## Outline

@@ -11,7 +11,7 @@ This tutorial walks through the general approach for installing the Hortonworks 
 ## Prerequisites
 
 -   [Download the Hortonworks Sandbox](https://hortonworks.com/downloads/#sandbox)
--   VMWare Installed
+-   VMWare Installed, version 14 or newer
     -   [VMWare Workstation For Linux](http://www.vmware.com/products/workstation-for-linux.html)
     -   [VMWare Workstation For Windows](http://www.vmware.com/products/workstation.html)
     -   [VMWare Fusion For Mac](http://www.vmware.com/products/fusion.html)
