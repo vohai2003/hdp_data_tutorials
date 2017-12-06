@@ -1,0 +1,34 @@
+driverName,eventType,count
+Edgar Orendain,Lane Departure,2511.0
+Edgar Orendain,Speeding,3294.0
+Edgar Orendain,Unsafe Follow Distance,3899.0
+Edgar Orendain,Unsafe Tail Distance,3396.0
+George De Leon,Lane Departure,3288.0
+George De Leon,Speeding,4169.0
+George De Leon,Unsafe Follow Distance,3609.0
+George De Leon,Unsafe Tail Distance,3852.0
+James Medel,Lane Departure,1459.0
+James Medel,Speeding,942.0
+James Medel,Unsafe Follow Distance,1151.0
+James Medel,Unsafe Tail Distance,1270.0
+Lisa Sensmeier,Lane Departure,148.0
+Lisa Sensmeier,Speeding,84.0
+Lisa Sensmeier,Unsafe Follow Distance,147.0
+Lisa Sensmeier,Unsafe Tail Distance,13.0
+Oksana Walton,Lane Departure,1328.0
+Oksana Walton,Speeding,1103.0
+Oksana Walton,Unsafe Follow Distance,1083.0
+Oksana Walton,Unsafe Tail Distance,1998.0
+Rafael Coss,Lane Departure,4147.0
+Rafael Coss,Speeding,4939.0
+Rafael Coss,Unsafe Follow Distance,3918.0
+Rafael Coss,Unsafe Tail Distance,4650.0
+Robert Hryniewicz,Lane Departure,186.0
+Robert Hryniewicz,Speeding,42.0
+Robert Hryniewicz,Unsafe Follow Distance,132.0
+Robert Hryniewicz,Unsafe Tail Distance,33.0
+Robert Molina,Lane Departure,27.0
+Robert Molina,Speeding,30.0
+Robert Molina,Unsafe Follow Distance,118.0
+Robert Molina,Unsafe Tail Distance,20.0
+All,,56986.0
