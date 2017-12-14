@@ -101,6 +101,10 @@ You should see something like the following after script completion:
 
 ![docker-start-sandbox-output](assets/docker-start-sandbox-output.jpg)
 
+or
+
+![docker-start-sandbox-output-win](assets/docker-start-sandbox-output-win.jpg)
+
 **Stop HDP Sandbox**
 
 Linux/Mac/Windows:
