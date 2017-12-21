@@ -44,7 +44,7 @@ SuperSet is a visual, intuitive and interactive data exploration platform. This 
 
 ### Druid
 
-Druid is an open source analytics database developed for business intelligence queries on data. Druid provides data ingestion is in real-time with low latency, flexible data exploration and quick aggregation. Deployments often reach out to trillions of event in relation to numerous petabytes of data.
+Druid is an open source analytics database developed for business intelligence queries on data. Druid provides low-latency live data ingestion, flexible data exploration and aggregation. Deployments often reach out to trillions of event in relation to numerous petabytes of data.
 
 ### Stream Analytics Manager (SAM)
 
