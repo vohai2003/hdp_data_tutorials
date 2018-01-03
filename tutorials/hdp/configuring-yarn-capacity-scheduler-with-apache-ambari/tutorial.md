@@ -1,8 +1,16 @@
 ---
 title: Configuring Yarn Capacity Scheduler with Apache Ambari
+author: Ana Castro
 tutorial-id: 440
-platform: hdp-2.5.0
-tags: [ambari]
+experience: Intermediate
+persona: Developer
+source: Hortonworks
+use case: Data Discovery
+technology: Apache Ambari
+release: hdp-2.6.0
+environment: Sandbox
+product: HDP
+series: HDP > Hadoop Administration > Hortonworks Sandbox 
 ---
 
 # Configuring Yarn Capacity Scheduler with Apache Ambari
