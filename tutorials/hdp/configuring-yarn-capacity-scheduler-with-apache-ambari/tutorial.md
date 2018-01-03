@@ -16,6 +16,7 @@ YARN's Capacity Scheduler is designed to run Hadoop applications in a shared, mu
 Traditionally each organization has it own private set of compute resources that have sufficient capacity to meet the organization's SLA. This generally leads to poor average utilization. Also there is heavy overhead of managing multiple independent clusters.
 
 Sharing clusters between organizations allows economies of scale . However, organizations are concerned about sharing a cluster in the fear of not getting enough available resources that are critical to meet their SLAs.
+
 The Capacity Scheduler is designed to allow sharing a large cluster while giving each organization capacity guarantees. There is an added benefit that an organization can access any excess capacity not being used by others. This provides elasticity for the organizations in a cost-effective manner.
 
 Sharing clusters across organizations necessitates strong support for multi-tenancy since each organization must be guaranteed capacity and safeguards to ensure the shared cluster is impervious to single rogue application or user or sets thereof. The Capacity Scheduler provides a stringent set of limits to ensure that a single application or user or queue cannot consume disproportionate amount of resources in the cluster. Also, the Capacity Scheduler provides limits on initialized/pending applications from a single user and queue to ensure fairness and stability of the cluster.
@@ -26,7 +27,7 @@ To provide further control and predictability on sharing of resources, the Capac
 
 ## Prerequisites
 
-- [Download Hortonworks 2.5 Sandbox](https://hortonworks.com/downloads/#sandbox)
+- [Download HDP Sandbox](https://hortonworks.com/downloads/#sandbox)
 - Complete the [Learning the Ropes of the Hortonworks Sandbox tutorial,](https://hortonworks.com/hadoop-tutorial/learning-the-ropes-of-the-hortonworks-sandbox/) you will need it for logging into Ambari.
 
 ## Outline
@@ -59,7 +60,7 @@ Next, click on `Advanced` and scroll down to the **Scheduler** section of the pa
 
 ![capacity_scheduler_section](assets/capacity_scheduler_section.png)
 
-Let check out the scheduling policy visually. Scroll up to the top of the page and click on `Quick Links`. Then select `ResourceManager UI` from the dropdown.
+Let's check out the scheduling policy visually. Scroll up to the top of the page and click on `Quick Links`. Then select `ResourceManager UI` from the dropdown.
 
 ![select_resourcemanagerui](assets/select_resourcemanagerui.png)
 
