@@ -16,9 +16,6 @@ title: Sandbox Docs - HDF 3.0.2.0
 ## Release Notes
 
 December 2017
--   MD5 VMware Virtual Appliance – **TODO**
--   MD5 Virtualbox Virtual Appliance – **TODO**
--   MD5 Docker – **TODO**
 -   The Sandbox uses the following versions of Ambari, HDF and HDP. Please use the following release note links provided to view their respective release notes.
     -   [Ambari 2.6](https://docs.hortonworks.com/HDPDocuments/Ambari-2.6.0.0/bk_ambari-release-notes/content/ch_relnotes-ambari-2.6.0.0.html)
     -   [HDF 3.0.2](https://docs.hortonworks.com/HDPDocuments/HDF3/HDF-3.0.2/bk_release-notes/content/ch_hdf_relnotes.html)
@@ -31,9 +28,14 @@ Operating System and Java versions that the Sandbox has installed.
 -   Java: OpenJDK version 1.8.0_131
 
 Image File Sizes:
--   VMware – TODO GB
+-   Docker – 13.9 GB
+-   VMware – 15 GB
 -   Virtualbox – TODO GB
--   Docker – TODO GB
+
+Image Checksums:
+-   Docker release – **sha256:786dec2112d2f3054e8bd7a5f9ad194949909c6e60707d554b3c196ebf2117ba**
+-   VMware release – **TODO**
+-   Virtualbox release – **md5:aac800ded2fd3ba3416e9637643a2139**
 
 ### Databases Used
 
