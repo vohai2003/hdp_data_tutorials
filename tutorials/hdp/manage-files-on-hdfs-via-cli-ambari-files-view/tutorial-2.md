@@ -26,9 +26,9 @@ Open a terminal on your local machine, copy and paste the commands to download t
 ~~~
 cd ~/Downloads
 # download sf-salaries-2011-2013
-wget https://raw.githubusercontent.com/hortonworks/data-tutorials/893ba0221e2c76c91e9e2baa030323a42abcdf09/tutorials/hdp/hdp-2.5/manage-files-on-hdfs-via-cli-ambari-files-view/assets/sf-salary-datasets/sf-salaries-2011-2013.csv
+wget https://github.com/hortonworks/data-tutorials/raw/master/tutorials/hdp/manage-files-on-hdfs-via-cli-ambari-files-view/assets/sf-salary-datasets/sf-salaries-2011-2013.csv
 # download sf-salaries-2014
-wget https://raw.githubusercontent.com/hortonworks/data-tutorials/893ba0221e2c76c91e9e2baa030323a42abcdf09/tutorials/hdp/hdp-2.5/manage-files-on-hdfs-via-cli-ambari-files-view/assets/sf-salary-datasets/sf-salaries-2014.csv
+wget https://github.com/hortonworks/data-tutorials/raw/master/tutorials/hdp/manage-files-on-hdfs-via-cli-ambari-files-view/assets/sf-salary-datasets/sf-salaries-2014.csv
 mkdir sf-salary-datasets
 mv sf-salaries-2011-2013.csv sf-salaries-2014.csv sf-salary-datasets/
 ~~~
