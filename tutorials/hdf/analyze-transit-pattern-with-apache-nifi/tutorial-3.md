@@ -228,13 +228,13 @@ If you prefer to build the dataflow manually step-by-step, continue on to **Appr
 
 2\. Let the flow run for about 1 minute, then stop the flow by hitting the **stop** button.
 
-3\. Launch Sandbox Web Shell Client via HDF Splash Screen from **[Advanced HDF SB Quick Links](http://sandbox-hdf.hortonworks.com:8888)** Link.
+3\. Launch Sandbox Web Shell Client via HDF Splash Screen from **[Advanced HDF SB Quick Links](http://sandbox-hdf.hortonworks.com:1080)** Link.
 
 ![web_shell_client_sb_quick_link](assets/tutorial-3-build-a-nifi-process-group-to-simulate-nextbus-api/web_shell_client_sb_quick_link.png)
 
 **Figure 11:** SB Quick Link for Web Shell Client
 
-> Note: Username is "admin", initial password is "hadoop". You will be prompted to write the current password again, then set a new password.
+> Note: Username is "root", initial password is "hadoop". You will be prompted to write the current password again, then set a new password.
 
 ![web_shell_client](assets/tutorial-3-build-a-nifi-process-group-to-simulate-nextbus-api/web_shell_client.png)
 
@@ -298,7 +298,7 @@ Congratulations! You just built a NiFi **SimulateXmlTransitEvents** process grou
 ### Further Reading
 
 - [Process Group](https://nifi.apache.org/docs/nifi-docs/html/user-guide.html#process_group_anatomy)
-- [GetFile](https://nifi.apache.org/docs/nifi-docs/components/org.apache.nifi/nifi-standard-nar/1.3.0/org.apache.nifi.processors.standard.GetFile/index.html)
-- [UnpackContent](https://nifi.apache.org/docs/nifi-docs/components/org.apache.nifi/nifi-standard-nar/1.3.0/org.apache.nifi.processors.standard.UnpackContent/index.html)
-- [ControlRate](https://nifi.apache.org/docs/nifi-docs/components/org.apache.nifi/nifi-standard-nar/1.3.0/org.apache.nifi.processors.standard.ControlRate/index.html)
+- [GetFile](https://nifi.apache.org/docs/nifi-docs/components/org.apache.nifi/nifi-standard-nar/1.5.0/org.apache.nifi.processors.standard.GetFile/index.html)
+- [UnpackContent](https://nifi.apache.org/docs/nifi-docs/components/org.apache.nifi/nifi-standard-nar/1.5.0/org.apache.nifi.processors.standard.UnpackContent/index.html)
+- [ControlRate](https://nifi.apache.org/docs/nifi-docs/components/org.apache.nifi/nifi-standard-nar/1.5.0/org.apache.nifi.processors.standard.ControlRate/index.html)
 - Under "Adding Components to the Canvas," head to [Output Port](https://nifi.apache.org/docs/nifi-docs/html/user-guide.html#adding-components-to-the-canvas)
