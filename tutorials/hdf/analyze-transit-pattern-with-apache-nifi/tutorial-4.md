@@ -14,7 +14,7 @@ You will build a portion of the NiFi DataFlow in a process group to parse for **
 ## Outline
 
 - [Approach 1: Manually Build ParseTransitEvents Process Group (PG)](#approach-1-manually-build-parsetransitevents-process-group-pg)
-- [Step 1: Create a Process Group (PG)](#step-1-create-process-group-pg)
+- [Step 1: Create a Process Group (PG)](#step-1-create-a-process-group-pg)
 - [Step 2: Add an Input Port to Ingest Data Into this PG](#step-2-add-an-input-port-to-ingest-data-into-this-pg)
 - [Step 3: Add EvaluateXPath to Extract the Timestamp for Transit Observation](#step-3-add-evaluatexpath-to-extract-the-timestamp-for-transit-observation)
 - [Step 4: Add SplitXml to Split A FlowFile into Multiple Separate FlowFiles](#step-4-add-splitxml-to-split-a-flowfile-into-multiple-separate-flowfiles)

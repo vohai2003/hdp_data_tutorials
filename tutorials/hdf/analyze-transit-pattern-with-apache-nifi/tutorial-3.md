@@ -18,12 +18,12 @@ You will build a portion of the NiFi DataFlow in a process group to simulate the
 ## Outline
 
 - [Approach 1: Build SimulateXmlTransitEvents Process Group](#approach-1-build-simulatexmltransitevents-process-group)
-- [Step 1: Create a Process Group](#step-1-create-process-group)
+- [Step 1: Create a Process Group](#step-1-create-a-process-group)
 - [Step 2: Add GetFile to Ingest NextBus Data Seed](#step-2-add-getfile-to-ingest-nextbus-data-seed)
 - [Step 3: Add UnpackContent to Decompress the Zipped Data](#step-3-add-unpackcontent-to-decompress-the-zipped-data)
 - [Step 4: Add ControlRate to Regulate Data Flow Speed](#step-4-add-controlrate-to-regulate-data-flow-speed)
-- [Step 5: Add Output Port for External Component Connection](#step-5-add-output-port-for-external-component-connection)
-- [Approach 2: Import SimulateXmlTransitEvents Process Group](#approach-2-import-simulatexmltransitevents-process-group)
+- [Step 5: Add UpdateAttribute to Make Each FlowFile Name Unique](#step-5-add-updateattribute-to-make-each-flowfile-name-unique)
+- [Approach 2: Import NiFi SimulateXmlTransitEvents Process Group](#approach-2-import-nifi-simulatexmltransitevents-process-group)
 - [Summary](#summary)
 - [Further Reading](#further-reading)
 
