@@ -22,7 +22,7 @@ What is Kafka role in this Stream Processing Application?
 
 ## What is Kafka
 
-Apache Kafka is an open source publish-subscribe based messaging system responsible for transferring data from one application to another. In messaging systems, there are two types of messaging patterns: point to point and publish subscribe.
+Apache Kafka is an open source publish-subscribe based messaging system responsible for transferring data from one application to another. In messaging systems, there are two types of messaging patterns: point to point and publish-subscribe.
 
 **Point to Point** are messages persisted into a queue
 
@@ -31,10 +31,10 @@ Apache Kafka is an open source publish-subscribe based messaging system responsi
 Key Characteristics of generic figure above:
 
 - a message can be read by only one consumer
-- 1 or more consumer can consume messages in the queue
+- 1 or more consumer(s) can consume messages in the queue
 - once the message is read, it disappears from the queue
 
-**Publish Subscribe** are messages persisted into a topic
+**Publish-Subscribe** are messages persisted into a topic
 
 ![Publish Subscribe](assets/pub-sub.png)
 
@@ -89,6 +89,6 @@ At a mid level for the Kafka Cluster, our data line looks as follows:
 - High throughput for publishing and subscribing messages
 - Maintains stable performance for many terabytes stored
 
-## Next: Kafka in Action
+## Next: [Kafka in Action](https://hortonworks.com/tutorial/kafka-in-trucking-iot-on-hdf/section/2/)
 
 Now that we've become familiar with how Kafka will be used in our use case, let's move onto seeing Kafka in action when running the demo application.
