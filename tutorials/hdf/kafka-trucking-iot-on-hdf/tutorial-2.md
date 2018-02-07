@@ -10,7 +10,7 @@ While the demo application runs, you will gain an understanding of how Kafka rec
 
 ## Outline
 
-- [Environment Pre-setup](#environment-pre-setup)
+- [Environment Setup](#environment-setup)
 - [Persist Data Into Kafka Topics](#persist-data-into-kafka-topics)
 - [List Kafka Topics](#list-kafka-topics)
 - [View Data in Kafka Topics](#view-data-in-kafka-topics)
@@ -22,7 +22,7 @@ If you have the latest HDF Sandbox installed, then the demo comes preinstalled. 
 
 Open a terminal on your local machine and access the sandbox through the shell-in-a-box method. Please visit [Learning the Ropes of the Hortonworks Sandbox](https://hortonworks.com/tutorial/learning-the-ropes-of-the-hortonworks-sandbox/#environment-setup) to review this method.
 
-Turn Kafka component on if it's not already on through Ambari. 
+Turn Kafka component on if it's not already on through Ambari.
 
 ## Persist Data Into Kafka Topics
 
@@ -36,7 +36,6 @@ From the terminal, we can see the two Kafka Topics that have been created:
 /usr/hdp/2.6.3.0-235/kafka/bin/kafka-topics.sh --list --zookeeper localhost:2181
 ~~~
 
-![Kafka Topics Created](assets/kafka-topics-created.jpg)
 
 ## View Data in Kafka Topics
 
