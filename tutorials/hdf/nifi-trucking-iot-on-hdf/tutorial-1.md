@@ -7,7 +7,7 @@ title: NiFi in Trucking IoT Use Case
 ## Outline
 
 - [The IoT Use Case](#the-iot-use-case)
-- [What is NiFi?](#what-is-nifi?)
+- [What is NiFi?](#what-is-nifi)
 - [Architectural Overview](#architectural-overview)
 - [Benefits of NiFi](#benefits-of-nifi)
 - [Next: NiFi in Action](#next-nifi-in-action)
