@@ -10,7 +10,7 @@ While the demo application runs, you will gain an understanding of how Kafka rec
 
 ## Outline
 
-- [Environment Pre-setup](#environment-setup)
+- [Environment Setup](#environment-setup)
 - [Persist Data Into Kafka Topics](#persist-data-into-kafka-topics)
 - [List Kafka Topics](#list-kafka-topics)
 - [View Data in Kafka Topics](#view-data-in-kafka-topics)
