@@ -27,6 +27,6 @@ We will create a NiFi DataFlow for transferring data from Internet of Things (Io
 
 ## Outline
 
-- **NiFi in Trucking IoT Use Case** - Discuss a real-world use and understand the role NiFi plays within it
-- **Explore NiFi in the Demo** - Walk through the DataFlow Management portion of the demo and gain an understanding of it in the data pipeline
-- **Building a NiFi DataFlow** - Dive into NiFi internals and build a dataflow from scratch
+-[NiFi in Trucking IoT Use Case](https://hortonworks.com/tutorial/nifi-in-trucking-iot-on-hdf/section/1/) - Discuss a real-world use and understand the role NiFi plays within it
+-[Explore NiFi in the Demo](https://hortonworks.com/tutorial/nifi-in-trucking-iot-on-hdf/section/2/)- Walk through the DataFlow Management portion of the demo and gain an understanding of it in the data pipeline
+-[Building a NiFi DataFlow](https://hortonworks.com/tutorial/nifi-in-trucking-iot-on-hdf/section/3/) - Dive into NiFi internals and build a dataflow from scratch
