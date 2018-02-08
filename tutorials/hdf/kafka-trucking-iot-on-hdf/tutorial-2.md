@@ -55,6 +55,6 @@ View Data for Kafka Topic: **trucking_data_traffic**:
 
 As you can see Kafka acts as a robust queue that receives data and allows for it to be transmitted to other systems.
 
-## Next: [Learn Basic Operations of Kafka](https://hortonworks.com/tutorial/kafka-in-trucking-iot-on-hdf/section/3/)
+## Next: Learn Basic Operations of Kafka
 
 You have already become familiar with some Kafka operations through the command line, so let's explore basic operations to see how those topics were created, how they can be deleted and how we can use tools to monitor Kafka.
