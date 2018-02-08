@@ -80,6 +80,6 @@ There is a data simulator that replicates MiNiFi's place in the dataflow on IoT 
 
 - _Scale-up & down_: Increase the number of concurrent tasks on a processor to allow more processes to run concurrently or decrease this number to make NiFi suitable to run on edge devices that have limited hardware resources. View [MiNiFi Subproject](https://cwiki.apache.org/confluence/display/NIFI/MiNiFi) to learn more about solving this small footprint data challenge.
 
-## Next: [NiFi in Action](https://hortonworks.com/tutorial/nifi-in-trucking-iot-on-hdf/section/2/)
+## Next: NiFi in Action
 
 We have become familiar with NiFi's role in the use case, next let's move onto seeing NiFi in action while the demo application runs.

@@ -58,6 +58,6 @@ You can check the data provenance at each processor to get a more in-depth look 
 
 ![nifi-flow-chart](assets/nifi-flow-chart.png)
 
-## Next: [Building a NiFi DataFlow](https://hortonworks.com/tutorial/nifi-in-trucking-iot-on-hdf/section/3/)
+## Next: Building a NiFi DataFlow
 
 Now that we know how NiFi fits into the data pipeline of the demo and what kind of transformations on the data is performing, let's dive into configuring processors to see how the dataflow is constructed.

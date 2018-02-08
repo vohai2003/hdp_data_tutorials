@@ -89,6 +89,6 @@ At a mid level for the Kafka Cluster, our data line looks as follows:
 - High throughput for publishing and subscribing messages
 - Maintains stable performance for many terabytes stored
 
-## Next: [Kafka in Action](https://hortonworks.com/tutorial/kafka-in-trucking-iot-on-hdf/section/2/)
+## Next: Kafka in Action
 
 Now that we've become familiar with how Kafka will be used in our use case, let's move onto seeing Kafka in action when running the demo application.
