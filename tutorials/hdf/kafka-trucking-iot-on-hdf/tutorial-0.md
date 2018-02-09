@@ -13,7 +13,7 @@ product: HDF
 series: HDF > Develop with Hadoop > Real World Examples
 ---
 
-# Kafka in Trucking IoT on HDF
+# Kafka in Trucking IoT on Hortonworks DataFlow (HDF)
 
 ## Introduction
 
