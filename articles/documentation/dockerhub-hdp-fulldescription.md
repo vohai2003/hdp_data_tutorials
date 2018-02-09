@@ -6,11 +6,9 @@ The Hortonworks Sandbox is a straightforward, pre-configured, learning environme
 
 1\. download latest [Hortonworks Data Platform (HDP) for Docker](https://hortonworks.com/downloads/#sandbox).
 
-![](assets/download-sandbox-hdp-docker.jpg)
+2\. follow [Sandbox Deployment and Install Guide](https://hortonworks.com/tutorial/sandbox-deployment-and-install-guide/section/3/) tutorials
 
-2\. verify MD5 hash value
-
-3\. follow [Sandbox Deployment and Install Guide](https://hortonworks.com/tutorial/sandbox-deployment-and-install-guide/section/3/) tutorials
+![](https://raw.githubusercontent.com/hortonworks/data-tutorials/master/articles/documentation/assets/download-sandbox-hdp-docker.jpg)
 
 ## Further Assistance
 
