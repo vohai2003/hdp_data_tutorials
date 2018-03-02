@@ -17,7 +17,7 @@ series: HDP > Develop with Hadoop > Apache Spark
 
 ## Introduction
 
-This tutorial will teach you how to set up a full development environment for developing and debugging Spark applications. For this tutorial we'll be using Java, but Spark also supports development with [Scala](https://hortonworks.com/tutorial/setting-up-a-spark-development-environment-with-scala/), [Python](https://hortonworks.com/tutorial/setting-up-a-spark-development-environment-with-python/), and R.
+This tutorial will teach you how to set up a full development environment for developing and debugging Spark applications. For this tutorial we'll be using Java, but Spark also supports development with [Scala](https://hortonworks.com/tutorial/setting-up-a-spark-development-environment-with-scala/), [Python](https://hortonworks.com/tutorial/setting-up-a-spark-development-environment-with-python/) and R.
 
  We'll be using IntelliJ as our IDE, and since we're using Java we'll use Maven as our build manager. By the end of the tutorial, you'll know how to set up IntelliJ, how to use Maven to manage dependencies, how to package and deploy your Spark application to a cluster, and how to connect your live program to a debugger.
 
@@ -37,6 +37,8 @@ This tutorial will teach you how to set up a full development environment for de
 -   [Live Debugging](#live-debugging)
 
 ## Creating a new IntelliJ Project
+
+>Note: Instructions may vary based on operating system.
 
 To create a new project select File > New > Project. Then select Maven.
 
@@ -116,15 +118,15 @@ After you save the file, IntelliJ will automatically import the libraries and do
 
 ## Create a Spark Application
 
-For our first application we're going to build a simple program that performs a word count on the collected works of Shakespeare - [Download the text file](assets/shakespeare.txt).
+For our first application we're going to build a simple program that performs a word count on the collected works of Shakespeare - [Download the file](assets/shakespeare.txt).
 
-Later we'll want to Spark to retrieve this file from HDFS (Hadoop Distributed File System), so let's place it there now.
+Later we'll want Spark to retrieve this file from HDFS (Hadoop Distributed File System), so let's place it there now.
 
 To upload to HDFS, first make sure the sandbox is up and running.
 
 -   Navigate to [sandbox-hdp.hortonworks.com:8080](http://sandbox-hdp.hortonworks.com:8080)
 -   Login using username/password as **maria_dev** / **maria_dev**
--   Once you've logged into Ambari Manager, mouse over the drop-down menu on the upper-right hand corner and click on Files View.
+-   Once you've logged into Ambari Manager, mouse over the drop-down menu on the upper-right hand corner and click on **Files View**.
 -   Open the **tmp** folder and click the **upload** button in the upper-right corner to upload the file. Make sure it's named **shakespeare.txt**.
 
 ![ambari](assets/ambari.jpg)
@@ -269,7 +271,7 @@ Additionally, if you open the File View in Ambari you should see results under /
 
 In this section we'll learn how to deploy our code to a real cluster. If you don't have a cluster available you can quickly set one up using [Hortonworks Cloud Solutions](https://hortonworks.com/products/data-platforms/cloud/).
 
-These services are designed to let you quickly spin up a cluster for a few hours (perhaps on cheaper spot instances), run a series of jobs, then spin the cluster back down to save money. If you want a permanent installation of Hadoop that will run for months without being shutdown, you should download [Hortonworks Data Platform](https://hortonworks.com/downloads/#data-platform) and install it on your servers.
+These services are designed to let you quickly spin up a cluster for a few hours (perhaps on cheaper spot instances), run a series of jobs, then spin the cluster back down to save money. If you want a permanent installation of Hadoop that will run for months without being shutdown, you should download [Hortonworks Data Platform](https://hortonworks.com/downloads/#data-platform) and install on your servers.
 
 After setting up a cluster the process of deploying our code is similar to deploying to the sandbox. We need to scp the jar to the cluster:
 ```
