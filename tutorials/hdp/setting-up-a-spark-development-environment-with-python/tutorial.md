@@ -92,8 +92,6 @@ counts.saveAsTextFile("./shakespeareWordCount")
 
 To run your program, click **Run** -> **Run...** from IDE menu and select **Main**. That's all it takes to perform a word count in Spark. The results are saved in **shakespeareWordCount**.
 
-If the program ran successfully, you will see **Number of elements: 67109** displayed on the console.
-
 >Note: **pyspark** package may need to be installed.
 
 ![pycharm-pyspark](assets/pycharm-pyspark.jpg)
@@ -125,8 +123,6 @@ Copy **Main.py** to HDP sandbox using **scp**: ```scp -P 2222 ./Main.py root@san
 Next, open sandbox shell using [shell-in-a-box](http://sandbox-hdp.hortonworks.com:4200) or **ssh**: ```ssh -p 2222 root@sandbox-hdp.hortonworks.com```
 
 Finally, use **spark-submit** to run the program: ```spark-submit ./Main.py```
-
-If the program ran successfully, you will see **Number of elements: 67109** displayed on the console; hidden between informational and warning messages.
 
 The results are saved on HDFS: **/tmp/shakespeareWordCount**. You will see a word count output that looks like this:
 
