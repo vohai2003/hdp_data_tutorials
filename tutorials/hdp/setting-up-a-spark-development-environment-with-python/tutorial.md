@@ -86,11 +86,13 @@ counts = text_file.flatMap(lambda line: line.split(" ")) \
              .map(lambda word: (word, 1)) \
              .reduceByKey(lambda a, b: a + b)
 
-print "Number of elements: " + str(counts.count())
+print ("Number of elements: " + str(counts.count()))
 counts.saveAsTextFile("./shakespeareWordCount")
 ```
 
 To run your program, click **Run** -> **Run...** from IDE menu and select **Main**. That's all it takes to perform a word count in Spark. The results are saved in **shakespeareWordCount**.
+
+If the program ran successfully, you will see **Number of elements: 67109** displayed on the console.
 
 >Note: **pyspark** package may need to be installed.
 

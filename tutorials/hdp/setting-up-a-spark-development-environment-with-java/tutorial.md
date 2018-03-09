@@ -40,11 +40,16 @@ This tutorial will teach you how to set up a full development environment for de
 
 >Note: Instructions may vary based on operating system.
 
-To create a new project select File > New > Project. Then select Maven.
+Create a new project by selecting **File** -> **New** -> **Project**:
+-   select **Maven**
+-   click **Next**
 
 ![intellij2](assets/intellij2.jpg)
 
-Make a new project called SparkTutorial.
+Name your project as follows:
+-   GroupId: `Hortonworks`
+-   ArtifactId: `SparkTutorial`
+-   click **Next**
 
 ![intellij3](assets/intellij3.jpg)
 
@@ -131,11 +136,13 @@ To upload to HDFS, first make sure the sandbox is up and running.
 
 ![ambari](assets/ambari.jpg)
 
-Now we're ready to create our application. In your IDE open the folder src/main/resources, which should have been generated automatically for you. Place **shakespeare.txt** there.
+Now we're ready to create our application. In your IDE open the folder **src/main/resources**, which should have been generated automatically for you. Place **shakespeare.txt** there.
 
-Next, create a new Java Class file called Main.java in src/main/java.
+Next, select folder **src/main/java**:
+-   right-click on folder and select **New** -> **Java Class**
+-   name the class: `Main.java`
 
-![intellij5](assets/intellij5.png)
+![intellij5](assets/intellij5.jpg)
 
 Copy this into your new file:
 
