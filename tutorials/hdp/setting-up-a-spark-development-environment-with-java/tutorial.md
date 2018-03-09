@@ -123,7 +123,7 @@ After you save the file, IntelliJ will automatically import the libraries and do
 
 ## Create a Spark Application
 
-For our first application we're going to build a simple program that performs a word count on the collected works of Shakespeare - [Download the file](assets/shakespeare.txt).
+For our first application we're going to build a simple program that performs a word count on the collected works of Shakespeare - [Download the file](assets/shakespeare.txt), save the file as **shakespeare.txt**.
 
 Later we'll want Spark to retrieve this file from HDFS (Hadoop Distributed File System), so let's place it there now.
 
@@ -231,7 +231,9 @@ This tells Spark to read and write to HDFS instead of locally. Make sure to save
 
 Next, we're going to package this code into a compiled jar file that can be deployed on the sandbox. To make our lives easier, we're going to create an assembly jar: a single jar file that contains both our code and all jars our code depends on. By packaging our code as an assembly we guarantee that all dependency jars (as defined in pom.xml) will be present when our code runs.
 
-Open up a terminal and cd to the directory that contains pom.xml. Run **mvn package**. This will create a compiled jar called "SparkTutorial-1.0-SNAPSHOT.jar" in the folder **target**.
+Open up a terminal and cd to the directory that contains **pom.xml**. Run **mvn package**. This will create a compiled jar called "SparkTutorial-1.0-SNAPSHOT.jar" in the folder **target**.
+
+>Note: if the **mvn** command does not work - make sure you installed **Maven** successfully.
 
 Copy the assembly over to the sandbox:
 
