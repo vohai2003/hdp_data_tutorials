@@ -200,7 +200,7 @@ stockprice.registerTempTable("yahoo_stocks_temp")
 Now that our schema’s RDD with data has a name, we can use Spark SQL commands to query it. Remember the table below is not a Hive table, it is just a RDD we are querying with SQL.
 
 ~~~ java
-val results = sqlContext.sql("SELECT * FROM yahoo_stocks_temp")
+val results = spark.sqlContext.sql("SELECT * FROM yahoo_stocks_temp")
 ~~~
 
 The resultset returned from the Spark SQL query is now loaded in the `results` RDD. Let’s pretty print it out on the command line.
