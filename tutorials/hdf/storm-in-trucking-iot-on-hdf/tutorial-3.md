@@ -48,7 +48,7 @@ We will be working with the `trucking-iot-demo-storm-on-scala` project that you 
 git clone https://github.com/orendain/trucking-iot-demo-storm-on-scala
 ```
 
-> Alternatively, if you would prefer not to download the code, and simply follow along, you may view this project directly on [GitHub](https://github.com/orendain/trucking-iot-demo-storm-on-scala/tree/master/trucking-storm-topology/src/main/scala/com/orendainx/trucking/storm).
+> Alternatively, if you would prefer not to download the code, and simply follow along, you may view this project directly on [GitHub](https://github.com/orendain/trucking-iot-demo-storm-on-scala/tree/master/src/main/scala/com/orendainx/trucking/storm).
 
 
 ## Topology Build and Submit Overview

@@ -26,6 +26,7 @@ SSH into your Hortonworks DataFlow (HDF) environment and download the correspond
 
 ```
 git clone https://github.com/orendain/trucking-iot-demo-storm-on-scala
+cd trucking-iot-demo-storm-on-scala
 ```
 
 
@@ -53,7 +54,7 @@ scripts/run-simulator.sh
 ```
 
 
-Once that's done, we can look at the data that was generated and stored in Kafka:
+Let's wait for the simulator to finish generating data.  Once that's done, we can look at the data that was generated and stored in Kafka:
 
 > Note: "Ctrl + c" to exit out from the Kafka command.
 
