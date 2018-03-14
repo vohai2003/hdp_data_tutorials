@@ -2,7 +2,7 @@
 title: Running the Demo
 ---
 
-# Trucking IoT - Storm on Scala
+# Storm in Trucking IoT on HDF
 
 ## Running the Demo
 

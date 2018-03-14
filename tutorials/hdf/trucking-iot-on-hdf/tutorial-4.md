@@ -2,7 +2,7 @@
 title: Deploying the Topology
 ---
 
-# Trucking IoT - Storm on Scala
+# Storm in Trucking IoT on HDF
 
 ## Deploying the Topology
 

@@ -2,7 +2,7 @@
 title: Building a Storm Topology
 ---
 
-# Trucking IoT - Storm on Scala
+# Storm in Trucking IoT on HDF
 
 ## Building a Storm Topology
 

@@ -2,7 +2,7 @@
 title: Trucking IoT Use Case
 ---
 
-# Trucking IoT - Storm on Scala
+# Storm in Trucking IoT on HDF
 
 ## Trucking IoT Use Case
 
