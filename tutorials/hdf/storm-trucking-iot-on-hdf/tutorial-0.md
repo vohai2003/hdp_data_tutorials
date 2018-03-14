@@ -1,8 +1,16 @@
 ---
 title: Storm in Trucking IoT on HDF
+author: Edgar Orendain
 tutorial-id: 805
-platform: hdf-3.1.1
-tags: [storm, trucking, iot, kafka]
+experience: Beginner
+persona: Developer
+source: Hortonworks
+use case: Data Visualization
+technology: Apache Storm, Apache Kafka
+release: hdf-3.1.1
+environment: Sandbox
+product: HDF
+series: HDF > Develop with Hadoop > Real World Examples
 ---
 
 # Storm in Trucking IoT on HDF
