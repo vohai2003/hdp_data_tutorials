@@ -1,11 +1,11 @@
 ---
-title: Trucking IoT on HDF
+title: Trucking IoT - Storm on Scala
 tutorial-id: 805
-platform: hdf-2.1.0
+platform: hdf-3.1.1
 tags: [storm, trucking, iot, kafka]
 ---
 
-# Trucking IoT on HDF
+# Trucking IoT - Storm on Scala
 
 ## Introduction
 

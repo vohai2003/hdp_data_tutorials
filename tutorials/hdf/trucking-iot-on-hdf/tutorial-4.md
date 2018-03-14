@@ -2,7 +2,7 @@
 title: Deploying the Topology
 ---
 
-# Trucking IoT on HDF
+# Trucking IoT - Storm on Scala
 
 ## Deploying the Topology
 
@@ -20,26 +20,28 @@ Now that we know how to develop a Storm topology, let's go over how to package i
 
 ## Packaging a JAR
 
-In a terminal, navigate to where the Storm project root is located and run:
+In a terminal, navigate to the trucking-iot-demo-storm-on-scala directory and run:
 ```
-sbt assembly
+scripts/rebuild-and-deploy-topology.sh
 ```
 
-This produces an **uber jar**, housing your topology and all of its dependencies.  The jar is saved to `/trucking-iot-demo-2/target/scala-2.11/truckingIot-assembly-0.3.2.jar`.  This gets uploaded to the cluster for deployment to Storm.
-
-> Note: Storm 1.1.0 enhances the way topologies are deployed, providing alternatives to using uber jars.  Check out the [Storm 1.1.0 release notes](https://storm.apache.org/2017/03/29/storm110-released.html#topology-deployment-enhancements) for more information.
+After installing some one-time dependencies, this script runs the command `sbt assembly` under the hook in order to produce an **uber jar**, housing your topology and all of the dependencies.  The jar is saved to `/trucking-iot-demo-storm-on-scala/target/scala-2.12/trucking-iot-demo-storm-on-scala-assembly-1.1.0.jar`.
 
 
 ## Deploying to Storm
 
-> Note: If the jar from the previous section was built on your computer, you'll have to copy it onto your cluster before running the next command.
-
-On your cluster, run the following command:
+If you ran the command in the previous section, then the topology was build **and then also deployed**.
 ```
-storm jar trucking-iot-demo-2/target/scala-2.11/truckingIot-assembly-0.3.2.jar  com.orendainx.hortonworks.storm.topologies.KafkaToKafka
+scripts/rebuild-and-deploy-topology.sh
 ```
 
-`storm jar` will submit the jar to the cluster.  After uploading the jar, `storm jar` calls the main function of the class we specified (_com.orendainx.hortonworks.storm.topologies.KafkaToKafka_), which deploys the topology by way of the `StormSubmitter` class.
+Feel free to open that script to see what it is doing.  Notice that under the hood, it runs a command that looks like the following.
+
+```
+storm jar trucking-iot-demo-storm-on-scala/target/scala-2.12/trucking-iot-demo-storm-on-scala-assembly-1.1.0.jar com.orendainx.trucking.storm.topologies.KafkaToKafka
+```
+
+`storm` will submit the jar to the cluster.  After uploading the jar, `storm` calls the main function of the class we specified (_com.orendainx.trucking.storm.topologies.KafkaToKafka_), which deploys the topology by way of the `StormSubmitter` class.
 
 
 ## Summary

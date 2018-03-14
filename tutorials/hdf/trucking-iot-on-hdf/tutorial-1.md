@@ -2,7 +2,7 @@
 title: Trucking IoT Use Case
 ---
 
-# Trucking IoT on HDF
+# Trucking IoT - Storm on Scala
 
 ## Trucking IoT Use Case
 
@@ -40,7 +40,7 @@ The second section represents the biggest requirement.  We need something capabl
 
 For these critical tasks we use Apache Storm.
 
-The third section represents the post-ETL process, in this case being visualizing the processed data by a web application.
+The third section represents this case's post-processing step: visualizing the processed data by a web application.
 
 
 ## What is Storm
