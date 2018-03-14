@@ -5,7 +5,7 @@ tutorial-id: 805
 experience: Beginner
 persona: Developer
 source: Hortonworks
-use case: Data Visualization
+use case: Streaming
 technology: Apache Storm, Apache Kafka
 release: hdf-3.1.1
 environment: Sandbox
