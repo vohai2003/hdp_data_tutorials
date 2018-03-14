@@ -116,7 +116,7 @@ Normally, we would have directly loaded the data in the ORC table we created abo
 With the command below we instantiate an RDD:
 
 ~~~ java
-val yahoo_stocks = sc.textFile("hdfs://sandbox.hortonworks.com:8020/tmp/yahoo_stocks.csv")
+val yahoo_stocks = sc.textFile("/tmp/yahoo_stocks.csv")
 ~~~
 
 To preview data in `yahoo_stocks` type:
@@ -220,7 +220,7 @@ results.write.format("orc").save("yahoo_stocks_orc")
 To store results in a hive directory rather than user directory, use this path instead:
 
 ~~~ bash
-/apps/hive/warehouse/yahoo_stocks_orc
+results.write.format("orc").save("/apps/hive/warehouse/yahoo_stocks_orc")
 ~~~
 
 ### Reading the ORC file
