@@ -17,7 +17,7 @@ Let's walk through the demo and get an understanding for the data pipeline befor
 -   [Generate Sensor Data](#generate-sensor-data)
 -   [Deploy the Storm Topology](#deploy-the-storm-topology)
 -   [Verify the Processed Data](#verify-the-processed-data)
--   [Next: Building a Storm Topology](#next:-building-a-storm-topology)
+-   [Next: Building a Storm Topology](#next-building-a-storm-topology)
 
 
 ## Environment Setup
