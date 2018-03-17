@@ -14,7 +14,7 @@ Now that we know how to develop a Storm topology, let's go over how to package i
 ## Outline
 
 -   [Packaging a JAR](#packaging-a-jar)
--   [Deplying to Storm](#deploying-to-storm)
+-   [Deploying to Storm](#deploying-to-storm)
 -   [Summary](#summary)
 
 
@@ -25,7 +25,7 @@ In a terminal, navigate to the trucking-iot-demo-storm-on-scala directory and ru
 scripts/rebuild-and-deploy-topology.sh
 ```
 
-After installing some dependencies, this script runs the command `sbt assembly` under the hook in order to produce an **uber jar**, housing your topology and all of the dependencies.  The jar is saved to `target/scala-2.12/trucking-iot-demo-storm-on-scala-assembly-1.1.0.jar`.
+After installing some dependencies, this script runs the command `sbt assembly` under the hood in order to produce an **uber jar**, housing your topology and all of the dependencies.  The jar is saved to `target/scala-2.12/trucking-iot-demo-storm-on-scala-assembly-1.1.0.jar`.
 
 
 ## Deploying to Storm

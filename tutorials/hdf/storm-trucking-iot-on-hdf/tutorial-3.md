@@ -24,7 +24,7 @@ We now know the role that Storm plays in this Trucking IoT system.  Let's dive i
 -   [Building Another Custom Bolt](#building-another-custom-bolt)
 -   [Building a Kafka Bolt](#building-a-kafka-bolt)
 -   [Creating the Topology](#creating-the-topology)
--   [Next: Deploying the Storm topology](#next:-deploying-the-storm-topology)
+-   [Next: Deploying the Storm topology](#next-deploying-the-storm-topology)
 
 
 ## Storm Components
@@ -104,7 +104,7 @@ lazy val truckRecordTranslator = new Func[ConsumerRecord[String, String], java.u
  *
  * Set the record translator to the one defined above.  The two values that the record translator outputs we are naming "dataType" and "data", respectively.
  *
- * Configure the spout to poll the Kafka topic starting from the earliest (i.e. oldest) possible data available.  In other words, injest the entire Kafka topic.
+ * Configure the spout to poll the Kafka topic starting from the earliest (i.e. oldest) possible data available.  In other words, ingests the entire Kafka topic.
  *
  * Set the groupID to the character "g"
  *
@@ -303,7 +303,7 @@ val truckingKafkaBolt = new KafkaBolt()
 
 `withProducerProperties` takes in properties to set itself up with.
 
-Finally, we drop this bolt into the rest of the topoloy.
+Finally, we drop this bolt into the rest of the topology.
 
 ```
 builder.setBolt("joinedDataToKafka", truckingKafkaBolt, 1).shuffleGrouping("serializedJoinedData")
