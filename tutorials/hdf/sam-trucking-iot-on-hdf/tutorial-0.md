@@ -10,7 +10,7 @@ technology: Streaming Analytics Manager
 release: hdf-3.1
 environment: Sandbox
 product: HDF
-series: HDF > Develop with Hadoop > Real World Examples
+series: HDF > Develop Data Flow & Streaming Applications > Hello World
 ---
 
 # SAM in Trucking IoT on HDF

@@ -10,7 +10,7 @@ technology: Apache Ambari, Apache Storm, Apache Superset, Apache NiFi, Schema Re
 release: hdf-3.0.2
 environment: Sandbox
 product: HDF
-series: HDF > Develop with Hadoop > Hello World
+series: HDF > Develop Data Flow & Streaming Applications > Hello World
 ---
 
 # Getting Started with Hortonworks DataFlow (HDF) Sandbox
