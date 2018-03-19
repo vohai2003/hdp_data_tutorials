@@ -1,7 +1,7 @@
 ---
 title: SAM in Trucking IoT on HDF
 author: James Medel
-tutorial-id: 807
+tutorial-id: 810
 experience: Beginner
 persona: Developer
 source: Hortonworks
