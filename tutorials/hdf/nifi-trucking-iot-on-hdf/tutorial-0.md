@@ -10,7 +10,7 @@ technology: Apache NiFi
 release: hdf-3.1
 environment: Sandbox
 product: HDF
-series: HDF > Develop Data Flow & Streaming Applications > Real World Examples
+series: HDF > Develop Data Flow & Streaming Applications > Hello World
 ---
 
 # NiFi in Trucking IoT on HDF
