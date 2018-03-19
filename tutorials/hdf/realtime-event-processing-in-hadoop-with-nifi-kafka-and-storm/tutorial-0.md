@@ -10,7 +10,7 @@ technology: Apache NiFi, Apache Storm, Apache Kafka, Apache Hive, HDFS, Apache H
 release: hdf-2.1.0
 environment: Sandbox
 product: HDF
-series: HDF > Develop with Hadoop > Real World Examples
+series: HDF > Develop Data Flow & Streaming Applications > Real World Examples
 ---
 
 # Realtime Event Processing in Hadoop with NiFi, Kafka and Storm
