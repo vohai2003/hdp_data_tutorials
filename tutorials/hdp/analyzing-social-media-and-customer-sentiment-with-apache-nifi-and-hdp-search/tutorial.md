@@ -10,7 +10,7 @@ technology: Apache Solr, Apache Hive, Apache NiFi, Apache Ambari, Apache Zeppeli
 release: hdp-2.6.0
 environment: Sandbox
 product: HDP
-series: HDP > Develop with Hadoop > Real World Examples, HDP > Hadoop for Data Scientists & Analysts > Real World Examples
+series: HDP > Develop with Hadoop > Real World Examples, HDF > Develop Data Flow & Streaming Applications > Real World Examples
 ---
 
 
