@@ -26,7 +26,7 @@ So what is Schema Registry and what benefits does it provide?  Would using it ma
 
 ## What is Schema Registry?
 
-> TODO: SR graphic/screenshot goes here.
+![Schema Registry](assets/sr-logo.jpg)
 
 Schema Registry provides a centralized repository for schemas and metadata, allowing services to flexibly interact and exchange data with eachother without the challenge of managing and sharing schemas between them.
 
@@ -62,4 +62,4 @@ Following the use-case above, consider the case when the software in some of the
 
 ## Next: A Closer Look At The Architecture
 
-Congratulations, you've finished your first tutorial!  Including a review of the tutorial or tools they now know how to use would be helpful.
+Next, we'll go a bit more in depth and look at what different components make up Schema Registry and what they do for us.

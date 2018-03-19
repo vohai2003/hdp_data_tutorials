@@ -8,68 +8,164 @@ title: Using the Java API with Scala
 
 ## Introduction
 
-This is the introductory paragraph for the tutorial.  It should introduce the reader to what they're about to learn and do in this particular section of the tutorial series.
+This is an **optional** section of the Schema Registry tutorial meant for developers interested in leveraging Schema Registry's API.  The API will allow you to programmatically create new schemas, register new schema versions, access a schema's registered serializer/deserializer, and more.
+
+In this tutorial, we'll go over how to programmatically register new schemas using the Schema Registry Java API in the Scala programming language.  We'll also list the necessary dependencies and common endpoint configurations to take note of.
+
+
+## Prerequisites
+
+-   Your favorite IDE set up and ready to go
 
 
 ## Outline
 
--   [Concepts](#concepts)
--   [Section Title 1](#section-title-1)
--   [Section Title 2](#section-title-2)
+-   [Environment Setup](#environment-setup)
+    -   [Dependencies](#dependencies)
+-   [Schema Text and Configuration](#schema-text-and-configuration)
+-   [Adding New Schema Metadata](#adding-new-schema-metadata)
+-   [Registering a New Schema Version](#registering-a-new-schema-version)
+-   [Running The Application](#running-the-application)
 -   [Summary](#summary)
--   [Further Reading](#further-reading)
--   [Appendix A: Troubleshoot](#appendix-a-troubleshoot)
--   [Appendix B: Extra Features](#appendix-b-extra-features)
 
 
-## Concepts
+## Environment Setup
 
-Sometimes, it's a good idea to include a concepts section to go over core concepts before the real action begins.  That way:
-
--   Readers get a preview of the tech that'll be introduced.
--   The section can be used as a reference for terminology brought up throughout the tutorial.
--   By the way, this is an example of a list.  Feel free to copy/paste this for your own use.
-    -   Also, a sublist.
-
-## Section Title 1
-
-One of the sections of the tutorial.
-
-Also, `here is how to wrap text in a code field`.
+Download the `schema-registry-with-scala` github project by running the command below.  Then open it with your favorite text editor or IDE.
 
 ```
-You can also wrap multi-line
-text in a code block by using
-backticks.
+git clone https://github.com/orendain/schema-registry-with-scala
 ```
 
-> Note: This is a note that stands out to readers.  Catch users attention about image, command, or key concepts.
+> Alternatively, if you would prefer not to download the code, and simply follow along, you may view this project directly on [GitHub](https://github.com/orendain/schema-registry-with-scala).
 
-## Section Title 2
+### Dependencies
 
-Another section of the tutorial.  **Here's an example** of some strong font, use sparingly.  Also, here is an image.
+Open the file `build.sbt`, located in the root of the project.
 
-![An example of an image image](assets/some-image.png)
+To use Schema Registry's API, we need to bring in a couple of dependencies, and specify the repository in which they are found.
 
-> Note: In the above image link, we link to an image in the included assets folder.  Put all of your assets (images, files, etc.) in that folder for easy linking to.  When your markdown gets built by the system, it will automatically link to the correct place on the web to find your images, downloadable files, etc.
+```
+// Specify the repository in which we can find the Schema Registry libraries
+resolvers += "Hortonworks Nexus" at "http://repo.hortonworks.com/content/repositories/releases"
+```
+
+```
+// Dependencies required for using the Schema Registry API
+"com.hortonworks.registries" % "schema-registry-serdes" % "0.3.0.3.0.1.1-5",
+"javax.xml.bind" % "jaxb-api" % "2.3.0",
+```
+
+
+## Schema Text and Configuration
+
+Let's take a look at where we save the schema texts for two schemas we will be registering.
+
+`src/main/resources/schema/truck-data.avsc` and `src/main/resources/schema/traffic-data.avsc`
+
+The text for `truck-data.avsc` is pasted below for your convenience.  Recognize this from the previous section on using the interface to register new schemas.  This text defines the fields that make up data of a certain schema.
+
+```
+{
+   "type" : "record",
+   "namespace" : "com.orendainx.trucking",
+   "name" : "TruckData",
+   "fields" : [
+      { "name" : "eventTime" , "type" : "long" },
+      { "name" : "truckId" , "type" : "int" },
+      { "name" : "driverId" , "type" : "int" },
+      { "name" : "driverName" , "type" : "string" },
+      { "name" : "routeId" , "type" : "int" },
+      { "name" : "routeName" , "type" : "string" },
+      { "name" : "latitude" , "type" : "double" },
+      { "name" : "longitude" , "type" : "double" },
+      { "name" : "speed" , "type" : "int" },
+      { "name" : "eventType" , "type" : "string" }
+   ]
+}
+```
+
+Open up `src/main/resources/application.conf` and take a look at the properties we specify.
+
+One of the most important tasks is to point to Schema Registry's correct API endpoint, which by default on the HDF sandbox is `http://sandbox-hdf.hortonworks.com:7788/api/v1`.
+
+Notice some of the properties for the two schemas `demo_trucking_data_truck` and `demo_trucking_data_traffic` and recognize some of the fields from the previous excercise.
+
+
+## Adding New Schema Metadata
+
+Now let's take a look at the code actually doing work with schemas.
+
+Check out `src/main/scala/com/orendainx/trucking/schemaregistry/SchemaRegistrar.scala`.
+
+One of the very first things we do is to instantiate a SchemaRegistryClient, an object that allows us to interact with a remote schema registry.
+
+```
+private val schemaRegistryClient = new SchemaRegistryClient(clientConfig.asJava)
+```
+
+
+Remember the graphic from an earlier section where each **schema version** was part of a larger **schema metadata**.
+
+Before we can specify what fields a given schema has, we need to create metadata for it.
+
+```
+// Build a new metadata for a schema using the properties extracted above
+val schemaMetadata = new SchemaMetadata.Builder(schemaName)
+  .`type`(schemaType).schemaGroup(schemaGroupName)
+  .description(schemaDescription)
+  .compatibility(schemaTypeCompatibility)
+  .build()
+```
+
+We continue by registering this metadata with Schema Registry by way of using the client.
+```
+// Register the new schema metadata using an instance of a Schema Registry Client
+val metadataRegistrationResult = schemaRegistryClient.registerSchemaMetadata(schemaMetadata)
+log.info(s"Schema metadata was registered with ID: $metadataRegistrationResult")
+```
+
+
+## Registering a New Schema Version
+
+Now that we have a metadata created, we can use schema text to create a schema version.
+
+The following block of code will read all of the content from a filepath.
+
+```
+// Get the filepath where we will find the schema text and read the entire file containing the Avro schema text
+val filepath = config.getString("avro.filepath")
+val scanner = new Scanner(getClass.getResourceAsStream(filepath)).useDelimiter("\\A")
+val avroSchemaContent = if (scanner.hasNext) scanner.next() else ""
+```
+
+With this text in hand, we create a `SchemaVersion` object and register it under the schema metadata we created above.
+
+```
+// Create a SchemaVersion object out of the Avro schema text we read in, then register it to Schema Registry using the client
+val schemaVersion = new SchemaVersion(avroSchemaContent, "Initial schema")
+val schemaVersionId = schemaRegistryClient.addSchemaVersion(schemaName, schemaVersion)
+
+log.info(s"Schema content: $avroSchemaContent")
+log.info(s"Schema version was registered with ID: $schemaVersionId")
+```
+
+
+## Running The Application
+
+Run this SBT application using your preferred method.  If you download this project onto the HDF Sandbox or if your host machine is using a distribution with the Yum package manager, there is a helper script included to run the application for you.
+
+```
+./run.sh
+```
+
+Once the application runs, you should be able to navigate to the Schema Registry Web UI and see our two new schemas.
+
+![New Schemas Registered](assets/ui-api-added-schemas.jpg)
+
 
 ## Summary
 
-Congratulations, you've finished your first tutorial!  Including a review of the tutorial or tools they now know how to use would be helpful.
+We've just successfully built an application leveraging Schema Registry's Java API for creating new schemas!
 
-## Further Reading
-
-- [Reference Article Title](https://example.com)
-- [Title of Another Useful Tutorial](https://hortonworks.com)
-
-> Note: A tutorial does not go as in depth as documentation, so we suggest you include links here to all documents you may have utilized to build this tutorial.
-
-### Appendix A: Troubleshoot
-
-The appendix covers optional components of the tutorial, including help sections that might come up that cover common issues.  Either include possible solutions to issues that may occur or point users to [helpful links](https://hortonworks.com) in case they run into problems.
-
-### Appendix B: Extra Features
-
-Include any other interesting features of the big data tool you are using.
-
-Example: when learning to build a NiFi flow, we included the necessary steps required to process the data. NiFi also has additional features for adding labels to a flow to make it easier to follow.
+Efforts for developing Schema Registry are open source.  For more information, check out the GitHub project at: `https://github.com/hortonworks/registry`

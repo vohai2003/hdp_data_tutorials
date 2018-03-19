@@ -8,7 +8,7 @@ title: Schema Registry Architecture
 
 ## Introduction
 
-This is the introductory paragraph for the tutorial.  It should introduce the reader to what they're about to learn and do in this particular section of the tutorial series.
+We should now have some understanding of the benefits that Schema Registry provides a modern data architecture.  Let's take a closer look at the main components that make up the registry.
 
 
 ## Outline
@@ -61,4 +61,4 @@ Streaming Analytics Manager (SAM) | Using a drag-and-drop paradigm to create pro
 
 ## Next: Using the Web Interface
 
-Congratulations, you've finished your first tutorial!  Including a review of the tutorial or tools they now know how to use would be helpful.
+Now that we have some understanding of what Schema Registry looks like under the hood, let's take it for a ride and poke around its web interface.  The interface makes it easy to create and modify schemas for any application running on our cluster.
