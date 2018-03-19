@@ -1,5 +1,5 @@
 ---
-title: Getting Started with HDF Sandbox
+title: Learning the Ropes of the HDF Sandbox
 author: James Medel
 tutorial-id: 761
 experience: Beginner
