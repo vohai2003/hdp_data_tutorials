@@ -13,7 +13,7 @@ product: HDP
 series: HDP > Develop with Hadoop > Hello World
 ---
 
-# Learning the Ropes of the Hortonworks Sandbox
+# Learning the Ropes of the HDP Sandbox
 
 ## Introduction
 
