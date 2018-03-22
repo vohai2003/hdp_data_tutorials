@@ -39,7 +39,7 @@ Typically, when serializing data for transmission using schemas, the actual sche
 
 Using Schema Registry, all schemas are registered with a central system.  Data producers no longer need to include the full schema text with the payload, but instead only include the ID of that schema, also resulting in speedier serialization.
 
-> TODO: Payload graphic goes here.
+![Payload differences](assets/sr-payloads.jpg)
 
 
 ## Differing Schemas
@@ -55,7 +55,7 @@ What about when medical devices from a different vendor are added to the system?
 
 ## Schema Evolution
 
-Following the use-case above, consider the case when the software in some of the medical devices you are collecting data from is updated.  Some devices now collect new datapoints, while other devices report to same limited number of fields as before.  Similarly, consider when the processing step in the pipeline is altered to output data with fewer or more fields than its previous version.  Typically, for either of these cases, the rest of your pipeline would need to be upated to handle these changes.
+Following the use-case above, consider the case when the software in some of the medical devices you are collecting data from is updated.  Some devices now collect new datapoints, while other devices report to same limited number of fields as before.  Similarly, consider when the processing step in the pipeline is altered to output data with fewer or more fields than its previous version.  Typically, for either of these cases, the rest of your pipeline would need to be updated to handle these changes.
 
 **With Schema Registry, the different components in your architecture (IoT devices, routing logic, processing nodes, etc.) can evolve at different rates.**  Components can change the shape of its data while Schema Registry handles the translation from one schema to another, ensuring compatibility with downstream services.
 

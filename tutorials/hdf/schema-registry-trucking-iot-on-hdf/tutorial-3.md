@@ -48,7 +48,7 @@ Description | A schema for testing purposes | Any descriptive blurb will do, thi
 Type | Avro schema provider | The type of schema to use (Avro, JSON, Protocol Buffers, Thrift, etc.)
 Schema Group | TestGroup | Any name you'd like to use for logical grouping of some schemas
 Compatibility | Backward | The type of schema compatibility to provide (backward, forward, both, none)
-Evolve | Checked | Whethor or not to allow schemas to evolve (take on new versions after this initial definition)
+Evolve | Checked | Whether or not to allow schemas to evolve (take on new versions after this initial definition)
 Schema Text | (see below) | The schema text, defining fields the expected data will have.
 
 **Schema Text**
