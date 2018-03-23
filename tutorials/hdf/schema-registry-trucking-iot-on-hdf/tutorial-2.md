@@ -26,7 +26,7 @@ Schema Registry has the following main components:
 ![Schema Registry Architecture](assets/sr-architecture.jpg)
 
 Component | Description
---- | --- | ---
+--- | ---
 Registry Web Server | Web Application exposing the REST endpoints you can use to manage schema entities. You can use a web proxy and load balancer with multiple Web Servers to provide HA and scalability.
 Schema Metadata Storage | Relational store that holds the metadata for the schema entities. In-memory storage and mySQL databases are supported.
 Serdes Storage | File storage for the serializer and deserializer jars. Local file system and HDFS storage are supported.
