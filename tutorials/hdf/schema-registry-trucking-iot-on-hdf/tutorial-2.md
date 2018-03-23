@@ -21,9 +21,9 @@ We should now have some understanding of the benefits that Schema Registry provi
 
 ## Main Components
 
-> TODO: Cleaned up image from (https://docs.hortonworks.com/HDPDocuments/HDF3/HDF-3.1.1/bk_overview/content/ch04s03.html) goes here.
-
 Schema Registry has the following main components:
+
+![Schema Registry Architecture](assets/sr-architecture.jpg)
 
 Component | Description
 --- | --- | ---
@@ -32,14 +32,15 @@ Schema Metadata Storage | Relational store that holds the metadata for the schem
 Serdes Storage | File storage for the serializer and deserializer jars. Local file system and HDFS storage are supported.
 Schema Registry Client | A java client that HDF components can use to interact with the RESTful services.
 
-> TODO: Cleaned up image from slideshow (check snagit) goes here.
+Below is a graphic outlining how the different components come into play when sending and recieving messages affected by a schema.
 
+![Schema Registry Sender and Receiver Flow](assets/sr-sender-receiver-flow.jpg)
 
 ## Schema Entities
 
 Schema Registry can be seen as being made up of different type of metadata entities.
 
-> TODO: Cleaned up graphic from (https://docs.hortonworks.com/HDPDocuments/HDF3/HDF-3.1.1/bk_overview/content/schema-entities.html) can go here.
+![Schema Registry Entities](assets/sr-entities.jpg)
 
 Entity | Description | Example
 --- | --- | ---
