@@ -37,7 +37,7 @@ Click on the **+** symbol at the top-right of the interface.
 
 ![The '+' icon will create a new schema](assets/ui-new-schema-1.jpg)
 
-That will open up a window titled "**Add New Schema**" in which we can enter informaiton about our new schema, including the first version of the schema text.  Refer to the following picture and the text below to add a new schema.
+That will open up a window titled "**Add New Schema**" in which we can enter information about our new schema, including the first version of the schema text.  Refer to the following picture and the text below to add a new schema.
 
 ![Adding a new schema](assets/ui-new-schema-2.jpg)
 
