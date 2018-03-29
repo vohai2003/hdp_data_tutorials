@@ -89,7 +89,7 @@ Open up `src/main/resources/application.conf` and take a look at the properties 
 
 One of the most important tasks is to point to Schema Registry's correct API endpoint, which by default on the HDF sandbox is `http://sandbox-hdf.hortonworks.com:7788/api/v1`.
 
-Notice some of the properties for the two schemas `demo_trucking_data_truck` and `demo_trucking_data_traffic` and recognize some of the fields from the previous excercise.
+Notice some of the properties for the two schemas `demo_trucking_data_truck` and `demo_trucking_data_traffic` and recognize some of the fields from the previous exercise.
 
 
 ## Adding New Schema Metadata

@@ -32,7 +32,7 @@ Schema Metadata Storage | Relational store that holds the metadata for the schem
 Serdes Storage | File storage for the serializer and deserializer jars. Local file system and HDFS storage are supported.
 Schema Registry Client | A java client that HDF components can use to interact with the RESTful services.
 
-Below is a graphic outlining how the different components come into play when sending and recieving messages affected by a schema.
+Below is a graphic outlining how the different components come into play when sending and receiving messages affected by a schema.
 
 ![Schema Registry Sender and Receiver Flow](assets/sr-sender-receiver-flow.jpg)
 
