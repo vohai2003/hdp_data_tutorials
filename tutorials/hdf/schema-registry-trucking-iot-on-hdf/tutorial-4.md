@@ -21,11 +21,11 @@ In this tutorial, we'll go over how to programmatically register new schemas usi
 ## Outline
 
 -   [Environment Setup](#environment-setup)
-    -   [Dependencies](#dependencies)
+-   [Dependencies](#dependencies)
 -   [Schema Text and Configuration](#schema-text-and-configuration)
 -   [Adding New Schema Metadata](#adding-new-schema-metadata)
 -   [Registering a New Schema Version](#registering-a-new-schema-version)
--   [Running The Application](#running-the-application)
+-   [Running the Application](#running-the-application)
 -   [Summary](#summary)
 
 
