@@ -7,7 +7,7 @@ persona: Data Scientist & Analyst
 source: Hortonworks
 use case: Streaming
 technology: Apache NiFi, Apache Storm, Apache Kafka, Streaming Analytics Manager, Schema Registry, Apache SuperSet, Druid
-release: hdf-3.0.2
+release: hdf-3.1.0
 environment: Sandbox
 product: HDF
 series: HDF > Develop Data Flow & Streaming Applications > Hello World
@@ -21,21 +21,20 @@ In this tutorial, you will learn how to deploy a modern real-time streaming appl
 
 ## Prerequisites
 
-- [Downloaded Hortonworks DataFlow (HDF) Sandbox](https://hortonworks.com/downloads/#sandbox)
-- [Installed HDF Sandbox](https://hortonworks.com/tutorial/sandbox-deployment-and-install-guide/)
+-   [Installed Hortonworks DataFlow (HDF) Sandbox](https://hortonworks.com/downloads/#sandbox)
 
 ## Outline
 
-- [Concepts](#concepts)
-- [Overview of Trucking IoT Ref App](#overview-of-trucking-iot-ref-app)
-- [Step 1: Explore Dataflow Application](#step-1-explore-dataflow-application)
-- [Step 2: View Schema Registry](#step-2-view-schema-registry)
-- [Step 3: Analyze Stream Analytics Application](#step-3-analyze-stream-analytics-application)
-- [Step 4: View the Storm Engine that Powers SAM](#step-4-view-the-storm-engine-that-powers-sam)
-- [Step 5: Visualize Trucking Data Via Superset](#step-5-visualize-trucking-data-via-superset)
-- [Summary](#summary)
-- [Further Reading](#further-reading)
-- [Appendix A: Trucking IoT Github Repo](#appendix-a-trucking-iot-github-repo)
+-   [Concepts](#concepts)
+-   [Overview of Trucking IoT Ref App](#overview-of-trucking-iot-ref-app)
+-   [Step 1: Explore Dataflow Application](#step-1-explore-dataflow-application)
+-   [Step 2: View Schema Registry](#step-2-view-schema-registry)
+-   [Step 3: Analyze Stream Analytics Application](#step-3-analyze-stream-analytics-application)
+-   [Step 4: View the Storm Engine that Powers SAM](#step-4-view-the-storm-engine-that-powers-sam)
+-   [Step 5: Visualize Trucking Data Via Superset](#step-5-visualize-trucking-data-via-superset)
+-   [Summary](#summary)
+-   [Further Reading](#further-reading)
+-   [Appendix A: Trucking IoT Github Repo](#appendix-a-trucking-iot-github-repo)
 
 ## Concepts
 
@@ -71,7 +70,7 @@ The Trucking IoT data comes from a truck events simulator that is ingested by Ap
 
 ### Step 1: Explore Dataflow Application
 
-1\. Open the NiFi UI `http://sandbox-hdf.hortonworks.com:9090/nifi/`
+1\. Open the NiFi UI [http://sandbox-hdf.hortonworks.com:9090/nifi/](http://sandbox-hdf.hortonworks.com:9090/nifi/)
 
 2\. Drag the NiFi template icon onto the canvas, ![nifi_template_icon](assets/images/nifi_template_icon.jpg).
 
@@ -89,19 +88,11 @@ The Trucking IoT data comes from a truck events simulator that is ingested by Ap
 
 All controller services referencing **HortonworksSchemaRegistry** will also be enabled. Head back to the NiFi Dataflow.
 
-7\. Press `command+A` or `control+A` to select all the processors in the NiFi Dataflow and click on the start button ![nifi_start](assets/images/nifi_start.jpg).
-
-![nifi-to-2kafka-2schemas](assets/images/nifi-to-2kafka-2schemas.jpg)
-
-8\. To reduce resource consumption and footprint, when the **PublishKafka_0_10** processors reach about 500 input records, click on the stop button ![nifi_stop](assets/images/nifi_stop.jpg). This will take approximately 1 - 2 minutes.
-
-9\. Stop **NiFi** service and make sure to turn ON maintenance mode.
-
 Overview of the **7 processors** in the NiFi Flow:
 
-- **GetTruckingData** - Simulator generates TruckData and TrafficData in bar-delimited CSV
+-   **GetTruckingData** - Simulator generates TruckData and TrafficData in bar-delimited CSV
 
-- **RouteOnAttribute** - filters the _TrafficData_ and _TruckData_ into separate
+-   **RouteOnAttribute** - filters the _TrafficData_ and _TruckData_ into separate
 data feeds
 
 | Data Name | Data Fields    |
@@ -111,67 +102,75 @@ data feeds
 
 _TruckData side of Flow_
 
-- **EnrichTruckData** - tags on three fields to the end of _TruckData_: "foggy",
+-   **EnrichTruckData** - tags on three fields to the end of _TruckData_: "foggy",
 "rainy", "windy"
 
-- **ConvertRecord** - reads incoming data with "CSVReader" and writes out avro data with "AvroRecordSetWriter" embedding a "trucking_data_truck" schema onto each flowfile.
+-   **ConvertRecord** - reads incoming data with "CSVReader" and writes out Avro data with "AvroRecordSetWriter" embedding a "trucking_data_truck" schema onto each flowfile.
 
-- **PublishKafka_0_10** - stores avro data into Kafka Topic
+-   **PublishKafka_0_10** - stores Avro data into Kafka Topic
 "trucking_data_truck"
 
 _TrafficData side of Flow_
 
-- **ConvertRecord** - converts CSV data into avro data embedding a "trucking_data_traffic" schema onto each flowfile
+-   **ConvertRecord** - converts CSV data into Avro data embedding a "trucking_data_traffic" schema onto each flowfile
 
-- **PublishKafka_0_10** - stores avro data into Kafka Topic "trucking_data_traffic"
+-   **PublishKafka_0_10** - stores Avro data into Kafka Topic "trucking_data_traffic"
 
 Overview of **5 controller services** used in the NiFi Flow:
 
-- **AvroRecordSetWriter** - writes contents of RecordSet in Binary
+-   **AvroRecordSetWriter** - writes contents of RecordSet in Binary
 Avro Format (trucking_data_truck schema)
 
-- **AvroRecordSetWriter - Traffic** - writes contents of RecordSet in Binary
+-   **AvroRecordSetWriter - Traffic** - writes contents of RecordSet in Binary
 Avro Format (trucking_data_traffic schema)
 
-- **CSVReader** - returns each row in csv file as a separate record (trucking_data_truck schema)
+-   **CSVReader** - returns each row in csv file as a separate record (trucking_data_truck schema)
 
-- **CSVReader - Traffic** - returns each row in csv file as a separate record
+-   **CSVReader - Traffic** - returns each row in csv file as a separate record
 (trucking_data_traffic schema)
 
-- **HortonworksSchemaRegistry** - provides schema registry service for
+-   **HortonworksSchemaRegistry** - provides schema registry service for
 interaction with Hortonworks Schema Registry
+
+7\. Press `command+A` or `control+A` to select all the processors in the NiFi Dataflow and click on the start button ![nifi_start](assets/images/nifi_start.jpg).
+
+![nifi-to-2kafka-2schemas](assets/images/nifi-to-2kafka-2schemas.jpg)
+
+8\. To reduce resource consumption and footprint, when the **PublishKafka_0_10** processors reach about 500 input records, click on the stop button ![nifi_stop](assets/images/nifi_stop.jpg). This will take approximately 1 - 2 minutes.
+
+9\. Stop **NiFi** service: **Ambari** -> **NiFi** -> **Service Actions** -> **Stop**
 
 ### Step 2: View Schema Registry
 
-1\. Open the Schema Registry UI at `http://sandbox-hdf.hortonworks.com:7788/`
+1\. Open the Schema Registry UI at [http://sandbox-hdf.hortonworks.com:7788/](http://sandbox-hdf.hortonworks.com:7788/)
 
 ![schema_registry_trucking_data](assets/images/schema_registry_trucking_data.jpg)
 
 Overview of the essential **schemas** in the Schema Registry:
 
-- **trucking_data_joined** - model for truck event originating from a truck's onboard computer (EnrichedTruckAndTrafficData)
+-   **trucking_data_joined** - model for truck event originating from a truck's onboard computer (EnrichedTruckAndTrafficData)
 
-- **trucking_data_traffic** model for eventTime, routeId, congestionLevel (TrafficData)
+-   **trucking_data_traffic** model for eventTime, routeId, congestionLevel (TrafficData)
 
-- **trucking_data_truck** - model for truck event originating from a truck's onboard computer (EnrichedTruckData)
+-   **trucking_data_truck** - model for truck event originating from a truck's onboard computer (EnrichedTruckData)
 
 ### Step 3: Analyze Stream Analytics Application
 
-1\. Open Stream Analytics Manager (SAM) at `http://sandbox-hdf.hortonworks.com:7777/`
+1\. Open Stream Analytics Manager (SAM) at [http://sandbox-hdf.hortonworks.com:7777/](http://sandbox-hdf.hortonworks.com:7777/)
 
-2\. Instead of clicking on the **Trucking-IoT-Demo** SAM topology square, we will need to [download the latest sam topology](assets/templates/sam_topology/Trucking-IoT-Demo-V2.json) and then import it since the previous topology is incompatible with the latest HDF.
+2\. [Download the latest sam topology](assets/templates/sam_topology/Trucking-IoT-Demo-V2.json) and save it somewhere on your computer.
 
-![sam_home](assets/images/sam_home.jpg)
+3\. Import Application
 
-3\. Click on the EDIT button:
+![sam-import1](assets/images/sam_import1.jpg)
 
-![trucking_iot_demo_view](assets/images/trucking_iot_demo_view.jpg)
+![sam-import2](assets/images/sam_import2.jpg)
 
-4\. Click on the start button to deploy the topology:
+4\. Click on the **Run** button to deploy the topology:
 
-![sam_start](assets/images/sam_start.jpg).
+![sam_start](assets/images/sam_start.jpg)
 
-A window will appear asking if you want to continue deployment, choose Ok.
+A window will appear asking if you want to continue deployment, click **Ok**.
 
 5\. You will receive a notification that the SAM topology application deployed successfully and your topology will show Active Status in the bottom right corner.
 
@@ -179,35 +178,37 @@ A window will appear asking if you want to continue deployment, choose Ok.
 
 **Overview of the SAM Canvas:**
 
-- My Applications: Different Topology Projects
-- 1st Left Sidebar: My Applications, Dashboard, Schema Registry, Model Registry, Configuration
-- 2nd Left Sidebar: Different stream components (source, processor, sink)
-- Gear Icon: configure topology settings
-- Status Icon: Start or Stop Topology
+-   My Applications: Different Topology Projects
+-   1st Left Sidebar: My Applications, Dashboard, Schema Registry, Model Registry, Configuration
+-   2nd Left Sidebar: Different stream components (source, processor, sink)
+-   Gear Icon: configure topology settings
+-   Status Icon: Start or Stop Topology
 
 **Overview of SAM topology:**
 
-- **TruckingDataTraffic** source data of "trucking_data_traffic" kafka topic
+-   **TruckingDataTraffic** source data of "trucking_data_traffic" Kafka topic
 
-- **TruckingDataTruck** source data of "trucking_data_truck" kafka topic
+-   **TruckingDataTruck** source data of "trucking_data_truck" Kafka topic
 
-- **JOIN** stream TruckingDataTruck and TruckingDataTraffic by "routeId"
+-   **JOIN** stream TruckingDataTruck and TruckingDataTraffic by "routeId"
 
-- **IsViolation** checks if not "Normal" eventType, then will emit them
+-   **IsViolation** checks if not "Normal" eventType, then will emit them
 
-- **HDFS** storage for joined TruckingDataTruck and TruckingDataTraffic data
+-   **HDFS** storage for joined TruckingDataTruck and TruckingDataTraffic data
 
-- **Violation-Events-Cube** stores violation events into Druid
+-   **Violation-Events-Cube** stores violation events into Druid
 
-- **Data-Lake-HDFS** store violation events into HDFS
+-   **Data-Lake-HDFS** store violation events into HDFS
 
 ### Step 4: View the Storm Engine that Powers SAM
 
-1\. From Ambari, go to the **views 9 selector** icon and select **Storm View**.
+1\. From Ambari, click on **Storm View**:
+
+![storm-view](assets/images/storm_view.jpg)
 
 ![storm_view_dashboard](assets/images/storm_view_dashboard.jpg)
 
-2\. Click on Topology Name: **streamline-1-Trucking-IoT-Demo**.
+2\. Click on Topology Name: **streamline-4-Trucking-IoT-Demo**
 
 ![storm_topology](assets/images/storm_topology.jpg)
 
@@ -215,23 +216,22 @@ A window will appear asking if you want to continue deployment, choose Ok.
 
 You can see the total number of **Emitted** `(2081)` and **Transferred** `(3719)` tuples after `10m 0s` under **TOPOLOGY STATS** for the entire topology. You can also see individual emitted and transferred tuples for each individual Spout and Bolt in the topology increase. If we hover over one of the spouts or bolts on the graph, we can see how much data they process and their latency.
 
-- Topology Summary
-- Topology Stats
-- Topology Static Visualization
-- Spout
-- Bolts
-- Topology Configuration
+-   Topology Summary
+-   Topology Stats
+-   Topology Static Visualization
+-   Spout
+-   Bolts
+-   Topology Configuration
 
 ### Step 5: Visualize Trucking Data Via Superset
 
 1\. Open Ambari at `http://sandbox-hdf.hortonworks.com:8080/`. User credentials are `username/password = admin/admin`
 
-
 2\. Turn on the HDFS, YARN, Druid and Superset services and make sure to turn off maintenance mode.
 
 For example, to turn on **HDFS**, click on the service name in Ambari, click on the **Service Actions** dropdown and click **Start**. In the window, you will be asked if you want to start, confirm and also click on the checkbox to turn off maintenance mode.
 
-3\. Open Superset at `http://sandbox-hdf.hortonworks.com:9089/`
+3\. Open Superset at [http://sandbox-hdf.hortonworks.com:9089/](http://sandbox-hdf.hortonworks.com:9089/)
 
 4\. Wait about 5 - 10 minutes for Kafka data to be consumed, then periodically, select the **Sources** dropdown and click on **Refresh Druid Metadata**. Eventually, the two Druid data sources will appear.
 
@@ -273,11 +273,11 @@ Congratulations! You deployed the Trucking IoT demo that processes truck event d
 
 ## Further Reading
 
-- [Apache NiFi User Guide](https://nifi.apache.org/docs.html)
-- [Kafka Documentation](https://kafka.apache.org/documentation/)
-- [Schema Registry](https://docs.confluent.io/current/schema-registry/docs/index.html)
-- [Stream Analytics Manager User Guide](https://docs.hortonworks.com/HDPDocuments/HDF3/HDF-3.0.2/bk_streaming-analytics-manager-user-guide/content/ch_sam-manage.html)
-- [Superset](https://superset.incubator.apache.org/)
+-   [Apache NiFi User Guide](https://nifi.apache.org/docs.html)
+-   [Kafka Documentation](https://kafka.apache.org/documentation/)
+-   [Schema Registry](https://docs.confluent.io/current/schema-registry/docs/index.html)
+-   [Stream Analytics Manager User Guide](https://docs.hortonworks.com/HDPDocuments/HDF3/HDF-3.0.2/bk_streaming-analytics-manager-user-guide/content/ch_sam-manage.html)
+-   [Superset](https://superset.incubator.apache.org/)
 
 ## Appendix A: Trucking IoT Github Repo
 
