@@ -10,13 +10,12 @@ The Azure cloud infrastructure has become a common place for users to deploy vir
 
 ## Prerequisites
 
--   [A Microsoft Azure account. You can sign up for an evaluation account if you do not already have one.](https://azure.microsoft.com/en-us/free/)
+-   Must have a [Microsoft Azure](https://azure.microsoft.com) account
 
 ## Outline
 
--   [Find Hortonworks Sandbox on Azure Marketplace](#find-hortonworks-sandbox-on-azure-marketplace)
+-   [Create Hortonworks Data Platform Sandbox in Azure](#create-hortonworks-data-platform-sandbox-in-azure)
 -   [Creating the Sandbox](#creating-the-sandbox)
--   [Set a Static IP](#set-a-static-ip)
 -   [Configure SSH Tunneling](#configure-ssh-tunneling)
     -   [Using SSH](#using-ssh)
     -   [Using PuTTY](#using-putty)
@@ -24,67 +23,71 @@ The Azure cloud infrastructure has become a common place for users to deploy vir
 -   [Summary](#summary)
 -   [Further Reading](#further-reading)
 
-## Find Hortonworks Sandbox on Azure Marketplace
+## Create Hortonworks Data Platform Sandbox in Azure
 
-Go to [Microsoft Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace) and enter "Hortonworks" into the search bar.  Submit, and the **Hortonworks Sandbox** product should appear as shown in this screenshot.
+-   Go to [Microsoft Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace)
+-   Enter **Hortonworks** in the search bar and click search icon
+-   Locate **Hortonworks Data Platform (HDP) Sandbox** and click **Get it now**
 
-![Select "Hortonworks Sandbox" from the bottom view.](assets/azure-1.jpg)
+![azure-marketplace](assets/azure-marketplace.jpg)
 
-Select the Hortonworks Sandbox product and its Overview will display.  Click on **Get It Now** to start the setup process.
+>Note: You may be prompted to sign in to Microsoft Azure Marketplace.
 
-![Select "GET IT NOW" to begin the setup process.](assets/azure-2.jpg)
+-   Click **Continue** to confirm you want to create application in Azure
 
-If prompted, sign in to Azure Marketplace.  Afterward, you'll be asked to confirm your selection, as shown below.
-
-![Select "Continue" to continue the process.](assets/azure-3.jpg)
+![azure-marketplace-confirm](assets/azure-marketplace-confirm.jpg)
 
 ## Creating the Sandbox
 
-An explanation of the Hortonworks Sandbox will come on the screen.  When ready to begin the deployment process, select **Create** from the bottom of the screen.
+An explanation of the Hortonworks Sandbox will come on the screen. When ready to begin the deployment process, click **Create** at the bottom of the screen.
 
-![Select "Create" on the bottom of the screen.](assets/azure-4.jpg)
+![azure-sandbox-information](assets/azure-sandbox-information.jpg)
 
-Fill out some basic sandbox configuration settings.  Scroll down for an explanation of the different fields.
+A few forms need to be filled out:
 
-![The basic configuration page with filled-out fields.](assets/azure-5.jpg)
+### Basics Form
 
-The different fields:
--   **Name**: This is the name you want to use to reference the machine.  In the example above, we use the name "MySandbox"
+-   **Name**: This is the name you want to use to reference the machine.  In our example, we use `MySandbox`
+-   **VM disk type**: Type if storage you want to use. In our example, we use standard disks (**HDD**)
 -   **User name**: The name of the user account that will be used to log into the machine.  Throughout these tutorials, we will use azure as the user name.
 -   **Authentication type**: By default, the machine will be deployed and allow you to connect via SSH key or password.  In this example, we opt to use a password.
 -   **Subscription**: The subscription to deploy the machine under.  Select one already in your list.
--   **Resource group**: The name of the resource group to create, or use an existing one.  Here, we create a new one with the same name as the machine itself.
+-   **Resource group**: The name of the resource group to create, or use an existing one. In our example, we create a new group.
 -   **Location**: Which region in the Azure offering to deploy the machine to.
 
-> Note: Make sure to write down or remember your username and password.  If using SSH, ensure you have the corresponding private key.  Otherwise, you will not be able to log in to the machine.
+>Note: Make sure to write down or remember your username and password.  If using SSH, ensure you have the corresponding private key.  Otherwise, you will not be able to log in to the machine.
 
-The next step is to choose a size for the virtual machine.  It is recommended to use a machine with A4 specifications, or higher.
+![azure-form1](assets/azure-form1.jpg)
 
-![Select a size for your virtual machine.](assets/azure-6.jpg)
+### Size Form
 
-Optional settings to configure.  You can safely leave these at their defaults.
+Choose a size for the virtual machine. In our example, we are using **A5 Standard**.
 
-![Optional settings for the machine.](assets/azure-7.jpg)
+![azure-form2](assets/azure-form2.jpg)
 
-Look over the summary and continue when ready.
+### Settings Form
 
-![Summary of the deployment settings.](assets/azure-8.jpg)
+Choose optional features that you would like. In general, you may use the defaults provided.
 
-Alright, we're ready to deploy!  Review the offer details and purchase when ready.
+>Note: If you choose default dynamic IP address, the IP address will be modified after every reboot.
 
-![Review the offer details.](assets/azure-9.jpg)
+In our example, we decided to modify the following features:
 
-Once the offer is submitted by selecting **Purchase**, the sandbox will take a few minutes to set up and deploy.  After deployment is complete, we can move on to connecting to the sandbox.
+-   **Storage**: we do not want managed disks
+-   **Public IP Address**: use **Static** Assignment
 
-## Set a Static IP
+![azure-form3](assets/azure-form3.jpg)
 
-Once the machine is deployed, it's overview will appear on the screen.  Find the sandbox's public IP address and click on it.
+![azure-form3-static-ip](assets/azure-form3-static-ip.jpg)
 
-![Find the machine's IP address.](assets/azure-10.jpg)
+### Summary Form
 
-Clicking on the IP address will bring up the IP configuration panel.  Select **Static** as the Assignment, and then make sure to save your changes.  This will keep the sandbox from changing IP addresses each time it's rebooted.
+Look over the Offer details (pricing) and virtual machine summary.
+-   Click **Create** to begin the deployment process
 
-![Set the machine's IP to static](assets/azure-static-ip.jpg)
+This process will take a few minutes.  After deployment is complete, we can move on to connecting to the sandbox.
+
+![azure-form4](assets/azure-form4.jpg)
 
 ## Configure SSH Tunneling
 
@@ -92,20 +95,19 @@ SSH tunneling allows us a way to port forward securely, without actually opening
 
 ### Using SSH
 
-Use your favorite editor and edit your `~/.ssh/config` file.  For example:
-```
+Use your favorite editor and edit your `~/.ssh/config` file. For example:
+
+```bash
 vi ~/.ssh/config
 ```
 
-Enter the following configuration, replacing the **HostName** IP with the public IP of your instance.  More forwardings can be entered via the **LocalForward** directive similar to the ones displayed here.
+Insert the following statements to the file:
 
-> Note: Spacing and capitalization is important.
-
-```
-Host azureSandbox (or any other host alias)
+```bash
+Host azureSandbox
   Port 22
-  User <your-specified-azure-username-here>
-  HostName <your-azure-public-ip-here>
+  User azure-username
+  HostName azure-public-ip
   LocalForward 8080 127.0.0.1:8080
   LocalForward 8088 127.0.0.1:8088
   LocalForward 8888 127.0.0.1:8888
@@ -117,15 +119,24 @@ Host azureSandbox (or any other host alias)
   LocalForward 2222 127.0.0.1:2222
 ```
 
-Save and close the file.  Now SSH into the Azure machine by using the **Host** alias we just created, by using the command below.  This will connect automatically using the IP address specified in the config file.
+>Note: Spacing and capitalization is important.
 
-```
+-   Replace **azure-username** with user name used during [sandbox creation](#basics-form)
+-   Replace **azure-public-ip** with public IP provided
+ ![azure-public-ip](assets/azure-public-ip.jpg)
+-   Save and close file
+
+You are now able to SSH into the sandbox on Azure by using the command:
+
+```bash
 ssh azureSandbox
 ```
 
-You'll be asked for a password, which is the one you set during initial configuration on Azure.
+You will be asked to enter the password, which you created during [sandbox creation](#basics-form).
 
-That's it!  Keep this SSH connection open for the duration of your interaction with the sandbox on Azure.
+That's it!
+
+Keep this SSH connection open for the duration of your interaction with the sandbox on Azure.
 
 ### Using PuTTY
 
@@ -161,19 +172,19 @@ Enter the user name you specified during Azure deployment (in our case, we used 
 
 ## Splash Screen
 
-Now that you've port forwarded by following the tutorial linked above, you can explore the sandbox as you see fit.  Point your browser to <http://localhost:8888> for the sandbox's splash screen.
+Now that you have port forwarded necessary ports, you can explore the sandbox as you see fit. Point your browser to [http://localhost:8888](http://localhost:8888) for the sandbox's splash screen.
 
 ![Sandbox registration form](assets/azure-sandbox-registration.jpg)
 
 Fill out the form and hit **Submit** to access the sandbox.
 
-![The sandbox splash page.](assets/azure-sandbox-splash.jpg)
+![azure-sandbox-splash](assets/azure-sandbox-splash.jpg)
 
-That's it!  Keep this SSH connection open for the duration of your interaction with the sandbox on Azure.
+That's it!
 
 ## Summary
 
-You can now access all forwarded ports by pointing a browser to <http://localhost:portNumber>.  For example: <http://localhost:8888> will connect to the Azure machine and sandbox over port 8888.
+You can now access all forwarded ports by pointing a browser to `http://localhost:portNumber`. For example: [http://localhost:8080](http://localhost:8080) will connect to the Azure machine and sandbox over port 8080, which is Ambari.
 
 SSH tunneling allows us a way to port forward securely, without actually opening the machine's ports for the entire world to access.
 
@@ -181,5 +192,5 @@ SSH tunneling allows us a way to port forward securely, without actually opening
 
 Now that you've got HDP up and running, check out our other tutorials to learn how to leverage its power.
 
-- [Learning the Ropes of the HDP Sandbox](https://hortonworks.com/tutorial/learning-the-ropes-of-the-hortonworks-sandbox)
-- [SSH Tunneling Explained](https://chamibuddhika.wordpress.com/2012/03/21/ssh-tunnelling-explained)
+-   [Learning the Ropes of the HDP Sandbox](https://hortonworks.com/tutorial/learning-the-ropes-of-the-hortonworks-sandbox)
+-   [SSH Tunneling Explained](https://chamibuddhika.wordpress.com/2012/03/21/ssh-tunnelling-explained)
