@@ -1,5 +1,5 @@
 ---
-title: Lesson - Stream Processing & SAM
+title: Stream Processing & SAM
 ---
 
 # Lesson - Stream Processing & SAM
@@ -27,7 +27,7 @@ Fraud Detection in which transaction data is being generated instantaneously cal
 
 **History**
 
-Previously, developers had to use headless stream processing tools like Apache Storm and Spark Streaming, but a whole bunch of developers in the open source community came together to provide the "head" or "visual canvas" that integrates Apache Storm behind the scenes as the stream processing engine.
+Previously, developers had to use headless stream processing tools like Apache Storm and Spark Streaming, eventually many developers in the open source community came together to provide the "head" or "visual canvas" that integrates Apache Storm behind the scenes as the stream processing engine.
 
 ## Streaming Analytics Manager
 
@@ -83,7 +83,7 @@ A nice analogy shown in **Figure 4** is a visualization of water in which there 
 
 **Processor**
 
-Processor is a component performs the transforms, computation, joining and filtering on data as it moves through the stream.
+Processor is a component that performs the transformations, computation, joining and filtering on data as it moves through the stream.
 
 In nature, as portrayed in **Figure 5** we have rocks that process our water and other forms of natural solid materials that filter our water the way processors filter our data down to the insights we want:
 

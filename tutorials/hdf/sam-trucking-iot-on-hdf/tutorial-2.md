@@ -45,7 +45,9 @@ Before we can create the SAM topology, we need to start the producer to store da
 
 5\. In the Operate panel, select the gear icon. Click on the lighting symbol, for Scope, select Service and referencing components, then Enable and close.
 
-6\. Press control (command) and A to select entire nifi flow and in the Operate panel, press start.
+6\. Press control (command) and A to select entire NiFi flow and in the Operate panel, press start.
+
+> Note: NiFi flow should be kept running until the end of the tutorial.
 
 ![nifi_producer](assets/images/nifi_producer.jpg)
 
@@ -55,7 +57,7 @@ Before we can create the SAM topology, we need to start the producer to store da
 
 Now we have a data source for SAM to pull in data, we will build the Trucking IoT SAM topology.
 
-1\. Click on the service, then on the Summary page, click Quick Links, then SAM UI. You will be directed to this web address: `http://sandbox-hdf.hortonworks.com:7777/`
+1\. Go back to Ambari UI, click on the SAM service, then on the Summary page, click Quick Links, then SAM UI. You will be directed to this web address: `http://sandbox-hdf.hortonworks.com:7777/`
 
 ### Setup SAM
 
@@ -146,7 +148,7 @@ Before we start adding components to the canvas, lets verify our Kafka topics an
 
 1\. Open the sandbox web shell client: `http://sandbox-hdf.hortonworks.com:4200`
 
-2\. Login is `root/hadoop`. Run the following command to list kafka topics:
+2\. Login is `root/hadoop`. Run the following command to list Kafka topics:
 
 ~~~bash
 /usr/hdf/current/kafka-broker/bin/kafka-topics.sh --list --zookeeper localhost:2181
@@ -266,9 +268,9 @@ With these two new schemas, we can transport data between Kafka queues.
 
 When you verify the information is entered, confirm adding the new schema and click OK.
 
-**Note:** For more information on how Schemas being registered into Schema Registry and the architecture works, visit [Schema Registry in Trucking IoT on HDF](https://hortonworks.com/tutorial/schema-registry-in-trucking-iot-on-hdf/)
+**Note:** For more information on how Schemas are being registered into Schema Registry and the architecture works, visit [Schema Registry in Trucking IoT on HDF](https://hortonworks.com/tutorial/schema-registry-in-trucking-iot-on-hdf/)
 
-You may be wondering, why do we need Kafka topics and schemas? When we use Kafka Source components, we need a Kafka topic (queue) to pull in data from. The same idea can be applied for Kafka Sinks, but instead we store data into the queue. The schemas are needed to complement Kafka to provide data verification.
+You may be wondering, why we need Kafka topics and schemas? When we use Kafka Source components, we need a Kafka topic (queue) to pull in data from. The same idea can be applied for Kafka Sinks, but instead we store data into the queue. The schemas are needed to complement Kafka to provide data verification.
 
 Lets began designing and creating our topology!
 
@@ -463,7 +465,7 @@ Lets check the data in our Kafka Sink topics:
 /usr/hdf/current/kafka-broker/bin/kafka-console-consumer.sh --zookeeper localhost:2181 --topic trucking_avg_speed --from-beginning
 ~~~
 
-> Note: press control + D to exit from the kafka view messages.
+> Note: press control + C to exit from the Kafka view messages.
 
 ## Summary
 
