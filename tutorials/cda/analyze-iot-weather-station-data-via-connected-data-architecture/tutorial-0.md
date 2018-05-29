@@ -15,7 +15,7 @@ series: HDF > Develop Data Flow & Streaming Applications > Real World Examples
 
 # Analyze IoT Weather Station Data via Connected Data Architecture
 
-# TUTORIAL IS UNDER CONSTRUCTION AND SOON BE UPDATED.
+# TUTORIAL IS UNDER CONSTRUCTION AND SOON BE UPDATED
 
 ## Introduction
 
