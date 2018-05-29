@@ -4,6 +4,8 @@ title: Capture Real Time Event Stream with Apache Kafka
 
 # Capture Real Time Event Stream with Apache Kafka
 
+# TUTORIAL HAS BEEN DEPRECATED
+
 ## Introduction
 
 [Apache Kafka](http://kafka.apache.org/) can be used on the Hortonworks Data Platform to capture real-time events. We will begin with showing you how to configure Apache Kafka and Zookeeper. Next we will show you how to capture truck event data from Apache NiFi using Kafka.
