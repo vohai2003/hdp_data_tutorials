@@ -4,6 +4,8 @@ title: Visualize Weather Data with Zeppelin's Phoenix Interpreter
 
 # Visualize Weather Data with Zeppelin's Phoenix Interpreter
 
+# TUTORIAL IS UNDER CONSTRUCTION AND SOON BE UPDATED
+
 ## Introduction
 
 You'll use Phoenix to perform SQL queries against the HBase table by mapping a phoenix table to HBase table. You'll visualize your results by running Phoenix in Zeppelin via the Phoenix Interpreter. You'll monitor temperature, humidity and barometric pressure readings via Line Graphs, Bar Graphs, Pie Charts and Map Visualization.
