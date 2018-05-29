@@ -15,6 +15,8 @@ series: HDF > Develop Data Flow & Streaming Applications > Real World Examples
 
 # Analyze IoT Weather Station Data via Connected Data Architecture
 
+# TUTORIAL IS UNDER CONSTRUCTION AND SOON BE UPDATED.
+
 ## Introduction
 
 Over the past two years, San Jose has experienced a shift in weather conditions from having the hottest temperature back in 2016 to having multiple floods occur just within 2017. You have been hired by the City of San Jose as a Data Scientist to build Internet of Things (IoT) and Big Data project, which involves analyzing the data coming in from several weather stations using a data-in-motion framework and data-at-rest framework to improve monitoring the weather. You will be using Hortonworks Connected Data Architecture(Hortonworks Data Flow (HDF), Hortonworks Data Platform (HDP)) and the MiNiFi subproject of Apache NiFi to build this product.
