@@ -15,7 +15,7 @@ series: HDF > Develop Data Flow & Streaming Applications > Hello World
 
 # Realtime Event Processing in Hadoop with NiFi, Kafka and Storm
 
-# TUTORIAL HAS BEEN DEPRECATED.
+# TUTORIAL HAS BEEN DEPRECATED
 
 ## Introduction
 
