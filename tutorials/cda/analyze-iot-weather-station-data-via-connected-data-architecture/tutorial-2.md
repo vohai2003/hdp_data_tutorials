@@ -4,7 +4,7 @@ title: Deploy IoT Weather Station and Connected Data Architecture
 
 # Deploy IoT Weather Station and Connected Data Architecture
 
-# TUTORIAL IS UNDER CONSTRUCTION AND SOON BE UPDATED.
+# TUTORIAL IS UNDER CONSTRUCTION AND SOON BE UPDATED
 
 ## Introduction
 
