@@ -4,6 +4,8 @@ title: Ingest, Route and Land Real Time Events with Apache NiFi
 
 # Ingest, Route and Land Real Time Events with Apache NiFi
 
+# TUTORIAL HAS BEEN DEPRECATED
+
 ## Introduction
 
 Apache NiFi can collect and transport data from numerous sources and provide interactive command and control of live flows with full and automated data provenance. We will install NiFi onto our Hortonworks Sandbox and become familiar with the NiFi Web Interface. We will create a flow of data using Hortonworks DataFlow to activate the truck stream simulator to generate truck data, remove the log data, extract the live truck events data and store the events into a file. We will use a file to verify that the correct data is being inserted into the file.
