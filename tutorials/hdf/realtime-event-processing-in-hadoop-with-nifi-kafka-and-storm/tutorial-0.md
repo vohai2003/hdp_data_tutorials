@@ -15,6 +15,8 @@ series: HDF > Develop Data Flow & Streaming Applications > Hello World
 
 # Realtime Event Processing in Hadoop with NiFi, Kafka and Storm
 
+##### TUTORIAL HAS BEEN DEPRECATED.
+
 ## Introduction
 
 Welcome to a three part tutorial series on real-time data ingesting and analysis.  The speed of today's processing systems have moved from classical data warehousing batch reporting to the realm of real-time processing and analytics. The result is real-time business intelligence. Real-time means near to zero latency and access to information whenever it is required. This tutorial will show how geolocation information from trucks can be combined with sensor data from trucks and roads.  These sensors report real-time events like speeding, lane-departure, unsafe tailgating, and unsafe following distances. We will capture these events in real-time.
