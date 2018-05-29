@@ -4,6 +4,8 @@ title: IoT and Connected Data Architecture Concepts
 
 # IoT and Connected Data Architecture Concepts
 
+# TUTORIAL IS UNDER CONSTRUCTION AND SOON BE UPDATED.
+
 ## Introduction
 
 Anytime there are at least two platforms connected: HDF and HDP, that environment is called Connected Data Architecture. For this tutorial, we are building a Connected Data Architecture that incorporates: MiNiFi agent based at the Raspberry Pi, HDF docker sandbox and HDP docker sandbox both located within the docker engine. The purpose of the concepts section is to dive into each tool that is used within this tutorial.
