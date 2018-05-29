@@ -4,7 +4,7 @@ title: IoT and Connected Data Architecture Concepts
 
 # IoT and Connected Data Architecture Concepts
 
-# TUTORIAL IS UNDER CONSTRUCTION AND SOON BE UPDATED.
+# TUTORIAL IS UNDER CONSTRUCTION AND SOON BE UPDATED
 
 ## Introduction
 
