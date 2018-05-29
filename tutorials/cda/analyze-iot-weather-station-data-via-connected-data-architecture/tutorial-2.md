@@ -4,6 +4,8 @@ title: Deploy IoT Weather Station and Connected Data Architecture
 
 # Deploy IoT Weather Station and Connected Data Architecture
 
+# TUTORIAL IS UNDER CONSTRUCTION AND SOON BE UPDATED.
+
 ## Introduction
 
 You'll make an IoT Weather Station with a Raspberry Pi and Sense HAT. Additionally, you'll add on data analytics to this IoT Weather Station Platform with Connected Data Architecture communication between the MiNiFi, HDF Sandbox and HDP Sandbox.
