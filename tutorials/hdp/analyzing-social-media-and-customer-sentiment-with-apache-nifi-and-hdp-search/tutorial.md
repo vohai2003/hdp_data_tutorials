@@ -16,6 +16,8 @@ series: HDP > Develop with Hadoop > Real World Examples, HDF > Develop Data Flow
 
 # Analyzing Social Media and Customer Sentiment With Apache NiFi and HDP Search
 
+# TUTORIAL IS UNDER CONSTRUCTION AND SOON BE UPDATED
+
 ## Introduction
 
 In this tutorial, we will learn to install Apache NiFi on your Hortonworks Sandbox if you do not have it pre-installed already. Using NiFi, we create a data flow to pull tweets directly from the [Twitter API](https://dev.twitter.com/overview/documentation).
