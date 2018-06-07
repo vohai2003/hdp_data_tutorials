@@ -37,7 +37,7 @@ Below are detailed steps behind the getting started videos:
 
 1a. Create an [Amazon Web Services (AWS) Account](https://aws.amazon.com/) if you don't have one
 
-1b. Follow this step-by-step doc to [Setup and Launch a Controller on HDCloud](https://hortonworks.com/products/cloud/aws/)
+1b. Follow this step-by-step doc to [Setup and Launch a Controller on HDCloud](https://hortonworks.github.io/hdp-aws/index.html)
 
 1c. Create a *Data Science* [Cluster](https://hortonworks.github.io/hdp-aws/create/index.html) (use settings listed below)
 
