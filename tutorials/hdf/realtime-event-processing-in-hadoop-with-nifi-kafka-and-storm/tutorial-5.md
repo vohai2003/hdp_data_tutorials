@@ -4,6 +4,8 @@ title: Real Time Data Ingestion in HBase and Hive using Storm
 
 # Real Time Data Ingestion in HBase and Hive using Storm
 
+# TUTORIAL HAS BEEN DEPRECATED
+
 ## Introduction
 
 The Trucking business is a high-risk business in which truck drivers venture into remote areas, often in  harsh weather conditions and chaotic traffic on a daily basis. Using this solution illustrating Modern Data Architecture with Hortonworks Data Platform, we have developed a centralized management system that can help reduce risk and lower the total cost of operations.

@@ -4,6 +4,8 @@ title: Collect Sense HAT Weather Data on CDA
 
 # Collect Sense HAT Weather Data via CDA
 
+# TUTORIAL IS UNDER CONSTRUCTION AND SOON BE UPDATED
+
 ## Introduction
 
 You'll learn to create a python program collect sensor readings from the R-Pi Sense HAT for
