@@ -50,7 +50,7 @@ to NiFi, but you will need to make some modifications to it. The template is cal
 step-by-step each component within the NiFi flow to see how the flow was built.
 
 
-1\. Download the [WeatherDataMiNiFiToHbase.xml](assets/WeatherDataMiNiFiToHbase.xml) template file onto your computer.
+1\. Download the [WeatherDataMiNiFiToHbase.xml](assets/tutorial4/WeatherDataMiNiFiToHbase.xml) template file onto your computer.
 
 2\. Head to NiFi UI at `sandbox-cda.hortonworks.com:9090/nifi`.
 
@@ -248,4 +248,4 @@ Congratulations! You just enhanced the previous NiFi flow to pull in geographic 
 - Read more about HBase NoSQL Datastore at [Apache HBase Docs](https://hbase.apache.org/)
 - Read more about NiFi at [Apache NiFi Docs](https://nifi.apache.org/)
 - Read more about Hortonworks Data Platform - Data At Rest at [HDP Overview](https://hortonworks.com/products/data-center/hdp/)
-- Read more about Hortonworks Data Flow - Data In Motion at [HDF Overview](https://hortonworks.com/products/data-center/hdf/) 
+- Read more about Hortonworks Data Flow - Data In Motion at [HDF Overview](https://hortonworks.com/products/data-center/hdf/)
