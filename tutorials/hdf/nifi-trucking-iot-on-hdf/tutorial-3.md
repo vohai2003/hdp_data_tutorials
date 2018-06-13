@@ -10,17 +10,17 @@ We are aware of the role NiFi plays in this Trucking IoT application. Let's anal
 
 ## Outline
 
-- [NiFi Components](#nifi-components)
-- [Starting to Build a NiFi DataFlow](#starting-to-build-a-nifi-dataflow)
-- [Setting up Schema Registry Controller Service](#setting-up-schema-registry-controller-service)
-- [Building GetTruckingData](#building-gettruckingdata)
-- [Configuring RouteOnAttribute](#configuring-routeonattribute)
-- [Building EnrichTruckData](#building-enrichtruckdata)
-- [Configuring ConvertRecord: TruckData](#configuring-convertrecord-truckdata)
-- [Configuring ConvertRecord: TrafficData](#configuring-convertrecord-trafficdata)
-- [Configuring PublishKafka_0_10: TruckData](#configuring-publishkafka_0_10-truckdata)
-- [Configuring PublishKafka_0_10: TrafficData](#configuring-publishkafka_0_10-trafficdata)
-- [Summary](#summary)
+-   [NiFi Components](#nifi-components)
+-   [Starting to Build a NiFi DataFlow](#starting-to-build-a-nifi-dataflow)
+-   [Setting up Schema Registry Controller Service](#setting-up-schema-registry-controller-service)
+-   [Building GetTruckingData](#building-gettruckingdata)
+-   [Configuring RouteOnAttribute](#configuring-routeonattribute)
+-   [Building EnrichTruckData](#building-enrichtruckdata)
+-   [Configuring ConvertRecord: TruckData](#configuring-convertrecord-truckdata)
+-   [Configuring ConvertRecord: TrafficData](#configuring-convertrecord-trafficdata)
+-   [Configuring PublishKafka_0_10: TruckData](#configuring-publishkafka_0_10-truckdata)
+-   [Configuring PublishKafka_0_10: TrafficData](#configuring-publishkafka_0_10-trafficdata)
+-   [Summary](#summary)
 
 ## NiFi Components
 
@@ -28,9 +28,16 @@ Check out the [Core Concepts of NiFi](https://hortonworks.com/tutorial/analyze-t
 
 ## Starting to Build a NiFi DataFlow
 
+Before we begin building our NiFi DataFlow, let's make sure we start with a clean canvas.
+
+-   press **CTRL-A** or **COMMAND-A** to select entire canvas
+-   On the **Operate Palette**, click **DELETE**
+
+> Note: You may need to empty queues before deleting DataFlow. Do this by **right-clicking** non-empty queue, then select **Empty queue**.
+
 ## Setting up Schema Registry Controller Service
 
-As the first step in building the dataflow, we needed to setup NiFi Controller Service called **HortonworksSchemaRegistry**. Go to the **Operate Pallete**, click on the gear icon, then select **Controller Services** tab. To add a new controller service, you would press on the **" + "** icon in the top right of the table. However, since the service has already been created, we will reference it to see how a user would connect NiFi with Schema Registry.
+As the first step in building the DataFlow, we needed to setup NiFi Controller Service called **HortonworksSchemaRegistry**. Go to the **Operate Palette**, click on the gear icon, then select **Controller Services** tab. To add a new controller service, you would press on the **" + "** icon in the top right of the table. However, since the service has already been created, we will reference it to see how a user would connect NiFi with Schema Registry.
 
 **HortonworksSchemaRegistry**
 
@@ -53,8 +60,6 @@ From the configuration in the table above, we can see the **URL** that allows Ni
 ![GetTruckingData](assets/GetTruckingData.jpg)
 
 Keep Configurations across **Setting Tab, Scheduling Tab, Properties Tab** as Default.
-
-Learn more about building the GetTruckingData processor in the **Coming Soon: "Custom NiFi Processor - Trucking IoT"** tutorial.
 
 ## Configuring RouteOnAttribute
 
