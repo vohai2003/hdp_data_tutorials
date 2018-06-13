@@ -4,6 +4,8 @@ title: Set Up Simulator, Apache Services and IDE Environment
 
 # Set Up Simulator, Apache Services and IDE Environment
 
+# TUTORIAL HAS BEEN DEPRECATED
+
 ## Introduction
 
 In this tutorial, we are going to set up all the services required to run the Connected Car Application(Trucking Demo). We will install NiFi onto our Hortonworks Sandbox while activating Kafka and Storm for later use in the tutorial series. We will also walkthrough how to set up an IDE on our local machine for Storm development testing and deploy our Storm project to the Sandbox for further testing.

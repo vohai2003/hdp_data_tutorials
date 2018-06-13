@@ -4,6 +4,8 @@ title: Populate HDP HBase with HDF NiFi Flow
 
 # Populate HDP HBase with HDF NiFi Flow
 
+# TUTORIAL IS UNDER CONSTRUCTION AND SOON BE UPDATED
+
 ## Introduction
 
 In the previous tutorial, you transported raw sensor data from MiNiFi to HDF NiFi to HDP HDFS. Now you'll further enrich the NiFi flow by adding geographic location attributes to the dataset. You'll then convert the data to JSON format for storing into HBase.

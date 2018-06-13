@@ -10,23 +10,21 @@ Let's walk through NiFi's place in the demo.
 
 ## Outline
 
-- [Environment Setup](#environment-setup)
-- [Deploy the NiFi DataFlow](#deploy-the-nifi-dataflow)
-- [Next: Building a NiFi DataFlow](#next-building-a-nifi-dataflow)
+-   [Environment Setup](#environment-setup)
+-   [Deploy the NiFi DataFlow](#deploy-the-nifi-dataflow)
+-   [Next: Building a NiFi DataFlow](#next-building-a-nifi-dataflow)
 
 ## Environment Setup
 
-We will be working in the `trucking-IoT` project. If you have the latest Hortonworks DataFlow (HDF) Sandbox installed, then the demo comes preinstalled. If not or you do not already have it setup, then refer to [Setup Demo on existing HDF/HDP](https://github.com/orendain/trucking-iot/tree/hadoop-summit-2017#setup-on-existing-hdf-hdp).
-
-Your HDF Sandbox should be powered on using your favorite platform.
+We will be working on the **trucking-IoT** project. If you have the latest Hortonworks DataFlow (HDF) Sandbox installed, then the demo comes preinstalled. If not, or you do not already have it setup, then refer to [Setup Demo on existing HDF Sandbox](https://github.com/orendain/trucking-iot/tree/hadoop-summit-2017#setup-on-existing-hdf-hdp).
 
 ## Deploy the NiFi DataFlow
 
-Let's activate the NiFi dataflow, so it will process the simulated data and push the data into Kafka Topics. Open NiFi at `sandbox-hdf.hortonworks.com:9090/nifi`.
+Let's activate the NiFi data flow, so it will process the simulated data and push the data into Kafka Topics. Open NiFi at [http://sandbox-hdf.hortonworks.com:9090/nifi/](http://sandbox-hdf.hortonworks.com:9090/nifi/).
 
-Drag and drop the components **template** icon ![nifi_template](assets/nifi_template.jpg) onto the NiFi canvas. Select `Trucking IoT Demo`, then press **ADD**. Deselect the dataflow, just click anywhere on the canvas.
+Drag and drop the components template icon ![nifi_template](assets/nifi_template.jpg) onto the NiFi canvas. Select **Trucking IoT Demo**, then click **ADD**. Deselect the data flow by clicking anywhere on the canvas.
 
-In the **Operate Pallete** with the hand point upward, expand it if it is closed, click on the gear icon then click on Controller Services gear icon. In Controller Services, click on the **Lighting Bolt** to the right of **HortonworksSchemaRegistry**, for **Scope**, select **Service and referencing componen...**, then press **ENABLE**. Then **CLOSE**. All the Controller Services should be enabled like below:
+In the **Operate Palette** with the hand point upward, expand it if it is closed, click on the gear icon then click on Controller Services gear icon. In Controller Services, click on the **Lighting Bolt** to the right of **HortonworksSchemaRegistry**, for **Scope**, select **Service and referencing componen...**, then press **ENABLE**. Then **CLOSE**. All the Controller Services should be enabled like below:
 
 ![controller-services-en](assets/controller-services-en.jpg)
 
@@ -48,11 +46,11 @@ A table with provenance events will appear. An event illustrates what type of ac
 
 ![data-provenance](assets/data-provenance.jpg)
 
-- `TruckData`: Data simulated by sensors onboard each truck.
+-   `TruckData`: Data simulated by sensors onboard each truck.
 
 ![TruckData](assets/TruckData.jpg)
 
-- `TrafficData`: Data simulated from traffic congestion on a particular trucking route.
+-   `TrafficData`: Data simulated from traffic congestion on a particular trucking route.
 
 ![TrafficData](assets/TrafficData.jpg)
 
