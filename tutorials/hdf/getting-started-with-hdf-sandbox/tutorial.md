@@ -7,7 +7,7 @@ persona: Administrator
 source: Hortonworks
 use case: Single View
 technology: Apache Ambari, Apache Storm, Apache Superset, Apache NiFi, Schema Registry, Streaming Analytics Manager
-release: hdf-3.0.2
+release: hdf-3.1.1
 environment: Sandbox
 product: HDF
 series: HDF > Develop Data Flow & Streaming Applications > Hello World
@@ -79,7 +79,7 @@ From the HDF splash page, there are two tracks for the Big Data and IOT journey,
 
 **Figure 2: NEW TO HDF TRACK**
 
-![hdf_quck_links_step2](assets/images/hdf_quck_links_step2.jpg)
+![hdf_quck_links_step2](assets/images/hdf_quick_links_step2.jpg)
 
 **Figure 3: ADVANCED HDF TRACK**
 
@@ -93,13 +93,12 @@ Hyperlink Approach:
 | :------------- | :------------- | :------------- |
 | Ambari       | `http://ip-address:8080`       | admin/admin |
 | Storm UI       | `http://ip-address:8744`       | not needed |
-| Superset       | `http://ip-address:9089/login`       | admin/hortonworks1 |
 | NiFi       | `http://ip-address:9090/nifi`       | not needed |
-| Registry       | `http://ip-address:7788`       | not needed |
+| Schema Registry       | `http://ip-address:7788`       | not needed |
 | Streaming Analytics Manager       | `http://ip-address:7777`       | not needed |
 | Sandbox Web Shell Client | `http://ip-address:4200` | root/hadoop |
 
-In the HDF Platform, each service that has a UI most often used in the tutorials is illustrated in **Figures 4-9**.
+In the HDF Platform, each service that has a UI most often used in the tutorials is illustrated in **Figures 4-8**.
 
 ![ambari_access_storm_step3](assets/images/ambari_access_storm_step3.jpg)
 
@@ -126,23 +125,9 @@ _Apache Storm_
 
 For more information, refer to [Apache Storm Components Guide](https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.6.3/bk_storm-component-guide/content/ch_storm-overview.html)
 
-
-![hdf_superset_step3](assets/images/hdf_superset_step3.jpg)
-
-**Figure 6: Superset Dashboard**
-
-_Apache Superset (Incubating)_
-
-- Open source data visualization web application
-- Intuitive interface for visualizing data with over 30+ options
-- Incorporates a security/permission model that establishes which features and datasets an individual can access
-
-For more information, refer to [Apache Superset (incubating)](https://superset.incubator.apache.org/)
-
-
 ![hdf_nifi_step3](assets/images/hdf_nifi_step3.jpg)
 
-**Figure 7: NiFi Canvas**
+**Figure 6: NiFi Canvas**
 
 _Apache NiFi_
 
@@ -155,7 +140,7 @@ For more information, refer to [Apache NiFi Documentation](https://hortonworks.c
 
 ![hdf_schema_registry_step3](assets/images/hdf_schema_registry_step3.jpg)
 
-**Figure 8: Schema Registry Dashboard**
+**Figure 7: Schema Registry Dashboard**
 
 _Schema Registry_
 
@@ -168,7 +153,7 @@ For more information, refer to [Schema Registry Documentation](https://hortonwor
 
 ![hdf_stream_analytics_manager_step3](assets/images/hdf_sam_step3.jpg)
 
-**Figure 9: Streaming Analytics Manager (SAM) Dashboard**
+**Figure 8: Streaming Analytics Manager (SAM) Dashboard**
 
 - Open source visual drag and drop stream applications builder
 - Design, develop, deploy and manage streaming applications through a visual paradigm approach within minutes without writing code
@@ -177,7 +162,7 @@ For more information, refer to [SAM Documentation](https://hortonworks.com/open-
 
 ## Summary
 
-Congratulations! Now you know about the different features available in the HDF sandbox. You can use these HDF components to began building your own applications to solve data-in-motion problems. If you want to learn more about HDF, check out the documentation in the Further Reading section below. If you want to explore more in depth how you can use the HDF tools to build applications, visit the Hortonworks HDF Sandbox tutorials.
+Congratulations! Now you know about the different features available in the HDF sandbox. You can use these HDF components to begin building your own applications to solve data-in-motion problems. If you want to learn more about HDF, check out the documentation in the Further Reading section below. If you want to explore more in depth how you can use the HDF tools to build applications, visit the Hortonworks HDF Sandbox tutorials.
 
 ## Further Reading
 
@@ -186,7 +171,7 @@ Congratulations! Now you know about the different features available in the HDF 
 
 ## Appendix A: Sandbox Reference Sheet
 
-In the HDF sandbox cheat sheet, it is a reference of common knowledge and tasks often done in the sandbox.
+The HDF sandbox cheat sheet is a reference of common knowledge and tasks often done in the sandbox.
 
 ### Learn the IP Address of Your Sandbox
 
@@ -196,7 +181,7 @@ Docker: `IP Address = 127.0.0.1`
 
 VirtualBox: `IP Address = 127.0.0.1`
 
-VMware: `IP Addrss = 192.168.x.x`
+VMware: `IP Address = 192.168.x.x`
 
 ### Map Sandbox IP to Your Desired Hostname in the Hosts File
 
@@ -226,19 +211,19 @@ Windows 10 users, open Notepad as an **administrator**. Open the "hosts" file at
 
 Then save the file.
 
-If you did not change "hosts" file, you would be required to enter the IP address followed by the port number as shown in **Figure 10**:
+If you did not change "hosts" file, you would be required to enter the IP address followed by the port number as shown in **Figure 9**:
 
-![hdf_ambari_dashboard_step2](assets/images/hdf_ambari_dashboard_fig10.jpg)
+![hdf_ambari_dashboard_step2](assets/images/hdf_ambari_dashboard_fig9.jpg)
 
-**Figure 10: `http://192.168.9.128:8080` => Ambari Dashboard**
+**Figure 9: `http://127.0.0.1:8080` => Ambari Dashboard**
 
 Once a hostname is name is mapped to the IP address of the VMware (or other VM) sandbox, that hostname followed by the port number will be suffice to access the HDF component:
 
-![hdf_hostname_ambari_appendix_a](assets/images/hdf_hostname_ambari_fig11.jpg)
+![hdf_hostname_ambari_appendix_a](assets/images/hdf_hostname_ambari_fig10.jpg)
 
-**Figure 11: `http://sandbox-hdf.hortonworks.com:8080` => Ambari Dashboard**
+**Figure 10: `http://sandbox-hdf.hortonworks.com:8080` => Ambari Dashboard**
 
-Notice in **Figure 10**, the user refers to the explicit IP address of the VMware (or other VM) HDF Sandbox, but once the IP address is mapped to a hostname, then the user can use an ALIAS shown in **Figure 11** in place of that IP address.
+Notice in **Figure 9**, the user refers to the explicit IP address of the VirtualBox (or other VM) HDF Sandbox, but once the IP address is mapped to a hostname, then the user can use an ALIAS shown in **Figure 10** in place of that IP address.
 
 ### Setup Ambari admin Password Manually
 
@@ -272,7 +257,7 @@ ambari-agent restart
 
 ### Troubleshoot Problems
 
-Check [Hortonworks Community Connection](https://hortonworks.com/community/forums/)(HCC) for answers to problems you may come across during your hadoop journey.
+Check [Hortonworks Community Connection](https://hortonworks.com/community/forums/) (HCC) for answers to problems you may come across during your Hadoop journey.
 
 ### Technique for Finding Answers in HCC
 
