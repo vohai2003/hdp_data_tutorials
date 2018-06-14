@@ -58,7 +58,7 @@ Storm can be used for processing messages and updating databases (stream process
 -   **Scalable**: Storm scales to handle massive numbers of messages per second.  To scale a topology, one can add machines to the cluster or increase the number of parallel threads spawned by Storm.
 -   **Guarantee no data loss**: Real-time systems must have strong guarantees about data being processed successfully and not allow data to be lost.  Storm guarantees processing of every message.
 -   **Robust**: It is an explicit goal of the Storm project to make the user experience of managing Storm clusters as painless as possible.  This is in contract to other systems that are difficult to manage and deploy, especially in secured environments.
--   **Fault-tolerant**: Storm makes sure that a computation can run forever, resassigning tasks as necessary if something in the system fails.
+-   **Fault-tolerant**: Storm makes sure that a computation can run forever, reassigning tasks as necessary if something in the system fails.
 -   **Development language agnostic**: Storm jobs and components can be defined in any language, making Storm accessible to nearly any developer.
 
 
