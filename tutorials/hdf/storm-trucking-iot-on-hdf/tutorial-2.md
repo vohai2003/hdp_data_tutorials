@@ -59,7 +59,7 @@ Let's wait for the simulator to finish generating data.  Once that's done, we ca
 > Note: "Ctrl + c" to exit out from the Kafka command.
 
 ```
-/usr/hdf/current/kafka-broker/bin/kafka-console-consumer.sh --bootstrap-server sandbox-hdf.hortonworks.com:6667 --from-beginning --topic trucking_data_truck
+/usr/hdf/current/kafka-broker/bin/kafka-console-consumer.sh --bootstrap-server sandbox-hdf.hortonworks.com:6667 --from-beginning --topic trucking_data_truck_enriched
 ```
 and
 ```
