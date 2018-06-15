@@ -7,7 +7,7 @@ persona: Developer
 source: Hortonworks
 use case: Streaming
 technology: Apache Storm, Apache Kafka
-release: hdf-3.1.1
+release: hdf-3.1.0
 environment: Sandbox
 product: HDF
 series: HDF > Develop Data Flow & Streaming Applications > Hello World
