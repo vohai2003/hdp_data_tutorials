@@ -64,13 +64,13 @@ Finally, login with your **cluster** *User Name* and *Password* combination.
 
 If you haven't already, login to Ambari (operations console) using `maria_dev`/`maria_dev` as a username/password combination. Remember that Ambari is accessible on port 8080.
 
-E.g. on a VirtualBox Sandbox, Ambari would be accessible at http://127.0.0.1:8080.
+E.g. on a VirtualBox Sandbox, Ambari would be accessible at http://sandbox-hdp.hortonworks.com:8080.
 
 Note: If you're new to the HDP Sandbox environment, make sure to review [Learning the Ropes of the HDP Sandbox](https://hortonworks.com/tutorial/learning-the-ropes-of-the-hortonworks-sandbox/).
 
 ![scr1-login](assets/scr1-login.png)
 
-Okay, once you're in Ambari just click the Views dropdown (upper-right corner) and select Zeppelin.
+Okay, once you are in Ambari click on Zeppelin Notebook then click on Quick Links and finally on Zeppelin UI.
 
 ![scr2-views](assets/scr2-views.png)
 
