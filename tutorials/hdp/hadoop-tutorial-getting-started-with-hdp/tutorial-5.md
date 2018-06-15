@@ -60,7 +60,7 @@ Let's get started!
 2\. Open Zeppelin interface using browser URL:
 
 ~~~
-http://sandbox.hortonworks.com:9995
+http://sandbox-hdp.hortonworks.com:9995/
 ~~~
 
 You should see a Zeppelin Welcome Page:
