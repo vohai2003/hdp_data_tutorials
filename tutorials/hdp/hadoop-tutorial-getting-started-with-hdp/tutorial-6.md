@@ -45,7 +45,7 @@ riskfactor data that we've collected earlier and visualize the result through gr
 Open Zeppelin interface using browser URL:
 
 ~~~
-http://sandbox.hortonworks.com:9995
+http://sandbox-hdp.hortonworks.com:9995/
 ~~~
 
 ![Zeppelin Dashboard](assets/zeppelin_welcome_page_hello_hdp_lab4.png)
