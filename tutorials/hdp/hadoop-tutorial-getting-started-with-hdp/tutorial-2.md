@@ -43,11 +43,11 @@ A single physical machine gets saturated with its storage capacity as the data g
 
 2\.   Go to Ambari Dashboard and open **Files View**.
 
-![Screen Shot 2015-07-21 at 10.17.21 AM](assets/files_view_lab1.png)
+![Maria files view](assets/files_view_lab1.jpg)
 
 3\.  Start from the top root of the HDFS file system, you will see all the files the logged in user (_maria_dev_ in this case) has access to see:
 
-![Lab2_2](assets/root_files_view_folder_lab1.png)
+![Lab2_2](assets/root_files_view_folder_lab1.jpg)
 
 4\. Navigate to `/user/maria_dev` directory by clicking on the directory links.
 

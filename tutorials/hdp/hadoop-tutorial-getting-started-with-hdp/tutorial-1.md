@@ -269,7 +269,7 @@ To make it easy to interact with Hive we use a tool in the Hortonworks Sandbox c
 
 Let’s now open Ambari Hive View 2.0 and get introduced to the environment. Go to the Ambari User View icon and select Hive View 2.0:
 
-![Hive View 2](assets/selector_views_concepts.png)
+![Hive View 2](assets/selector_views_concepts.jpg)
 
 Ambari Hive View 2.0
 
@@ -338,7 +338,7 @@ The user can run Pig in two modes, using either the “pig” command or the “
 
 To get to the Ambari Pig User View on Sandbox, click on the User Views icon at top right and select **Pig**:
 
-![Screen Shot 2016-02-17 at 7.12.41 PM](assets/ambari_pig_view_concepts.png)
+![Pig_1](assets/ambari_pig_view_concepts.jpg)
 
 This will bring up the Ambari Pig User View interface. Your Pig View does not have any scripts to display, so it will look like the following:
 

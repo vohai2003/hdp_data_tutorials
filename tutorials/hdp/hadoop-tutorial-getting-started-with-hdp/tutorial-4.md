@@ -61,7 +61,7 @@ In this phase of the tutorial, we create and run a Pig script. We will use the A
 
 To get to the Ambari Pig View, click on the Ambari Views icon at top right and select **Pig**:
 
-![Screen Shot 2015-07-21 at 10.12.41 AM](assets/ambari_pig_view_lab3.png)
+![Pig_View](assets/ambari_pig_view_concepts.jpg)
 
 This will bring up the Ambari Pig User View interface. Your Pig View does not have any scripts to display, so it will look like the following:
 

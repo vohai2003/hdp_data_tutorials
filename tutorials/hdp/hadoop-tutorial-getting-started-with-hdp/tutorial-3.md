@@ -40,7 +40,7 @@ To make it easy to interact with Hive we use a tool in the Hortonworks Sandbox c
 
 Let’s now open Ambari Hive View 2.0 and get introduced to the environment. Go to the Ambari User View icon and select Hive View 2.0:
 
-![Hive View 2](assets/selector_views_concepts.png)
+![Hive View 2](assets/selector_views_concepts.jpg)
 
 The Ambari Hive View looks like the following:
 
@@ -359,7 +359,7 @@ If you want to see the explain result in text, select `RESULTS`. You should see 
 
 Click on **TEZ View** from Ambari Views. You can see _DAG details_ associated with the previous hive and pig jobs.
 
-![tez_view](assets/ambari_tez_view_lab2.png)
+![tez_view](assets/ambari_tez_view_lab2.jpg)
 
 Select the first `DAG ID` as it represents the last job that was executed.
 
