@@ -45,7 +45,7 @@ The Sandbox is a straightforward, pre-configured, learning environment that cont
 ### HDF Analytics Sandbox
 
 The HDF Analytics Sandbox Architecture comes with the following Big Data Tools:
-Hadoop Core, Zookeeper, Storm, Kafka, Druid, NiFi, Schema Registry and Stream Analytics Manager (SAM) and Superset.
+Hadoop Core, Zookeeper, Storm, Kafka, NiFi, Schema Registry and Stream Analytics Manager (SAM).
 
 ### Step 1: Explore the Splash Page
 
@@ -217,7 +217,7 @@ If you did not change "hosts" file, you would be required to enter the IP addres
 
 **Figure 9: `http://127.0.0.1:8080` => Ambari Dashboard**
 
-Once a hostname is name is mapped to the IP address of the VMware (or other VM) sandbox, that hostname followed by the port number will be suffice to access the HDF component:
+Once the hostname name is mapped to the IP address of the VMware (or other VM) sandbox, that hostname followed by the port number will be suffice to access the HDF component:
 
 ![hdf_hostname_ambari_appendix_a](assets/images/hdf_hostname_ambari_fig10.jpg)
 
@@ -251,7 +251,7 @@ ambari-admin-password-reset
 ambari-agent restart
 ~~~
 
-> **Note:** Now you can login to ambari as an admin user to perform operations, such as starting and stopping services.
+> **Note:** Now you can login to Ambari as an admin user to perform operations, such as starting and stopping services.
 
 ## Appendix B: Troubleshoot
 
