@@ -235,7 +235,7 @@ Click on the Dashboard tab to start exploring the Ambari Dashboard.
 
 Go to the **Hive page** then select the **Configs tab** then click on **Settings tab**:
 
-![ambari_dashboard_explanation](assets/ambari_dashboard_explanation_lab2.png)
+![ambari_dashboard_explanation](assets/ambari_dashboard_explanation_lab2.jpg)
 
 Once you click on the Hive page you should see a page similar to above:
 
