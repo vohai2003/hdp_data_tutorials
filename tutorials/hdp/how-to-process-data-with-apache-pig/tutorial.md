@@ -7,7 +7,7 @@ persona: Data Scientist & Analyst
 source: Hortonworks
 use case: Data Discovery
 technology: Apache Ambari, Apache Pig
-release: hdp-2.6.0
+release: hdp-2.6.5
 environment: Sandbox
 product: HDP
 series: HDP > Develop with Hadoop > Hello World, HDP > Hadoop for Data Scientists & Analysts > Introduction to Data Analysis with Hadoop
@@ -61,7 +61,7 @@ Once you have the file you will need to `unzip` the file into a directory. We wi
 
 We start by selecting the `HDFS Files view` from the Off-canvas menu at the top. The `HDFS Files view` allows us to view the Hortonworks Data Platform(HDP) file store. This is separate from the local file system. For the Hortonworks Sandbox, it will be part of the file system in the Hortonworks Sandbox VM.
 
-![select_files_view](assets/select_files_view.png)
+![select_files_view](assets/select_files_view.jpg)
 
 Navigate to `/user/maria_dev` and click on the Upload button to select the files we want to upload into the Hortonworks Sandbox environment.
 
@@ -75,7 +75,7 @@ Click on the browse button to open a dialog box. Navigate to where you stored th
 
 Now that we have our data files, we can start writing our `Pig script`. Click on the `Pig View` from the Off-canvas menu.
 
-![select_pig_view](assets/select_pig_view.png)
+![select_pig_view](assets/select_pig_view.jpg)
 
 You can also explore **Grunt shell** from the terminal which is used to write Pig Latin scripts. There are 3 execute modes of accessing Grunt shell:
 
