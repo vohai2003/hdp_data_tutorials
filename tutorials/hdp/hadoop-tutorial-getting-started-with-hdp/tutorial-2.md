@@ -43,15 +43,15 @@ A single physical machine gets saturated with its storage capacity as the data g
 
 2\.   Go to Ambari Dashboard and open **Files View**.
 
-![Screen Shot 2015-07-21 at 10.17.21 AM](assets/files_view_lab1.png)
+![files_view_lab1](assets/files_view_lab1.jpg)
 
 3\.  Start from the top root of the HDFS file system, you will see all the files the logged in user (_maria_dev_ in this case) has access to see:
 
-![Lab2_2](assets/root_files_view_folder_lab1.png)
+![root_files_view_folder_lab1](assets/root_files_view_folder_lab1.jpg)
 
 4\. Navigate to `/user/maria_dev` directory by clicking on the directory links.
 
-5\.  Let's create a data directory to upload the data that we are going to use for this use case.  Click the ![Lab2_3](assets/new_folder_icon_lab1.png) button to create the `data` directory inside the `maria_dev` directory. Now navigate into the `data` directory.
+5\.  Let's create a data directory to upload the data that we are going to use for this use case.  Click the ![new_folder_icon_lab1](assets/new_folder_icon_lab1.png) button to create the `data` directory inside the `maria_dev` directory. Now navigate into the `data` directory.
 
 ![add_new_folder_data_lab1](assets/add_new_folder_data_lab1.png)
 
