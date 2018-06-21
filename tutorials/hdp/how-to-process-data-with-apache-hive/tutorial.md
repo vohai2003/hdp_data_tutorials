@@ -7,7 +7,7 @@ persona: Data Scientist & Analyst
 source: Hortonworks
 use case: EDW Optimization
 technology: Apache Ambari, Apache Hive
-release: hdp-2.6.0
+release: hdp-2.6.5
 environment: Sandbox
 product: HDP
 series: HDP > Develop with Hadoop > Hello World, HDP > Hadoop for Data Scientists & Analysts > Introduction to Data Analysis with Hadoop, HDP > Develop with Hadoop > Apache Hive
@@ -56,21 +56,21 @@ Once you have the file you will need to unzip the file into a directory. We will
 
 We start by selecting the `HDFS Files view` from the Off-canvas menu at the top. The HDFS Files view allows us to view the Hortonworks Data Platform(HDP) file store. This is separate from the local file system. For the Hortonworks Sandbox, it will be part of the file system in the Hortonworks Sandbox VM.
 
-![select_files_view](assets/select_files_view.png)
+![select_files_view](assets/select_files_view.jpg)
 
 Navigate to `/user/maria_dev` and click on the `Upload` button to select the files we want to upload into the Hortonworks Sandbox environment.
 
-![upload_button](assets/upload_button.png)
+![upload_button](assets/upload_button.jpg)
 
 Click on the `browse` button to open a dialog box. Navigate to where you stored the `drivers.csv` file on your local disk and select `drivers.csv` and click `open`. Do the same thing for `timesheet.csv`. When you are done you will see there are two new files in your directory.
 
-![uploaded_files](assets/uploaded_files.png)
+![uploaded_files](assets/uploaded_files.jpg)
 
 ## Step 3: Start the Hive View <a id="start-the-hive-view"></a>
 
 Let’s open the `Hive View 2.0` by clicking on the Views icon on the top bar. Hive View 2.0 provides a user interface to the Hive data warehouse system for Hadoop.
 
-![select_hive_view](assets/select_hive_view.png)
+![select_hive_view](assets/select_hive_view.jpg)
 
 ### 3.1 Explore The Hive User Interface
 
