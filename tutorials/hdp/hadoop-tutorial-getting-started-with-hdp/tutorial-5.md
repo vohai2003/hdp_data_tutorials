@@ -73,9 +73,9 @@ Optionally, if you want to find out how to access the Spark shell to run code on
 
 Click on a Notebook tab at the top left and select **Create new note**. Name your notebook `Compute Riskfactor with Spark`.
 
-![create_new_notebook](assets/create_new_notebook_hello_hdp_lab4.png)
+![create_new_notebook_hello_hdp_lab4](assets/create_new_notebook_hello_hdp_lab4.png)
 
-![notebook_name](assets/notebook_name_hello_hdp_lab4.png)
+![notebook_name_hello_hdp_lab4](assets/notebook_name_hello_hdp_lab4.png)
 
 ## Create a Hive Context
 
@@ -110,7 +110,7 @@ To verify table has been dropped, let us do show tables again:
 val hiveContext = new org.apache.spark.sql.SparkSession.Builder().getOrCreate()
 ~~~
 
-![Lab4_6](assets/instantiate_hivecontext_hello_hdp_lab4.png)
+![instantiate_hivecontext_hello_hdp_lab4](assets/instantiate_hivecontext_hello_hdp_lab4.png)
 
 ## Create a RDD from Hive Context
 
@@ -144,7 +144,7 @@ Use a simple show command to see the list of tables in Hive warehouse.
 hiveContext.sql("show tables").show()
 ~~~
 
-![Lab4_7](assets/view_list_tables_hive_hello_hdp_lab4.png)
+![view_list_tables_hive_hello_hdp_lab4](assets/view_list_tables_hive_hello_hdp_lab4.png)
 
 You will notice that the `geolocation` table and the `drivermileage` table that we created earlier in an tutorial are already listed in **Hive metastore** and can be directly queried upon.
 
@@ -157,14 +157,14 @@ We will do a simple select query to fetch data from `geolocation` and `drivermil
 val geolocation_temp1 = hiveContext.sql("select * from geolocation")
 ~~~
 
-![Lab4_8](assets/query_tables_build_spark_rdd_hello_hdp_lab4.png)
+![query_tables_build_spark_rdd_hello_hdp_lab4](assets/query_tables_build_spark_rdd_hello_hdp_lab4.png)
 
 ~~~scala
 %spark2
 val drivermileage_temp1 = hiveContext.sql("select * from drivermileage")
 ~~~
 
-![Lab4_9](assets/drivermileage_spark_rdd_hello_hdp_lab4.png)
+![drivermileage_spark_rdd_hello_hdp_lab4](assets/drivermileage_spark_rdd_hello_hdp_lab4.png)
 
 ## Querying Against a Table
 
@@ -179,7 +179,7 @@ drivermileage_temp1.createOrReplaceTempView("drivermileage_temp1")
 hiveContext.sql("show tables").show()
 ~~~
 
-![name_rdd](assets/name_rdd_hello_hdp_lab4.png)
+![name_rdd_hello_hdp_lab4](assets/name_rdd_hello_hdp_lab4.png)
 
 Next, we will perform an iteration and a filter operation. First, we need to filter drivers that have non-normal events associated with them and then count the number for non-normal events for each driver.
 
@@ -188,7 +188,7 @@ Next, we will perform an iteration and a filter operation. First, we need to fil
 val geolocation_temp2 = hiveContext.sql("SELECT driverid, count(driverid) occurance from geolocation_temp1 where event!='normal' group by driverid")
 ~~~
 
-![filter_drivers_nonnormal_events](assets/filter_drivers_nonnormal_events_hello_hdp_lab4.png)
+![filter_drivers_nonnormal_events_hello_hdp_lab4](assets/filter_drivers_nonnormal_events_hello_hdp_lab4.png)
 
 -   As stated earlier about RDD transformations, select operation is a RDD transformation and therefore does not return anything.
 
@@ -202,7 +202,7 @@ hiveContext.sql("show tables").show()
 ~~~
 
 
-![register_table](assets/register_filtered_table_hello_hdp_lab4.png)
+![register_filtered_table_hello_hdp_lab4](assets/register_filtered_table_hello_hdp_lab4.png)
 
 
 -   You can view the result by executing an action operation on the RDD.
@@ -213,7 +213,7 @@ geolocation_temp2.show(10)
 ~~~
 
 
-![Lab4_11](assets/view_results_op_on_rdd_hello_hdp_lab4.png)
+![view_results_op_on_rdd_hello_hdp_lab4](assets/view_results_op_on_rdd_hello_hdp_lab4.png)
 
 
 ### Perform join Operation
@@ -227,7 +227,7 @@ In this section we will perform a join operation geolocation_temp2 table has det
 val joined = hiveContext.sql("select a.driverid,a.occurance,b.totmiles from geolocation_temp2 a,drivermileage_temp1 b where a.driverid=b.driverid")
 ~~~
 
-![Lab4_12](assets/join_op_column_hello_hdp_lab4.png)
+![join_op_column_hello_hdp_lab4](assets/join_op_column_hello_hdp_lab4.png)
 
 -   The resulting data set will give us total miles and total non-normal events for a particular driver. Register this filtered table as a temporary table so that subsequent SQL queries can be applied to it.
 
@@ -237,7 +237,7 @@ joined.createOrReplaceTempView("joined")
 hiveContext.sql("show tables").show()
 ~~~
 
-![register_join_table](assets/register_joined_table_hello_hdp_lab4.png)
+![register_joined_table_hello_hdp_lab4](assets/register_joined_table_hello_hdp_lab4.png)
 
 -   You can view the result by executing action operation on RDD.
 
@@ -246,7 +246,7 @@ hiveContext.sql("show tables").show()
 joined.show(10)
 ~~~
 
-![Lab4_13](assets/show_results_joined_table_hello_hdp_lab4.png)
+![show_results_joined_table_hello_hdp_lab4](assets/show_results_joined_table_hello_hdp_lab4.png)
 
 ### Compute Driver Risk Factor
 
@@ -257,7 +257,7 @@ In this section we will associate a driver risk factor with every driver. Driver
 val risk_factor_spark = hiveContext.sql("select driverid, occurance, totmiles, totmiles/occurance riskfactor from joined")
 ~~~
 
-![Lab4_14](assets/calculate_riskfactor_hello_hdp_lab4.png)
+![calculate_riskfactor_hello_hdp_lab4](assets/calculate_riskfactor_hello_hdp_lab4.png)
 
 *   The resulting data set will give us total miles and total non-normal events and what is a risk for a particular driver. Register this filtered table as a temporary table so that subsequent SQL queries can be applied to it.
 
@@ -274,7 +274,7 @@ hiveContext.sql("show tables").show()
 risk_factor_spark.show(10)
 ~~~
 
-![Lab4_15](assets/view_results_filtertable_hello_hdp_lab4.png)
+![view_results_filtertable_hello_hdp_lab4](assets/view_results_filtertable_hello_hdp_lab4.png)
 
 ## Load and Save Data into Hive as ORC
 
@@ -294,7 +294,7 @@ hiveContext.sql("show tables").show()
 
 > Note: toDF() creates a DataFrame with columns driverid String, occurance bigint, etc.
 
-![create_orc_table](assets/create_orc_table_hello_hdp_lab4.png)
+![create_orc_table_hello_hdp_lab4](assets/create_orc_table_hello_hdp_lab4.png)
 
 ### Convert data into ORC table
 
@@ -305,7 +305,7 @@ Before we load the data into Hive table that we created above, we will have to c
 risk_factor_spark.write.format("orc").save("risk_factor_spark")
 ~~~
 
-![risk_factor_orc](assets/convert_orc_table_hello_hdp_lab4.png)
+![convert_orc_table_hello_hdp_lab4](assets/convert_orc_table_hello_hdp_lab4.png)
 
 ### Load the data into Hive table using load data command
 
@@ -314,7 +314,7 @@ risk_factor_spark.write.format("orc").save("risk_factor_spark")
 hiveContext.sql("load data inpath 'risk_factor_spark' into table finalresults")
 ~~~
 
-![load_data_to_finalresults](assets/load_data_to_finalresults_hello_hdp_lab4.png)
+![load_data_to_finalresults_hello_hdp_lab4](assets/load_data_to_finalresults_hello_hdp_lab4.png)
 
 ### Create the final table Riskfactor using CTAS
 

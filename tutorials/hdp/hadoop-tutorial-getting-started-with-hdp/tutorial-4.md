@@ -47,7 +47,7 @@ CREATE TABLE riskfactor (driverid string, events bigint, totmiles bigint, riskfa
 STORED AS ORC;
 ~~~
 
-![riskfactor_table](assets/riskfactor_lab3.png)
+![riskfactor_lab3](assets/riskfactor_lab3.png)
 
 ### Verify Table riskfactor was Created Successfully
 
@@ -61,7 +61,7 @@ In this phase of the tutorial, we create and run a Pig script. We will use the A
 
 To get to the Ambari Pig View, click on the Ambari Views icon at top right and select **Pig**:
 
-![Pig_View](assets/ambari_pig_view_concepts.jpg)
+![ambari_pig_view_concepts](assets/ambari_pig_view_concepts.jpg)
 
 This will bring up the Ambari Pig User View interface. Your Pig View does not have any scripts to display, so it will look like the following:
 
@@ -77,13 +77,13 @@ The following screenshot shows and describes the various components and features
 4.  Arguments needed for script execution
 5.  Execute button to run your script
 
-![Lab3_5](assets/pig_user_view_components_hello_hdp.png)
+![pig_user_view_components_hello_hdp](assets/pig_user_view_components_hello_hdp.png)
 
 ### Create a New Script
 
 Let’s enter a Pig script. Click the **New Script** button in the upper-right corner of the view:
 
-![Lab3_6](assets/new_script_hello_hdp_lab3.png)
+![new_script_hello_hdp_lab3](assets/new_script_hello_hdp_lab3.png)
 
 Name the script **riskfactor.pig**, then click the **Create** button:
 
@@ -207,7 +207,7 @@ Here is the final code and what it will look like once you paste it into the edi
 
 Add Pig argument **-useHCatalog** (Case Sensitive).
 
-![-useHCatalog Pig argument](assets/pig_script_argument.png)
+![pig_script_argument](assets/pig_script_argument.png)
 
 **Final Pig script should look like:**
 
@@ -223,7 +223,7 @@ final_data = foreach h generate $0 as driverid, $1 as events, $3 as totmiles, (f
 store final_data into 'riskfactor' using org.apache.hive.hcatalog.pig.HCatStorer();
 ~~~
 
-![Lab3_8](assets/riskfactor_computation_script_lab3.png)
+![riskfactor_computation_script_lab3](assets/riskfactor_computation_script_lab3.png)
 
 Save the file `riskfactor.pig` by clicking the **Save** button in the left-hand column.
 
@@ -254,15 +254,15 @@ The **Arguments** section of the Pig View should now look like the following:
 
 Click **Execute on Tez** checkbox and finally hit the blue **Execute** button to submit the job. Pig job will be submitted to the cluster. This will generate a new tab with a status of the running of the Pig job and at the top you will find a progress bar that shows the job status.
 
-![Lab3_11](assets/execute_pig_script_compute_riskfactor_hello_hdp_lab3.png)
+![execute_pig_script_compute_riskfactor_hello_hdp_lab3](assets/execute_pig_script_compute_riskfactor_hello_hdp_lab3.png)
 
 ### View Results Section
 
 Wait for the job to complete. The output of the job is displayed in the **Results** section. Notice your script does not output any result – it stores the result into a Hive table – so your Results section will be empty.
 
-![Lab3_12](assets/running_script_riskfactor_hello_hdp_lab3.png)
+![running_script_riskfactor_hello_hdp_lab3](assets/running_script_riskfactor_hello_hdp_lab3.png)
 
-![Lab3_13](assets/completed_riskfactor_script_hello_hdp_lab3.png)
+![completed_riskfactor_script_hello_hdp_lab3](assets/completed_riskfactor_script_hello_hdp_lab3.png)
 
 Click on the **Logs** dropdown menu to see what happened when your script ran. Errors will appear here.
 
@@ -286,7 +286,7 @@ What results do our logs show us about our Pig Script?
 
 Go back to the Ambari Hive View 2.0 and browse the data in the `riskfactor` table to verify that your Pig job successfully populated this table. Here is what is should look like:
 
-![Lab3_14](assets/pig_populated_riskfactor_table_hello_hdp_lab3.png)
+![pig_populated_riskfactor_table_hello_hdp_lab3](assets/pig_populated_riskfactor_table_hello_hdp_lab3.png)
 
 At this point we now have our truck average miles per gallon table (`avg_mileage`) and our risk factor table (`riskfactor`).
 
