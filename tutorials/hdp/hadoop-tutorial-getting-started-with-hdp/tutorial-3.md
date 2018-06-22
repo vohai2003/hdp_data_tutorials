@@ -40,11 +40,11 @@ To make it easy to interact with Hive we use a tool in the Hortonworks Sandbox c
 
 Let’s now open Ambari Hive View 2.0 and get introduced to the environment. Go to the Ambari User View icon and select Hive View 2.0:
 
-![Hive View 2](assets/selector_views_concepts.png)
+![selector_views_concepts](assets/selector_views_concepts.jpg)
 
 The Ambari Hive View looks like the following:
 
-![Lab2_2](assets/ambari_hive_user_view_concepts.jpg)
+![ambari_hive_user_view_concepts](assets/ambari_hive_user_view_concepts.jpg)
 
 Now let’s take a closer look at the SQL editing capabilities in Hive View:
 
@@ -85,7 +85,7 @@ Starting from Hive View 2.0:
 1. Select **NEW TABLE**
 2. Select **UPLOAD TABLE**
 
-![Upload Table](assets/upload_table.png)
+![upload_table](assets/upload_table.png)
 
 Complete form as follows:
 
@@ -94,13 +94,13 @@ Complete form as follows:
 -   Set **Enter HDFS Path** to `/user/maria_dev/data/trucks.csv`
 -   Click **Preview**
 
-![Upload Table HDFS](assets/upload_table_hdfs_path_lab2.png)
+![upload_table_hdfs_path_lab2](assets/upload_table_hdfs_path_lab2.png)
 
 You should see a similar screen:
 
 > Note: that the first row contains the names of the columns.
 
-![Preview](assets/click_gear_button_lab2.jpg)
+![click_gear_button_lab2](assets/click_gear_button_lab2.jpg)
 
 Click **Create** button to complete table creation.
 
@@ -135,7 +135,7 @@ Following is a visual representation of the Upload table creation process:
 
 You can review the SQL statements issued by selecting the **JOBS** tab and reviewing the four most recent jobs, which was a result of using the **Upload Table**.
 
-![job_history](assets/job_history_lab2.png)
+![job_history_lab2](assets/job_history_lab2.png)
 
 ### Verify New Tables Exist
 
@@ -144,7 +144,7 @@ To verify the tables were defined successfully:
 2. Click on the **refresh** icon in the `TABLES` explorer.
 3. Select table you want to verify. Definition of columns will be displayed.
 
-![select_data_trucks](assets/select_data_trucks_lab2.png)
+![select_data_trucks_lab2](assets/select_data_trucks_lab2.png)
 
 ### Sample Data from the trucks table
 
@@ -156,7 +156,7 @@ select * from trucks limit 10;
 
 The results should look similar to:
 
-![Query Results](assets/result_data_trucks.png)
+![result_data_trucks](assets/result_data_trucks.png)
 
 **A few additional commands to explore tables:**
 
@@ -188,7 +188,7 @@ By default, when you create a table in Hive, a directory with the same name gets
 
 Double-click on the worksheet tab to rename the label to "sample truck data".  Now save this worksheet by clicking the `Save` button.
 
-![save_truck_sample_data](assets/save_truck_sample_data_lab2.png)
+![save_truck_sample_data_lab2](assets/save_truck_sample_data_lab2.png)
 
 ### Beeline - Command Shell
 
@@ -229,13 +229,13 @@ What did you notice about performance after running hive queries from shell?
 
 Click on the Dashboard tab to start exploring the Ambari Dashboard.
 
-![ambari_dashboard](assets/ambari_dashboard_lab2.png)
+![ambari_dashboard_lab2](assets/ambari_dashboard_lab2.png)
 
 ### Become Familiar with Hive Settings
 
 Go to the **Hive page** then select the **Configs tab** then click on **Settings tab**:
 
-![ambari_dashboard_explanation](assets/ambari_dashboard_explanation_lab2.png)
+![ambari_dashboard_explanation](assets/ambari_dashboard_explanation_lab2.jpg)
 
 Once you click on the Hive page you should see a page similar to above:
 
@@ -246,7 +246,7 @@ Once you click on the Hive page you should see a page similar to above:
 
 Scroll down to the **Optimization Settings**:
 
-![hive_optimization](assets/hive_optimization_lab2.png)
+![hive_optimization_lab2](assets/hive_optimization_lab2.png)
 
 In the above screenshot we can see:
 
@@ -262,7 +262,7 @@ This shows the **HDP Ambari Smart Configurations**, which simplifies setting con
 
 By default the key configurations are displayed on the first page.  If the setting you are looking for is not on this page you can find additional settings in the **Advanced** tab:
 
-![hive_vectorization](assets/hive_vectorization_lab2.png)
+![hive_vectorization_lab2](assets/hive_vectorization_lab2.png)
 
 For example, if we wanted to **improve SQL performance**, we can use the new **Hive vectorization features**. These settings can be found and enabled by following these steps:
 
@@ -283,7 +283,7 @@ Some **key resources** to **learn more about vectorization** and some of the **k
 
 Next we will be using Hive, Pig and Zeppelin to analyze derived data from the geolocation and trucks tables.  The business objective is to better understand the risk the company is under from fatigue of drivers, over-used trucks, and the impact of various trucking events on risk.   In order to accomplish this, we will apply a series of transformations to the source data, mostly though SQL, and use Pig or Spark to calculate risk. In the last lab on Data Visualization, we will be using _Zeppelin_ to **generate a series of charts to better understand risk**.
 
-![Lab2_21](assets/Lab2_211.png)
+![Lab2_211](assets/Lab2_211.png)
 
 Let’s get started with the first transformation. We want to **calculate the miles per gallon for each truck**. We will start with our _truck data table_.  We need to _sum up all the miles and gas columns on a per truck basis_. Hive has a series of functions that can be used to reformat a table. The keyword [LATERAL VIEW](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+LateralView) is how we invoke things. The **stack function** allows us to _restructure the data into 3 columns_ labeled rdate, gas and mile (ex: 'june13', june13_miles, june13_gas) that make up a maximum of 54 rows. We pick truckid, driverid, rdate, miles, gas from our original table and add a calculated column for mpg (miles/gas).  And then we will **calculate average mileage**.
 
@@ -349,25 +349,25 @@ Let's explore the various explain features to better _understand the execution o
 
 This visual explain provides a visual summary of the query execution plan. You can see more detailed information by clicking on each plan phase.
 
-![visual_explain_dag](assets/visual_explain_dag_lab2.png)
+![visual_explain_dag_lab2](assets/visual_explain_dag_lab2.png)
 
 If you want to see the explain result in text, select `RESULTS`. You should see something like:
 
-![tez_job_result](assets/tez_job_result_lab2.png)
+![tez_job_result_lab2](assets/tez_job_result_lab2.png)
 
 ### Explore TEZ
 
 Click on **TEZ View** from Ambari Views. You can see _DAG details_ associated with the previous hive and pig jobs.
 
-![tez_view](assets/ambari_tez_view_lab2.png)
+![ambari_tez_view_lab2](assets/ambari_tez_view_lab2.jpg)
 
 Select the first `DAG ID` as it represents the last job that was executed.
 
-![all_dags](assets/tez_view_dashboard_lab2.png)
+![tez_view_dashboard_lab](assets/tez_view_dashboard_lab2.png)
 
 There are seven tabs at the top, please take a few minutes to explore the various tabs. When you are done exploring, click on the **Graphical View** tab and hover over one of the nodes with your cursor to get more details on the processing in that node.
 
-![Lab2_35](assets/tez_graphical_view_lab2.png)
+![tez_graphical_view_lab2](assets/tez_graphical_view_lab2.png)
 
 Click on the **Vertex Swimlane**. This feature helps with troubleshooting of TEZ jobs. As you will see in the image there is a graph for Map 1 and Reducer 2. These graphs are timelines for when events happened. Hover over red or blue line to view a event tooltip.
 
@@ -407,7 +407,7 @@ FROM truck_mileage
 GROUP BY truckid;
 ~~~
 
-![average_mile_table_query](assets/create_avg_mileage_table_lab2.png)
+![create_avg_mileage_table_lab2](assets/create_avg_mileage_table_lab2.png)
 
 ### View Sample Data of avg_mileage
 
@@ -419,7 +419,7 @@ SELECT * FROM avg_mileage LIMIT 100;
 
 Table `avg_mileage` provides a list of average miles per gallon for each truck.
 
-![results_avg_mileage_table](assets/load_sample_avg_mileage_lab2.png)
+![load_sample_avg_mileage_lab2](assets/load_sample_avg_mileage_lab2.png)
 
 ### Create Table DriverMileage from Existing truck_mileage data
 
@@ -434,7 +434,7 @@ FROM truck_mileage
 GROUP BY driverid;
 ~~~
 
-![create_table_driver_mileage](assets/driver_mileage_table_lab3.png)
+![driver_mileage_table_lab3](assets/driver_mileage_table_lab3.png)
 
 ### View Data of DriverMileage
 
@@ -444,7 +444,7 @@ To view the data generated by CTAS above, execute the following query:
 SELECT * FROM drivermileage LIMIT 100;
 ~~~
 
-![select_data_drivermileage](assets/select_data_drivermileage_lab2.png)
+![select_data_drivermileage_lab2](assets/select_data_drivermileage_lab2.png)
 
 ## Summary <a id="summary-lab2"></a>
 

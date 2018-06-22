@@ -7,7 +7,7 @@ persona: Developer
 source: Hortonworks
 use case: Data Discovery
 technology: Apache Ambari, Apache Hive, Apache Pig, Apache Spark, Apache Zeppelin
-release: hdp-2.6.0
+release: hdp-2.6.5
 environment: Sandbox
 product: HDP
 series: HDP > Develop with Hadoop > Hello World, HDP > Develop with Hadoop > Apache Hive

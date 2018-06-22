@@ -132,7 +132,7 @@ With the [next generation HDFS data architecture](https://hortonworks.com/blog/h
 
 Ambari Files User View
 
-![HDFS_3](assets/hdfs_files_view_base_folder_concepts.png)
+![hdfs_files_view_base_folder_concepts](assets/hdfs_files_view_base_folder_concepts.png)
 
 Ambari Files User View provides a user friendly interface to upload, store and move data. Underlying all components in Hadoop is the Hadoop Distributed File System([HDFS](https://hortonworks.com/hadoop/hdfs/)).  This is the foundation of the Hadoop cluster. The HDFS file system manages how the datasets are stored in the Hadoop cluster. It is responsible for distributing the data across the datanodes, managing replication for redundancy and administrative tasks like adding, removing and recovery of data nodes.
 
@@ -269,11 +269,11 @@ To make it easy to interact with Hive we use a tool in the Hortonworks Sandbox c
 
 Let’s now open Ambari Hive View 2.0 and get introduced to the environment. Go to the Ambari User View icon and select Hive View 2.0:
 
-![Hive View 2](assets/selector_views_concepts.png)
+![selector_views_concepts](assets/selector_views_concepts.jpg)
 
 Ambari Hive View 2.0
 
-![Hive_View_2.0](assets/ambari_hive_user_view_concepts.jpg)
+![ambari_hive_user_view_concepts](assets/ambari_hive_user_view_concepts.jpg)
 
 There are 6 tabs to interact with Hive View 2.0:
 
@@ -338,11 +338,11 @@ The user can run Pig in two modes, using either the “pig” command or the “
 
 To get to the Ambari Pig User View on Sandbox, click on the User Views icon at top right and select **Pig**:
 
-![Screen Shot 2016-02-17 at 7.12.41 PM](assets/ambari_pig_view_concepts.png)
+![ambari_pig_view_concepts](assets/ambari_pig_view_concepts.jpg)
 
 This will bring up the Ambari Pig User View interface. Your Pig View does not have any scripts to display, so it will look like the following:
 
-![Pig_2](assets/pig_view_scripts_list_empty_concepts.png)
+![pig_view_scripts_list_empty_concepts](assets/pig_view_scripts_list_empty_concepts.png)
 
 The following screenshot shows and describes the various components and features of the Pig User View:
 
@@ -356,7 +356,7 @@ The following screenshot shows and describes the various components and features
 
 5\. Execute the Pig script
 
-![Pig_3](assets/pig_view_workspace_interface_concepts.png)
+![pig_view_workspace_interface_concepts](assets/pig_view_workspace_interface_concepts.png)
 
 ## Further Reading
 

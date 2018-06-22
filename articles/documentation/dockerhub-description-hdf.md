@@ -1,10 +1,10 @@
-## Hortonworks Sandbox HDF on Docker
+## Hortonworks HDF Sandbox on Docker
 
-The Hortonworks Sandbox is a straightforward, pre-configured, learning environment that contains the latest developments from Apache Hadoop, specifically the Hortonworks Data Flow (HDF). The Sandbox comes packaged in a virtual environment that can run in the cloud or on your personal machine. The Hortonworks Sandbox allows you to learn and explore HDF on your own.
+The Hortonworks HDF Sandbox is a straightforward, pre-configured, learning environment that contains the latest developments from Apache Hadoop, specifically the Hortonworks DataFlow (HDF). It allows you to learn and explore HDF on your own.
 
-## Running Hortonworks Sandbox HDF
+## Running Hortonworks HDF Sandbox
 
-1\. Download latest [Hortonworks Data Flow (HDF) for Docker](https://hortonworks.com/downloads/#sandbox).
+1\. Download latest [Hortonworks DataFlow (HDF) for Docker](https://hortonworks.com/downloads/#sandbox).
 
 2\. Follow [Sandbox Deployment and Install Guide](https://hortonworks.com/tutorial/sandbox-deployment-and-install-guide/section/3/) tutorials.
 
