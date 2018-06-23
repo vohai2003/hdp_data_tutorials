@@ -4,8 +4,6 @@ title: Visualize Weather Data with Zeppelin's Phoenix Interpreter
 
 # Visualize Weather Data with Zeppelin's Phoenix Interpreter
 
-# TUTORIAL IS UNDER CONSTRUCTION AND SOON BE UPDATED
-
 ## Introduction
 
 You'll use Phoenix to perform SQL queries against the HBase table by mapping a phoenix table to HBase table. You'll visualize your results by running Phoenix in Zeppelin via the Phoenix Interpreter. You'll monitor temperature, humidity and barometric pressure readings via Line Graphs, Bar Graphs, Pie Charts and Map Visualization.
@@ -38,7 +36,7 @@ CREATE TABLE IF NOT EXISTS "sense_hat_logs" ("row" VARCHAR primary key,"weather"
 "weather"."Pressure_In" VARCHAR,"weather"."Humidity" VARCHAR)
 ~~~
 
-![create_table_phoenix](assets/tutorial5/create_table_phoenix.png)
+![create_table_phoenix](assets/tutorial5/create_table_phoenix.jpg)
 
 Run quick test to verify Phoenix table successfully mapped to HBase table.
 
@@ -49,7 +47,7 @@ Display the first 10 rows of the Phoenix table using Zeppelin's **Table Visualiz
 select * from "sense_hat_logs" limit 10
 ~~~
 
-![load_data_table_view](assets/tutorial5/load_data_table_view.png)
+![load_data_table_view](assets/tutorial5/load_data_table_view.jpg)
 
 **Figure 1:** Zeppelin's Table Visualization
 
@@ -62,7 +60,7 @@ select "row" AS DATE_TIME,
 from "sense_hat_logs"
 ~~~
 
-![temp_over_time](assets/tutorial5/temp_over_time.png)
+![temp_over_time](assets/tutorial5/temp_over_time.jpg)
 
 **Figure 2:** Temperature Line Chart Visualization
 
@@ -88,7 +86,7 @@ select "row" AS DATE_TIME,
 from "sense_hat_logs"
 ~~~
 
-![humidity_over_time](assets/tutorial5/humidity_over_time.png)
+![humidity_over_time](assets/tutorial5/humidity_over_time.jpg)
 
 **Figure 2:** Humidity Line Chart Visualization
 
@@ -110,7 +108,7 @@ select "row" AS DATE_TIME,
 from "sense_hat_logs"
 ~~~
 
-![pressure_over_time](assets/tutorial5/pressure_over_time.png)
+![pressure_over_time](assets/tutorial5/pressure_over_time.jpg)
 
 The chart above shows the barometric pressure stayed stable at around 29.98 and
 29.97 over 10:42 PM on July 9, 2017 to 12:22 AM July 10, 2017.
