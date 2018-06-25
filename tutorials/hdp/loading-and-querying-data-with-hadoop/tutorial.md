@@ -60,26 +60,26 @@ users.tsv
 
 Select the HDFS `Files View` from the Views menu on the navigation bar. The Files View allows you to view the Hortonworks Data Platform (HDP) file store.  The HDFS file system is separate from the local file system.
 
-![Navigate to the Files View](assets/files-view-navigate.jpg)
+![files-view-navigate](assets/files-view-navigate.jpg)
 
 Navigate to `/tmp` by clicking on the "**tmp**" folder.  Select "**New Folder**" and name it `maria_dev`.
 
-![Create a new folder](assets/files-view-create-folder.jpg)
+![files-view-create-folder](assets/files-view-create-folder.jpg)
 
 Navigate to `/tmp/maria_dev` by clicking on the "**maria_dev**" folder.  Then click on the "**Upload**" button at the top right of the screen.  Upload all three files you extracted in the previous step: `omniture-logs.tsv`, `products.tsv` and `users.tsv`.
 
-![Upload a file using File View](assets/files-view-upload.jpg)
+![files-view-upload](assets/files-view-upload.jpg)
 
 
 ## Create Hive Tables
 
 Let's create some Hive tables for our data.  Open the "Hive View 2.0" from the Views menu on the navigation bar.
 
-![Navigate to the Hive View 2.0](assets/hive-view-navigate.jpg)
+![hive-view-navigate](assets/hive-view-navigate.jpg)
 
 Once there, create three tables by copy/pasting the queries below into the query editor and clicking "**Execute**".
 
-![Create Hive Tables](assets/hive-view-create-table.jpg)
+![hive-view-create-table](assets/hive-view-create-table.jpg)
 
 3.2) Create the tables users, products and omniturelogs.
 
@@ -120,7 +120,7 @@ LOAD DATA INPATH '/tmp/maria_dev/omniture-logs.tsv' OVERWRITE INTO TABLE omnitur
 
 You can verify that the data was loaded properly by browsing information about the different Hive tables in the "**TABLES**" tab.
 
-![Verify Hive Tables](assets/hive-view-verify-table.jpg)
+![hive-view-verify-table](assets/hive-view-verify-table.jpg)
 
 
 ##  Save and Execute a Query
@@ -133,11 +133,11 @@ SELECT col_2 ts, col_8 ip, col_13 url, col_14 swid, col_50 city, col_51 country,
 FROM omniturelogs
 ```
 
-![Save a Hive Query](assets/hive-view-save-query.jpg)
+![hive-view-save-query](assets/hive-view-save-query.jpg)
 
 To view your saved queries, navigate to the "**SAVED QUERIES**".  For now, let's open our saved query.
 
-![View a Saved Hive Query](assets/hive-view-view-saved-query.jpg)
+![hive-view-view-saved-query](assets/hive-view-view-saved-query.jpg)
 
 The "QUERY" tab should automatically open up, with your saved query preloaded.  Click "**Execute**" to run this query, which will create a Hive view named "omniture", a refined subset of data with only a handful of fields.
 
