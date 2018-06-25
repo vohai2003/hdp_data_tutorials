@@ -68,7 +68,7 @@ NiFi is a robust and secure framework for ingesting data from various sources, p
 
 ![nifi-minifi-place-iot](assets/tutorial1/nifi-minifi-place-in-iot.png)
 
-**Figure 5:** MiNiFi to NiFi
+**Figure 3:** MiNiFi to NiFi
 
 ### Apache Zookeeper
 
@@ -104,7 +104,7 @@ We have talked about each component within the project individually, now let's d
 
 ![cda-minifi-hdf-hdp-architecture](assets/tutorial1/cda-minifi-hdf-hdp-architecture.png)
 
-**Figure 6:** IoT Weather Station and Connected Data Architecture Integration
+**Figure 4:** IoT Weather Station and Connected Data Architecture Integration
 
 **IoT Weather Station at the Raspberry Pi + Sense HAT + MiNiFi**
 

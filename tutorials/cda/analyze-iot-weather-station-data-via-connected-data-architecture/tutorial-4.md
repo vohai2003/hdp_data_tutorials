@@ -63,15 +63,21 @@ step-by-step each component within the NiFi flow to see how the flow was built.
 
 ![remove_queue_ingestrawdata](assets/tutorial4/remove_queue_ingestrawdata.png)
 
+**Figure 1:** Removing Queue and then Input Port
+
 6\. Remove `Copy of From_MiNiFi` input port by right clicking on it, select **Delete**.
 
 7\. Connect `From_MiNiFi` input port to `PreProcessDataForHBaseAndHadoop` Process Group. When the **Create Connection** window appears, select **ADD**.
 
 ![connect_inputport_to_new_flow](assets/tutorial4/connect_inputport_to_new_flow.png)
 
+**Figure 2:** Connected From_MiNiFi input port to Process Group
+
 8\. Enter into `PreProcessDataForHBaseAndHadoop` Process Group by double clicking on it.
 
 ![PreProcessDataForHBaseAndHadoop_dataflow](assets/tutorial4/PreProcessDataForHBaseAndHadoop_dataflow.png)
+
+**Figure 3:** Examining the processors inside the Process Group
 
 9\. We will need to re-configure the GeoEnrichIP processor. It currently has the **wrong folder path** to the GeoLite Database File.
 
@@ -79,29 +85,41 @@ Get the full pathname to GeoLite DB acquired in **Deploy IoT Weather Station via
 
 ![updated_configuration_geoenrichip](assets/tutorial4/updated_configuration_geoenrichip.jpg)
 
+**Figure 4:** Specified full path to GeoLit2-City.mmdb
+
 Updated Configuration with Correct Folder Path
 
 Click on the NiFi Flow breadcrumb in the bottom left corner to go back to the root level.
 
 ![go_back_nifi_flow_level](assets/tutorial4/go_back_nifi_flow_level.jpg)
 
+**Figure 5:** NiFi flow breadcrumb
+
 10\. Configure HBase Client Service for **PutHBaseJSON**. Right click on **PutHBaseJSON**, select **Configure**. Head to the **Properties** tab. Click on the **arrow**
 to go to the current HBase Client Service configuration, you will enable it.
 
 ![go_to_hbaseclientservice](assets/tutorial4/go_to_hbaseclientservice.png)
 
+**Figure 6:** Heading to HBase Client Service from PutHBaseJSON
+
 11\. Enable the HBase Client Service, click on the lighting bolt symbol.
 
 ![enable_hbaseclientservice](assets/tutorial4/enable_hbaseclientservice.png)
+
+**Figure 7:** Enabling HBase Client Service
 
 12\. An **Enable Controller Service** window appears, click on the **ENABLE**
 button.
 
 ![press_enable_button](assets/tutorial4/press_enable_button.png)
 
+**Figure 8:** Window to Enable HBase Client Service
+
 Once the HBase Client Service is enabled as in the image below:
 
 ![enabled_hbaseclientservice](assets/tutorial4/enabled_hbaseclientservice.png)
+
+**Figure 9:** HBase Client Service Enabled
 
 Click on the **X** button in the top right corner. We will walkthrough the GeoEnriched NiFi flow, then start the portion that just connected to the input port.
 
@@ -208,6 +226,8 @@ Here is the NiFi Expressions used to establish the conditions for each FlowFile 
 
 ![nifi-flow-running](assets/tutorial4/nifi-flow-running.png)
 
+**Figure 10:** Started NiFi flow
+
 ### Step 3: Verify HBase Table Populated
 
 1\. Navigate back to HDP Web Shell Client at `sandbox-hdp.hortonworks.com:4200`
@@ -229,6 +249,8 @@ scan 'sense_hat_logs'
 3\. The table should be filled with Weather Data:
 
 ![sense_hat_logs_populated](assets/tutorial4/sense_hat_logs_populated.jpg)
+
+**Figure 11:** HBase Table Populated
 
 ### Summary
 

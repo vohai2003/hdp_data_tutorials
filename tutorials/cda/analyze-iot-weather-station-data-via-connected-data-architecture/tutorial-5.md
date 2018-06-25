@@ -38,6 +38,8 @@ CREATE TABLE IF NOT EXISTS "sense_hat_logs" ("row" VARCHAR primary key,"weather"
 
 ![create_table_phoenix](assets/tutorial5/create_table_phoenix.jpg)
 
+**Figure 1:** Created Phoenix Table
+
 Run quick test to verify Phoenix table successfully mapped to HBase table.
 
 Display the first 10 rows of the Phoenix table using Zeppelin's **Table Visualization**.
@@ -49,7 +51,7 @@ select * from "sense_hat_logs" limit 10
 
 ![load_data_table_view](assets/tutorial5/load_data_table_view.jpg)
 
-**Figure 1:** Zeppelin's Table Visualization
+**Figure 2:** Zeppelin's Table Visualization
 
 ### Step 3: Monitor Temperature Over Time
 
@@ -62,7 +64,7 @@ from "sense_hat_logs"
 
 ![temp_over_time](assets/tutorial5/temp_over_time.jpg)
 
-**Figure 2:** Temperature Line Chart Visualization
+**Figure 3:** Temperature Line Chart Visualization
 
 The graph reveals the temperature was its highest at 100.72
 (July 9, 2017 at 11:51 PM) and lowest at 94.71 (July 9, 2017 at 11:34 PM).
@@ -88,7 +90,7 @@ from "sense_hat_logs"
 
 ![humidity_over_time](assets/tutorial5/humidity_over_time.jpg)
 
-**Figure 2:** Humidity Line Chart Visualization
+**Figure 4:** Humidity Line Chart Visualization
 
 The chart above reveals the Relative Humidity Percentage was at its highest
 around 40.8% (July 9, 2017 at 11:00 PM) while its lowest was 33.75%
@@ -109,6 +111,8 @@ from "sense_hat_logs"
 ~~~
 
 ![pressure_over_time](assets/tutorial5/pressure_over_time.jpg)
+
+**Figure 5:** Pressure Line Chart Visualization
 
 The chart above shows the barometric pressure stayed stable at around 29.98 and
 29.97 over 10:42 PM on July 9, 2017 to 12:22 AM July 10, 2017.

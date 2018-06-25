@@ -62,6 +62,8 @@ By the end of this tutorial series, you will acquire the fundamental knowledge t
 
 In this tutorial, we work with barometric pressure, temperature and humidity sensor data gathered from a Raspberry Pi using Apache MiNiFi. We transport the MiNiFi data to NiFi using Site-To-Site, then we upload the data with NiFi into HBase to perform data analytics.
 
+<!--
+
 This tutorial consists of two tracks, one track in which users have the IoT Weather Station Hardware Kit and the other in which users do not have the kit, so they use simulated data:
 
 | IoT Weather Station Hardware Kit | Track Path |
@@ -69,7 +71,10 @@ This tutorial consists of two tracks, one track in which users have the IoT Weat
 | Yes I have it     | Follow Track 1  |
 | No I don't     | Follow Track 2  |
 
+
 ### Track 1: Tutorial Using IoT Weather Station Hardware
+
+-->
 
 **IoT and Connected Data Architecture Concepts** - Familiarize yourself with Raspberry Pi, Sense HAT Sensor Functionality, HDF and HDP Docker Sandbox Container Communication, NiFi, MiNiFi, Zookeeper, HBase, Phoenix and Zeppelin.
 
@@ -81,8 +86,12 @@ This tutorial consists of two tracks, one track in which users have the IoT Weat
 
 **Visualize Weather Data with Zeppelin's Phoenix Interpreter** - Monitor the weather data with Phoenix and create visualizations of those readings using Zeppelin's Phoenix Interpreter.
 
+<!--
+
 ### Track 2: Tutorial using Simulated Data
 
 **Visualize IoT Weather Data from Multiple Stations** - Deploy multiple Docker MiNiFi containers in your Guest VM Docker Network, which pull their own data seeds, simulating the sensor data that would be pulled in from the Sense HAT and route the data from those edge node containers to the remote HDF container where NiFi is running. You will import a NiFi flow, this template has multiple input ports it listens in on incoming data coming from the MiNiFi Weather Station agents and then preprocesses the data, adding geographic location insights, converting the data to JSON and storing it into HBase. You will create a Phoenix table in Zeppelin and visualize the data.
+
+-->
 
 The tutorial series is broken into multiple tutorials that provide step by step instructions, so that you can complete the learning objectives and tasks associated with it. You are also provided with a dataflow template for each tutorial that you can use for verification. Each tutorial builds on the previous tutorial.

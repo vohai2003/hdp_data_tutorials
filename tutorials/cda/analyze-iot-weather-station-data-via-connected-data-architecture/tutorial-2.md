@@ -110,10 +110,14 @@ sudo apt-get update && sudo apt-get install oracle-java8-jdk
 
 ![download_links_minifi](assets/tutorial2/download_links_minifi.jpg)
 
+**Figure 8:** Downloading MiNiFi
+
 3\. Use Pi Finder's **Upload** button to transport MiNiFi application onto your
 Raspberry Pi. Select `minifi-[latest-version]-bin.zip` and click **Open**.
 
 ![upload_minifi_to_rpi](assets/tutorial2/upload_minifi_to_rpi.jpg)
+
+**Figure 9:** Uploading MiNiFi to Raspberry Pi
 
 4\. Use the Pi Finder's **Terminal** button to enter the Raspberry Pi and then Unzip the MiNiFi project.
 
@@ -137,6 +141,8 @@ using your favorite decompression software:
 
 ![decompress_minifi_toolkit](assets/tutorial2/decompress_minifi_toolkit.jpg)
 
+**Figure 10:** Extracting MiNiFi Toolkit
+
 Now MiNiFi Toolkit is available for use in the next tutorial.
 
 ### 1.7: Calibrate Raspberry Pi Timezone
@@ -153,7 +159,7 @@ SSH into the Raspberry Pi using Adafruit's Pi Finder **Terminal** button.
 
 ![raspi_config_menu](assets/tutorial2/raspi_config_menu.png)
 
-**Figure 8:** raspi-config main menu
+**Figure 11:** raspi-config main menu
 
 2\. Select `4. Internationalisation Options`. Press "Enter" on keyboard.
 
@@ -161,7 +167,7 @@ SSH into the Raspberry Pi using Adafruit's Pi Finder **Terminal** button.
 
 ![change_timezone](assets/tutorial2/change_timezone.png)
 
-**Figure 9:** Internationalisation Options Menu
+**Figure 12:** Internationalisation Options Menu
 
 4\. Select your appropriate `Geographic area`.
 
@@ -169,7 +175,7 @@ SSH into the Raspberry Pi using Adafruit's Pi Finder **Terminal** button.
 
 ![geographic_area](assets/tutorial2/geographic_area.png)
 
-**Figure 10:** Geographic area Selection Items
+**Figure 13:** Geographic area Selection Items
 
 5\. Select your appropriate `Time zone`.
 
@@ -177,13 +183,13 @@ SSH into the Raspberry Pi using Adafruit's Pi Finder **Terminal** button.
 
 ![time_zone](assets/tutorial2/time_zone.png)
 
-**Figure 11:** Time Zone Selection Items
+**Figure 14:** Time Zone Selection Items
 
 6\. You are brought back to the menu. Select `<Finish>`. Your new calibrated time should display:
 
 ![output_calibrated_time](assets/tutorial2/output_calibrated_time.png)
 
-**Figure 12:** Time Zone Calibrated
+**Figure 15:** Time Zone Calibrated
 
 ### Step 2: Configure Bridged Adapter Network for VirtualBox
 
@@ -201,9 +207,13 @@ You can keep the default setting for the Name of the Bridged Network.
 
 ![set_vm_bridged_network](assets/tutorial2/set_vm_bridged_network.jpg)
 
+**Figure 16:** Setting VirtualBox Guest VM to Bridged Adapter
+
 > Note: Verify your System RAM (Base Memory) is at least 12288 MB (12GB)
 
 ![verify_vm_ram_12gb](assets/tutorial2/verify_vm_ram_12gb.jpg)
+
+**Figure 17:** Verifying RAM allocation is 12GB
 
 ### Step 3: Configure NiFi via HDF's Ambari
 
@@ -223,13 +233,15 @@ Head to `Advanced NiFi-Properties` in Ambari Config Settings for NiFi. Update th
 
 ![advanced_nifi_properties](assets/tutorial2/nifi_properties_sitetosite.jpg)
 
-**Figure 13:** Update NiFi Config for Site-to-Site
+**Figure 18:** Update NiFi Config for Site-to-Site
 
 4\. Insert your `<guest vm ip address>` in **nifi.remote.input.host**. The image above shows "10.11.7.17", which was the IP address assigned by the router in an office network, for a home network, we can see in the image below that the IP address was changed to "192.168.2.10".
 
 > Note: `<guest vm ip address>` for linux can be found with the terminal command: `hostname -I`. Yet, when you open the sandbox, we present a welcome screen to you that displays the IP address of your guest vm from bridged adapter network. Since we are using VirtualBox, there is a typo "For VMware:", which actually shows the guest vm ip address we want from our VirtualBox VM. VMware Guest VM welcome screen will have the IP address for the VMware Guest VM.
 
 ![sandbox_vm_welcome](assets/tutorial2/sandbox_vm_welcome.jpg)
+
+**Figure 19:** Get Guest VM IP Address from Sandbox Welcome Screen
 
 5\. Verify **nifi.remote.input.http.enabled** checked
 
@@ -253,7 +265,7 @@ Add the GeoLite2 to HDF Sandbox CentOS, which is a database filled with Public I
 
 ![hdf_web_shell](assets/tutorial2/hdf_web_shell.jpg)
 
-**Figure 14:** HDF Web Shell
+**Figure 20:** HDF Web Shell
 
 > Note: You will be prompted to change the password if this is your first time logging into the Sandbox.
 
@@ -282,6 +294,8 @@ pwd
 ~~~
 
 ![geolite_dbfile_path](assets/tutorial2/geolite_dbfile_path.jpg)
+
+**Figure 21:** Path to Geolite DB Lookup Table "GeoLite2-City.mmdb"
 
 Note down the folder name that GeoLite2-City.mmdb is located in on your system. According to the image above, the full pathname is: `/sandbox/tutorial-files/820/nifi/input/GeoFile/GeoLite2-City_20180605/GeoLite2-City.mmdb`
 
@@ -314,13 +328,13 @@ Recommended Hardware:
 
 ![microsd_microsd_adapter](assets/tutorial2/microsd_microsd_adapter.png)
 
-**Figure 15:** MicroSD on left and microSD Card Adapter on right
+**Figure 22:** MicroSD on left and microSD Card Adapter on right
 
 2\. Insert the microSD Adapter into the computer.
 
 ![insert_microsdAdater_laptop](assets/tutorial2/insert_microsdAdater_laptop.png)
 
-**Figure 16:** microSD Adapter Inserted into Computer
+**Figure 23:** microSD Adapter Inserted into Computer
 
 ### Download Raspbian OS Image
 
@@ -338,11 +352,11 @@ You will create a Raspbian bootable OS on microSD card using etcher.io graphic i
 
 ![etcher_dashboard](assets/tutorial2/etcher_dashboard.png)
 
-**Figure 17:** Etcher Dashboard to Create a Bootable OS on microSD
+**Figure 24:** Etcher Dashboard to Create a Bootable OS on microSD
 
 ![etcher_created_bootable_os](assets/tutorial2/etcher_created_bootable_os.png)
 
-**Figure 18:** Flash Complete, Bootable OS Now Created
+**Figure 25:** Flash Complete, Bootable OS Now Created
 
 Once the operation completes, Etcher automatically unmounts the SD card and is safe to eject.
 
@@ -360,7 +374,7 @@ df
 
 ![disk_utility_sd_unmount](assets/tutorial2/disk_utility_sd_unmount.png)
 
-**Figure 19:** MAC Disk Utility to Unmount Device for Writing to it
+**Figure 26:** MAC Disk Utility to Unmount Device for Writing to it
 
 4\. Head to terminal, in the Downloads folder where the Raspbian OS is located, run the DD command to write a bootable Raspbian OS onto micro SD card:
 
@@ -374,7 +388,7 @@ The DD operation will take 1 to 5 minutes until completion.
 
 ![dd_opearation_completion_result](assets/tutorial2/dd_opearation_completion_result.png)
 
-**Figure 20:** Progress of Creating Bootable OS on microSD
+**Figure 27:** Progress of Creating Bootable OS on microSD
 
 After the dd operation completes, you should see the Raspbian bootable OS successfully transferred over to the SD card.
 
@@ -391,7 +405,7 @@ bcm2708-rpi-b-plus.dtb  bcm2710-rpi-cm3.dtb   fixup_cd.dat  kernel7.img   start_
 bcm2708-rpi-b.dtb       bootcode.bin          fixup_db.dat  overlays      start_x.elf
 ~~~
 
-**Figure 21:** Create SSH file to Enable SSH Access to Raspberry Pi
+**Figure 28:** Create SSH file to Enable SSH Access to Raspberry Pi
 
 > Note: the path to the SD card is `/Volumes/boot`. `touch ssh` creates a new file. `ls -ltr` verifies new file was created.
 
@@ -399,13 +413,13 @@ bcm2708-rpi-b.dtb       bootcode.bin          fixup_db.dat  overlays      start_
 
 ![microsd_inserted_to_rpi](assets/tutorial2/microsd_inserted_to_rpi.png)
 
-**Figure 22:** MicroSD Inserted into Raspberry Pi
+**Figure 29:** MicroSD Inserted into Raspberry Pi
 
 7\. Connect ethernet cable to the Raspberry Pi to give it internet access, connect the 5V for power and the Pi should start up.
 
 ![power-ethernet_rpi](assets/tutorial2/power-ethernet_rpi.png)
 
-**Figure 23:** Raspberry Pi Ethernet Cable Connected for Internet Access
+**Figure 30:** Raspberry Pi Ethernet Cable Connected for Internet Access
 
 The Pi's default login credentials:
 
