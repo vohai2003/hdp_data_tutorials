@@ -297,7 +297,7 @@ To see the job executions visually, you can open the **Tez View** in Ambari View
 
 Tez View will take you to DAG Details, which includes all your DAG projects.
 
-![tez_view_home_page](assets/tez_view_home_page.png)
+![tez_view_home_page](assets/tez_view_home_page.jpg)
 
 Click on `DAG ID`
 
