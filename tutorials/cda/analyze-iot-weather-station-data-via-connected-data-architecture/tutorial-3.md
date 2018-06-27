@@ -1,16 +1,14 @@
 ---
-title: Collect Sense HAT Weather Data on CDA
+title: Collect Sense HAT Weather Data via CDA
 ---
 
 # Collect Sense HAT Weather Data via CDA
 
-# TUTORIAL IS UNDER CONSTRUCTION AND SOON BE UPDATED
-
 ## Introduction
 
-You'll learn to create a python program collect sensor readings from the R-Pi Sense HAT for
+You'll learn to create a python program collect sensor readings from the Raspberry Pi Sense HAT for
 temperature, humidity and barometric pressure. You'll also run MiNiFi
-on top of the R-Pi to ingest the weather readings and route it to the location of
+on top of the Rasbperry Pi to ingest the weather readings and route it to the location of
 NiFi on HDF sandbox via Site-to-Site protocol. You'll also verify NiFi can
 make contact with HDP by storing the data into Hadoop Distributed File System (HDFS).
 
@@ -26,8 +24,6 @@ make contact with HDP by storing the data into Hadoop Distributed File System (H
 - [Summary](#summary-3)
 - [Further Reading](#further-reading-3)
 - [Appendix A: Troubleshoot MiNiFi to NiFi Site-to-Site](#troubleshoot-minifi-to-nifi-site-to-site-3)
-- [A.1: Check MiNiFi Logs](#check-minifi-logs-3)
-- [A.2: Troubleshoot HDF Input Ports via OS X Firewall](#troubleshoot-hdf-input-ports-3)
 
 ### Step 1: Create a Python Script to Record Sense HAT Weather Data
 
@@ -40,6 +36,21 @@ download the Python script onto the Raspberry Pi.
 
 We will explain sections of the code and their significance to the
 project in 1.1 - 1.6. In 1.7, the full code for the WeatherStation is provided.
+
+Open the HDF Sandbox Web Shell:
+
+~~~
+sandbox-hdf.hortonworks.com:4200
+~~~
+
+Create a new file "WeatherStation.py"
+
+~~~bash
+touch WeatherStation.py
+vi WeatherStation.py
+~~~
+
+Now you are ready to start adding code to your text file.
 
 ### 1.1: Gather Serial Number of Raspberry Pi
 
@@ -61,12 +72,14 @@ def get_serial():
   try:
     f = open('/proc/cpuinfo','r')
     for line in f:
+      # Check line characters 0 to 6 match Serial
       if line[0:6]=='Serial':
+        # then assign cpuserial with line characters 10 to 26
         cpuserial = line[10:26]
+      # loop to next line in cpuinfo file object f
     f.close()
   except:
     cpuserial = "ERROR000000000"
-
   return cpuserial
 ~~~
 
@@ -84,7 +97,7 @@ timestamp = get_time()
 ~~~
 
 The code above calls the **get_time()** function and stores the current date
-time into the into variable **timestamp**.
+time into the variable **timestamp**.
 
 ~~~python
 # Get Current Time Preferred by OS
@@ -118,8 +131,8 @@ pressure_mb = round(pressure_mb, 2)
 The Sense HAT Temperature Sensor readings is off from actual temperature due to
 the Raspberry Pi's CPU emitting heat around the Sense HAT. The Raspberry Pi's
 CPU temperature emits 55.8 Celsius (132.44 Fahrenheit). Thus, for us to be
-able to gather useful data from the temperature sensor, we must calibrate the
-sensor.
+able to gather useful data from the temperature sensor, we must try to calibrate
+the sensor.
 
 ~~~python
 # Get Raspberry Pi CPU Core Temperature
@@ -185,9 +198,9 @@ Sense HAT is off by compared to actual temperature.
 
 ### 1.5: Gather Public IP Address of Raspberry Pi
 
-The Public IP address will be used to acquire meaningful geographic insights
-to complement the weather data. So, we will be able to determine the city and
-state in which weather readings were recorded.
+The Public IP address of the Raspberry Pi can be used to determine geographic
+insights, such as the city and state in which that node is logging weather data.
+
 The code extracts the Public IP address via rest call to IPIFY and then parses
 the JSON for `ip` value.
 
@@ -197,7 +210,7 @@ public_ip = get_public_ip()
 ~~~
 
 The code above calls the **get_public_ip()** function and stores the Raspberry
-Pi's Public IP address into **public_ip** variable.
+Pi's Public IP address into **ip** variable.
 
 ~~~python
 # Get Raspberry Pi Public IP via IPIFY Rest Call
@@ -260,16 +273,19 @@ def get_serial():
   try:
     f = open('/proc/cpuinfo','r')
     for line in f:
+      # Check line characters 0 to 6 match Serial
       if line[0:6]=='Serial':
+        # then assign cpuserial with line characters 10 to 26
         cpuserial = line[10:26]
+      # loop to next line in cpuinfo file object f
     f.close()
   except:
     cpuserial = "ERROR000000000"
-
   return cpuserial
 
 # Get Current Time Preferred by OS
 def get_time():
+  # Assign datetime in format year-month-day-T-hours-min-sec
   current_time = datetime.datetime.now().strftime("%Y-%m-%dT%H:%M:%SZ")
   return current_time
 
@@ -375,13 +391,17 @@ We provide a download link to the WeatherStation.py.
 
 In this section, you will build a NiFi flow on HDF Sandbox node to transport data ingested from MiNiFi node to HDFS on HDP Sandbox node.
 
-1\. Navigate to NiFi UI at `sandbox-cda.hortonworks.com:9090/nifi/`
+1\. Navigate to NiFi UI at `sandbox-hdf.hortonworks.com:9090/nifi/`
 
 ![nifi_ui](assets/tutorial3/nifi_ui.png)
+
+**Figure 1:** NiFi UI Canvas
 
 2\. In NiFi, add an Input Port ![input port](assets/tutorial3/input_port.png) onto the canvas and name it `From_MiNiFi`.
 
 ![From_MiNiFi_input_port](assets/tutorial3/From_MiNiFi_input_port.png)
+
+**Figure 2:** Input Port "From_MiNiFi" NiFi listens on for incoming data
 
 3\. Add a **PutHDFS** processor ![processor](assets/tutorial3/processor.png) onto the canvas. Right click on the **PutHDFS** processor to configure its properties by adding the properties specified in **Table 1**:
 
@@ -390,19 +410,25 @@ In this section, you will build a NiFi flow on HDF Sandbox node to transport dat
 | Property | Value    |
 | :------------- | :------------- |
 | Hadoop Configuration Files     | `/etc/hadoop/conf/core-site.xml`  |
-| Directory     | `/sandbox/tutorial-id/820/nifi/output/raw-data`  |
+| Directory     | `/sandbox/tutorial-files/820/nifi/output/raw-data`  |
 
-![puthdfs_hadoop_config](assets/tutorial3/puthdfs_hadoop_config.png)
+![puthdfs_hadoop_config](assets/tutorial3/puthdfs_hadoop_config.jpg)
+
+**Figure 3:** PutHDFS Properties Tab
 
 In the **Settings** tab, under Automatically Terminate Relationships, check the **failure** and **success** boxes. This relationship will delete flow files whether or not they have been successfully written to HDFS to clean up extra data once it reaches the end of the flow.
 
  ![config_settings_puthdfs](assets/tutorial3/config_settings_puthdfs.png)
 
+**Figure 4:** PutHDFS Settings Tab
+
 Then click **Apply** to set the change.
 
 4\. Hover over the input port **From_MiNiFi**, an arrow will appear, click on the port and drag to make the connection to **PutHDFS**. A red dotted line will appear and once the mouse is hovering over the PutHDFS processor it will turn green, release the mouse to establish the connection. Then click **ADD**.
 
-![input_port_to_puthdfs](assets/tutorial3/input_port_to_puthdfs.png)
+![input_port_to_puthdfs](assets/tutorial3/input_port_to_puthdfs.jpg)
+
+**Figure 5:** From_MiNiFi connection to PutHDFS transfers data from edge to HDF to HDP
 
 Now you will build the MiNiFi flow in NiFi.
 
@@ -417,13 +443,17 @@ data from the Sense HAT sensor running on the Raspberry Pi.
 
 1\. Drag the Process Group icon ![process_group_icon](assets/tutorial3/process_group_icon.png) onto the NiFi canvas and name the Process Group: `MiNiFi_WeatherStation`. Click **ADD**.
 
-![MiNiFi_WeatherStation](assets/tutorial3/MiNiFi_WeatherStation.png)
+![MiNiFi_WeatherStation](assets/tutorial3/MiNiFi_WeatherStation.jpg)
+
+**Figure 6:** Process Group for MiNiFi dataflow
 
 2\. Double click to enter this new Process Group. Add the **ExecuteProcess** processor onto the NiFi canvas.
 
-![executeprocess](assets/tutorial3/executeprocess.png)
+![executeprocess](assets/tutorial3/executeprocess.jpg)
 
-- ExecuteProcess: Executes the WeatherStation.py Python Script to bring the raw sensor data into MiNiFi every 5 seconds.
+**Figure 7:** ExecuteProcess processor runs linux commands
+
+- **ExecuteProcess**: Executes the WeatherStation.py Python Script to bring the raw sensor data into MiNiFi every 5 seconds.
 
 3\. Configure the properties in ExecuteProcess's Property Tab by adding the properties listed in **Table 2**:
 
@@ -437,9 +467,13 @@ data from the Sense HAT sensor running on the Raspberry Pi.
 
 ![executeprocess_property](assets/tutorial3/executeprocess_property.png)
 
+**Figure 8:** ExecuteProcess Properties Tab
+
 Under the Schedule tab, set **Run Schedule** to `1 sec`, so the task runs for that specific time.
 
 ![executeprocess_schedule](assets/tutorial3/executeprocess_schedule.png)
+
+**Figure 9:** ExecuteProcess Schedule Tab
 
 Under the Settings tab, check **Success** box.
 
@@ -463,11 +497,15 @@ Click **Apply**.
 
 ![remote_process_group_nifi](assets/tutorial3/remote_process_group_nifi.png)
 
+**Figure 10:** Remote Process Group Configuration URL
+
 Click **ADD**.
 
 6\. RPG connects MiNiFi to NiFi by referencing the name of NiFi's input port. Connect the **ExecuteProcess** processor to **RPG**, you will then be asked which input port to connect to, choose **From_MiNiFi**. Click **ADD**.
 
 ![from_minifi_to_nifi](assets/tutorial3/from_minifi_to_nifi.png)
+
+**Figure 11:** Remote Process Group MiNiFi connection to Remote NiFi Node
 
 ### 3.2: Save MiNiFi Flow as a NiFi Template
 
@@ -475,35 +513,43 @@ Click **ADD**.
 
 ![save_weather_station_node_flow](assets/tutorial3/save_weather_station_node_flow.png)
 
+**Figure 12:** Create Name for NiFi template used for MiNiFi
+
 2\. In the top right corner, open the **Global Menu** ![global_menu](assets/tutorial3/global_menu.png), select **Templates**. Choose to download `weather-station-node-sj` by selecting the Download icon. download the template file.
 
 ![download_nifi_template](assets/tutorial3/download_nifi_template.png)
+
+**Figure 13:** Download NiFi template used as MiNiFi flow conversion
 
 ### 3.3: Convert NiFi Template to MiNiFi Template
 
 You will use the MiNiFi Toolkit to convert the NiFi flow to a MiNiFi flow.
 
-1\. Go to the location where you downloaded MiNiFi Toolkit Converter. Use the command to convert NiFi xml template to MiNiFi yaml template:
+1\. Go to the location where you downloaded MiNiFi Toolkit Converter. Use the command to convert NiFi xml template to MiNiFi yml template:
 
 ~~~bash
-cd ~/path/to/minifi-toolkit-0.2.0/is/in/downloads
-./minifi-toolkit-0.2.0/bin/config.sh transform weather-station-node-sj.xml config.yml
+cd ~/path/to/minifi-toolkit-0.4.0/
+./minifi-toolkit-0.4.0/bin/config.sh transform weather-station-node-sj.xml config.yml
 ~~~
 
 2\. Validate there are no issues with the new MiNiFi file:
 
 ~~~bash
-./minifi-toolkit-0.2.0/bin/config.sh validate config.yml
+./minifi-toolkit-0.4.0/bin/config.sh validate config.yml
 ~~~
 
 > Note: You should receive no errors were found while parsing the configuration file.
 
 3\. Open **Pi Finder** and use **Upload** button.
-Transport the config.yml file from your host machine to your Raspberry Pi.
+Transport the **config.yml** file from your host machine to your Raspberry Pi.
 
 ![pi_finder_found_my_pi](assets/tutorial3/pi_finder_found_my_pi.png)
 
+**Figure 14:** Pi Finder Information on Rasbperry Pi on same network
+
 ![find_config_yml](assets/tutorial3/find_config_yml.png)
+
+**Figure 15:** Upload MiNiFi config.yml to appropriate MiNiFi directory on Rasbperry Pi
 
 4\. Press the **Terminal** button on **Pi Finder**:
 
@@ -511,13 +557,13 @@ Transport the config.yml file from your host machine to your Raspberry Pi.
 replace the default config.yml.
 
 ~~~bash
-# Replace default config.yml with new config.yml on R-Pi
+# Replace default config.yml with new config.yml on Raspberry Pi
 mv config.yml /home/pi/minifi-[version num]/conf/config.yml
 ~~~
 
 > Ex command: mv config.yml /home/pi/minifi-0.2.0/conf/config.yml
 
-6\. In MiNiFi `bin` directory on R-Pi, start MiNiFi program with the command:
+6\. In MiNiFi `bin` directory on Raspberry Pi, start MiNiFi program with the command:
 
 ~~~bash
 cd minifi-[version num]
@@ -528,16 +574,23 @@ cd minifi-[version num]
 
 ![go_back_nifi_flow_level](assets/tutorial3/go_back_nifi_flow_level.png)
 
-8\. Hold shift and hover the mouse over the **From_MiNFi to PutHDFS** flow  you built in step 2, then it should be highlighted.
+**Figure 16:** NiFi Flow breadcrumb
+
+8\. Hold shift and hover the mouse over the **From_MiNFi to PutHDFS** flow you built in step 2, then it should be highlighted.
 
 ![hover_over_minifi_to_hdfs_flow](assets/tutorial3/hover_over_minifi_to_hdfs_flow.png)
 
+**Figure 17:** shift + pressed mouse + hover over entire NiFi flow
 
 ![highlighted_minifi_to_hdfs_flow](assets/tutorial3/highlighted_minifi_to_hdfs_flow.png)
 
+**Figure 18:** NiFi flow selected
+
  From the Operate Pallette, click on the ![Start Flow Button](assets/tutorial3/start_button.png). You should see the MiNiFi data is being received by way of the NiFi input port and that data is being routed to HDFS on HDP.
 
-![start_nifi_to_hdfs_flow](assets/tutorial3/start_nifi_to_hdfs_flow.png)
+![start_nifi_to_hdfs_flow](assets/tutorial3/start_nifi_to_hdfs_flow.jpg)
+
+**Figure 19:** NiFi flow activated
 
 ### 3.4: Check PutHDFS Status with Data Provenance
 
@@ -545,29 +598,35 @@ cd minifi-[version num]
 
 ![puthdfs_dataprovenance](assets/tutorial3/puthdfs_dataprovenance.png)
 
+**Figure 20:** List Provenance Events of each flowfile
+
 List of all actions occurring on the FlowFiles. As you can see there are FlowFiles being dropped, attributes modified and sent to HDFS. For the FlowFiles sent to HDFS, as far as NiFi running on HDF knows, those FlowFiles are successfully stored into HDFS.
 
 2\. View a random Provenance Event using the view icon ![view_icon](assets/tutorial3/view_icon.png). A **Provenance Event Window** will appear, click on the **Content** tab. Select **View** to see the flowfile content:
 
 ![flowfile_content](assets/tutorial3/flowfile_content.png)
 
+**Figure 21:** Content of a flowfile from a Provenance Event
+
 ### 3.5: Check Data is Stored into HDFS via HDP Files View
 
-1\. Login to Ambari UI at `sandbox-cda.hortonworks.com:8080`
+1\. Login to Ambari UI at `sandbox-hdp.hortonworks.com:8080`
 
-> Note: user/password is admin and password is the string you set it to.
+> Note: user/password is maria_dev/maria_dev
 
-2\. Hover over the Views selector, choose **Files View**
+2\. Hover over Ambari Views, choose **Files View**
 
-![files_view](assets/tutorial3/files_view.png)
+![files_view](assets/tutorial3/files_view.jpg)
 
-3\. Check that path `/sandbox/tutorial-id/820/nifi/output/raw-data` is populated with data.
+**Figure 22:** Selecting Files View
 
-![weather_data_in_raw_data_dir](assets/tutorial3/weather_data_in_raw_data_dir.png)
+3\. Check that path `/sandbox/tutorial-files/820/nifi/output/raw-data` is populated with data.
 
 4\. Select a random file, click **Open**. After a couple seconds the file will load:
 
-![hdfs_contains_data](assets/tutorial3/hdfs_contains_data.png)
+![hdfs_contains_data](assets/tutorial3/hdfs_contains_data.jpg)
+
+**Figure 23:** Viewing Contents of an HDFS file
 
 ### Summary
 
@@ -585,36 +644,11 @@ Congratulations! You just learned how to build dataflows for MiNiFi through usin
 
 If you do not see data flowing into NiFi, the first place to check is the MiNiFi logs.
 
-1\. From your R-Pi, navigate to the MiNiFi `logs` directory and open the `minifi-app.log`:
+1\. From your Raspberry Pi, navigate to the MiNiFi `logs` directory and open the `minifi-app.log`:
 
 ~~~bash
-cd minifi-1.0.2.1.1.0-2/logs
+cd minifi-0.4.0/logs
 less minifi-app.log
 ~~~
 
-**WARNS, ERRORS** in the logs usually indicate the specific problem related to your dataflow.
-
-### A.2: Troubleshoot HDF Input Ports via OS X Firewall
-
-For MiNiFi to connect to HDF Docker Sandbox running on a MAC OS X, ports of the firewall need to open. Therefore, the NiFi port will be accessible by MiNiFi running on the R-Pi or other computers.
-
-1\. Edit the `/etc/pf.conf` to make the necessary ports accessible by other computers:
-
-~~~bash
-sudo vi /etc/pf.conf
-~~~
-
-2\. Add the following two lines at the end of the file:
-
-~~~bash
-pass in proto tcp from any to any port 9090
-pass in proto tcp from any to any port 17000
-~~~
-
-3\. Save and close the file. In vi, press escape key and `:wq` to exit the program.
-
-4\. Open the network utility to verify the ports are open.
-
-5\. Enter your computer's internal IP address and specify the range for ports as `14999 to 19100`.
-
-> Note: open ports will appear in the port scan.
+**WARNS, ERRORS, exception** in the logs usually indicate the specific problem related to your dataflow.
