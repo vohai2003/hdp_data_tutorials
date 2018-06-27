@@ -18,8 +18,8 @@ We are aware of the role NiFi plays in this Trucking IoT application. Let's anal
 -   [Building EnrichTruckData](#building-enrichtruckdata)
 -   [Configuring ConvertRecord: TruckData](#configuring-convertrecord-truckdata)
 -   [Configuring ConvertRecord: TrafficData](#configuring-convertrecord-trafficdata)
--   [Configuring PublishKafka_0_10: TruckData](#configuring-publishkafka_0_10-truckdata)
--   [Configuring PublishKafka_0_10: TrafficData](#configuring-publishkafka_0_10-trafficdata)
+-   [Configuring PublishKafka_1_0: TruckData](#configuring-publishkafka_1_0-truckdata)
+-   [Configuring PublishKafka_1_0: TrafficData](#configuring-publishkafka_1_0-trafficdata)
 -   [Summary](#summary)
 
 ## NiFi Components
@@ -30,7 +30,7 @@ Check out the [Core Concepts of NiFi](https://hortonworks.com/tutorial/analyze-t
 
 Before we begin building our NiFi DataFlow, let's make sure we start with a clean canvas.
 
--   press **CTRL-A** or **COMMAND-A** to select entire canvas
+-   Press **CTRL-A** or **COMMAND-A** to select entire canvas
 -   On the **Operate Palette**, click **DELETE**
 
 > Note: You may need to empty queues before deleting DataFlow. Do this by **right-clicking** non-empty queue, then select **Empty queue**.
@@ -75,11 +75,11 @@ Right click on the processor, press **configure** option to see the different co
 | :------------- | :------------- |
 | Automatically Terminate Relationships | unmatched |
 
-Everything other setting is kept as default.
+The rest should be kept as default.
 
 **Scheduling Tab**
 
-Kept as default configuration.
+Keep the default configurations.
 
 **Properties Tab**
 
@@ -113,18 +113,18 @@ Right click on the processor, press **configure** option to see the different co
 
 **Scheduling Tab**
 
-Keep as Default.
+Keep the default configurations.
 
 **Properties Tab**
 
 | Property | Value     |
 | :------------- | :------------- |
-| Record Reader      | CSVReader - Truck Data      |
-| Record Writer      | AvroRecordWriter - Truck Data      |
+| Record Reader      | CSVReader - Enriched Truck Data      |
+| Record Writer      | AvroRecordWriter - Enriched Truck Data      |
 
 In the operate panel, you can find more information on the controller services used with this processor:
 
-**CSVReader - Truck Data**
+**CSVReader - Enriched Truck Data**
 
 _Properties Tab of this Controller Service_
 
@@ -132,28 +132,28 @@ _Properties Tab of this Controller Service_
 | :------------- | :------------- |
 | Schema Access Strategy | Use 'Schema Name' Property |
 | Schema Registry | HortonworksSchemaRegistry |
-| Schema Name | trucking_data_truck |
+| Schema Name | trucking_data_truck_enriched |
 | Schema Text | ${avro.schema} |
 | Date Format | No value set |
 | Time Format | No value set |
 | Timestamp Format | No value set |
 | CSV Format | Custom Format |
 | Value Separator | `|` |
-| Skip Header Line | false |
+| Treat First Line as Header | false |
 | Quote Character | " |
 | Escape Character | `\` |
 | Comment Marker | No value set |
 | Null String | No value set |
 | Trim Fields | true |
 
-**AvroRecordWriter - Truck Data**
+**AvroRecordWriter - Enriched Truck Data**
 
 | Property | Value     |
 | :------------- | :------------- |
 | Schema Write Strategy | HWX Content-Encoded Schema Reference |
 | Schema Access Strategy | Use 'Schema Name' Property |
 | Schema Registry | HortonworksSchemaRegistry |
-| Schema Name | trucking_data_truck |
+| Schema Name | trucking_data_truck_enriched |
 | Schema Text | ${avro.schema} |
 
 ## Configuring ConvertRecord: TrafficData
@@ -172,7 +172,7 @@ Right click on the processor, press **configure** option to see the different co
 
 **Scheduling Tab**
 
-Keep as Default.
+Keep the default configurations.
 
 **Properties Tab**
 
@@ -198,7 +198,7 @@ _Properties Tab of this Controller Service_
 | Timestamp Format | No value set |
 | CSV Format | Custom Format |
 | Value Separator | `|` |
-| Skip Header Line | false |
+|Treat First Line as Header | false |
 | Quote Character | " |
 | Escape Character | `\` |
 | Comment Marker | No value set |
@@ -215,9 +215,9 @@ _Properties Tab of this Controller Service_
 | Schema Name | trucking_data_truck |
 | Schema Text | ${avro.schema} |
 
-## Configuring PublishKafka_0_10: TruckData
+## Configuring PublishKafka_1_0: TruckData
 
-**PublishKafka_0_10** - Receives flowfiles from _ConvertRecord - TruckData_ processor and sends each flowfile's content as a message to Kafka Topic: _trucking_data_truck_ using the Kafka Producer API.
+**PublishKafka_1_0** - Receives flowfiles from _ConvertRecord - TruckData_ processor and sends each flowfile's content as a message to Kafka Topic: _trucking_data_truck_ using the Kafka Producer API.
 
 ![PublishKafka_TruckData](assets/PublishKafka_TruckData.jpg)
 
@@ -231,7 +231,7 @@ Right click on the processor, press **configure** option to see the different co
 
 **Scheduling Tab**
 
-Keep as Default.
+Keep the default configurations.
 
 **Properties Tab**
 
@@ -239,7 +239,7 @@ Keep as Default.
 | :------------- | :------------- |
 | **Kafka Brokers**      | **sandbox-hdf.hortonworks.com:6667**   |
 | **Security Protocol**      | **PLAINTEXT**      |
-| **Topic Name**      | **trucking_data_truck**      |
+| **Topic Name**      | **trucking_data_truck_enriched**      |
 | **Delivery Guarantee**      | **Best Effort**      |
 | **Key Attribute Encoding**      | **UTF-8 Encoded**      |
 | **Max Request Size**      | **1 MB**      |
@@ -248,9 +248,9 @@ Keep as Default.
 | Partitioner class      | DefaultPartitioner      |
 | **Compression Type**      | **none**      |
 
-## Configuring PublishKafka_0_10: TrafficData
+## Configuring PublishKafka_1_0: TrafficData
 
-**PublishKafka_0_10** - Receives flowfiles from _ConvertRecord - TrafficData_ processor and sends FlowFile content as a message using the Kafka Producer API to Kafka Topic: _trucking_data_traffic_.
+**PublishKafka_1_0** - Receives flowfiles from _ConvertRecord - TrafficData_ processor and sends FlowFile content as a message using the Kafka Producer API to Kafka Topic: _trucking_data_traffic_.
 
 ![PublishKafka_TrafficData](assets/PublishKafka_TrafficData.jpg)
 
@@ -264,7 +264,7 @@ Right click on the processor, press **configure** option to see the different co
 
 **Scheduling Tab**
 
-Keep as Default.
+Keep the default configurations.
 
 **Properties Tab**
 
@@ -277,7 +277,7 @@ Keep as Default.
 | **Key Attribute Encoding**      | **UTF-8 Encoded**      |
 | **Max Request Size**      | **1 MB**      |
 | **Acknowledgment Wait Time**      | **5 secs**      |
-| **Max Metadata Wait Time**      | **30 sec**      |
+| **Max Metadata Wait Time**      | **5 sec**      |
 | Partitioner class      | DefaultPartitioner      |
 | **Compression Type**      | **none**      |
 
