@@ -130,7 +130,7 @@ Next, open sandbox shell using [shell-in-a-box](http://sandbox-hdp.hortonworks.c
 
 Finally, use **spark-submit** to run the program: ```spark-submit ./Main.py```
 
->Note: If you encounter the error: ```Output directory hdfs://sandbox-hdp.hortonworks.com:8020/tmp/shakespeareWordCount already exists``` use the following command on the sandbox shell: ```hdfs dfs -rm -r /tmp/shakespeareWordCount``` and resubmit.
+>Note: If you encounter the error: **Output directory hdfs://sandbox-hdp.hortonworks.com:8020/tmp/shakespeareWordCount already exists** use the following command on the sandbox shell: `hdfs dfs -rm -r /tmp/shakespeareWordCount` and resubmit.
 
 The results are saved on HDFS: **/tmp/shakespeareWordCount**. You will see a word count output that looks like this:
 
