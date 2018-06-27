@@ -231,7 +231,7 @@ Congratulations! You deployed the Trucking IoT demo that processes truck event d
 -   [Superset](https://superset.incubator.apache.org/)
 
 
-### Appendix A: Visualize Trucking Data with Superset with Superset Via CDA
+### Appendix A: Visualize Trucking Data with Superset Via CDA
 
 ### Prerequisites
 - [Installed Hortonworks DataFlow (HDF) Sandbox](https://hortonworks.com/downloads/#sandbox)
