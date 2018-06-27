@@ -7,7 +7,7 @@ persona: Developer
 source: Hortonworks
 use case: Streaming
 technology: Streaming Analytics Manager
-release: hdf-3.1.0
+release: hdf-3.1.1
 environment: Sandbox
 product: HDF
 series: HDF > Develop Data Flow & Streaming Applications > Hello World
