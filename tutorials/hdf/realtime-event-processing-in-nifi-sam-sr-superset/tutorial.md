@@ -80,7 +80,7 @@ The Trucking IoT data comes from a truck events simulator that is ingested by Ap
 
 4\. Select NiFi configuration icon ![nifi_configuration](assets/images/nifi_configuration.jpg). Click on the Controller Services tab.
 
-5\. Enable the **HortonworksSchemaRegistry** by selecting the lightning bolt symbol.
+5\. The **HortonworksSchemaRegistry** should be enabled. If it's not enabled then select the lightning bolt symbol next to **HortonworksSchemaRegistry**.
 
 ![nifi_controller_services](assets/images/controller-services-en.jpg)
 
