@@ -7,7 +7,7 @@ persona: Data Scientist & Analyst
 source: Hortonworks
 use case: Predictive
 technology: Apache Spark
-release: hdp-2.6.0
+release: hdp-2.6.5
 environment: Sandbox
 product: HDP
 series: HDP > Develop with Hadoop > Apache Spark
@@ -59,7 +59,7 @@ We need to save two copies of this dataset. One, inside PyCharm project for test
 -   Once you've logged into Ambari Manager, mouse over the drop-down menu on the upper-right hand corner and click on **Files View**.
 -   Open the **tmp** folder and click the **upload** button in the upper-right corner to upload the file. Make sure it's named **shakespeare.txt**.
 
-![ambari](assets/ambari.jpg)
+![select_files_view](assets/select_files_view.jpg)
 
 ## Create a Spark Application
 
