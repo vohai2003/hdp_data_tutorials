@@ -10,11 +10,14 @@ You'll make an IoT Weather Station with a Raspberry Pi and Sense HAT. Additional
 
 ## Prerequisites
 
-- Downloaded Latest [HDF or HDP Sandboxes](https://hortonworks.com/downloads) for VirtualBox, etc
+- Downloaded Latest [HDF Sandbox](https://hortonworks.com/downloads) for VirtualBox, etc
     - Set **RAM to 12GB** for Guest VM or Native Docker
 - Downloaded and Installed Latest [Raspbian OS](https://www.raspberrypi.org/downloads/raspbian/) onto Raspberry Pi
     - If you need help installing Raspbian OS onto the Raspberry Pi, refer to **Appendix A**.
-- Read through "Connected Data Architecture Installation" tutorial
+- Enabled Connected Data Architecture: 
+     - [Enable CDA for VirtualBox](https://hortonworks.com/tutorial/sandbox-deployment-and-install-guide/section/1/#enable-connected-data-architecture-cda-advance-topic)
+    - [Enable CDA for VMware](https://hortonworks.com/tutorial/sandbox-deployment-and-install-guide/section/2/#enable-connected-data-architecture-cda-advance-topic)
+    - [Enable CDA for Docker ](https://hortonworks.com/tutorial/sandbox-deployment-and-install-guide/section/3/#enable-connected-data-architecture-cda-advance-topic)
 
 ## Outline
 
@@ -44,11 +47,11 @@ You'll make an IoT Weather Station with a Raspberry Pi and Sense HAT. Additional
 
 **Figure 3:** Sense HAT female pins connected to Raspberry Pi male pins
 
-> Note: If you haven't installed Raspbian OS on your Raspberry Pi, refer to **Appendx A**.
+> Note: If you haven't installed Raspbian OS on your Raspberry Pi, refer to **Appendix A**.
 
 ### 1.2: Power the Raspberry Pi and Establish Internet Connection
 
-Plug into the Raspberry Pi a micro usb (could be phone charger) connector to provide power and ethernet to provide internet access.
+Plug into the Raspberry Pi a micro USB (could be phone charger) connector to provide power and ethernet to provide internet access.
 
 ![power-ethernet_rpi](assets/tutorial2/power-ethernet_rpi.png)
 
@@ -129,10 +132,9 @@ A MiNiFi Agent is installed onto the Raspberry Pi. We'll explain more about the 
 
 ### 1.6: Download MiNiFi Toolkit onto your Computer
 
-In this section, you download MiNiFi toolkit onto your computer because it is needed to convert NiFi flow to MiNiFi flow format. In the next tutorial, you will
-build the MiNiFi flow in NiFi.
+In this section, you download MiNiFi toolkit onto your computer because it is needed to convert NiFi flow to MiNiFi flow format. In the next tutorial, you will build the MiNiFi flow in NiFi.
 
-1\. Download MiNiFi Tookit from [Apache nifi minifi Downloads](http://nifi.apache.org/minifi/download.html) under section **Releases -> MiNiFi Toolkit Binaries -> [latest-version] - Compatible with MiNiFi Java [latest-version]**.
+1\. Download MiNiFi Toolkit from [Apache nifi minifi Downloads](http://nifi.apache.org/minifi/download.html) under section **Releases -> MiNiFi Toolkit Binaries -> [latest-version] - Compatible with MiNiFi Java [latest-version]**.
 
 2\. Click on `minifi-toolkit-[latest-version]-bin.zip` then download MiNiFi Toolkit from any of the links provided onto your computer.
 
