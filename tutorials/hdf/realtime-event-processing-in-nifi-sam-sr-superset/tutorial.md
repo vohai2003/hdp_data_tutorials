@@ -33,7 +33,7 @@ In this tutorial, you will learn how to deploy a modern real-time streaming appl
 -   [Step 4: View the Storm Engine that Powers SAM](#step-4-view-the-storm-engine-that-powers-sam)
 -   [Summary](#summary)
 -   [Further Reading](#further-reading)
--   [Appendix A: Visualize Trucking Data with Superset Via CDA](#appendix-visualize-trucking-data-via-superset)
+-   [Appendix A: Visualize Trucking Data with Superset Via CDA](#appendix-a-visualize-trucking-data-with-superset-via-cda)
 -   [Appendix B: Trucking IoT GitHub Repo](https://github.com/orendain/trucking-iot/tree/master)
 
 ## Concepts
@@ -232,6 +232,13 @@ Congratulations! You deployed the Trucking IoT demo that processes truck event d
 
 
 ### Appendix A: Visualize Trucking Data with Superset with Superset Via CDA
+
+### Prerequisites
+- [Installed Hortonworks DataFlow (HDF) Sandbox](https://hortonworks.com/downloads/#sandbox)
+- Enabled Connected Data Architecture:
+     - [Enable CDA for VirtualBox](https://hortonworks.com/tutorial/sandbox-deployment-and-install-guide/section/1/#enable-connected-data-architecture-cda-advance-topic)
+    - [Enable CDA for VMware](https://hortonworks.com/tutorial/sandbox-deployment-and-install-guide/section/2/#enable-connected-data-architecture-cda-advance-topic)
+    - [Enable CDA for Docker ](https://hortonworks.com/tutorial/sandbox-deployment-and-install-guide/section/3/#enable-connected-data-architecture-cda-advance-topic)
 
 ### Step 1: Configure SAM for CDA
 
