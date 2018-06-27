@@ -82,7 +82,7 @@ The Trucking IoT data comes from a truck events simulator that is ingested by Ap
 
 5\. Enable the **HortonworksSchemaRegistry** by selecting the lightning bolt symbol.
 
-![nifi_controller_services](assets/images/nifi_controller_services_lighting_bolt.jpg)
+![nifi_controller_services](assets/images/controller-services-en.jpg)
 
 6\. In the "Enable Controller Service" window, under "Scope", select "Service and referencing components". Then click ENABLE.
 
@@ -109,8 +109,7 @@ _TruckData side of Flow_
 
 -   **ConvertRecord** - reads incoming data with "CSVReader" and writes out Avro data with "AvroRecordSetWriter" embedding a "trucking_data_truck_enriched" schema onto each flowfile.
 
--   **PublishKafka_1_0** - stores Avro data into Kafka Topic
-"trucking_data_truck_enriched"
+-   **PublishKafka_1_0** - stores Avro data into Kafka Topic "trucking_data_truck_enriched"
 
 _TrafficData side of Flow_
 
