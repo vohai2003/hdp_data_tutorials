@@ -24,7 +24,7 @@ In the concepts tutorial, the goal is to provide you with enough background info
 
 ### What is a Raspberry Pi?
 
-The Raspberry Pi 3 is a microprocessor or computer with an open-source platform commonly used for beginners learning to code to practitioners building Internet of Things (IoT) related Applications. This embedded device has a 1.2 GHz ARMv8 CPU, 1GB of memory, integrated Wi-Fi and Bluetooth. The Raspberry Pi comes with various General Purpose Input Output (GPIO) pins, input/output ports for connecting the device to external peripherals, such as sensors, keyboards, mouses and other peripherals. As can be seen in Figure 1, the Raspberry Pi is connected to the internet via Ethernet port, a monitor via HDMI port, keyboard and mouse via USB port and powered by 12V power supply. Embedded Linux flavors have been made for the Raspberry Pi, such as Raspbian, Yocto, etc. The Raspberry Pi's small footprint is a perfect candidate for us to learn to build a MiNiFi dataflow, do some simple processing in Java or C/C++ and route the data to the remote NiFi cluster. Thus, we can leverage this open source Apache tool to gather data at the source of where it is being created.
+The Raspberry Pi 3 is a microprocessor or computer with an open-source platform commonly used for beginners learning to code to practitioners building Internet of Things (IoT) related Applications. This embedded device has a 1.2 GHz ARMv8 CPU, 1GB of memory, integrated Wi-Fi and Bluetooth. The Raspberry Pi comes with various General-Purpose Input/Output (GPIO) pins, input/output ports for connecting the device to external peripherals, such as sensors, keyboards, mouse devices and other peripherals. As can be seen in Figure 1, the Raspberry Pi is connected to the internet via Ethernet port, a monitor via HDMI port, keyboard and mouse via USB port and powered by 12V power supply. Embedded Linux flavors have been made for the Raspberry Pi, such as Raspbian, Yocto, etc. The Raspberry Pi's small footprint is a perfect candidate for us to learn to build a MiNiFi dataflow, do some simple processing in Java or C/C++ and route the data to the remote NiFi cluster. Thus, we can leverage this open source Apache tool to gather data at the source of where it is being created.
 
 ![raspberry_pi](assets/tutorial2/Raspberry-Pi-3-Flat-Top.jpg)
 
@@ -32,7 +32,7 @@ The Raspberry Pi 3 is a microprocessor or computer with an open-source platform 
 
 ### Internet of Things on Raspberry Pi
 
-The Raspberry Pi is not just a platform for building IoT projects, it is a super platform for learning about IoT. Raspberry Pi is a great way to gain practical experience with IoT. According to [IBM Watson Internet of Things](http://www.ibm.com/internet-of-things/partners/raspberry-pi/), the Raspberry Pi IoT platform can be used for the factory, environment, sports, vehicles, buildings, home and retail. All these Raspberry Pi IoT platform use cases have in common that data is processed, which can result in augmented productivity in factories, enhanced environmental stewardship initiatives, provided winning strategies in sports, enhanced driving experience, better decision making, enhanced resident safety and security and customized and improved shopping experience in retail.
+The Raspberry Pi is not just a platform for building IoT projects, it is a super platform for learning about IoT. Raspberry Pi is a great way to gain practical experience with IoT. According to [IBM Watson Internet of Things](http://www.ibm.com/internet-of-things/partners/raspberry-pi/), the Raspberry Pi IoT platform can be used in the following cases: a factory, environment, sports, vehicles, buildings, home and retail. All these Raspberry Pi IoT platform use cases have in common that data is processed, which can result in augmented productivity in factories, enhanced environmental stewardship initiatives, provided winning strategies in sports, enhanced driving experience, better decision making, enhanced resident safety and security and customized and improved shopping experience in retail.
 
 ### Sense HAT Functionality
 
@@ -58,7 +58,7 @@ I2C makes it possible to have multiple devices in connection with the Raspberry 
 
 ### Apache MiNiFi
 
-MiNiFi was built to live on the edge for ingesting data at the central location of where it is born, then before that data becomes too large for processing on the edge, it is transported to your data center where a distributed NiFi cluster can continue further processing the data from all these IoT Raspberry Pi devices. MiNiFi comes in two flavors Java or C++ agent. These agents access data from Microcontrollers and Microprocessors, such as Raspberry Pis and other IoT level devices. The idea behind MiNiFi is to be able to get as close to the data as possible from any particular location no matter how small the footprint on a particular embedded device.
+MiNiFi was built to live on the edge for ingesting data at the central location of where it is born, then before that data becomes too large for processing on the edge, it is transported to your data center where a distributed NiFi cluster can continue further processing the data from all these IoT Raspberry Pi devices. MiNiFi comes in two flavors Java or C++ agent. These agents access data from Microcontrollers and Microprocessors, such as Raspberry Pi's and other IoT level devices. The idea behind MiNiFi is to be able to get as close to the data as possible from any particular location no matter how small the footprint on a particular embedded device.
 
 ### Apache NiFi
 
@@ -96,7 +96,7 @@ Apache Phoenix provides the flexibility of late-bound, schema-on-read capabiliti
 
 ### Apache Zeppelin
 
-Apache Zeppelin is a data science notebook that allows users to use interpreters to visualize their data with line, bar, pie, scatter charts and various other visualizations. The interpreter we will utilize is Phoenix that way we can visualize our weather data.
+Apache Zeppelin is a data science notebook that allows users to use interpreters to visualize their data with line, bar, pie, scatter charts and various other visualizations. The interpreter Phoenix will be used to visualized our weather data.
 
 ## 3\. IoT Weather Station powered by Connected Data Architecture
 
