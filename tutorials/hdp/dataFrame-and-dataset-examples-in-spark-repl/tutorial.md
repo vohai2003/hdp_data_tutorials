@@ -349,7 +349,7 @@ You should see the following
 +------+---+
 ~~~
 
-To exit press `ctrl C`.
+To exit enter `:quit`.
 
 ## Further Reading
 

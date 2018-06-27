@@ -19,6 +19,7 @@ Skills you will gain:
 ## Outline
 
 - [Environment Setup](#environment-setup)
+- [Trucking IoT SAM Topology](#trucking-iot-sam-topology)
 - [Add a New SAM topology](#add-a-new-sam-topology)
 - [Building the SAM Topology](#building-the-sam-topology)
 - [Summary](#summary)
@@ -49,9 +50,13 @@ Before we can create the SAM topology, we need to start the producer to store da
 
 > Note: NiFi flow should be kept running until the end of the tutorial.
 
-![nifi_producer](assets/images/nifi_producer.jpg)
+![nifi_producer](assets/images/dataflow.jpg)
 
 > Note: If you want to learn more about how to build the NiFi Flow, refer to [NiFi in Trucking IoT](https://hortonworks.com/tutorial/nifi-in-trucking-iot-on-hdf/) tutorial.
+
+## Trucking Iot SAM Topology
+
+If you have the latest HDF Sandbox you will will have the Trucking-IoT-Demo under My Applications. Go through the process of creating a New Application where you will recreate the SAM topology and use the existing Trucking-IoT-Demo SAM topology as a reference.
 
 ## Add a New SAM topology
 
@@ -98,7 +103,7 @@ The result after adding the Ambari Cluster URL will be that SAM retrieves all Am
 
 2\. On the top right of the page, you would click the plus button to add a new environment. When adding the enviroment for Trucking IoT application, we performed the following actions.
 
-3\. Named the Environment. In our case, we chose the name:
+3\. Name the Environment. In our case, we chose the name:
 
 ~~~bash
 SandboxEnvironment
@@ -157,116 +162,28 @@ Before we start adding components to the canvas, lets verify our Kafka topics an
 Output you should see:
 
 ~~~bash
-trucking_avg_speed
+trucking_data_driverstats                                     
+trucking_data_joined                                           
 trucking_data_traffic
-trucking_data_truck
-trucking_violations
+trucking_data_truck_enriched
 ~~~
 
 If you don't see the topics listed above, then create them:
 
 ~~~bash
-# trucking_data_truck
-/usr/hdf/current/kafka-broker/bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 10 --topic trucking_data_truck
+# trucking_data_driverstats
+/usr/hdf/current/kafka-broker/bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 10 --topic trucking_data_driverstats
+
+# trucking_data_joined
+/usr/hdf/current/kafka-broker/bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 10 --topic trucking_data_joined
 
 # trucking_data_traffic
 /usr/hdf/current/kafka-broker/bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 10 --topic trucking_data_traffic
 
-# trucking_violations
-/usr/hdf/current/kafka-broker/bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 10 --topic trucking_violations
-
-# trucking_avg_speed
-/usr/hdf/current/kafka-broker/bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 10 --topic trucking_avg_speed
+# trucking_data_truck_enriched
+/usr/hdf/current/kafka-broker/bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 10 --topic trucking_data_truck_enriched
 ~~~
 
-**Schemas Dependency Verification**
-
-The HDF Sandbox comes with most of the trucking IoT schemas needded for the SAM topology, but we will need to create two schemas in order for the application to just be dependent on HDF.
-
-3\. Create two new schemas for `trucking_violations` and `trucking_avg_speed` in Hortonworks' Schema Registry UI: `http://sandbox-hdf.hortonworks.com:7788/`.
-
-4\. Click the " + " button. Add the following information into the "Add New Schema" window:
-
-**Trucking Violations Schema**
-
-~~~bash
-Name: trucking_violations
-
-Description: data illustrates trucking violations
-
-Type: Avro schema provider
-
-Schema Group: Kafka
-
-Compatibility: Backward
-
-Evolve: Checkmark
-
-Schema Text:
-
-{
-    "type" : "record",
-    "namespace" : "com.orendainx.hortonworks.trucking",
-    "name" : "TruckViolations",
-    "fields" : [
-        { "name" : "eventTime" , "type" : "long" },
-        { "name" : "routeId" , "type" : "int" },
-        { "name" : "congestionLevel" , "type" : "int" },
-        { "name" : "truckId" , "type" : "int" },
-        { "name" : "speed" , "type" : "int" },
-        { "name" : "eventType" , "type" : "string" },
-        { "name" : "windy" , "type" : "boolean" },
-        { "name" : "rainy" , "type" : "boolean" },
-        { "name" : "foggy" , "type" : "boolean" },
-        { "name" : "longitude" , "type" : "double" },
-        { "name" : "latitude" , "type" : "double" },
-        { "name" : "routeName" , "type" : "string" },
-        { "name" : "driverId" , "type" : "int" },
-        { "name" : "driverName" , "type" : "string" }                             
-    ]
-}
-~~~
-
-When you verify the information is entered, confirm adding the new schema and click OK.
-
-**Trucking Average Speed Schema**
-
-~~~bash
-Name: trucking_avg_speed
-
-Description: data illustrates drivers average speed
-
-Type: Avro schema provider
-
-Schema Group: Kafka
-
-Compatibility: Backward
-
-Evolve: Checkmark
-
-Schema Text:
-
-{
-    "type" : "record",
-    "namespace" : "com.orendainx.hortonworks.trucking",
-    "name" : "TruckingAvgSpeed",
-    "fields" : [
-        { "name" : "driverId" , "type" : "int" },
-        { "name" : "routeId" , "type" : "int" },
-        { "name" : "speed" , "type" : "int" },
-        { "name" : "foggy" , "type" : "boolean" },
-        { "name" : "rainy" , "type" : "boolean" },
-        { "name" : "speed_AVG" , "type" : "double" },
-        { "name" : "windy" , "type" : "boolean" }
-    ]
-}
-~~~
-
-![schemas_kafka_sinks](assets/images/schemas_kafka_sinks.jpg)
-
-With these two new schemas, we can transport data between Kafka queues.
-
-When you verify the information is entered, confirm adding the new schema and click OK.
 
 **Note:** For more information on how Schemas are being registered into Schema Registry and the architecture works, visit [Schema Registry in Trucking IoT on HDF](https://hortonworks.com/tutorial/schema-registry-in-trucking-iot-on-hdf/)
 
@@ -278,7 +195,7 @@ Lets began designing and creating our topology!
 
 1\. Add 2 KAFKA source components onto the canvas as shown in **Figure 1**.
 
-![kafka_source_components](assets/images/kafka_source_components.jpg)
+![kafka_source_components](assets/images/kafka_source_componentS.jpg)
 
 **Figure 1: Kafka Source Components**
 
@@ -286,7 +203,7 @@ Lets began designing and creating our topology!
 
 Enter the following properties for the first Kafka Source you opened:
 
-| Kafka Source 1    | Properties     |
+| KAFKA SOURCE     | Properties     |
 | :------------- | :------------- |
 | Name       | TrafficData       |
 | **Tab**       | **REQUIRED**       |
@@ -295,22 +212,22 @@ Enter the following properties for the first Kafka Source you opened:
 | Bootstrap Servers       | sandbox-hdf.hortonworks.com:6667       |
 | Kafka Topic       | trucking_data_traffic       |
 | Reader Schema Version | 1 |
-| Consumed Group ID | trucking_data_traffic1 |
+| Consumed Group ID | c |
 | **Tab**       | **OPTIONAL**       |
 | First Poll Offset Strategy | EARLIEST |
 
 When you are done, click OK.
 
-| Kafka Source 2    | Properties     |
+| KAFKA SOURCE 1    | Properties     |
 | :------------- | :------------- |
 | Name       | TruckData       |
 | **Tab**       | **REQUIRED**       |
 | Cluster Name       | Sandbox      |
 | Security Protocol       | PLAINTEXT       |
 | Bootstrap Servers       | sandbox-hdf.hortonworks.com:6667       |
-| Kafka Topic       | trucking_data_truck       |
+| Kafka Topic       | trucking_data_truck_enriched       |
 | Reader Schema Version | 1 |
-| Consumed Group ID | trucking_data_truck1 |
+| Consumed Group ID | c |
 | **Tab**       | **OPTIONAL**       |
 | First Poll Offset Strategy | EARLIEST |
 
@@ -322,7 +239,7 @@ When you are done, click OK.
 
 3\. Add 3 processor components: JOIN, RULE and AGGREGATE onto the canvas.
 
-![join_rule_aggregate](assets/images/join_rule_aggregate.jpg)
+![join_rule_aggregate](assets/images/join_rule_aggregatE.jpg)
 
 4\. The two Kafka sources have green bubbles on their rightside edge, click, hold and drag to connect to the JOIN processors grey bubble located on its leftside edge.
 
@@ -330,7 +247,7 @@ When you are done, click OK.
 
 5\. Configure all three components. Double click on each component, enter the following properties for the appropriate processor:
 
-| JOIN    | Properties     |
+| JOIN   | Properties     |
 | :------------- | :------------- |
 | Name       | JoinStreams       |
 | **Tab**       | **CONFIGURATION**       |
@@ -362,7 +279,7 @@ Enter the following properties:
 
 | RULE    | Properties     |
 | :------------- | :------------- |
-| Name       | FilterEvents       |
+| Name       | FilterNormalEvents       |
 | **Tab**       | **CONFIGURATION**       |
 | Add New Rule `Rule Name`       | IsViolation       |
 | Add New Rule `Description`       | IsViolation       |
@@ -384,10 +301,9 @@ FilterEvents-AGGREGATE window will appear, select OK. Enter the following proper
 
 | AGGREGATE    | Properties     |
 | :------------- | :------------- |
-| Name       | AverageSpeed       |
+| Name       | TimeSeriesAnalysis       |
 | **Tab**       | **CONFIGURATION**       |
-| SELECT KEYS | driverId, routeId, speed |
-| SELECT KEYS | foggy, rainy, windy |
+| SELECT KEYS | driverId, routeId |
 | WINDOW INTERVAL TYPE | Time |
 | WINDOW INTERVAL | 10 |
 | WINDOW INTERVAL | Seconds |
@@ -397,8 +313,22 @@ FilterEvents-AGGREGATE window will appear, select OK. Enter the following proper
 | LAG IN SECONDS | 1 |
 | **BOX** | **Output Fields** |
 | INPUT | speed |
-| AGGREGATE FUNCTION | AVG |
-| OUTPUT | speed_AVG |
+|AGGREGATE FUNCTION | AVG |
+| OUTPUT | averageSpeed |
+| INPUT | foggy|
+| AGGREGATE FUNCTION | SUM |
+| OUTPUT | totalFog |
+| INPUT | rainy|
+| AGGREGATE FUNCTION | SUM |
+| OUTPUT | totalRain |
+| INPUT | windy|
+| AGGREGATE FUNCTION | SUM |
+| OUTPUT | totalWind |
+| INPUT | eventTime|
+| AGGREGATE FUNCTION | SUM |
+| OUTPUT | totalViolations |
+
+
 
 Once you click OK, the configuration has been confirmed.
 
@@ -409,9 +339,9 @@ Connect AverageSpeed processor to Kafka Sink 1 (ToAvgSpeed). Configure the proce
 | KAFKA SINK 1   | Properties     |
 | :------------- | :------------- |
 | **Tab** | **REQUIRED** |
-| Name       | ToAvgSpeed     |
+| Name       | ToDriverStats     |
 | CLUSTER NAME | Sandbox |
-| Kafka Topic | trucking_avg_speed |
+| Kafka Topic | trucking_data_driverstats|
 | Writer Schema Version | 1 |
 | Security Protocol | PLAINTEXT |
 | Bootstrap Servers | sandbox-hdf.hortonworks.com:6667 |
@@ -423,9 +353,9 @@ Connect ViolationEvents processor to Kafka Sink 2 (ToViolationEvents). Configure
 | KAFKA SINK 2  | Properties     |
 | :------------- | :------------- |
 | **Tab** | **REQUIRED** |
-| Name       | ToViolationEvents     |
+| Name       | ToDataJoined    |
 | CLUSTER NAME | Sandbox |
-| Kafka Topic | trucking_violations |
+| Kafka Topic | trucking_data_joined |
 | Writer Schema Version | 1 |
 | Security Protocol | PLAINTEXT |
 | Bootstrap Servers | sandbox-hdf.hortonworks.com:6667 |
@@ -434,7 +364,7 @@ Click OK to confirm configuration.
 
 After building the SAM topology, you can deploy it by pressing the green arrow:
 
-![trucking_iot_topology](assets/images/trucking_iot_topology.jpg)
+![trucking_iot_topology](assets/images/sam_start.jpg)
 
 You will see the status shows not running, once you run it the following window "Are you sure want to continue with this configuration?" will appear, make sure to configure it with the following properties:
 
@@ -444,12 +374,12 @@ You will see the status shows not running, once you run it the following window 
 | NUMBER OF WORKERS       | 1     |
 | NUMBER OF ACKERS | 1 |
 | TOPOLOGY MESSAGE TIMEOUT (SECONDS) | 30 |
-| TOPOLOGY WORKER JVM OPTIONS | -Xmx1000m |
+| TOPOLOGY WORKER JVM OPTIONS |  |
 | NUMBER OF EVENT SAMPLING TASKS | 1 |
 
 Click OK to confirm configuration.
 
-![trucking_iot_topology_deployed](assets/images/trucking_iot_topology_deployed.jpg)
+![trucking_iot_topology_deployed](assets/images/sam_active.jpg)
 
 You just deployed your SAM topology.
 
@@ -459,17 +389,17 @@ Lets check the data in our Kafka Sink topics:
 
 ~~~bash
 # trucking_violations
-/usr/hdf/current/kafka-broker/bin/kafka-console-consumer.sh --zookeeper localhost:2181 --topic trucking_violations --from-beginning
+/usr/hdf/current/kafka-broker/bin/kafka-console-consumer.sh --zookeeper localhost:2181 --topic trucking_data_driverstats --from-beginning
 
 # trucking_avg_speed
-/usr/hdf/current/kafka-broker/bin/kafka-console-consumer.sh --zookeeper localhost:2181 --topic trucking_avg_speed --from-beginning
+/usr/hdf/current/kafka-broker/bin/kafka-console-consumer.sh --zookeeper localhost:2181 --topic trucking_data_joined --from-beginning
 ~~~
 
 > Note: press control + C to exit from the Kafka view messages.
 
 ## Summary
 
-Congratulations you just built a SAM topology. You learned how to pull in data from the source that supplies it, such as Kafka, using Kafka source component. You used Join, Rule and Aggregate processors to do processing on the data. You also used Kafka Sink components to store data into Kafka topics. In the next tutorial you will connect HDF and HDP Sandboxes via SAM, Druid and HDFS.
+Congratulations you just built a SAM topology. You learned how to pull in data from the source that supplies it, such as Kafka, using Kafka source component. You used Join, Rule and Aggregate processors to do processing on the data. You also used Kafka Sink components to store data into Kafka topics.
 
 ## Further Reading
 
