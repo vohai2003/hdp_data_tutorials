@@ -85,10 +85,10 @@ Example of Output:
 1375 QuorumPeerMain
 ~~~
 
-We created two Kafka Topics: **trucking_data_truck** and **trucking_data_traffic** using the following commands:
+We created two Kafka Topics: **trucking_data_truck_enriched** and **trucking_data_traffic** using the following commands:
 
 ~~~
-/usr/hdf/current/kafka-broker/bin/kafka-topics.sh --create --zookeeper sandbox-hdf.hortonworks.com:2181 --replication-factor 1 --partitions 10 --topic trucking_data_truck
+/usr/hdf/current/kafka-broker/bin/kafka-topics.sh --create --zookeeper sandbox-hdf.hortonworks.com:2181 --replication-factor 1 --partitions 10 --topic trucking_data_truck_enriched
 ~~~
 
 ~~~

@@ -19,7 +19,7 @@ While the demo application runs, you will gain an understanding of how Kafka rec
 
 ## Environment Setup
 
-If you have the latest Hortonworks DataFlow (HDF) Sandbox installed, then the demo comes preinstalled. If not or you do not already have it setup, then refer to [Setup Demo on existing HDF/HDP](https://github.com/orendain/trucking-iot/tree/hadoop-summit-2017#setup-on-existing-hdf-hdp).
+If you have the latest Hortonworks DataFlow (HDF) Sandbox installed, then the demo comes preinstalled.
 
 Open a terminal on your local machine and access the sandbox through the shell-in-a-box method. Please visit [Learning the Ropes of the HDP Sandbox](https://hortonworks.com/tutorial/learning-the-ropes-of-the-hortonworks-sandbox/#environment-setup) to review this method.
 
@@ -43,9 +43,10 @@ Results:
 
 ~~~
 Output:
-
+trucking_data_driverstats                                        
+trucking_data_joined                                               
 trucking_data_traffic
-trucking_data_truck
+trucking_data_truck_enriched           
 ~~~
 
 
@@ -53,10 +54,10 @@ trucking_data_truck
 
 As messages are persisted into the Kafka Topics from the producer, you can see them appear in each topic by writing the following commands:
 
-View Data for Kafka Topic: **trucking_data_truck**:
+View Data for Kafka Topic: **trucking_data_truck_enriched**:
 
 ~~~
-/usr/hdf/current/kafka-broker/bin/kafka-console-consumer.sh --zookeeper localhost:2181 --topic trucking_data_truck --from-beginning
+/usr/hdf/current/kafka-broker/bin/kafka-console-consumer.sh --zookeeper localhost:2181 --topic trucking_data_truck_enriched --from-beginning
 ~~~
 
 View Data for Kafka Topic: **trucking_data_traffic**:
