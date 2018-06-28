@@ -20,10 +20,10 @@ June 2018
 
 -   The VirtualBox and VMWare releases of the HDF sandbox had their OS-level packages updated, including a version update to Docker 18.03.0.
 
--   Image Checksums:
-    -   VirtualBox release – **MD5:6eecb32e668af0ccc9215ebec0ee4810**
-    -   VMware release – **MD5:d09dbbb47b6d0e97e061cb21cf86178b**
-    -   Docker release – **MD5:c04d4be290778818cec526f99b5af294**
+-   Image MD5 Checksums:
+    -   VirtualBox release – **6eecb32e668af0ccc9215ebec0ee4810**
+    -   VMware release – **d09dbbb47b6d0e97e061cb21cf86178b**
+    -   Docker release – **c04d4be290778818cec526f99b5af294**
 
 -   HDF Stack and Ambari: The Sandbox uses the following versions of Ambari and HDF stack. Please use the following release note links provided to view Ambari and HDF stack specific information.
     -   [HDF 3.1.1 Product Release Notes](https://docs.hortonworks.com/HDPDocuments/HDF3/HDF-3.1.1/bk_release-notes/content/ch_hdf_relnotes.html)
