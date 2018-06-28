@@ -7,7 +7,7 @@ persona: Administrator
 source: Hortonworks
 use case: Single View
 technology: Sandbox
-release: hdp-2.6.0
+release: hdp-2.6.5
 environment: Sandbox
 product: HDP
 series: HDP > Hadoop Administration > Hortonworks Sandbox

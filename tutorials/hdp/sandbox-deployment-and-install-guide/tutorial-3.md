@@ -14,29 +14,42 @@ This tutorial walks through the general approach for installing the Hortonworks 
     -   [Docker For Linux](https://docs.docker.com/engine/installation/linux/)
     -   [Docker For Windows](https://docs.docker.com/docker-for-windows/install/)
     -   [Docker For Mac](https://docs.docker.com/docker-for-mac/install/)
--   A computer with **8 - 12 GB of RAM to spare**.
+-   A computer with minimum **8 - 12 GB RAM** to spare
+-   Microsoft Windows users must have **bash shell** installed. Instructions have been tested using [Git Bash](https://git-scm.com/downloads).
 
 ## Outline
 
--   [Configure Docker Memory](#configure-docker-memory)
-    -   [For Linux](#for-linux)
-    -   [For Windows](#for-windows)
-    -   [For Mac](#for-mac)
--   [Deploy Sandbox](#deploy-sandbox)
-    -   [For HDP Sandbox](#for-hdp-sandbox)
-    -   [For HDF Sandbox](#for-hdf-sandbox)
--   [Check Sandbox Deployment](#check-sandbox-deployment)
--   [Remove Sandbox](#remove-sandbox)
+-   [Memory Configuration](#memory-configuration)
+    -   [Memory For Linux](#memory-for-linux)
+    -   [Memory For Windows](#memory-for-windows)
+    -   [Memory For Mac](#memory-for-mac)
+-   [HDP Deployment](#hdp-deployment)
+    -   [Deploy HDP Sandbox](#deploy-hdp-sandbox)
+    -   [Verify HDP Sandbox](#verify-hdp-sandbox)
+    -   [Stop HDP Sandbox](#stop-hdp-sandbox)
+    -   [Restart HDP Sandbox](#restart-hdp-sandbox)
+    -   [Remove HDP Sandbox](#remove-hdp-sandbox)
+-   [HDF Deployment](#hdf-deployment)
+    -   [Deploy HDF Sandbox](#deploy-hdf-sandbox)
+    -   [Verify HDF Sandbox](#verify-hdf-sandbox)
+    -   [Stop HDF Sandbox](#stop-hdf-sandbox)
+    -   [Restart HDF Sandbox](#restart-hdf-sandbox)
+    -   [Remove HDF Sandbox](#remove-hdf-sandbox)
+-   [Enable Connected Data Architecture (CDA) - Advance Topic](#enable-connected-data-architecture-cda-advance-topic)
 -   [Further Reading](#further-reading)
 -   [Appendix A: Troubleshooting](#appendix-a-troubleshooting)
+    -   [Drive not shared](#drive-not-shared)
+    -   [No space left on device](#no-space-left-on-device)
+    -   [Port Conflict](#port-conflict)
 
-## Configure Docker Memory
 
-### For Linux
+## Memory Configuration
+
+### Memory For Linux
 
 No special configuration needed for Linux.
 
-### For Windows
+### Memory For Windows
 
 After [installing Docker For Windows](https://docs.docker.com/docker-for-windows/install/), open the application and click on the Docker icon in the menu bar.  Select **Settings**.
 
@@ -46,7 +59,7 @@ Select the **Advanced** tab and adjust the dedicated memory to **at least 8GB of
 
 ![Configure Docker RAM](assets/docker-windows-configure.jpg)
 
-### For Mac
+### Memory For Mac
 
 After [installing Docker For Mac](https://docs.docker.com/docker-for-mac/install/), open the application and click on the Docker icon in the menu bar.  Select **Preferences**.
 
@@ -56,131 +69,232 @@ Select the **Advanced** tab and adjust the dedicated memory to **at least 8GB of
 
 ![Configure Docker RAM](assets/docker-mac-configure.jpg)
 
-## Deploy Sandbox
+## HDP Deployment
 
-### For HDP Sandbox
+### Deploy HDP Sandbox
 
-**Load Sandbox Into Docker**
+**Install/Deploy/Start HDP Sandbox**
 
 -   Download latest scripts [Hortonworks Data Platform (HDP) for Docker](https://hortonworks.com/downloads/#sandbox) and decompress **zip** file.
 
-[![download-sandbox-hdp-docker](assets/download-sandbox-hdp-docker.jpg)](https://hortonworks.com/downloads/#sandbox)
+[![docker-download-hdp](assets/docker-download-hdp.jpg)](https://hortonworks.com/downloads/#sandbox)
 
-Naming convention for scripts are:
+In the decompressed folder, you will find shell script **docker-deploy-{version}.sh**. From the command line, Linux / Mac / Windows(Git Bash), run the script:
 
--   For Linux/Mac: **start-sandbox-hdp-standalone_{version}.sh**
--   For Windows: **start-sandbox-hdp-standalone_{version}.ps1**
-
->Note: You will need to run script every time you want to restart the sandbox. It will setup and start the sandbox for you, creating the sandbox docker container in the process if necessary.
-
-Linux/Mac:
-
-~~~
+```
 cd /path/to/script
-sh start-sandbox-hdp-standalone_{version}.sh
-~~~
-
-Windows Powershell:
-
-~~~
-cd /path/to/script
-powershell -ExecutionPolicy ByPass -File start-sandbox-hdp-standalone_{version}.ps1
-~~~
+sh docker-deploy-{HDPversion}.sh
+```
+> Note: You only need to run script once. It will setup and start the sandbox for you, creating the sandbox docker container in the process if necessary.
+>
+> Note: The decompressed folder has other scripts and folders. We will ignore those for now. They will be used later in advanced tutorials.
 
 The script output will be similar to:
 
-![docker_start_sandbox-hdp](assets/docker-start-sandbox-output.jpg)
+![docker-start-hdp-output](assets/docker-start-hdp-output.jpg)
 
-**Stop HDP Sandbox**
+### Verify HDP Sandbox
 
-When you want to stop/shutdown your HDP sandbox, run the following command:
+Verify HDP sandbox was deployed successfully by issuing the command:
 
-~~~
-docker stop {sandbox-container-hdp}
-~~~
+```
+docker ps
+```
 
-**Start HDP Sandbox**
+You should see something like:
 
-When you want to re-start your sandbox, re-run the script as you did above.
+![docker-ps-hdp-output](assets/docker-ps-hdp-output.jpg)
 
-### For HDF Sandbox
+### Stop HDP Sandbox
+
+When you want to stop/shutdown your HDP sandbox, run the following commands:
+
+```
+docker stop sandbox-hdp
+docker stop sandbox-proxy
+```
+
+### Restart HDP Sandbox
+
+When you want to re-start your sandbox, run the following commands:
+
+```
+docker start sandbox-hdp
+docker start sandbox-proxy
+```
+
+### Remove HDP Sandbox
+
+A container is an instance of the Sandbox image. You must **stop** container dependancies before removing it. Issue the following commands:
+
+```
+docker stop sandbox-hdp
+docker stop sandbox-proxy
+docker rm sandbox-hdp
+docker rm sandbox-proxy
+```
+
+If you want to remove the HDP Sandbox image, issue the following command after stopping and removing the containers:
+
+```
+docker rmi hortonworks/sandbox-hdp:{release}
+```
+
+## HDF Deployment
+
+### Deploy HDF Sandbox
 
 **Install/Deploy/Start HDF Sandbox**
 
 -   Download latest scripts [Hortonworks DataFlow (HDF) for Docker](https://hortonworks.com/downloads/#sandbox) and decompress **zip** file.
 
-[![download-sandbox-hdf-docker](assets/download-sandbox-hdf-docker.jpg)](https://hortonworks.com/downloads/#sandbox)
+[![docker-download-hdf](assets/docker-download-hdf.jpg)](https://hortonworks.com/downloads/#sandbox)
 
-Naming convention for scripts are:
+In the decompressed folder, you will find shell script **docker-deploy-{version}.sh**. From the command line, Linux / Mac / Windows(Git Bash), run the script:
 
--   For Linux/Mac: **deploy-sandbox-hdf-standalone_{version}.sh**
--   For Windows: **deploy-sandbox-hdf-standalone_{version}.ps1**
-
->Note: You only need to run script once. It will setup and start the sandbox for you, creating the sandbox docker container in the process if necessary.
-
-Linux/Mac:
-
-~~~
+```
 cd /path/to/script
-sh deploy-sandbox-hdf-standalone_{version}.sh
-~~~
+sh docker-deploy-{HDFversion}.sh
+```
 
-Windows Powershell:
+> Note: You only need to run script once. It will setup and start the sandbox for you, creating the sandbox docker container in the process if necessary.
+>
+> Note: The decompressed folder has other scripts and folders. We will ignore those for now. They will be used later in advanced tutorials.
 
-~~~
-cd /path/to/script
-powershell -ExecutionPolicy ByPass -File deploy-sandbox-hdf-standalone_{version}.ps1
-~~~
+The script output will be similar to:
 
-You should see something similar to the following:
+![docker-start-hdf-output](assets/docker-start-hdf-output.jpg)
 
-![docker_start_sandbox-hdf](assets/docker_start_sandbox-hdf.jpg)
+### Verify HDF Sandbox
 
-**Stop HDF Sandbox**
+Verify HDF sandbox was deployed successfully by issuing the command:
 
-When you want to shutdown your sandbox, run the following command:
-
-~~~
-docker stop {sandbox-container-hdf}
-~~~
-
-**Start HDF Sandbox**
-
-When you want to re-start your sandbox, run the following command:
-
-~~~
-docker start {sandbox-container-hdf}
-~~~
-
-### Check Sandbox Deployment
-
-Make sure Sandbox docker container is running by issuing command:
-
--   ```docker ps -a```
+```
+docker ps
+```
 
 You should see something like:
 
-![docker-ps-output](assets/docker-ps-output.jpg)
+![docker-ps-hdf-output](assets/docker-ps-hdf-output.jpg)
 
-### Remove Sandbox
 
-A container is an instance of the Sandbox image. So, if you have multiple containers and want to remove one, issue the following commands:
+### Stop HDF Sandbox
 
--   Stop container: ```docker stop {sandbox-container-name}```
--   Remove container: ```docker rm {sandbox-container-name}```
+When you want to stop/shutdown your HDF sandbox, run the following commands:
 
-If you want to remove the Sandbox Docker image, issue the following command after stopping and removing the Docker container:
+```
+docker stop sandbox-hdf
+docker stop sandbox-proxy
+```
 
-```docker rmi {sandbox-image-name}```
+### Restart HDF Sandbox
+
+When you want to re-start your HDF sandbox, run the following commands:
+
+```
+docker start sandbox-hdf
+docker start sandbox-proxy
+```
+
+### Remove HDF Sandbox
+
+A container is an instance of the Sandbox image. You must **stop** container dependancies before removing it. Issue the following commands:
+
+```
+docker stop sandbox-hdf
+docker stop sandbox-proxy
+docker rm sandbox-hdf
+docker rm sandbox-proxy
+```
+
+If you want to remove the HDF Sandbox image, issue the following command after stopping and removing the containers:
+
+```
+docker rmi hortonworks/sandbox-hdf:{release}
+```
+
+## Enable Connected Data Architecture (CDA) - Advance Topic
+
+**Prerequisite**:
+-   A computer with minimum **12 GB of RAM** to spare
+-   Have already deployed the latest HDP/HDF sandbox
+-   Update Docker settings to use minimum 12 GB (12288 MB)
+
+Hortonworks Connected Data Architecture (CDA) allows you to play with both data-in-motion (HDF) and data-at-rest (HDP) sandboxes simultaneously.
+
+**HDF (Data-In-Motion)**
+
+Data-In-Motion is the idea where data is being ingested from all sorts of different devices into a flow or stream. While the data is moving throughout this flow, components or as NiFi calls them “processors” are performing actions on the data to modify, transform, aggregate and route it. Data-In-Motion covers a lot of the preprocessing stage in building a Big Data Application. For instance, data preprocessing is where Data Engineers work with the raw data to format it into a better schema, so Data Scientists can focus on analyzing and visualizing the data.
+
+**HDP (Data-At-Rest)**
+
+Data-At-Rest is the idea where data is not moving and is stored in a database or robust datastore across a distributed data storage such as Hadoop Distributed File System (HDFS). Instead of sending the data to the queries, the queries are being sent to the data to find meaningful insights. At this stage data, data processing and analysis occurs in building a Big Data Application.
+
+### Update Docker Memory
+
+Select **Docker -> Preferences... -> Advanced** and set memory accordingly. Restart Docker.
+
+![docker-memory-settings](assets/docker-memory-settings.jpg)
+
+### Run Script to Enable CDA
+
+When you first deployed the sandbox, a suite of deployment scripts were downloaded - refer to [Deploy HDP Sandbox](#deploy-hdp-sandbox) as an example.
+
+In the decompressed folder, you will find shell script **enable-native-cda.sh**. From the command line, Linux / Mac / Windows(Git Bash), run the script:
+
+```
+cd /path/to/script
+sh enable-native-cda.sh
+```
+
+The script output will be similar to:
+
+![docker-enable-cda-output](assets/docker-enable-cda-output.jpg)
 
 ## Further Reading
 
 -   Follow-up with the tutorial: [Learning the Ropes of the HDP Sandbox](https://hortonworks.com/tutorial/learning-the-ropes-of-the-hortonworks-sandbox)
--   [Browse all tutorials available on the Hortonworks site](https://hortonworks.com/tutorials/)
+-   [Browse available tutorials](https://hortonworks.com/tutorials/)
 
-### Appendix A: Troubleshooting
+## Appendix A: Troubleshooting
 
-**No space left on device**:
+### Drive not shared
+
+![docker-drive-not-shared](assets/docker-drive-not-shared.jpg)
+
+-   Docker needs **write** access to the drive where the **docker-deploy-{version}.sh** is executed.
+
+-   The easiest solution is to execute script from **Downloads** folder.
+
+-   Otherwise, go to **Docker Preferences/Settings** -> **File Sharing/Shared Drives** -> **Add/Select** path/drive where deploy-scripts are located and try again.
+
+### No space left on device
 
 -   Potential Solution
     -   [Increase the size of base Docker for Mac VM image](<https://community.hortonworks.com/content/kbentry/65901/how-to-increase-the-size-of-the-base-docker-for-ma.html>)
+
+### Port Conflict
+
+While running the deployment script, you may run into conflicting port issue(s) similar to:
+
+![docker-conflicting-port](assets/docker-conflicting-port.jpg)
+
+In the picture about, we had a port conflict with **6001**.
+
+Go to the location where you saved the Docker deployment scripts - refer to [Deploy HDP Sandbox](#deploy-hdp-sandbox) as an example. You will notice a new directory **sandbox** was created.
+
+-   Edit file **`sandbox/proxy/proxy-deploy.sh`**
+-   Modify conflicting port (first in keypair). For example, **`6001:6001`** to **`16001:6001`**
+-   Save/Exit the File
+-   Run bash script: **`bash sandbox/proxy/proxy-deploy.sh`**
+-   Repeat steps for continued port conflicts
+
+Verify sandbox was deployed successfully by issuing the command:
+
+```
+docker ps
+```
+
+You should see something like:
+
+![docker-ps-hdf-output](assets/docker-ps-hdf-output.jpg)
