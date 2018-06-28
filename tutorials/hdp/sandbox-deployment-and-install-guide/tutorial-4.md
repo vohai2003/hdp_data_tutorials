@@ -134,6 +134,8 @@ ssh azureSandbox
 
 You will be asked to enter the password, which you created during [sandbox creation](#basics-form).
 
+>Note: The Azure virtual machine may take a few minutes to fully startup. If the VM is not started, you may get **"System is booting up - Access Denied"** message. Give it a few minutes, then try to logon again.
+
 That's it!
 
 Keep this SSH connection open for the duration of your interaction with the sandbox on Azure.
@@ -169,6 +171,8 @@ A login window opens.
 ![Putty Tunnels](assets/azure-putty-login.jpg)
 
 Enter the user name you specified during Azure deployment (in our case, we used the login `azure`).  You'll be asked for a password, which is also the password you specified during deployment.
+
+>Note: The Azure virtual machine may take a few minutes to fully startup. If the VM is not started, you may get **"System is booting up - Access Denied"** message. Give it a few minutes, then try to logon again.
 
 ## Splash Screen
 
