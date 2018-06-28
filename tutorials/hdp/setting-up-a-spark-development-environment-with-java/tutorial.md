@@ -7,7 +7,7 @@ persona: Data Scientist & Analyst
 source: Hortonworks
 use case: Predictive
 technology: Apache Spark
-release: hdp-2.6.0
+release: hdp-2.6.5
 environment: Sandbox
 product: HDP
 series: HDP > Develop with Hadoop > Apache Spark
@@ -134,7 +134,7 @@ To upload to HDFS, first make sure the sandbox is up and running.
 -   Once you've logged into Ambari Manager, mouse over the drop-down menu on the upper-right hand corner and click on **Files View**.
 -   Open the **tmp** folder and click the **upload** button in the upper-right corner to upload the file. Make sure it's named **shakespeare.txt**.
 
-![ambari](assets/ambari.jpg)
+![select-files-view](assets/select-files-view.jpg)
 
 Now we're ready to create our application. In your IDE open the folder **src/main/resources**, which should have been generated automatically for you. Place **shakespeare.txt** there.
 
@@ -321,4 +321,13 @@ Then click the + button at the upper-left and add a new remote configuration. Fi
 
 ![intellij7](assets/intellij7.png)
 
-If you run this debug configuration from your IDE immediately after submitting your Spark job, the debugger will attach and Spark will stop at breakpoints. You can also inspect the values of live variables within your program. This is invaluable when trying to pin down bugs in your code.
+If you run this debug configuration from your IDE immediately after submitting your Spark job, the debugger will attach and Spark will stop at breakpoints.
+
+> Note: To resubmit the word count code we must first remove the directory created earlier. Use the command `hdfs dfs -rm -r /tmp/shakespeareWordCount` on the sandbox shell to remove the old directory.
+
+Submit the spark job on the sandbox shell again and debug on your IDE immediately after executing the **spark-submit** command.
+Remember that to run your code we used the following command: `spark-submit --class "Hortonworks.SparkTutorial.Main"  --master yarn --deploy-mode client ./SparkTutorial-1.0-SNAPSHOT.jar`
+
+![spark-submit-debug](assets/spark-submit-debug.jpg)
+
+You can also inspect the values of live variables within your program. This is invaluable when trying to pin down bugs in your code.
