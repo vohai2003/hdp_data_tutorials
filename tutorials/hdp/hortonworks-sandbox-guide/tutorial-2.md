@@ -1,12 +1,13 @@
 ---
-title: Sandbox Docs - HDF 3.1
+title: Sandbox Docs - HDF 3.1.1
 ---
 
-# Sandbox Docs - HDF 3.1
+# Sandbox Docs - HDF 3.1.1
 
 ## Outline
 
 -   [Release Notes](#release-notes)
+-   [Behavior Changes](#behavior-changes)
 -   [System Information](#system-information)
     -   [Databases Used](#databases-used)
 -   [Services Started Automatically](#services-started-automatically)
@@ -15,41 +16,41 @@ title: Sandbox Docs - HDF 3.1
 
 ## Release Notes
 
-January 2018
--   The VirtualBox and VMWare releases of the HDF sandox had their OS-level packages updated, including a version update of Docker from 17.09 to 17.12.
--   A patch was applied to the released VMs which updated them to the 4.14.14-1 kernel to address the Meltdown/Spectre vulnerability.
--   The VirtualBox and VMWare releases were reduced to a total size of about 10.4 GB.  As a result, a loading splash page will show up on first boot while the sandbox is decompressed and set up.
--   Minor splash page typo fixes.
+June 2018
 
-December 2017
--   The Sandbox uses the following versions of Ambari, HDF and HDP. Please use the following release note links provided to view their respective release notes.
-    -   [Ambari 2.6](https://docs.hortonworks.com/HDPDocuments/Ambari-2.6.0.0/bk_ambari-release-notes/content/ch_relnotes-ambari-2.6.0.0.html)
-    -   [HDF 3.0.2](https://docs.hortonworks.com/HDPDocuments/HDF3/HDF-3.0.2/bk_release-notes/content/ch_hdf_relnotes.html)
-    -   [HDP 2.6.3](https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.6.3/bk_release-notes/content/ch_relnotes.html)
+-   The VirtualBox and VMWare releases of the HDF sandbox had their OS-level packages updated, including a version update to Docker 18.03.0.
+
+-   Image Checksums:
+    -   VirtualBox release – **MD5:6eecb32e668af0ccc9215ebec0ee4810**
+    -   VMware release – **MD5:d09dbbb47b6d0e97e061cb21cf86178b**
+    -   Docker release – **MD5:c04d4be290778818cec526f99b5af294**
+
+-   HDF Stack and Ambari: The Sandbox uses the following versions of Ambari and HDF stack. Please use the following release note links provided to view Ambari and HDF stack specific information.
+    -   [HDF 3.1.1 Product Release Notes](https://docs.hortonworks.com/HDPDocuments/HDF3/HDF-3.1.1/bk_release-notes/content/ch_hdf_relnotes.html)
+    -   [Ambari 2.6.1 Release Notes](https://docs.hortonworks.com/HDPDocuments/Ambari-2.6.1.0/bk_ambari-release-notes/content/ch_relnotes-ambari-2.6.1.0.html)
+
+## Behavior Changes
+
+-   Virtual machines are now Connected Data Architecture (CDA) ready
 
 ## System Information
 
 Operating System and Java versions that the Sandbox has installed.
--   CentOS release 7.4.1708
--   Kernel: 4.14.14-1
--   Java: OpenJDK version 1.8.0_131
+-   CentOS release 7.5.1804
+-   Kernel: 4.17.1-1
+-   Java: OpenJDK version 1.8.0_171
 
 Image File Sizes:
--   Docker – 10 GB compressed, 13.9 GB uncompressed
--   VMware – 10.4 GB
--   Virtualbox – 10.4 GB
-
-Image Checksums:
--   Docker release – **MD5:c5023721b73693e9cbca1df7e2aeaba2**
--   VMware release – **MD5:be4aaf555cdb1aac08e5f42e90874338**
--   Virtualbox release – **MD5:fca5d03bdc70070cf5f7ccd42c9a1496**
+-   Docker – 7 GB
+-   VMware – 8 GB
+-   Virtualbox – 8 GB
 
 ### Databases Used
 
 These are a list of databases used within the HDF Sandbox along with the HDF components that use them.
 
 -   PostgreSQL: Ambari
--   MySQL: Registry, Streaming Analytics Manager, Druid, Superset
+-   MySQL: Registry, Streaming Analytics Manager
 
 ## Services Started Automatically
 
@@ -59,23 +60,21 @@ When the sandbox is started, the following services are also started by default.
 -   Ambari Agent (non-java)
 -   Zookeeper
 -   Storm
+-   Ambari Infra
 -   Kafka
+-   Log Search
 -   NiFi
--   Registry
+-   Schema Registry
 -   Streaming Analytics Manager (run as streamline user)
 
 ## Services In Maintenance Mode
 
-Due to limited resources avaialble in the sandbox's virtual environment, the following services are in maintenance mode and will not automatically start.
+Due to limited resources available in the sandbox's virtual environment, the following services are in maintenance mode and will not automatically start.
 
 To fully use these services, you must allocate more memory to the sandbox's virtual machine or turn off existing services.  If you want these services to automatically start, turn off maintenance mode from within the Ambari dashboard.
 
--   HDFS
--   YARN
--   MapReduce2
--   HBase
--   Druid
--   Superset
+-   NiFi Registry
 
 ## Further Reading
--   [About Hortonworks DataFlow](https://hortonworks.com/products/data-center/hdf/)
+-   [Hortonworks Connected Data Platforms](https://hortonworks.com/products/data-platforms/)
+-   [HDF Documentation](https://docs.hortonworks.com/HDPDocuments/HDF3/HDF-3.1.1/index.html)
