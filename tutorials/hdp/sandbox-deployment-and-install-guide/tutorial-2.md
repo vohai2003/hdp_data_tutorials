@@ -21,7 +21,7 @@ This tutorial walks through the general approach for installing the Hortonworks 
 -   [Import Hortonworks Sandbox](#import-hortonworks-sandbox)
     -   [VMWare Workstation](#vmware-workstation)
     -   [VMWare Fusion](#vmware-fusion)
--   [Enable Connected Data Architecture (CDA) - Advance Topic](#enable-connected-data-architecture-cda-advance-topic)
+-   [Enable Connected Data Architecture (CDA) - Advance Topic](#enable-connected-data-architecture-cda---advance-topic)
 -   [Further Reading](#further-reading)
 
 ## Import Hortonworks Sandbox

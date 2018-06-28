@@ -35,7 +35,7 @@ This tutorial walks through the general approach for installing the Hortonworks 
     -   [Stop HDF Sandbox](#stop-hdf-sandbox)
     -   [Restart HDF Sandbox](#restart-hdf-sandbox)
     -   [Remove HDF Sandbox](#remove-hdf-sandbox)
--   [Enable Connected Data Architecture (CDA) - Advance Topic](#enable-connected-data-architecture-cda-advance-topic)
+-   [Enable Connected Data Architecture (CDA) - Advance Topic](#enable-connected-data-architecture-cda---advance-topic)
 -   [Further Reading](#further-reading)
 -   [Appendix A: Troubleshooting](#appendix-a-troubleshooting)
     -   [Drive not shared](#drive-not-shared)
