@@ -242,7 +242,7 @@ Congratulations! You deployed the Trucking IoT demo that processes truck event d
 
 ### Step 1: Configure SAM for CDA
 
-1\. Open Stream Analytics Manager (SAM) at [http://sandbox-hdp.hortonworks.com:7777/](http://sandbox-hdf.hortonworks.com:7777/)
+1\. Open Stream Analytics Manager (SAM) at [http://sandbox-hdf.hortonworks.com:7777/](http://sandbox-hdf.hortonworks.com:7777/)
 
 ### Add a Service Pool for HDP
 
@@ -256,7 +256,10 @@ In the field to the left of AUTO ADD, include the following:
 http://sandbox-hdp.hortonworks.com:8080/api/v1/clusters/Sandbox
 ~~~
 
-and then click AUTO ADD. You should now see services from the HDP Sandbox on the Service Pool Dashboard to the right of the HDF Sandbox Service Pool. We have now shared the web address of where SAM can find the services for the HDP Ambari Stack.
+and then click AUTO ADD.
+> Note: Use the credentials `raj_ops/raj_ops` to sign in.
+
+You should now see services from the HDP Sandbox on the Service Pool Dashboard to the right of the HDF Sandbox Service Pool. We have now shared the web address of where SAM can find the services for the HDP Ambari Stack.
 
 ### Create a multi-node Environment
 
@@ -284,13 +287,13 @@ DRUID, HBASE, HDFS, HIVE
 
 Now that these configurations are complete, we are ready to import and run our SAM topology for CDA.
 
-### Step 1: Deploy SAM Topology CDA Version
+### Step 2: Deploy SAM Topology CDA Version
 
-1\. Open Stream Analytics Manager (SAM) at [http://sandbox-hdp.hortonworks.com:7777/](http://sandbox-hdf.hortonworks.com:7777/)
+1\. Open Stream Analytics Manager (SAM) at [http://sandbox-hdf.hortonworks.com:7777/](http://sandbox-hdf.hortonworks.com:7777/)
 
 2\. [Download the sam topology for CDA](assets/templates/sam_topology/Trucking-IoT-CDA-V2.json) and save it somewhere on your computer.
 
-3\. Import Application
+3\. Now on the SAM UI click the green plus sign and select **Import Application**
 
 ~~~bash
 SELECT JSON FILE*
@@ -339,17 +342,19 @@ A window will appear asking if you want to continue deployment, click **Ok**.
 
 -   **ToDataLake2** store average speed events into HDFS
 
-### Step 5: Visualize Trucking Data Via Superset
+### Step 3: Visualize Trucking Data Via Superset
 
-1\. Open Ambari at `http://sandbox-hdp.hortonworks.com:8080/`. User credentials are `username/password = admin/admin`
+1\. Open Ambari at `http://sandbox-hdp.hortonworks.com:8080/`. User credentials are `username/password = raj_ops/raj_ops`
 
 2\. Turn on the HDFS, YARN, Druid and Superset services and make sure to turn off maintenance mode.
 
 For example, to turn on **HDFS**, click on the service name in Ambari, click on the **Service Actions** dropdown and click **Start**. In the window, you will be asked if you want to start, confirm and also click on the checkbox to turn off maintenance mode.
 
-3\. Open Superset at [http://sandbox-hdp.hortonworks.com:9089/](http://sandbox-hdf.hortonworks.com:9089/)
+3\. Open Superset at [http://sandbox-hdp.hortonworks.com:9089/](http://sandbox-hdp.hortonworks.com:9089/)
 
-4\. Wait about 5 - 10 minutes for Kafka data to be consumed, then periodically, select the **Sources** dropdown and click on **Refresh Druid Metadata**. Eventually, the two Druid data sources will appear.
+>Note: The username and password for Superset is `admin/admin`
+
+4\. Wait about 25 - 30 minutes for Kafka data to be consumed, then periodically, select the **Sources** dropdown and click on **Refresh Druid Metadata**. Eventually, the two Druid data sources will appear.
 
 ![refresh_metadata](assets/images/refresh_metadata.jpg)
 
@@ -366,6 +371,8 @@ For example, to turn on **HDFS**, click on the service name in Ambari, click on 
 8\. Under Hierarchy, add **driverId**, **speed_AVG**.
 
 9\. Press on **Query** to visualize the data into a Sunburst representation.
+
+![press-on-query](assets/images/press-on-query.jpg)
 
 10\. Select **Save as** and name the slice: `AvgSpeedSunburst`. Create a new dashboard and call it: `Trucking-IoT-Demo`. Click **Save**.
 
