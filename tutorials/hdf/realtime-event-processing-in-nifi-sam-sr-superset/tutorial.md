@@ -287,13 +287,13 @@ DRUID, HBASE, HDFS, HIVE
 
 Now that these configurations are complete, we are ready to import and run our SAM topology for CDA.
 
-### Step 1: Deploy SAM Topology CDA Version
+### Step 2: Deploy SAM Topology CDA Version
 
 1\. Open Stream Analytics Manager (SAM) at [http://sandbox-hdf.hortonworks.com:7777/](http://sandbox-hdf.hortonworks.com:7777/)
 
 2\. [Download the sam topology for CDA](assets/templates/sam_topology/Trucking-IoT-CDA-V2.json) and save it somewhere on your computer.
 
-3\. Now on the SAM UI click the green plus sign and select **import Application**
+3\. Now on the SAM UI click the green plus sign and select **Import Application**
 
 ~~~bash
 SELECT JSON FILE*
@@ -342,7 +342,7 @@ A window will appear asking if you want to continue deployment, click **Ok**.
 
 -   **ToDataLake2** store average speed events into HDFS
 
-### Step 5: Visualize Trucking Data Via Superset
+### Step 3: Visualize Trucking Data Via Superset
 
 1\. Open Ambari at `http://sandbox-hdp.hortonworks.com:8080/`. User credentials are `username/password = raj_ops/raj_ops`
 
