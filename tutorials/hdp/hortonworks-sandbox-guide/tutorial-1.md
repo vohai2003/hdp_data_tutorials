@@ -23,7 +23,7 @@ title: Sandbox Docs - HDP 2.6.5
 
 June 2018
 
--   The VirtualBox and VMWare releases of the HDF sandbox had their OS-level packages updated, including a version update to Docker 18.03.0.
+-   The VirtualBox and VMWare releases of the HDP sandbox had their OS-level packages updated, including a version update to Docker 18.03.0.
 
 -   Image MD5 Checksums:
     -   VirtualBox – **533130d23a2f7d919559d0fbb858b09f**
