@@ -236,9 +236,9 @@ Congratulations! You deployed the Trucking IoT demo that processes truck event d
 ### Prerequisites
 - [Installed Hortonworks DataFlow (HDF) Sandbox](https://hortonworks.com/downloads/#sandbox)
 - Enabled Connected Data Architecture:
-     - [Enable CDA for VirtualBox](https://hortonworks.com/tutorial/sandbox-deployment-and-install-guide/section/1/#enable-connected-data-architecture-cda-advance-topic)
-    - [Enable CDA for VMware](https://hortonworks.com/tutorial/sandbox-deployment-and-install-guide/section/2/#enable-connected-data-architecture-cda-advance-topic)
-    - [Enable CDA for Docker ](https://hortonworks.com/tutorial/sandbox-deployment-and-install-guide/section/3/#enable-connected-data-architecture-cda-advance-topic)
+     - [Enable CDA for VirtualBox](https://hortonworks.com/tutorial/sandbox-deployment-and-install-guide/section/1/#enable-connected-data-architecture-cda---advanced-topic)
+    - [Enable CDA for VMware](https://hortonworks.com/tutorial/sandbox-deployment-and-install-guide/section/2/#enable-connected-data-architecture-cda---advanced-topic)
+    - [Enable CDA for Docker ](https://hortonworks.com/tutorial/sandbox-deployment-and-install-guide/section/3/#enable-connected-data-architecture-cda-advanced---topic)
 
 ### Step 1: Configure SAM for CDA
 
@@ -291,7 +291,7 @@ Now that these configurations are complete, we are ready to import and run our S
 
 1\. Open Stream Analytics Manager (SAM) at [http://sandbox-hdf.hortonworks.com:7777/](http://sandbox-hdf.hortonworks.com:7777/)
 
-2\. [Download the sam topology for CDA](assets/templates/sam_topology/Trucking-IoT-CDA-V2.json) and save it somewhere on your computer.
+2\. [Download the SAM topology for CDA](assets/templates/sam_topology/Trucking-IoT-CDA-V2.json) and save it somewhere on your computer as "Trucking-IoT-CDA-V2.json".
 
 3\. Now on the SAM UI click the green plus sign and select **Import Application**
 
@@ -382,7 +382,7 @@ The following visualization slice is a "Sunburst" of **average-speed-cube-01** d
 
 ![sunburst_visual_slice](assets/images/sunburst_avgspeed.jpg)
 
-The following visualization slice is a "Sunburst" of **volation-events-cube-01** data source:
+The following visualization slice is a "Sunburst" of **violation-events-cube-01** data source:
 
 ![sunburst_driverviolation](assets/images/sunburst_driverviolation.jpg)
 

@@ -21,7 +21,7 @@ This tutorial walks through the general approach for installing the Hortonworks 
 -   [Import Hortonworks Sandbox](#import-hortonworks-sandbox)
     -   [VMWare Workstation](#vmware-workstation)
     -   [VMWare Fusion](#vmware-fusion)
--   [Enable Connected Data Architecture (CDA) - Advance Topic](#enable-connected-data-architecture-cda---advance-topic)
+-   [Enable Connected Data Architecture (CDA) - Advanced Topic](#enable-connected-data-architecture-cda---advanced-topic)
 -   [Further Reading](#further-reading)
 
 ## Import Hortonworks Sandbox
@@ -78,7 +78,7 @@ Enter the URL into your browser - you're ready to begin using the sandbox.
 
 Welcome to the Hortonworks Sandbox!
 
-## Enable Connected Data Architecture (CDA) - Advance Topic
+## Enable Connected Data Architecture (CDA) - Advanced Topic
 
 **Prerequisite**:
 -   A computer with minimum **12 GB of RAM** to spare

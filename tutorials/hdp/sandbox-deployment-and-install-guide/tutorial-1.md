@@ -18,7 +18,7 @@ This tutorial walks through the general approach for installing the Hortonworks 
 
 -   [Import the Hortonworks Sandbox](#import-the-hortonworks-sandbox)
 -   [Start the Hortonworks Sandbox](#start-the-hortonworks-sandbox)
--   [Enable Connected Data Architecture (CDA) - Advance Topic](#enable-connected-data-architecture-cda---advance-topic)
+-   [Enable Connected Data Architecture (CDA) - Advanced Topic](#enable-connected-data-architecture-cda---advanced-topic)
 -   [Further Reading](#further-reading)
 
 ## Import the Hortonworks Sandbox
@@ -47,7 +47,7 @@ A console window opens and displays the boot process. This process take a few mi
 
 Welcome to the Hortonworks Sandbox!
 
-## Enable Connected Data Architecture (CDA) - Advance Topic
+## Enable Connected Data Architecture (CDA) - Advanced Topic
 
 **Prerequisite**:
 -   A computer with minimum **12 GB of RAM** to spare
