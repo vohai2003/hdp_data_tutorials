@@ -50,7 +50,7 @@ Before we can create the SAM topology, we need to start the producer to store da
 
 > Note: NiFi flow should be kept running until the end of the tutorial.
 
-![nifi_producer](assets/images/dataflow.jpg)
+![dataflow-for-NiFi](assets/images/dataflow.jpg)
 
 > Note: If you want to learn more about how to build the NiFi Flow, refer to [NiFi in Trucking IoT](https://hortonworks.com/tutorial/nifi-in-trucking-iot-on-hdf/) tutorial.
 
