@@ -35,7 +35,7 @@ This tutorial walks through the general approach for installing the Hortonworks 
     -   [Stop HDF Sandbox](#stop-hdf-sandbox)
     -   [Restart HDF Sandbox](#restart-hdf-sandbox)
     -   [Remove HDF Sandbox](#remove-hdf-sandbox)
--   [Enable Connected Data Architecture (CDA) - Advance Topic](#enable-connected-data-architecture-cda---advance-topic)
+-   [Enable Connected Data Architecture (CDA) - Advanced Topic](#enable-connected-data-architecture-cda---advanced-topic)
 -   [Further Reading](#further-reading)
 -   [Appendix A: Troubleshooting](#appendix-a-troubleshooting)
     -   [Drive not shared](#drive-not-shared)
@@ -213,7 +213,7 @@ If you want to remove the HDF Sandbox image, issue the following command after s
 docker rmi hortonworks/sandbox-hdf:{release}
 ```
 
-## Enable Connected Data Architecture (CDA) - Advance Topic
+## Enable Connected Data Architecture (CDA) - Advanced Topic
 
 **Prerequisite**:
 -   A computer with minimum **12 GB of RAM** to spare
