@@ -189,13 +189,13 @@ If you don't see the topics listed above, then create them:
 
 You may be wondering, why we need Kafka topics and schemas? When we use Kafka Source components, we need a Kafka topic (queue) to pull in data from. The same idea can be applied for Kafka Sinks, but instead we store data into the queue. The schemas are needed to complement Kafka to provide data verification.
 
-Lets began designing and creating our topology!
+Lets begin designing and creating our topology!
 
 **SOURCE**
 
 1\. Add 2 KAFKA source components onto the canvas as shown in **Figure 1**.
 
-![kafka_source_components](assets/images/kafka_source_componentS.jpg)
+![kafka_source_components](assets/images/kafka_source_components.jpg)
 
 **Figure 1: Kafka Source Components**
 
@@ -239,7 +239,7 @@ When you are done, click OK.
 
 3\. Add 3 processor components: JOIN, RULE and AGGREGATE onto the canvas.
 
-![join_rule_aggregate](assets/images/join_rule_aggregatE.jpg)
+![join_rule_aggregate](assets/images/join_rule_aggregate.jpg)
 
 4\. The two Kafka sources have green bubbles on their rightside edge, click, hold and drag to connect to the JOIN processors grey bubble located on its leftside edge.
 
