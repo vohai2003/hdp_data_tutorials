@@ -1,21 +1,14 @@
 ---
-title: Sandbox Port Forwards - HDF 3.1
+title: Sandbox Port Forwards - HDF 3.1.1
 ---
 
-# Sandbox Port Forwards - HDF 3.1
+# Sandbox Port Forwards - HDF 3.1.1
 
 ## Introduction
 
 Listed below are the ports that the HDF Sandbox forwards by default, and what software or purpose each port corresponds to.
 
-To allow multiple types of sandboxes to be running at once (e.g. HDP and HDF), the HDF Sandbox employs a port forwarding pattern so as to not overlap with HDP ports.
-
-For reference, the port forwarding pattern is:
--   Add +10000 to the port, or +1000 if adding 10000 would mean an invalid or overlapping port (ex: 12181 -> 2181, 19000 -> 9000, 62888 -> 61888).
--   Ports 15100-15105 are custom ports that some tutorials might use temporarily.  Feel free to use these ports for your own purpose - they have already been opened and forwarded for you.
--   For processes that must absolutely have direct port forwarding, ports 17000-17005 are reserved for that purpose.
-
-> Note: Last updated for HDF Sandbox 3.1.0.
+In this release we began to use NGINX as a reverse proxy server. In general, we open all necessary ports for HDP and HDF to communicate with each other, hence, Connected Data Architecture (CDA).
 
 ## Port Forwards
 
