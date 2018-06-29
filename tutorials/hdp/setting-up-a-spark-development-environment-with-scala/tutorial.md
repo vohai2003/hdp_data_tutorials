@@ -115,7 +115,7 @@ For our first "Hello World" application we're going to build a simple program th
 
 To upload to HDFS, first make sure the sandbox is on, then navigate to localhost:8080 and login (default username/password is maria_dev/maria_dev). Once you've logged into Ambari Manager, mouse over the drop-down menu on the upper-right hand corner and click on Files View. Then open the tmp folder and click the upload button in the upper-right corner to upload the file. Make sure it's named shakespeare.txt.
 
-![ambari](assets/ambari.png)
+![select-files-view](assets/select-files-view.jpg)
 
 Now we're ready to start making our application. In your IDE open the folder src/main/resources, which should have been generated automatically for you. Place shakespeare.txt there.
 
