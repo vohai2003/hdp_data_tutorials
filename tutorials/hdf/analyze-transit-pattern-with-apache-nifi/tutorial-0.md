@@ -55,4 +55,4 @@ The tutorial consists of seven sections:
 6. [Build a NiFi Process Group to Store Data As JSON](https://hortonworks.com/tutorial/analyze-transit-patterns-with-apache-nifi/section/6/) - Convert XML to JSON data format and store into file on local file system.
 7. [Ingest Live Vehicle Routes via NextBus API](https://hortonworks.com/tutorial/analyze-transit-patterns-with-apache-nifi/section/7/) - Ingest NextBus's live stream data for San Francisco MUNI agency.
 
-Each tutorial provides step by step instructions, so that you can complete the learning objectives and tasks associate with it. You are also provided with a dataflow template for each tutorial that you can use for verification. Each tutorial builds on the previous.
+Each tutorial provides step by step instructions, so that you can complete the learning objectives and tasks associated with it. You are also provided with a dataflow template for each tutorial that you can use for verification. Each tutorial builds on the previous.
