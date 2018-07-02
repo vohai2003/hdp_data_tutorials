@@ -1,14 +1,14 @@
 ---
-title: Sandbox Port Forwards - HDP 2.6.4
+title: Sandbox Port Forwards - HDP 2.6.5
 ---
 
-# Sandbox Port Forwards - HDP 2.6.4
+# Sandbox Port Forwards - HDP 2.6.5
 
 ## Introduction
 
 Listed below are the ports that the HDP Sandbox forwards by default, and what software or purpose each port corresponds to.
 
-> Note: Last updated for HDP Sandbox 2.6.4.
+In this release we began to use NGINX as a reverse proxy server. In general, we open all necessary ports for HDP and HDF to communicate with each other, hence, Connected Data Architecture (CDA).
 
 ## Port Forwards
 

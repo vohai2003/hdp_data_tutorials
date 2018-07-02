@@ -1,8 +1,8 @@
 ---
-title: Sandbox Docs - HDP 2.6.4
+title: Sandbox Docs - HDP 2.6.5
 ---
 
-# Sandbox Docs - HDP 2.6.4
+# Sandbox Docs - HDP 2.6.5
 
 ## Outline
 
@@ -21,20 +21,24 @@ title: Sandbox Docs - HDP 2.6.4
 
 ## Release Notes
 
-February 2018
+June 2018
 
--   Md5 VMware Virtual Appliance - **9ae7becfa0442f66f1dac1ef88477d2f**
--   Md5 VirtualBox Virtual Appliance - **f2803fdbefab3d2044f8e04957b89090**
--   Md5 Docker - (Linux/Mac) **b14f4538147851c51b26d9da37ab931c**, (Windows) **ae377d7dddeb26c89912059a1bf696af**
+-   The VirtualBox and VMWare releases of the HDP sandbox had their OS-level packages updated, including a version update to Docker 18.03.0.
+
+-   Image MD5 Checksums:
+    -   VirtualBox – **533130d23a2f7d919559d0fbb858b09f**
+    -   VMware – **781bd8f2b55660c57e68b90c0af158d3**
+    -   Docker – **5d828411c30c9db0fd663396468e20c6**
+
 -   HDP Stack and Ambari: The Sandbox uses the following versions of Ambari and HDP stack. Please use the following release note links provided to view Ambari and HDP stack specific information.
-    -   [HDP 2.6.4 Product Release Notes](https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.6.4/bk_release-notes/content/ch_relnotes.html)
+    -   [HDP 2.6.5 Product Release Notes](https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.6.5/bk_release-notes/content/ch_relnotes.html)
     -   [Ambari 2.6.1 Release Notes](https://docs.hortonworks.com/HDPDocuments/Ambari-2.6.1.0/bk_ambari-release-notes/content/ch_relnotes-ambari-2.6.1.0.html)
-
 
 ## Behavior Changes
 
--   Updated start script to display startup information so as to be more transparent
--   Updated kernel to fix specter and meltdown bugs: 4.4.114-1.el7.elrepo.x86_64
+-   Virtual machines are now Connected Data Architecture (CDA) ready
+-   Kafka is on by default
+-   Builds now include Superset and Druid, both turned off
 
 ## Known Issues
 
@@ -47,26 +51,25 @@ This is a list of common limitations along with their workarounds.
 -   RMP-3586 - Due to dependency of the underlying OS and Virtual machine application, the following may occur when suspending the virtual machine:
     -   Region Server service for HBase may be stopped when returning back from suspended state. It will need to be restarted.
     -   Ambari Metrics may be stopped when returning back from suspended state since it now uses an embedded HBase.
-    -   Workaround: Avoid having to suspend your virtual machine.
-
+    -   **Workaround**: Avoid having to suspend your virtual machine.
 
 ## System Information
 
 Operating System and Java versions that the Sandbox has installed.
 -   OS Version (docker container)
-    -   CentOS release 6.9 (Final)
+    -   CentOS release 7.5.1804 (Core)
     -   Java Version (docker container)
-    -   openjdk version “1.8.0_161”
-    -   OpenJDK Runtime Environment (build 1.8.0_161-b14)
+    -   openJDK version “1.8.0.171”
+    -   OpenJDK Runtime Environment (build 1.8.0.171-8.b10)
     -   OpenJDK 64-Bit Server VM (build 25.161-b14, mixed mode)
     -   Updated from previous version
 -   OS Version (Hosting Virtual Machine)
     -   CentOS Linux release 7.2.1511 (Core)
 
 Image File Sizes:
--   VMware - 9.9 GB
--   VirtualBox - 9.7 GB
--   Docker - 12.5 GB
+-   VMware - 16 GB
+-   VirtualBox - 16 GB
+-   Docker - 15 GB
 
 
 ### Databases Used
@@ -116,11 +119,15 @@ When the virtual machine is booted up, the following services are started. If no
     -   mapred is the user used to launch this process
 -   Oozie
     -   Bootstrap - org.apache.catalina.startup.Bootstrap
+-   Kafka
+    -   Kafka – kafka.Kafka
 -   Ranger
     -   UnixAuthenticationService - org.apache.ranger.authentication.UnixAuthenticationService Run as root user
     -   EmbededServer - org.apache.ranger.server.tomcat.EmbeddedServer
--   Spark
+-   Spark2
     -   HistoryServer - org.apache.spark.deploy.history.HistoryServer
+    -   Livy server run as livy
+    -   Thrift server - org.apache.spark.deploy.SparkSubmit run as hive user
 -   YARN
     -   ApplicationHistoryServer - org.apache.hadoop.yarn.server.applicationhistoryservice.ApplicationHistoryServer
     -   ResourceManager - org.apache.hadoop.yarn.server.resourcemanager.ResourceManager
@@ -147,17 +154,12 @@ Because of the limited resources available in the sandbox virtual machine enviro
 -   HBase
     -   HRegionServer - org.apache.hadoop.hbase.regionserver.HRegionServer
     -   HMaster - org.apache.hadoop.hbase.master.HMaster
--   Kafka
-    -   Kafka - kafka.Kafka
 -   Knox
     -   gateway.jar - /usr/hdp/current/knox-server/bin/gateway.jar
     -   ldap.jar - /usr/hdp/current/knox-server/bin/ldap.jar This process is a mini ldap server
--   Spark
-    -   Livy server run as livy
-    -   Thrift Server - org.apache.spark.deploy.SparkSubmit run as hive user
--   Spark2
-    -   Livy server run as livy
-    -   Thrift server - org.apache.spark.deploy.SparkSubmit run as hive user
+-   Druid
+    -   org.sparklinedata.druid
+-   Superset
 -   Storm
     -   supervisor - backtype.storm.daemon.supervisor
     -   nimbus - backtype.storm.daemon.nimbus
@@ -169,5 +171,5 @@ Because of the limited resources available in the sandbox virtual machine enviro
 ## Further Reading
 
 -   [Hortonworks Leads Industry Performance Customer Choice HDP 2.6](https://hortonworks.com/press-releases/hortonworks-leads-industry-performance-customer-choice-hdp-2-6)
--   [Hortonworks Data Platform (HDP)](https://hortonworks.com/products/data-center/hdp)
--   [HDP Documentation](https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.6.4/index.html)
+-   [Hortonworks Connected Data Platforms](https://hortonworks.com/products/data-platforms/)
+-   [HDP Documentation](https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.6.5/index.html)

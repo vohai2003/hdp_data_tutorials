@@ -78,7 +78,7 @@ There is a data simulator that replicates MiNiFi's place in the data flow on IoT
 
 -   _Scale-out (Clustering)_: Clustering many nodes together. So if each node is able to handle hundreds of MB per second, then a cluster of nodes could be able to handle GB per second.
 
--   _Scale-up & down_: Increase the number of concurrent tasks on a processor to allow more processes to run concurrently or decrease this number to make NiFi suitable to run on edge devices that have limited hardware resources. View [MiNiFi Subproject](https://cwiki.apache.org/confluence/display/NIFI/MiNiFi) to learn more about solving this small footprint data challenge.
+-   _Scale-up & down_: Increase the number of concurrent tasks on a processor to allow more processes to run concurrently or decrease this number to make NiFi suitable to run on edge devices that have limited hardware resources. View [MiNiFi Subproject](https://cwiki.apache.org/confluence/display/MINIFI) to learn more about solving this small footprint data challenge.
 
 ## Next: NiFi in Action
 

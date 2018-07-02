@@ -7,7 +7,7 @@ persona: Developer, Administrator, Data Scientist & Analyst
 source: Hortonworks
 use case: EDW Optimization
 technology: Apache Ambari, Apache Hive, Apache Tez
-release: hdp-2.6.0
+release: hdp-2.6.5
 environment: Sandbox
 product: HDP
 series: HDP > Develop with Hadoop > Hello World, HDP > Hadoop for Data Scientists & Analysts > Introduction to Data Analysis with Hadoop, HDP > Develop with Hadoop > Apache Hive
@@ -58,7 +58,7 @@ Once you have the file you will need to unzip the file into a directory. We will
 
 Let’s use the above two csv files `(drivers.csv and timesheet.csv)` to create two new tables using the following step. Navigate to `http://sandbox.hortonworks.com:8080` using your browser. Click the HDFS `Files view` from the dropdown menu.
 
-![select_files_view](assets/select_files_view.png)
+![select_files_view](assets/select_files_view.jpg)
 
 Go to the `/tmp` folder and if it is not already present, create a new directory called `data` using the controls toward the top of the screen. Click next to the folder and click `Permissions`. Make sure to check (blue) all of the permissions boxes.
 
@@ -73,7 +73,7 @@ Upload the two files under `/tmp/data` using `Upload` at the top of the screen
 
 Now head on over to the `Hive View 2.0`
 
-![select_hive_view](assets/select_hive_view.png)
+![select_hive_view](assets/select_hive_view.jpg)
 
 We will now use hive and create the two tables. They will be named per the csv file names : `drivers` and `timesheet`.
 Use the following two queries to create the tables a then load the data
@@ -110,7 +110,7 @@ TBLPROPERTIES("skip.header.line.count"="1");
 
 Refresh the database by re-selecting the database. You will see the two newly created tables.
 
-![database_explorer](assets/database_explorer.png)
+![database_explorer](assets/database_explorer.jpg)
 
 ### 3.3 Load Data into Query Tables
 
@@ -135,14 +135,14 @@ By default, the Hive view runs with Tez as it's execution engine. That's because
 
 Click on the Hive `SETTINGS` tab. Then we’re going to need to add new settings.
 
-![settings_page](assets/settings_page.png)
+![settings_page](assets/settings_page.jpg)
 
 Then we’re going to modify the following properties:
 
 -   `hive.execution.engine`, use value `mr` (short for MapReduce)
 -   `hive.auto.convert.join`, use value `false`
 
-![hive_execution_engine](assets/hive_execution_engine.png)
+![hive_execution_engine](assets/hive_execution_engine.jpg)
 
 ## Step 5: Test Query on MapReduce Engine <a id="test-query-mapreduce-engine"></a>
 
@@ -244,7 +244,7 @@ The ‘explain’ plan feature can be used to see if the correct stats are being
 
 Currently, CBO for Hive is enabled by default. You can confirm this by reviewing **Ambari** -> **Hive** -> **Configs** -> **Settings**.
 
-![cbo](assets/cbo.png)
+![cbo](assets/cbo.jpg)
 
 As you can see the CBO flag is **on**, meaning that Hive will attempt to optimize complex queries in order to shorten the execution time.
 
@@ -289,15 +289,15 @@ Let's generate statistics for a table `drivers`:
 4.  check `include columns`
 5.  select `Recompute`
 
-![analyze_table_drivers](assets/analyze_table_drivers.png)
+![analyze_table_drivers](assets/analyze_table_drivers.jpg)
 
 To see the job executions visually, you can open the **Tez View** in Ambari Views.
 
-![Tez View](assets/tez-view.png)
+![select_tez_view](assets/select_tez_view.jpg)
 
 Tez View will take you to DAG Details, which includes all your DAG projects.
 
-![tez_view_home_page](assets/tez_view_home_page.png)
+![tez_view_home_page](assets/tez_view_home_page.jpg)
 
 Click on `DAG ID`
 

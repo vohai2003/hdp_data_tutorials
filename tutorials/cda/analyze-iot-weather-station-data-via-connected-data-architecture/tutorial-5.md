@@ -6,7 +6,7 @@ title: Visualize Weather Data with Zeppelin's Phoenix Interpreter
 
 ## Introduction
 
-You'll use Phoenix to perform SQL queries against the HBase table by mapping a phoenix table to HBase table. You'll visualize your results by running Phoenix in Zeppelin via the Phoenix Interpreter. You'll monitor temperature, humidity and barometric pressure readings via Line Graphs, Bar Graphs, Pie Charts and Map Visualization.
+You'll use Phoenix to perform SQL queries against the HBase table by mapping a Phoenix table to HBase table. You'll visualize your results by running Phoenix in Zeppelin via the Phoenix Interpreter. You'll monitor temperature, humidity and barometric pressure readings via Line Graphs, Bar Graphs, Pie Charts and Map Visualization.
 
 ## Prerequisites
 
@@ -28,7 +28,7 @@ Select notebook next to the Zeppelin icon, and hit “Create new note” to crea
 
 ### Step 2: Create Phoenix Table Mapping to HBase Table
 
-We must create a phoenix table to map to our HBase table in order to perform SQL queries against HBase. Write or Copy/Paste the following query in the Zeppelin editor.
+We must create a Phoenix table to map to our HBase table in order to perform SQL queries against HBase. Write or Copy/Paste the following query in the Zeppelin editor.
 
 ~~~SQL
 %jdbc(phoenix)
@@ -40,7 +40,7 @@ CREATE TABLE IF NOT EXISTS "sense_hat_logs" ("row" VARCHAR primary key,"weather"
 
 **Figure 1:** Created Phoenix Table
 
-Run quick test to verify Phoenix table successfully mapped to HBase table.
+Run a quick test to verify Phoenix table successfully mapped to the HBase table.
 
 Display the first 10 rows of the Phoenix table using Zeppelin's **Table Visualization**.
 

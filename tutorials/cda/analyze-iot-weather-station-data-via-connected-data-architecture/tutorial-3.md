@@ -6,11 +6,9 @@ title: Collect Sense HAT Weather Data via CDA
 
 ## Introduction
 
-You'll learn to create a python program collect sensor readings from the Raspberry Pi Sense HAT for
-temperature, humidity and barometric pressure. You'll also run MiNiFi
-on top of the Rasbperry Pi to ingest the weather readings and route it to the location of
-NiFi on HDF sandbox via Site-to-Site protocol. You'll also verify NiFi can
-make contact with HDP by storing the data into Hadoop Distributed File System (HDFS).
+You'll learn to create a python program that collects sensor readings from the Raspberry Pi Sense HAT for temperature, humidity and barometric pressure. You'll also run MiNiFi
+on top of the Raspberry Pi to ingest the weather readings and route it to the location of
+NiFi on HDF sandbox via Site-to-Site protocol. Finally, you'll verify that NiFi can make contact with HDP by storing the data into Hadoop Distributed File System (HDFS).
 
 ## Prerequisites
 
@@ -532,13 +530,13 @@ cd ~/path/to/minifi-toolkit-0.4.0/
 ./minifi-toolkit-0.4.0/bin/config.sh transform weather-station-node-sj.xml config.yml
 ~~~
 
-2\. Validate there are no issues with the new MiNiFi file:
+2\. Validate that there are no issues with the new MiNiFi file:
 
 ~~~bash
 ./minifi-toolkit-0.4.0/bin/config.sh validate config.yml
 ~~~
 
-> Note: You should receive no errors were found while parsing the configuration file.
+> Note: You should receive "no errors were found" while parsing the configuration file.
 
 3\. Open **Pi Finder** and use **Upload** button.
 Transport the **config.yml** file from your host machine to your Raspberry Pi.
@@ -553,7 +551,7 @@ Transport the **config.yml** file from your host machine to your Raspberry Pi.
 
 4\. Press the **Terminal** button on **Pi Finder**:
 
-5\. Write the following command to move `config.yml` to minifi conf folder and
+5\. Write the following command to move `config.yml` to MiNiFi conf folder and
 replace the default config.yml.
 
 ~~~bash
@@ -586,7 +584,7 @@ cd minifi-[version num]
 
 **Figure 18:** NiFi flow selected
 
- From the Operate Pallette, click on the ![Start Flow Button](assets/tutorial3/start_button.png). You should see the MiNiFi data is being received by way of the NiFi input port and that data is being routed to HDFS on HDP.
+ From the Operate Palete, click on the ![Start Flow Button](assets/tutorial3/start_button.png). You should see the MiNiFi data is being received by way of the NiFi input port and that data is being routed to HDFS on HDP.
 
 ![start_nifi_to_hdfs_flow](assets/tutorial3/start_nifi_to_hdfs_flow.jpg)
 

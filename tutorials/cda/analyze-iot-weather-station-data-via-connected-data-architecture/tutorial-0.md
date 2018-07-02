@@ -55,8 +55,8 @@ By the end of this tutorial series, you will acquire the fundamental knowledge t
 - Downloaded and Installed [Docker Engine](https://docs.docker.com/engine/installation/) on Local Machine
     - Set [Docker Memory to 12GB](https://docs.docker.com/docker-for-mac/#preferences) to run both HDF and HDP Sandboxes on one laptop.
         - Link above will take you to Docker preferences for Mac. In the Docker documentation, choose your OS.
-- Downloaded Latest [HDF and HDP Sandboxes](https://hortonworks.com/downloads) for Docker Engine
-- Installed Latest [HDF and HDP Sandboxes](https://hortonworks.com/tutorial/sandbox-deployment-and-install-guide/section/3/) onto your computer
+- Downloaded Latest [HDF Sandbox](https://hortonworks.com/downloads) for Docker Engine
+- Installed Latest [HDF Sandbox](https://hortonworks.com/tutorial/sandbox-deployment-and-install-guide/section/3/) onto your computer
 
 ## Tutorial Series Overview
 

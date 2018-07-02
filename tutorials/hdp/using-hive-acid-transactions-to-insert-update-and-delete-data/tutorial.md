@@ -7,7 +7,7 @@ persona: Data Scientist & Analyst
 source: Hortonworks
 use case: EDW Optimization
 technology: Apache Hive
-release: hdp-2.6.0
+release: hdp-2.6.5
 environment: Sandbox
 product: HDP
 series: HDP > Develop with Hadoop > Hello World, HDP > Develop with Hadoop > Apache Hive
@@ -61,7 +61,7 @@ Standard SQL provides ACID operations through INSERT, UPDATE, DELETE, transactio
 
 ![enable_acid1](assets/enable_acid.jpg)
 
--   Set **`hive.enforce.bucketing`** to **true** and Save changes.
+-   On the upper right-hand side filter search for **`hive.enforce.bucketing`** and set it to **true** then click Save.
 
 ![enforce-bucketing](assets/enforce-bucketing.jpg)
 
@@ -80,7 +80,7 @@ If you’re building a production application you can use Ambari Blueprints to p
 This section is written assuming you will use the Hive View within Ambari. Log out of Ambari from **raj_ops** user and re login with credentials **maria_dev/maria_dev**.
 When you have logged into Ambari, go to the Hive View 2.0 by hovering in the top right and selecting Hive View.
 
-![select_hive_view](assets/select_hive_view.png)
+![select_hive_view](assets/select_hive_view.jpg)
 
 Let’s start by creating a transactional table. Only transactional tables can support updates and deletes. Within the Hive View query editor insert this query text:
 

@@ -7,7 +7,7 @@ persona: Developer
 source: Hortonworks
 use case: Data Discovery
 technology: Apache Spark
-release: hdp-2.6.1
+release: hdp-2.6.5
 environment: Sandbox
 product: HDP
 series: HDP > Develop with Hadoop > Apache Spark
@@ -64,11 +64,15 @@ hdfs dfs -copyFromLocal examples/src/main/resources/people.json /tmp/people.j
 Launch the Spark Shell:
 
 ~~~ bash
-./bin/spark-shell
+spark-shell
 ~~~
 
 At a `scala>` REPL prompt, type the following:
 
+~~~ js
+val sqlContext = new org.apache.spark.sql.SQLContext(sc)
+~~~
+then
 ~~~ js
 val df = sqlContext.jsonFile("/tmp/people.json")
 ~~~
@@ -241,7 +245,7 @@ The Spark Dataset API brings the best of RDD and Data Frames together, for type 
 **Launch Spark Shell**
 
 ~~~ bash
-./bin/spark-shell
+spark-shell
 ~~~
 
 Let's try the simplest example of creating a dataset by applying a *toDS()* function to a sequence of numbers.
@@ -345,7 +349,7 @@ You should see the following
 +------+---+
 ~~~
 
-To exit type `exit`.
+To exit enter `:quit`.
 
 ## Further Reading
 

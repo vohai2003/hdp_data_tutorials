@@ -7,7 +7,7 @@ persona: Data Scientist & Analyst
 source: Hortonworks
 use case: Predictive
 technology: Apache Spark
-release: hdp-2.6.0
+release: hdp-2.6.5
 environment: Sandbox
 product: HDP
 series: HDP > Develop with Hadoop > Apache Spark
@@ -59,7 +59,7 @@ We need to save two copies of this dataset. One, inside PyCharm project for test
 -   Once you've logged into Ambari Manager, mouse over the drop-down menu on the upper-right hand corner and click on **Files View**.
 -   Open the **tmp** folder and click the **upload** button in the upper-right corner to upload the file. Make sure it's named **shakespeare.txt**.
 
-![ambari](assets/ambari.jpg)
+![select_files_view](assets/select_files_view.jpg)
 
 ## Create a Spark Application
 
@@ -94,7 +94,13 @@ To run your program, click **Run** -> **Run...** from IDE menu and select **Main
 
 >Note: **pyspark** package may need to be installed.
 
-![pycharm-pyspark](assets/pycharm-pyspark.jpg)
+In order to install the **pyspark** package navigate to **Pycharm** -> **Preferences** -> **Project: HelloSpark** -> **Project interpreter** and click **+**
+
+![pycharm-preferences](assets/pycharm-preferences.jpg)
+
+Now search and select **pyspark** and click **Install Package**
+
+![pyspark-install-pyspark](assets/pyspark-install-pycharm.jpg)
 
 ## Deploying to the Sandbox
 
@@ -123,6 +129,8 @@ Copy **Main.py** to HDP sandbox using **scp**: ```scp -P 2222 ./Main.py root@san
 Next, open sandbox shell using [shell-in-a-box](http://sandbox-hdp.hortonworks.com:4200) or **ssh**: ```ssh -p 2222 root@sandbox-hdp.hortonworks.com```
 
 Finally, use **spark-submit** to run the program: ```spark-submit ./Main.py```
+
+>Note: If you encounter the error: **Output directory hdfs://sandbox-hdp.hortonworks.com:8020/tmp/shakespeareWordCount already exists** use the following command on the sandbox shell: `hdfs dfs -rm -r /tmp/shakespeareWordCount` and resubmit.
 
 The results are saved on HDFS: **/tmp/shakespeareWordCount**. You will see a word count output that looks like this:
 
