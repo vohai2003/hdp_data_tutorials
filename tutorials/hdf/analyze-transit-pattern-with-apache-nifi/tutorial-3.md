@@ -262,7 +262,7 @@ cat transit-data-{flowfile-UUID}.xml
 
 ## Approach 2: Import NiFi SimulateXmlTransitEvents Process Group
 
-1\. Download the [tutorial-3-nifi-flow-SimulateXmlTransitEvents.xml](assets/tutorial-3-build-a-nifi-process-group-to-simulate-nextbus-api/template/tutorial-3-simulatexmltransitevents.xml) template file.
+1\. Download the [tutorial-3-nifi-flow-SimulateXmlTransitEvents.xml](assets/tutorial-3-build-a-nifi-process-group-to-simulate-nextbus-api/template/tutorial-3-SimulateXmlTransitEvents.xml) template file.
 
 2\. Use the template icon ![nifi_template_icon](assets/tutorial-3-build-a-nifi-process-group-to-simulate-nextbus-api/nifi_template_icon.png) located in the Operate Palette.
 
