@@ -45,6 +45,36 @@ Let's begin our Hadoop journey...
 
 This is the administrative section to get started with the Hortonworks Sandbox environment. Generally, this will only be done once.
 
+### Determine Network Adapter of Your Sandbox
+
+Once the Sandbox VM is installed, it attaches to a virtual network. There are 8 different network modes, but the default network your sandbox will attach to is NAT. We will cover relevant networks for our tutorial use cases: NAT and Bridged Adapter.
+
+**Network Address Translation (NAT)**
+
+By default, the VM attaches to Network Address Translation (NAT) network mode. The guest's IP address by default translates over to the host's IP address. NAT allows for the guest system to connect to external devices on external networks, but external devices cannot access the guest system. Alternatively, VirtualBox can make selected services on the guest reachable to the outside world by port forwarding. VirtualBox listens to certain ports on the host, then resends packets that arrive at those ports to the guest on the same port or different port.
+
+How we are forwarding all incoming traffic from a specific host interface to the guest in our sandbox is by specifying an IP of that host like the following:
+
+~~~bash
+VBoxManage modifyvm "Hortonworks Sandbox HDP 2.6.5" --natpf1 "Sandbox Splash Page,tcp,127.0.0.1,1080,,1080"
+.
+.
+.
+VBoxManage modifyvm "Hortonworks Sandbox HDP 2.6.5" --natpf1 "Sandbox Host SSH,tcp,127.0.0.1,2122,,22"
+~~~
+
+You can find the set network by opening the VM **settings** and then select the **network** tab.
+
+**Bridged Networking**
+
+In this mode, the guest receives direct access to the network, which the host has been connected. The router assigns an IP address to the guest. On that network, instead of there being just the host IP address visible, now the guest IP address is visible too. Thus, external devices, such as MiNiFi running on a Raspberry Pi, are able to connect to the guest via it's IP address.
+
+When would you need this mode? It is needed for Connected Data Architecture. To configure this mode, first power down your guest vm, click settings, switch to the network tab and change the **attach to** network to be **Bridged Adapter**.
+
+![Bridged Adapter](assets/bridged_adapter.jpg)
+
+> WARNING: first make sure your computer is connected to a router, else this feature will not work cause there is no router to assign an IP address to the guest vm.
+
 ### Determine IP Address of Your Sandbox
 
 Once the Sandbox VM or container is installed, it settles to the host of your environment, the IP address varies depending on your Virtual Machine (VMware, VirtualBox) or container (Docker). Once the sandbox is running, it will tell you the IP address. An example of typical IP addresses for each supported environment:
@@ -57,7 +87,13 @@ Once the Sandbox VM or container is installed, it settles to the host of your en
 
 If you're using **VirtualBox** or **VMWare**, you can confirm the IP address by waiting for the installation to complete and confirmation screen will tell you the IP address your sandbox resolves to. For example:
 
-![Host Address of Sandbox Environment](assets/learn_host_address_learning_the_ropes_sandbox.jpg)
+![Host Address of Sandbox Environment](assets/guest_vm_NAT_mode_hdp265_83.png)
+
+> **Note:** Guest VM Welcome Window for NAT Sandbox
+
+![Host Address of Sandbox Environment](assets/guest_vm_BRIDGED_mode_welcome_screen.jpg)
+
+> **Note:** Guest VM Welcome Window for BRIDGED Sandbox
 
 > **Note:** If you're using Azure, your IP address is located on the dashboard, refer to [**Set a Static IP**](https://hortonworks.com/tutorial/sandbox-deployment-and-install-guide/section/4/#set-a-static-ip)
 
@@ -114,7 +150,7 @@ To send data from local machine to sandbox, the local machine directory path com
 
 ## Welcome Page
 
-The Sandbox Welcome Page is also known as the **Splash Page**. It runs on port number **:8888**. To open it, use your host address and append the port number. For exmaple: [http://sandbox-hdp.hortonworks.com:8888/](http://sandbox-hdp.hortonworks.com:8888/)
+The Sandbox Welcome Page is also known as the **Splash Page**. It runs on port number **:8888**. To open it, use your host address and append the port number. For example: [http://sandbox-hdp.hortonworks.com:8888/](http://sandbox-hdp.hortonworks.com:8888/)
 
 It looks like this:
 
