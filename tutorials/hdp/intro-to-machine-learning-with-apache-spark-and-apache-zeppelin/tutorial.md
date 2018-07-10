@@ -7,7 +7,7 @@ persona: Data Scientist & Analyst
 source: Hortonworks
 use case: Predictive
 technology: Apache Spark, Apache Zeppelin
-release: hdp-2.6.0
+release: hdp-2.6.5
 environment: Sandbox
 product: HDP
 series: HDP > Develop with Hadoop > Apache Spark
@@ -77,7 +77,7 @@ Keep in mind, that you will need **8GB** of memory dedicated for the virtual mac
 
 #### Review Zeppelin Tutorial
 
-If you are new to Zeppelin, review the following tutorial [Getting Started with Apache Zeppelin](https://github.com/hortonworks/tutorials/blob/hdp-2.5/tutorials/hortonworks/getting-started-with-apache-zeppelin/tutorial.md)
+If you are new to Zeppelin, review the following tutorial [Getting Started with Apache Zeppelin](https://hortonworks.com/tutorial/getting-started-with-apache-zeppelin/)
 
 ### Notebook Preview
 
@@ -85,7 +85,6 @@ Before you start, here's a preview of the notebook.
 
 ![](assets/large-notebook-preview.jpg)
 
-A dynamic preview (allowing code copy) can be found [here](https://www.zeppelinhub.com/viewer/notebooks/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2hvcnRvbndvcmtzLWdhbGxlcnkvemVwcGVsaW4tbm90ZWJvb2tzL2hkcC0yLjYvMkNDQk5aNVlZL25vdGUuanNvbg).
 
 ## Start the Tutorial
 
@@ -106,6 +105,6 @@ We hope that you've been able to successfully run this first lab introducing bas
 Next, if you would like to learn more on how to deploy machine learning models in production, checkout this tutorial on [deploying machine learning models with structured streaming](https://hortonworks.com/tutorial/deploying-machine-learning-models-using-spark-structured-streaming/).
 
 
-For a more advanced example, checkout our tutorial on [Twitter sentiment analysis](https://hortonworks.com/tutorial/deploying-machine-learning-models-using-spark-structured-streaming/).
+For a more advanced example, checkout our tutorial on [Twitter sentiment analysis](https://hortonworks.com/tutorial/sentiment-analysis-with-apache-spark/).
 
  Finally, make sure to checkout our [Data Science Starter Kit](https://hortonworks.com/info/data-science-cloud/) with pre-selected videos, tutorials, white papers and other content related to Data Science and Machine Learning.
