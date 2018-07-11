@@ -7,7 +7,7 @@ persona: Data Scientist & Analyst
 source: Hortonworks
 use case: Predictive
 technology: Apache Spark, Apache SparkR, Machine Learning
-release: hdp-2.6.1
+release: hdp-2.6.5
 environment: Sandbox
 product: HDP
 series: HDP > Develop with Hadoop > Apache Spark
@@ -61,9 +61,9 @@ Every year approximately 20% of airline flights are delayed or cancelled, result
 -   Air Time
 -   Distance
 
-After you download the file, unzip it and upload train_df.csv and test_df.csv to the /tmp directory of HDFS using Files View. Open Ambari by going to 127.0.0.1:8888 and click on “Launch Dashboard”. Once in Ambari, select “Files View” from the second menu in the upper right hand corner.
+After you download the file, unzip it and upload train_df.csv and test_df.csv to the /tmp directory of HDFS using Files View. Open Ambari by going to http://sandbox-hdp.hortonworks.com:8080 and use the credentials `amy_ds/amy_ds` to sign on. Once in Ambari, select “Files View” from the second menu in the upper right hand corner.
 
-![Files View](assets/fileView.png)
+![amy-files-view](assets/amy-files-view.jpg)
 
 Click on /tmp folder and upload these two files. Your screen should look like this:
 
@@ -92,7 +92,7 @@ Press Enter
 
 ## Step 3 : Prepare a Training dataset
 
-Before moving ahead, check out the SparkR documentation here to get used to SparkR API. You can either create a SparkR dataframe from the local R data frame or data sources in formats like csv or from Hive tables. We are going to use read.df() function to read the file from a data source (HDFS in our case), retain the schema and create the SparkR data frame. Type this line to create a dataframe taking the data from /tmp/train_df.csv file with headers included
+Before moving ahead, check out the SparkR [documentation](https://spark.apache.org/docs/2.2.0/api/R/index.html) to get used to SparkR API. You can either create a SparkR dataframe from the local R data frame or data sources in formats like csv or from Hive tables. We are going to use read.df() function to read the file from a data source (HDFS in our case), retain the schema and create the SparkR data frame. Type this line to create a dataframe taking the data from /tmp/train_df.csv file with headers included
 
 `train_df <- read.df(sqlContext,"/tmp/train_df.csv","csv", header = "true", inferSchema = "true")`
 
@@ -169,7 +169,7 @@ Delete a first column DELAY_LABELED because we do not need it anymore.
 
 Next, let us convert this SparkR dataframe to R dataframe using as.data.frame() function to visualize it using ggplot, let us call this new dataframe delay_r.
 
-`delay_r <- as.data.frame(delay)``
+`delay_r <- as.data.frame(delay)`
 
 Add Percentage as one more column to this new dataframe.
 
@@ -327,7 +327,7 @@ destination_count <- withColumnRenamed(destination_count,"DEST_x","DEST")
 
 And convert it into R Dataframe.
 
-`destination_count_r <- as.data.frame(destination_count)``
+`destination_count_r <- as.data.frame(destination_count)`
 
 Bring up two new columns(Delayed and Ontime) which has the percentage values
 
@@ -408,7 +408,7 @@ Now that we have explored the data, let’s predict how much delayed the flight 
 SparkR allows the fitting of generalized linear models over DataFrames using the glm() function. Under the hood, SparkR uses MLlib to train a model of the specified family. The gaussian and binomial families are supported in 1.6 version.
 We are going to choose some variables as independent variables to predict the output variable which in our case is ARR_DELAY.
 
-`train_df_glm <- glm(ARR_DELAY ~ MONTH + DEP_HOUR + DEP_DELAY + WEEKEND + ORIGIN + DEST, data = train_df,  family = "gaussian")``
+`train_df_glm <- glm(ARR_DELAY ~ MONTH + DEP_HOUR + DEP_DELAY + WEEKEND + ORIGIN + DEST, data = train_df,  family = "gaussian")`
 
 You should get a note that your job has been finished. Now, you return the summary of your model which is same as R’ native model summary.
 
