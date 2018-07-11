@@ -61,7 +61,7 @@ Every year approximately 20% of airline flights are delayed or cancelled, result
 -   Air Time
 -   Distance
 
-After you download the file, unzip it and upload train_df.csv and test_df.csv to the /tmp directory of HDFS using Files View. Open Ambari by going to http://sandbox-hdf.hortonworks.com:8080 and use the credentials `amy_ds/amy_ds` to sign on. Once in Ambari, select “Files View” from the second menu in the upper right hand corner.
+After you download the file, unzip it and upload train_df.csv and test_df.csv to the /tmp directory of HDFS using Files View. Open Ambari by going to http://sandbox-hdp.hortonworks.com:8080 and use the credentials `amy_ds/amy_ds` to sign on. Once in Ambari, select “Files View” from the second menu in the upper right hand corner.
 
 ![amy-files-view](assets/amy-files-view.jpg)
 
@@ -92,7 +92,7 @@ Press Enter
 
 ## Step 3 : Prepare a Training dataset
 
-Before moving ahead, check out the SparkR documentation [here](https://spark.apache.org/docs/2.2.0/api/R/index.html) to get used to SparkR API. You can either create a SparkR dataframe from the local R data frame or data sources in formats like csv or from Hive tables. We are going to use read.df() function to read the file from a data source (HDFS in our case), retain the schema and create the SparkR data frame. Type this line to create a dataframe taking the data from /tmp/train_df.csv file with headers included
+Before moving ahead, check out the SparkR [documentation](https://spark.apache.org/docs/2.2.0/api/R/index.html) to get used to SparkR API. You can either create a SparkR dataframe from the local R data frame or data sources in formats like csv or from Hive tables. We are going to use read.df() function to read the file from a data source (HDFS in our case), retain the schema and create the SparkR data frame. Type this line to create a dataframe taking the data from /tmp/train_df.csv file with headers included
 
 `train_df <- read.df(sqlContext,"/tmp/train_df.csv","csv", header = "true", inferSchema = "true")`
 
