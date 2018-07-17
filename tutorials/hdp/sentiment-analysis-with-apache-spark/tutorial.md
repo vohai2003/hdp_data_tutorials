@@ -7,7 +7,7 @@ persona: Data Scientist & Analyst
 source: Hortonworks
 use case: Data Discovery
 technology: Apache Spark, HDFS. Zeppelin Notebook
-release: hdp-2.6.0
+release: hdp-2.6.5
 environment: Sandbox
 product: HDP
 series: HDP > Develop with Hadoop > Apache Spark
@@ -26,7 +26,7 @@ You can follow this tutorial by running the accompanying [Zeppelin notebook](ass
 
 Before starting this model you should make sure HDFS and Spark2 are started.
 
--   Download and install [Hortonworks Sandbox](https://hortonworks.com/downloads/)
+-   Download and install [Hortonworks Latest Sandbox](https://hortonworks.com/downloads/)
 -   (Optional) Complete the Sentiment Analysis [Part I Tutorial](https://hortonworks.com/tutorial/analyzing-social-media-and-customer-sentiment-with-apache-nifi-and-hdp-search/)
 -   Start HDFS and Spark2 on your Hortonworks Sandbox
 
