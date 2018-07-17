@@ -83,7 +83,6 @@ Before you start, here's a preview of the notebook.
 
 ![Notebook Preview](assets/notebook-preview-large.jpg)
 
-A dynamic preview (allowing code copy) can be found [here](https://www.zeppelinhub.com/viewer/notebooks/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2hvcnRvbndvcmtzLWdhbGxlcnkvemVwcGVsaW4tbm90ZWJvb2tzL2hkcC0yLjYvMkNCVFpQWTE0L25vdGUuanNvbg).
 
 ## Start the Tutorial
 
