@@ -78,8 +78,6 @@ Before you start, here's a preview of the notebook.
 
 ![Notebook Preview](assets/large-notebook-preview.jpg)
 
-A dynamic preview (allowing code copy) can be found [here](https://www.zepl.com/viewer/notebooks/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2hvcnRvbndvcmtzLWdhbGxlcnkvemVwcGVsaW4tbm90ZWJvb2tzL2hkcC0yLjYvMkNKVzUzTTUyL25vdGUuanNvbg).
-
 ## Start Tutorial
 
 To begin the tutorial, import the *Exploring Spark SQL Module* notebook into your Zeppelin environment. (If at any point you have any issues, make sure to checkout the [Getting Started with Zeppelin](https://hortonworks.com/tutorial/getting-started-with-apache-zeppelin/) tutorial.)
