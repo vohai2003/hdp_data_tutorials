@@ -6,7 +6,7 @@ experience: Intermediate
 persona: Data Scientist & Analyst
 source: Hortonworks
 use case: Data Discovery
-technology: Apache Spark, HDFS. Zeppelin Notebook
+technology: Apache Spark, HDFS, Zeppelin Notebook
 release: hdp-2.6.5
 environment: Sandbox
 product: HDP
@@ -20,7 +20,7 @@ series: HDP > Develop with Hadoop > Apache Spark
 
 This tutorial will teach you how to build sentiment analysis algorithms with Apache Spark. We will be doing data transformation using Scala and Apache Spark 2, and we will be classifying tweets as happy or sad using a Gradient Boosting algorithm. Although this tutorial is focused on sentiment analysis, Gradient Boosting is a versatile technique that can be applied to many classification problems. You should be able to reuse this code to classify text in many other ways, such as spam or not spam, news or not news, provided you can create enough labeled examples with which to train a model.
 
-You can follow this tutorial by running the accompanying [Zeppelin notebook](assets/SentimentAnalysisZeppelin.json).
+You can follow this tutorial by running the accompanying [Zeppelin notebook](assets/sentiment-analysis-spark.json).
 
 ## Prerequisites
 
@@ -65,7 +65,7 @@ rm /tmp/tweets/tweets.zip
 
 # Remove existing (if any) copy of data from HDFS. You could do this with Ambari file view.
 hdfs dfs -mkdir /tmp/tweets_staging/
-hdfs dfs -rmr -f /tmp/tweets_staging/* -skipTrash
+hdfs dfs -rm -r -f /tmp/tweets_staging/* -skipTrash
 
 # Move downloaded JSON file from local storage to HDFS
 hdfs dfs -put /tmp/tweets/* /tmp/tweets_staging
@@ -73,7 +73,7 @@ hdfs dfs -put /tmp/tweets/* /tmp/tweets_staging
 
 ### Load into Spark
 
-Let's load the tweets into Spark. Spark makes it easy to load JSON-formatted data into a dataframe. To run these code blocks, you should download [this](assets/SentimentAnalysisZeppelin.json) Zeppelin notebook and run it on the HDP Sandbox.
+Let's load the tweets into Spark. Spark makes it easy to load JSON-formatted data into a dataframe. To run these code blocks, you should download [this](assets/sentiment-analysis-spark.json) Zeppelin notebook and run it on the HDP Sandbox.
 
 
 ```
