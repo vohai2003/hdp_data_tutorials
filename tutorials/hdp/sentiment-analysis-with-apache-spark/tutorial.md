@@ -22,6 +22,8 @@ This tutorial will teach you how to build sentiment analysis algorithms with Apa
 
 You can follow this tutorial by running the accompanying [Zeppelin notebook](assets/sentiment-analysis-spark.json).
 
+- NOTE: Right click and save the JSON file in order to import the Zeppelin Notebook.
+
 ## Prerequisites
 
 Before starting this model you should make sure HDFS and Spark2 are started.
