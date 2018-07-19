@@ -30,7 +30,7 @@ In this tutorial we’ll show you how to use SparkR to predict flight delays usi
 
 -   Download and install the latest [Hortonworks Sandbox](https://hortonworks.com/downloads/)
 -   [Learning the Ropes of the HDP Sandbox](https://hortonworks.com/tutorial/learning-the-ropes-of-the-hortonworks-sandbox/) to get used to Sandbox.
--   Follow this [article](https://community.hortonworks.com/content/kbentry/69424/setting-up-rstudio-on-hortonworks-docker-sandbox-2.html) on Hortonworks Community to install RStudio on the Sandbox.
+-   Follow this [article](https://community.hortonworks.com/articles/203564/installing-rstudio-on-hdp-sandbox.html) on Hortonworks Community to install RStudio on the Sandbox.
 
 ## Outline
 -   [Step 1 : Download the Dataset](#step-1--download-the-dataset)
