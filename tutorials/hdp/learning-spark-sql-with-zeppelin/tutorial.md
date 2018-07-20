@@ -7,7 +7,7 @@ persona: Data Scientist & Analyst
 source: Hortonworks
 use case: Data Discovery
 technology: Apache Spark, Apache Zeppelin
-release: hdp-2.6.1
+release: hdp-2.6.5
 environment: Sandbox
 product: HDP
 series: HDP > Develop with Hadoop > Apache Spark
@@ -64,13 +64,13 @@ This option is optimal if you prefer to run everything in local environment (lap
 
 Keep in mind, that you will need **8GB** of memory dedicated for the virtual machine, meaning that you should have at least **12GB** of memory on your system.
 
-2a. Download and Install [HDP Sandbox 2.6](https://hortonworks.com/products/sandbox/)
+2a. Download and Install [the latest HDP Sandbox](https://hortonworks.com/products/sandbox/)
 
 2b. Review [Learning the Ropes of HDP Sandbox](https://hortonworks.com/tutorial/learning-the-ropes-of-the-hortonworks-sandbox/)
 
 #### Review Zeppelin Tutorial
 
-If you are new to Zeppelin, review the following tutorial [Getting Started with Apache Zeppelin](https://github.com/hortonworks/tutorials/blob/hdp-2.5/tutorials/hortonworks/getting-started-with-apache-zeppelin/tutorial.md)
+If you are new to Zeppelin, review the following tutorial [Getting Started with Apache Zeppelin](https://hortonworks.com/tutorial/getting-started-with-apache-zeppelin/)
 
 ## Notebook Preview
 
