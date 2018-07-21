@@ -131,7 +131,7 @@ We will keep only those flight records where it did not get cancelled. In the ne
 
 Next cleansing will be for NA values. After looking a dataset for a while, you will see that there are lot of NA values in ARR_DELAY column. We should keep only those where we have valid readings of ARR_DELAY.
 
-`train_df <- train_df[train_df$ARR_DELAY != "NA",]`
+` train_df <- dropna(train_df,cols = 'ARR_DELAY')`
 
 Next, if you want to know the datatype of columns in SparkR dataframe, just type
 `printSchema(train_df)`
