@@ -71,7 +71,7 @@ This option is optimal if you prefer to run everything in local environment (lap
 
 Keep in mind, that you will need **8GB** of memory dedicated for the virtual machine, meaning that you should have at least **12GB** of memory on your system.
 
-2a. Download and Install [HDP Sandbox 2.6](https://hortonworks.com/products/sandbox/)
+2a. Download and Install [the latest HDP Sandbox](https://hortonworks.com/products/sandbox/)
 
 2b. Review [Learning the Ropes of HDP Sandbox](https://hortonworks.com/tutorial/learning-the-ropes-of-the-hortonworks-sandbox/)
 
