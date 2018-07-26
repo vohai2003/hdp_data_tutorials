@@ -1,3 +1,18 @@
+---
+title: New tutorial name
+author: You, because you are writing it!
+tutorial-id: Ask for tutorial ID assignment policy.
+experience: Beginer, Intermediate, Advanced
+persona: Example (Data Scientist & Analyst)
+source: Hortonworks
+use case: Example (Data Discovery)
+technology: Be as detailed as you can, examaple (Apache Spark, HDFS, Zeppelin Notebook)
+release: Latest updated version for example (hdp-2.6.5)
+environment: Sandbox
+product: HDP
+series: This important as it will determine where the tutorial is posted example (HDP > Develop with Hadoop > Apache Spark)
+---
+
 # Sample Tutorial (this is the title)
 
 ## Introduction
