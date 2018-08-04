@@ -32,6 +32,7 @@ This tutorial is a part of series of hands-on tutorials to get you started with 
 - [Setup](#setup)
 - [Download a Spark Streaming Demo to the Sandbox](#download-a-spark-streaming-demo-to-the-sandbox)
 - [Submit a Spark Streaming Job](#submit-a-spark-streaming-job)
+- [Suppressing INFO Messages](#suppressing-info-messages-(Optional))
 - [Summary](#summary)
 - [Further Reading](#further-reading)
 
