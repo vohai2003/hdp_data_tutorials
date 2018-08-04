@@ -205,4 +205,4 @@ In this tutorial we have reviewed the process of collecting data using Spark Str
 
 - [PySpark Streaming Documentation](https://spark.apache.org/docs/latest/api/python/pyspark.streaming.html#pyspark.streaming.DStream)
 - [Spark Streaming](https://spark.apache.org/streaming/)
-- Once you've completed this tutorial, checkout other [Spark Tutorials](https://hortonworks.com/hadoop/spark/#tutorials).
+- Once you've completed this tutorial, checkout other [Spark Tutorials](https://hortonworks.com/tutorials/?tab=product-hdp&filters=apache-spark).
