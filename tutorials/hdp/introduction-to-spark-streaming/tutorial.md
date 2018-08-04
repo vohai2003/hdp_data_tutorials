@@ -32,6 +32,7 @@ This tutorial is a part of series of hands-on tutorials to get you started with 
 - [Setup](#setup)
 - [Download a Spark Streaming Demo to the Sandbox](#download-a-spark-streaming-demo-to-the-sandbox)
 - [Submit a Spark Streaming Job](#submit-a-spark-streaming-job)
+- [Summary](#summary)
 - [Further Reading](#further-reading)
 
 ## Concepts
@@ -151,6 +152,49 @@ For example, if we type the text `"Hello from the sandbox team!"` in the Netcat 
 ## Stopping Spark Streaming and Netcat
 
 When you're done experimenting, press `Ctrl + C` in your  shell tab or window to stop your Spark Job and/or Netcat process.
+
+## Suppressing INFO Messages (Optional)
+
+If you want to remove annoying INFO messages from the Spark streaming terminal window, do the following:
+
+Open `conf/log4j.properties`, for example:
+
+~~~bash
+vi /usr/hdp/current/spark2-client/conf/log4j.properties
+~~~
+
+and Edit log4j.properties:
+
+~~~bash
+# Set everything to be logged to the console
+log4j.rootCategory=INFO, console
+log4j.appender.console=org.apache.log4j.ConsoleAppender
+log4j.appender.console.target=System.err
+log4j.appender.console.layout=org.apache.log4j.PatternLayout
+log4j.appender.console.layout.ConversionPattern=%d{yy/MM/dd HH:mm:ss} %p %c{1}: %m%n
+
+# Settings to quiet third party logs that are too verbose
+log4j.logger.org.eclipse.jetty=WARN
+log4j.logger.org.eclipse.jetty.util.component.AbstractLifeCycle=ERROR
+log4j.logger.org.apache.spark.repl.SparkIMain$exprTyper=INFO
+log4j.logger.org.apache.spark.repl.SparkILoop$SparkILoopInterpreter=INFO
+~~~
+
+Replace the first line:
+
+~~~bash
+log4j.rootCategory=INFO, console
+~~~
+
+  with
+
+~~~bash
+log4j.rootCategory=WARN, console
+~~~
+
+Save log4j.properties and restart your spark-submit job. Now you should see only **WARN** messages.
+
+If you re-submit the Python script and Netcat you should see a much cleaner output.
 
 ## Summary
 
