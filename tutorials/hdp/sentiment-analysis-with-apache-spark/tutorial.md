@@ -19,7 +19,7 @@ series: HDP > Develop with Hadoop > Apache Spark
 
 This tutorial will teach you how to build sentiment analysis algorithms with Apache Spark. We will be doing data transformation using Scala and Apache Spark 2, and we will be classifying tweets as happy or sad using a Gradient Boosting algorithm. Although this tutorial is focused on sentiment analysis, Gradient Boosting is a versatile technique that can be applied to many classification problems. You should be able to reuse this code to classify text in many other ways, such as spam or not spam, news or not news, provided you can create enough labeled examples with which to train a model.
 
-You can follow this tutorial by running the accompanying [Zeppelin notebook](assets/sentiment-analysis-spark.json).
+This tutorial will first guide you through important concepts needed to understand the accompanying Zeppelin Notebook and provide you with a link to import the notebook at the end of the tutorial. It is imperative that you read and understand the tutorial concepts in order to enjoy this tutorial to it's full potential.
 
 ## Prerequisites
 
