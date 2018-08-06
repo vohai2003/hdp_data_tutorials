@@ -32,7 +32,7 @@ This tutorial is a part of series of hands-on tutorials to get you started with 
 - [Setup](#setup)
 - [Download a Spark Streaming Demo to the Sandbox](#download-a-spark-streaming-demo-to-the-sandbox)
 - [Submit a Spark Streaming Job](#submit-a-spark-streaming-job)
-- [Suppressing INFO Messages](#suppressing-info-messages-(optional))
+- [Suppressing INFO Messages](#suppressing-info-messages
 - [Summary](#summary)
 - [Further Reading](#further-reading)
 
@@ -154,7 +154,7 @@ For example, if we type the text `"Hello from the sandbox team!"` in the Netcat 
 
 When you're done experimenting, press `Ctrl + C` in your  shell tab or window to stop your Spark Job and/or Netcat process.
 
-## Suppressing INFO Messages (Optional)
+## Suppressing INFO Messages
 
 If you want to remove annoying INFO messages from the Spark streaming terminal window, do the following:
 
