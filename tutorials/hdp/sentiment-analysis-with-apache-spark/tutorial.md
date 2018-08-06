@@ -37,7 +37,7 @@ Before starting this model you should make sure HDFS and Spark2 are started.
 - [Transform Data for Machine Learning](#transform-data)
 - [Split into Training and Validation Sets](#split-into-training-and-validation-sets)
 - [Build the Model](#build-the-model)
-- [Evaluate the Model](#evaluate-model)
+- [Import the Notebook](#import-the-notebook)
 - [Summary](#summary)
 - [Further Reading](#further-reading)
 
@@ -173,3 +173,4 @@ You’ve now seen how to build a sentiment analysis model. The techniques you’
 
 - [Analyzing Social Media and Customer Sentiment with Apache Nifi and HDP Search](https://hortonworks.com/tutorial/analyzing-social-media-and-customer-sentiment-with-apache-nifi-and-hdp-search/)
 - [Data Science Starter Kit.](https://hortonworks.com/info/data-science-cloud/)
+- [Hortonworks Community Connection](https://community.hortonworks.com/index.html)
