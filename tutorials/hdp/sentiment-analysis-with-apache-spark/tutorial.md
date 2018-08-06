@@ -140,9 +140,17 @@ Once you've trained your first model, you should go back and tweak the model par
 
 Once your model is as accurate as you can make it, you can export it for production use. Models trained with Spark can be easily loaded back into a Spark Streaming workflow for use in production.
 
+The model will be saved in HDFS under the directory path specified in the Notebook:
+
+~~~scala
+model.save(sc, "hdfs:///tmp/tweets/RandomForestModel")
+~~~
+
+![Model saved hdfs](assets/model-saved-hdfs.jpg)
+
 ## Import the Zeppelin Notebook
 
- Import the *Sentiment Analysis with Apache Spark* notebook into your Zeppelin environment. (If at any point you have any issues, make sure to checkout the [Getting Started with Apache Zeppelin](https://hortonworks.com/tutorial/getting-started-with-apache-zeppelin/) tutorial).
+ Great! now you are familiar with the concepts used in this tutorial and you are ready to Import the *Sentiment Analysis with Apache Spark* notebook into your Zeppelin environment. (If at any point you have any issues, make sure to checkout the [Getting Started with Apache Zeppelin](https://hortonworks.com/tutorial/getting-started-with-apache-zeppelin/) tutorial).
 
 To import the notebook, go to the Zeppelin home screen.
 
