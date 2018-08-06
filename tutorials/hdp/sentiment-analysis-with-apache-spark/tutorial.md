@@ -37,7 +37,7 @@ Before starting this model you should make sure HDFS and Spark2 are started.
 - [Transform Data for Machine Learning](#transform-data)
 - [Split into Training and Validation Sets](#split-into-training-and-validation-sets)
 - [Build the Model](#build-the-model)
-- [Import the Notebook](#import-the-notebook)
+- [Import the Zeppelin Notebook](#import-the-zeppelin-notebook)
 - [Summary](#summary)
 - [Further Reading](#further-reading)
 
@@ -141,7 +141,7 @@ Once you've trained your first model, you should go back and tweak the model par
 
 Once your model is as accurate as you can make it, you can export it for production use. Models trained with Spark can be easily loaded back into a Spark Streaming workflow for use in production.
 
-## Import the Notebook
+## Import the Zeppelin Notebook
 
  Import the *Sentiment Analysis with Apache Spark* notebook into your Zeppelin environment. (If at any point you have any issues, make sure to checkout the [Getting Started with Apache Zeppelin](https://hortonworks.com/tutorial/getting-started-with-apache-zeppelin/) tutorial).
 
