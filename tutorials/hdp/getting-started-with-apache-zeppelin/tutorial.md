@@ -56,7 +56,7 @@ This tutorial is the fundamental base which will be used in future Spark tutoria
 
 ## Launching Zeppelin
 
-There two  ways to access Zeppelin in the HDP environment, the first is through Amabari's **Quick Links** and the second is by navigating to Zeppelin's dedicated port on your browser.
+There are two  ways to access Zeppelin in the HDP environment, the first is through Amabari's **Quick Links** and the second is by navigating to Zeppelin's dedicated port on your browser.
 
 ### Launching Zeppelin through Ambari
 
