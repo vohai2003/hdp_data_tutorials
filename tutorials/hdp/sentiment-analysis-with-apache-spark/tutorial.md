@@ -26,9 +26,8 @@ This tutorial will first guide you through important concepts needed to understa
 Before starting this model you should make sure HDFS and Spark2 are started.
 
 - Downloaded and installed latest [Hortonworks Latest Hortonworks Data Platform (HDP) Sandbox](https://hortonworks.com/downloads/)
-- (Optional) Complete the Sentiment Analysis [Part I Tutorial](https://hortonworks.com/tutorial/analyzing-social-media-and-customer-sentiment-with-apache-nifi-and-hdp-search/)
 - [Learning the Ropes of the HDP Sandbox](https://hortonworks.com/tutorial/learning-the-ropes-of-the-hortonworks-sandbox/)
-- Installed and binded the [Zeppelin Shell interpreter](https://hortonworks.com/tutorial/getting-started-with-apache-zeppelin/#installing-zeppein-shell) to the Zeppelin Notebook used in this tutorial.
+- Installed and binded the [Zeppelin Shell interpreter](https://hortonworks.com/tutorial/getting-started-with-apache-zeppelin/#installing-zeppein-shell) to the Zeppelin Notebook used in this tutorial
 
 ## Outline
 
@@ -174,3 +173,4 @@ You’ve now seen how to build a sentiment analysis model. The techniques you’
 - [Analyzing Social Media and Customer Sentiment with Apache Nifi and HDP Search](https://hortonworks.com/tutorial/analyzing-social-media-and-customer-sentiment-with-apache-nifi-and-hdp-search/)
 - [Data Science Starter Kit.](https://hortonworks.com/info/data-science-cloud/)
 - [Hortonworks Community Connection](https://community.hortonworks.com/index.html)
+- Sentiment Analysis [CDA Tutorial](https://hortonworks.com/tutorial/analyzing-social-media-and-customer-sentiment-with-apache-nifi-and-hdp-search/)
