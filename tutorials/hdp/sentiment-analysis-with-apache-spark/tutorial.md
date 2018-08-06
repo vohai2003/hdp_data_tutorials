@@ -27,7 +27,7 @@ Before starting this model you should make sure HDFS and Spark2 are started.
 
 - Downloaded and installed latest [Hortonworks Latest Hortonworks Data Platform (HDP) Sandbox](https://hortonworks.com/downloads/)
 - (Optional) Complete the Sentiment Analysis [Part I Tutorial](https://hortonworks.com/tutorial/analyzing-social-media-and-customer-sentiment-with-apache-nifi-and-hdp-search/)
-- Go through [Learning the Ropes of the HDP Sandbox](https://hortonworks.com/tutorial/learning-the-ropes-of-the-hortonworks-sandbox/)
+- [Learning the Ropes of the HDP Sandbox](https://hortonworks.com/tutorial/learning-the-ropes-of-the-hortonworks-sandbox/)
 - Installed and binded the [Zeppelin Shell interpreter](https://hortonworks.com/tutorial/getting-started-with-apache-zeppelin/#installing-zeppein-shell) to the Zeppelin Notebook used in this tutorial.
 
 ## Outline
