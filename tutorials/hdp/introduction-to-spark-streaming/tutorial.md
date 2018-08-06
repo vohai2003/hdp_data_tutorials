@@ -85,7 +85,7 @@ wget https://raw.githubusercontent.com/hortonworks/data-tutorials/master/tutoria
 ~~~
 
 <!-- <span> </span> are used here to prevent the text from becoming a broken link. Markdown thinks this is a webpage.-->
-**Note**: The second command downloads _*spark-streaming-demo<span></span>.py*_ Spark Streaming code that computes a simple Word Count. Words (i.e. strings) will be coming in via a network socket connection from a simple Netcat tool introduced later.
+>NOTE: The second command downloads _*spark-streaming-demo<span></span>.py*_ Spark Streaming code that computes a simple Word Count. Words (i.e. strings) will be coming in via a network socket connection from a simple Netcat tool introduced later.
 
 Several things worth pointing out in the demo code you've just downloaded:
 1\. We've set a 2 sec batch interval to make it easier to inspect results of each batch processed.
