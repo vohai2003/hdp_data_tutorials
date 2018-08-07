@@ -38,6 +38,7 @@ The lab is part of our Apache Zeppelin based lab series, providing an intuitive 
 - [Putting It All Together](#putting-it-all-together)
 - [Import the Zeppelin Notebook](#import-the-zeppelin-notebook)
 - [Summary](#summary)
+- [Further Reading](#further-reading)
 
 ## Concepts
 
@@ -186,5 +187,5 @@ Once you have completed part one and part two of the lab you should have a basic
 - You may want to checkout a short introductory tutorial on [Machine Learning with Spark](https://hortonworks.com/tutorial/intro-to-machine-learning-with-apache-spark-and-apache-zeppelin/).
 - [Predictiong Airline Delays using SparkR](https://hortonworks.com/tutorial/predicting-airline-delays-using-sparkr/)
 - [Hortonworks Community Connection (HCC)](https://community.hortonworks.com/spaces/85/data-science.html?type=question) is a great resource for questions and answers on Spark, Data Analytics/Science, and many more Big Data topics.
-- [Hortonworks Apache Spark Docs](https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.5.0/bk_spark-component-guide/content/ch_developing-spark-apps.html) - official Spark documentation.
-- [Hortonworks Apache Zeppelin Docs](https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.5.0/bk_zeppelin-component-guide/content/ch_using_zeppelin.html) - official Zeppelin documentation.
+- [Hortonworks Apache Spark Docs](https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.6.5/bk_spark-component-guide/content/ch_developing-spark-apps.html) - official Spark documentation.
+- [Hortonworks Apache Zeppelin Docs](https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.6.5/bk_zeppelin-component-guide/content/ch_using_zeppelin.html) - official Zeppelin documentation.
