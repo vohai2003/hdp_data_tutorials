@@ -18,7 +18,7 @@ series: HDP > Develop with Hadoop > Apache Spark
 
 ## Introduction
 
-In this tutorial, we will provide an overview of Apache Spark, it's relationship with Scala, Zeppelin notebooks, Interpreters, Datasets and DataFrames. Finally, we will show case [Apache Zeppelin](https://zeppelin.apache.org/) notebook for our development environment to keep things simple and elegant.
+In this tutorial, we will provide an overview of Apache Spark, it's relationship with Scala, Zeppelin notebooks, Interpreters, Datasets and DataFrames. Finally, we will showcase [Apache Zeppelin](https://zeppelin.apache.org/) notebook for our development environment to keep things simple and elegant.
 
 Zeppelin will allow us to run in a pre-configured environment and execute code written for Spark in Scala and SQL, a few basic Shell commands, pre-written Markdown directions, and an HTML formatted table.
 
@@ -59,7 +59,7 @@ Learn more about Scala, here’s an excellent [introductory tutorial](http://www
 
 ### New to Zeppelin?
 
-If you haven’t already, checkout the Hortonworks [Apache Zeppelin](https://hortonworks.com/apache/zeppelin/) page as well as the [Getting Started with Apache Zeppelin](https://hortonworks.com/tutorial/getting-started-with-apache-zeppelin/) tutorial.You will find the official Apache Zeppelin page here.
+If you haven’t already, checkout the Hortonworks [Apache Zeppelin](https://hortonworks.com/apache/zeppelin/) page as well as the [Getting Started with Apache Zeppelin](https://hortonworks.com/tutorial/getting-started-with-apache-zeppelin/) tutorial. You will find the official Apache Zeppelin page here.
 
 ### New to Spark?
 
