@@ -126,14 +126,14 @@ Finally, let’s persist some of our results by saving our DataFrames in an opti
 
 In our Zeppelin Notebook we store our DataFrame in the following command:
 
-~~~sql
+~~~scala
 // Save and Overwrite our new DataFrame to an ORC file
 flightsWithDelays.write.format("orc").mode(SaveMode.Overwrite).save("flightsWithDelays.orc")
 ~~~
 
 Let'e break this statement down.
 
-~~~sql
+~~~scala
 flightsWithDelays.write.format("orc")
 ~~~
 
@@ -141,7 +141,7 @@ flightsWithDelays.write.format("orc")
 
 ORC (Optimized Row-Column) is a self-describing, type-aware columnar file format designed for Hadoop workloads. It is optimized for large streaming reads, but with integrated support for finding required rows quickly. Storing data in a columnar format lets the reader read, decompress, and process only the values that are required for the current query. Because ORC files are type-aware, the writer chooses the most appropriate encoding for the type and builds an internal index as the file is written. [More information here.](https://orc.apache.org/)
 
-~~~sql
+~~~scala
 mode(SaveMode.Overwrite)
 ~~~
 
@@ -165,7 +165,7 @@ To import the notebook, go to the Zeppelin home screen.
 3\. Copy and paste the following URL into the **Note URL**
 
 ~~~text
-
+https://raw.githubusercontent.com/hortonworks/data-tutorials/master/tutorials/hdp/learning-spark-sql-with-zeppelin/assets/Learning%20Spark%20SQL.json
 ~~~
 
 4\. Click on **Import Note**
