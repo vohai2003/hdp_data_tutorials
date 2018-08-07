@@ -44,24 +44,29 @@ This tutorial will teach you how to set up a full development environment for de
 
 > NOTE: Instructions may vary based on operating system.
 
-Create a new project by selecting **File** -> **New** -> **Project**:
+Create a new project by selecting **File** > **New** > **Project**:
 
-- select **Maven**
-- click **Next**
+select **Maven** > click **Next**
 
-![intellij2](assets/intellij2.jpg)
+![intellij-new-java-project](assets/intellij-new-java-project.jpg)
 
 Name your project as follows:
 
 - GroupId: **Hortonworks**
 - ArtifactId: **SparkTutorial**
-- click **Next**
+- Version: 1.0-SNAPSHOT
 
-![intellij3](assets/intellij3.jpg)
+then click **Next** to continue.
+
+![intellij-new-project-name-artifact](assets/intellij-new-project-name-artifact.jpg)
+
+Finally, select your project name and location. These fields should be auto-populated so let's run the defaults:
+
+![intellij-new-project-finish](assets/intellij-new-project-finish.jpg)
 
 IntelliJ should make a new project with a default directory structure. It may take a minute or two to generate all the folders.
 
-![intellij4](assets/intellij4.png)
+![intellij-auto-folders](assets/intellij-auto-folders.jpg)
 
 Let's break down the project structure.
 
@@ -74,19 +79,19 @@ Before we continue, let's verify a few IntelliJ settings:
 
 1\. Verify that **import Maven projects automatically** is **ON**.
 
-- Preferences -> Build, Execution, Deployment -> Build Tools -> Maven -> Importing
+- Preferences > Build, Execution, Deployment > Build Tools > Maven > Importing
 
 ![intellij-maven-auto-import](assets/intellij-maven-auto-import.jpg)
 
 2\. Verify **Project SDK** and **Project language level** are set to Java version:
 
-- File -> Project Structure -> Project
+- File > Project Structure > Project
 
 ![intellij_projectversion](assets/intellij-project-version.jpg)
 
 3\. Verify **Language level** is set to Java version:
 
-- File -> Project Structure -> Modules
+- File > Project Structure > Modules
 
 ![intellij_moduleversion](assets/intellij-module-version.jpg)
 
@@ -150,7 +155,7 @@ Now we're ready to create our application. In your IDE open the folder **src/mai
 
 Next, select folder **src/main/java**:
 
-- right-click on folder and select **New** -> **Java Class**
+- right-click on folder and select **New** > **Java Class**
 - name the class: `Main.java`
 
 ![intellij5](assets/intellij5.jpg)
@@ -204,7 +209,11 @@ public class Main {
 }
 ~~~
 
-As before, click Run -> Run to run the file. This should run the Spark job and print the frequency of each word that appears in Shakespeare.
+As before, click Run > Run to run the file. This should run the Spark job and print the frequency of each word that appears in Shakespeare.
+
+The files created by your program are found in the directory specified in the code above, in our case we used **/tmp/shakespeareWordCount**.
+
+![part-one-word-count](assets/part-one-word-count.jpg)
 
 Notice we've set this line:
 
@@ -338,7 +347,7 @@ On the machine where you plan on submitting your Spark job, run this line from t
 export SPARK_JAVA_OPTS=-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=8086
 ~~~
 
-This will let you attach a debugger at port 8086. You'll need to make sure port 8086 is able to receive inbound connections. Then in IntelliJ go to Run -> Edit Configurations:
+This will let you attach a debugger at port 8086. You'll need to make sure port 8086 is able to receive inbound connections. Then in IntelliJ go to Run > Edit Configurations:
 
 ![intellij6](assets/intellij6.png)
 
