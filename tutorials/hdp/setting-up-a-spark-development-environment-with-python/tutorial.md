@@ -74,8 +74,7 @@ Now the fun part begins!
 
 Let's create the application:
 
-- Right-click on **HelloSpark**
-- Select **New** -> **File**, name it **Main.py**
+Right-click on **HelloSpark** -> Select **New** -> **File**, name it **Main.py**
 
 ![pycharm-newfile](assets/pycharm-newfile.jpg)
 
