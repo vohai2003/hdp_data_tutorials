@@ -33,13 +33,13 @@ The lab is part of our Apache Zeppelin based lab series, providing an intuitive 
 ## Outline
 
 - [Concepts](#concepts)
-- [DataSets and DataFrames](#datasets?-dataframes?)
+- [DataSets and DataFrames](#datasets-and-dataframes)
 - [Using SQL API to analyze Airline data](#using-sql-api-to-analyze-the-airline-data)
 - [Putting It All Together](#putting-it-all-together)
 - [Import the Zeppelin Notebook](#import-the-zeppelin-notebook)
 - [Summary](#summary)
 
-## Concepts 
+## Concepts
 
 As mentioned earlier, this is a two-part lab. In the first part of the lab, we will cover Spark SQL's Datasets and DataFrames, which are distributed collections of data conceptually equivalent to a table in a relational database or a dataframe in Python or R. Both provide rich optimizations and translate to an optimized lower-level Spark code. The main difference between the Datasets and DataFrames is that Datasets are strongly typed, requiring consistent value/variable type assignments. The Dataset is available in Scala and Java (strongly typed languages), while DataFrame additionally supports Python and R languages.
 
@@ -51,7 +51,8 @@ We will wrap up by persisting our results to a permanent table that can then be 
 
 One thing to remember is that in both part one and part two of the lab the queries on Datasets/DataFrames or the temporary view will translate to an underlying optimized form of Spark Resilient Distributed Datasets (RDDs) assuring that all code is executed in a parallel/distributed fashion. To learn more about RDDs, which are beyond the scope of this tutorial, see the  [Spark docs](http://spark.apache.org/docs/latest/programming-guide.html#resilient-distributed-datasets-rdds).
 
-## Datasets? DataFrames?
+## Datasets and DataFrames
+
 A Dataset is a distributed collection of data. Dataset provides the benefits of strong typing, ability to use powerful lambda functions with the benefits of (Spark SQL’s) optimized execution engine. A Dataset can be constructed from JVM objects and then manipulated using functional transformations (map, flatMap, filter, etc.). The Dataset API is available in Scala and Java.
 
 A DataFrame is a Dataset organized into named columns. It is conceptually equivalent to a table in a relational database or a data frame in R/Python, but with richer optimizations under the hood. DataFrames can be constructed from a wide array of sources such as: structured data files, tables in Hive, external databases, or existing RDDs. The DataFrame API is available in Scala, Java, Python, and R. In Scala and Java, a DataFrame is represented by a Dataset of Rows. In the Scala API, DataFrame is simply a type alias of Dataset[Row]. (Note that in Scala type parameters (generics) are enclosed in square brackets.)
@@ -131,7 +132,7 @@ In our Zeppelin Notebook we store our DataFrame in the following command:
 flightsWithDelays.write.format("orc").mode(SaveMode.Overwrite).save("flightsWithDelays.orc")
 ~~~
 
-Let'e break this statement down.
+Let's break this statement down.
 
 ~~~scala
 flightsWithDelays.write.format("orc")
@@ -181,8 +182,9 @@ Once the **Learning to Spark SQL** notebook is up, follow all the directions wit
 Once you have completed part one and part two of the lab you should have a basic toolset to start exploring new datasets using a high-level  programatic Dataset or DataFrame APIs, or a SQL API. Both APIs provide the same performance while giving you the choice to choose one or both to accomplish a task demanding high performance data exploration, wrangling, munging, and visualization.
 
 ## Further Reading
--   You may want to checkout a short introductory tutorial on [Machine Learning with Spark](https://hortonworks.com/tutorial/intro-to-machine-learning-with-apache-spark-and-apache-zeppelin/).
--   [Predictiong Airline Delays using SparkR](https://hortonworks.com/tutorial/predicting-airline-delays-using-sparkr/)
--   [Hortonworks Community Connection (HCC)](https://community.hortonworks.com/spaces/85/data-science.html?type=question) is a great resource for questions and answers on Spark, Data Analytics/Science, and many more Big Data topics.
--   [Hortonworks Apache Spark Docs](https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.5.0/bk_spark-component-guide/content/ch_developing-spark-apps.html) - official Spark documentation.
--   [Hortonworks Apache Zeppelin Docs](https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.5.0/bk_zeppelin-component-guide/content/ch_using_zeppelin.html) - official Zeppelin documentation.
+
+- You may want to checkout a short introductory tutorial on [Machine Learning with Spark](https://hortonworks.com/tutorial/intro-to-machine-learning-with-apache-spark-and-apache-zeppelin/).
+- [Predictiong Airline Delays using SparkR](https://hortonworks.com/tutorial/predicting-airline-delays-using-sparkr/)
+- [Hortonworks Community Connection (HCC)](https://community.hortonworks.com/spaces/85/data-science.html?type=question) is a great resource for questions and answers on Spark, Data Analytics/Science, and many more Big Data topics.
+- [Hortonworks Apache Spark Docs](https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.5.0/bk_spark-component-guide/content/ch_developing-spark-apps.html) - official Spark documentation.
+- [Hortonworks Apache Zeppelin Docs](https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.5.0/bk_zeppelin-component-guide/content/ch_using_zeppelin.html) - official Zeppelin documentation.
