@@ -161,7 +161,7 @@ To import the notebook, go to the Zeppelin home screen.
 3\. Copy and paste the following URL into the **Note URL**
 
 ~~~text
-https://raw.githubusercontent.com/hortonworks/data-tutorials/master/tutorials/hdp/sentiment-analysis-with-apache-spark/assets/sentiment-analysis.json
+https://raw.githubusercontent.com/hortonworks/data-tutorials/master/tutorials/hdp/sentiment-analysis-with-apache-spark/assets/Sentiment%20Analysis.json
 ~~~
 
 4\. Click on **Import Note**
