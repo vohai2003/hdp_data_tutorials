@@ -42,7 +42,7 @@ We'll be using PyCharm Community Edition as our IDE. PyCharm Professional editio
 
 > NOTE: Instructions may vary based on operating system.
 
-To create a new project select **File** -> **New Project**. Name the project **HelloSpark** and save in **~/PycharmProjects/HelloSpark**.
+To create a new project select **File** > **New Project**. Name the project **HelloSpark** and save in **~/PycharmProjects/HelloSpark**.
 
 ![pycharm-create](assets/pycharm-create.jpg)
 
@@ -74,7 +74,7 @@ Now the fun part begins!
 
 Let's create the application:
 
-Right-click on **HelloSpark** -> Select **New** -> **File**, name it **Main.py**
+Right-click on **HelloSpark** > Select **New** > **File**, name it **Main.py**
 
 ![pycharm-newfile](assets/pycharm-newfile.jpg)
 
@@ -96,11 +96,11 @@ print ("Number of elements: " + str(counts.count()))
 counts.saveAsTextFile("./shakespeareWordCount")
 ~~~
 
-To run your program, click **Run** -> **Run...** from IDE menu and select **Main**. That's all it takes to perform a word count in Spark. The results are saved in **shakespeareWordCount** folder that is on the same directory that your source-code is saved.
+To run your program, click **Run** > **Run...** from IDE menu and select **Main**. That's all it takes to perform a word count in Spark. The results are saved in **shakespeareWordCount** folder that is on the same directory that your source-code is saved.
 
 > NOTE: **pyspark** package may need to be installed.
 
-In order to install the **pyspark** package navigate to **Pycharm** -> **Preferences** -> **Project: HelloSpark** -> **Project interpreter** and click **+**
+In order to install the **pyspark** package navigate to **Pycharm** > **Preferences** > **Project: HelloSpark** > **Project interpreter** and click **+**
 
 ![pycharm-preferences](assets/pycharm-preferences.jpg)
 
