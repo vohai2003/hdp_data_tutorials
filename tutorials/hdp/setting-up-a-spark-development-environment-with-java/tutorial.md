@@ -32,7 +32,7 @@ This tutorial will teach you how to set up a full development environment for de
 ## Outline
 
 - [Creating a new IntelliJ Project](#creating-a-new-intellij-project)
-- [Maven](#maven)
+- [Maven Configuration](#maven-configuration)
 - [Create a Spark Application](#create-a-spark-application)
 - [Deploying to the Sandbox](#deploying-to-the-sandbox)
 - [Deploying to the Cloud](#deploying-to-the-cloud)
@@ -90,7 +90,7 @@ Before we continue, let's verify a few IntelliJ settings:
 
 ![intellij_moduleversion](assets/intellij-module-version.jpg)
 
-## Maven
+## Maven Configuration
 
 Before we start writing a Spark Application, we'll want to import the Spark libraries and documentation into IntelliJ. To perform this we're going to use Maven. This is necessary if we want IntelliJ to recognize Spark code. To import the Spark libraries we're going to use the dependency manager Maven. Add the following lines to the file pom.xml:
 
