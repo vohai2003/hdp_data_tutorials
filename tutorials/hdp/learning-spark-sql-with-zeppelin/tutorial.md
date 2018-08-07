@@ -1,6 +1,6 @@
 ---
 title: Learning Spark SQL with Zeppelin
-author: sandbox team
+author: sandbox-team
 tutorial-id: 365
 experience: Beginner
 persona: Data Scientist & Analyst
