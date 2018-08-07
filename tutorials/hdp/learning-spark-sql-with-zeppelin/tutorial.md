@@ -33,7 +33,7 @@ The lab is part of our Apache Zeppelin based lab series, providing an intuitive 
 ## Outline
 
 - [Concepts](#concepts)
-- [DataSets and DataFrames](#datasets-and-dataframes)
+- [Using DataFrame and Dataset API to Analyze Airline Data](#using-dataframe-and-dataset-api-to-analyze-airline-data)
 - [Using SQL API to analyze Airline data](#using-sql-api-to-analyze-the-airline-data)
 - [Putting It All Together](#putting-it-all-together)
 - [Import the Zeppelin Notebook](#import-the-zeppelin-notebook)
@@ -52,7 +52,9 @@ We will wrap up by persisting our results to a permanent table that can then be 
 
 One thing to remember is that in both part one and part two of the lab the queries on Datasets/DataFrames or the temporary view will translate to an underlying optimized form of Spark Resilient Distributed Datasets (RDDs) assuring that all code is executed in a parallel/distributed fashion. To learn more about RDDs, which are beyond the scope of this tutorial, see the  [Spark docs](http://spark.apache.org/docs/latest/programming-guide.html#resilient-distributed-datasets-rdds).
 
-## Datasets and DataFrames
+## Using DataFrame and Dataset API to Analyze Airline Data
+
+### Datasets and DataFrames
 
 A Dataset is a distributed collection of data. Dataset provides the benefits of strong typing, ability to use powerful lambda functions with the benefits of (Spark SQL’s) optimized execution engine. A Dataset can be constructed from JVM objects and then manipulated using functional transformations (map, flatMap, filter, etc.). The Dataset API is available in Scala and Java.
 
