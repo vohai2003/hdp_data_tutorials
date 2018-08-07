@@ -139,7 +139,7 @@ To import the notebook, go to the Zeppelin home screen.
 ~~~bash
 # Getting Started ApacheSpark in 5 Minutes Notebook
 
-https://githubusercontent.com/hortownworks/data-tutorials/master/tutorials/hdp/hands-on-tour-of-apache-spark-in-5-minutes/assets/getting-started-apache-spark-in-5-minutes.json
+https://raw.githubusercontent.com/hortonworks/data-tutorials/master/tutorials/hdp/hands-on-tour-of-apache-spark-in-5-minutes/assets/Getting%20Started%20_%20Apache%20Spark%20in%205%20Minutes.json
 
 ~~~
 
