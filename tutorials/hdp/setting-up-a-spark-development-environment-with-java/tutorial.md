@@ -52,9 +52,9 @@ select **Maven** > click **Next**
 
 Name your project as follows:
 
-- GroupId: **Hortonworks**
-- ArtifactId: **SparkTutorial**
-- Version: 1.0-SNAPSHOT
+- GroupId: `Hortonworks`
+- ArtifactId: `SparkTutorial`
+- Version: `1.0-SNAPSHOT`
 
 then click **Next** to continue.
 
@@ -158,7 +158,7 @@ Next, select folder **src/main/java**:
 - right-click on folder and select **New** > **Java Class**
 - name the class: `Main.java`
 
-![intellij5](assets/intellij5.jpg)
+![new-java-class](assets/new-java-class.jpg)
 
 Copy this into your new file:
 
@@ -349,7 +349,7 @@ export SPARK_JAVA_OPTS=-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,add
 
 This will let you attach a debugger at port 8086. You'll need to make sure port 8086 is able to receive inbound connections. Then in IntelliJ go to Run > Edit Configurations:
 
-![intellij6](assets/intellij6.png)
+![intellij-edit-configurations](assets/intellij-edit-configurations.jpg)
 
 Then click the + button at the upper-left and add a new remote configuration. Fill the host and port fields with your host ip address and 8086.
 
