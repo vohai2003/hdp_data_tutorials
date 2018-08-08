@@ -85,11 +85,17 @@ public class HelloWorld {
 
 Another section of the tutorial. **Here's an example** of some strong font, and _Italicized font_, use sparingly. Also, it is **important** to note that the standard image to be included in Spark tutorials with Zeppelin notebooks are in this format:
 
-![An example of an image image](assets/sample-image-from-zeppelin.jpg)
+![sample-image-from-zeppelin](assets/sample-image-from-zeppelin.jpg)
 
-meaning that the image is not oversized and clearly shows the results you are trying to convey. **Hint** make your browser window small in order to capture all of the desired content, like so:
+meaning that the image is not oversized and clearly shows the results you are trying to convey. **Hint** make your browser window small in order to capture all of the desired content.
 
-![window-size](assets/window-size.jpg)
+The standard to add an image is this:
+
+~~~md
+![sample-image-from-zeppelin](assets/sample-image-from-zeppelin.jpg)
+~~~
+
+The image name is simply the name of screenshot without the folder path or the image extension. It is important to mention that our images must be **_.jpg_** file type and must be named in all lower case letters.
 
 > Note: In the above image link, we link to an image in the included assets folder.  Put all of your assets (images, files, etc.) in that folder for easy linking to.  When your markdown gets built by the system, it will automatically link to the correct place on the web to find your images, downloadable files, etc.
 
