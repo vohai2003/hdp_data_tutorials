@@ -25,7 +25,7 @@ This tutorial will teach you how to set up a full development environment for de
 
 - Installed and deployed [Hortonworks Data Platform (HDP) Sandbox](https://hortonworks.com/downloads/#sandbox)
 - [Learning the Ropes of HDP Sandbox](https://hortonworks.com/tutorial/learning-the-ropes-of-the-hortonworks-sandbox/)
-- Installed [IntelliJ IDEA](https://www.jetbrains.com/)
+- Installed [IntelliJ IDEA](https://www.jetbrains.com/idea/)
 - Installed [Maven](https://maven.apache.org/install.html) dependency manager
 - Installed [Java](https://java.com/)
 
@@ -42,7 +42,7 @@ This tutorial will teach you how to set up a full development environment for de
 
 ## Creating a new IntelliJ Project
 
-> NOTE: Instructions may vary based on operating system.
+> NOTE: Instructions may vary based on operating system. On this tutorial we will be using IntelliJ Version: 2018.2.1 on MAC OSX High Sierra.
 
 Create a new project by selecting **File** > **New** > **Project**:
 
