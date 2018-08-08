@@ -29,7 +29,7 @@ In this tutorial, we will introduce you to Machine Learning with Apache Spark. T
 
 ## Outline
 
-- [Concepts](#Concepts)
+- [Concepts](#concepts)
 - [What is a Model?](#what-is-a-model)
 - [Import the Zeppelin Notebook](#import-the-zeppelin-notebook)
 - [Summary](#summary)
