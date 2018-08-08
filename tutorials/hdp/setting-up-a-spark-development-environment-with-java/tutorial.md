@@ -38,7 +38,7 @@ This tutorial will teach you how to set up a full development environment for de
 - [Deploying to the Cloud](#deploying-to-the-cloud)
 - [Live Debugging](#live-debugging)
 - [Summary](#summary)
-- [Further Reading](further-reading)
+- [Further Reading](#further-reading)
 
 ## Creating a new IntelliJ Project
 
@@ -360,6 +360,7 @@ If you run this debug configuration from your IDE immediately after submitting y
 > NOTE: To resubmit the word count code we must first remove the directory created earlier. Use the command `hdfs dfs -rm -r /tmp/shakespeareWordCount` on the sandbox shell to remove the old directory.
 
 Submit the spark job on the sandbox shell again and debug on your IDE immediately after executing the **spark-submit** command.
+
 Remember that to run your code we used the following command: `spark-submit --class "Hortonworks.SparkTutorial.Main"  --master yarn --deploy-mode client ./SparkTutorial-1.0-SNAPSHOT.jar`
 
 ![spark-submit-debug](assets/spark-submit-debug.jpg)
