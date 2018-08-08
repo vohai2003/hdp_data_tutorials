@@ -27,7 +27,7 @@ This tutorial will teach you how to set up a full development environment for de
 - [Learning the Ropes of HDP Sandbox](https://hortonworks.com/tutorial/learning-the-ropes-of-the-hortonworks-sandbox/)
 - Installed [IntelliJ IDEA](https://www.jetbrains.com/idea/)
 - Installed [Maven](https://maven.apache.org/install.html) dependency manager
-- Installed [Java](https://java.com/)
+- Installed [Java](https://java.com/en/download/)
 
 ## Outline
 
