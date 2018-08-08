@@ -117,9 +117,10 @@ To import the notebook, go to the Zeppelin home screen.
 3\. Copy and paste the following URL into the **Note URL**
 
 ~~~text
-
-
+https://raw.githubusercontent.com/hortonworks/data-tutorials/master/tutorials/templates/tutorial-template-spark/assets/Learning%20Spark%20Tutorials.json
 ~~~
+
+> NOTE: The standard to add Zeppelin Notebooks is by URL, reason for this is that users should always get latest and greatest.
 
 4\. Click on **Import Note**
 
