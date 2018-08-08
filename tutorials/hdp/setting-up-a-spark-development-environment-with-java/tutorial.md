@@ -351,7 +351,7 @@ This will let you attach a debugger at port 8086. You'll need to make sure port 
 
 ![intellij-edit-configurations](assets/intellij-edit-configurations.jpg)
 
-Then click the + button at the upper-left and add a new remote configuration. Fill the host and port fields with your host ip address and 8086.
+Then click the + button at the upper-left and add a new remote configuration. Fill the host and port fields with your host ip address and use port **8086**.
 
 ![intellij-live-debug-address](assets/intellij-live-debug-address.jpg)
 
