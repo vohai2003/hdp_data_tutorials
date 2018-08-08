@@ -140,7 +140,7 @@ After you save the file, IntelliJ will automatically import the libraries and do
 
 For our first application we're going to build a simple program that performs a word count on the collected works of Shakespeare - [Download the file](assets/shakespeare.txt), save the file as **shakespeare.txt**.
 
-Later we'll want Spark to retrieve this file from HDFS (Hadoop Distributed File System), clearso let's place it there now.
+Later we'll want Spark to retrieve this file from HDFS (Hadoop Distributed File System), so let's place it there now.
 
 To upload to HDFS, first make sure the sandbox is up and running.
 
