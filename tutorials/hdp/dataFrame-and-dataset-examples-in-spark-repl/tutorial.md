@@ -47,7 +47,6 @@ Spark SQl is a Spark module for structured data processing. It has interfaces th
 Things you can do with Spark SQL:
 
 - Execute SQL queries
-
 - Read data from an existing Hive installation 
   
 ### Datasets and DataFrames
