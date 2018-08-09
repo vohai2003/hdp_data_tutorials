@@ -77,13 +77,13 @@ Note, that we will not cover the details of how the underlying Linear Regression
 
 To summarize, we will be
 
-1\. setting up a two dimensional dataset
+1\. Setting up a two dimensional dataset
 
-2\. creating a Linear Regression model pipeline
+2\. Creating a Linear Regression model pipeline
 
-3\. summarizing the model training
+3\. Summarizing the model training
 
-4\. predicting output using the model
+4\. Predicting output using the model
 
 5\. By the end of the notebook you will be able to visualize the linear fitting prediction that your model generated:
 
