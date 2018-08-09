@@ -25,11 +25,9 @@ This tutorial will get you started with Apache Spark and will cover:
 ## Prerequisites
 
 - [Downloaded and Installed latest Hortonworks Data Platform (HDP) Sandbox](https://hortonworks.com/downloads/#sandbox)
-  - You will need **8GB** of memory dedicated for the virtual machine, meaning that you should have at least **12GB** of memory on your system
 - [Learning the Ropes of the HDP Sandbox](https://hortonworks.com/tutorial/learning-the-ropes-of-the-hortonworks-sandbox/)
 - Basic [Scala](http://www.dhgarrette.com/nlpclass/scala/basics.html) syntax
 - [Getting Started with Apache Zeppelin](https://hortonworks.com/tutorial/getting-started-with-apache-zeppelin/)
-- Download the following data sets:
 
 ## Outline
 
@@ -48,9 +46,9 @@ Spark SQl is a Spark module for structured data processing. It has interfaces th
 
 Things you can do with Spark SQL:
 
-1\. Execute SQL queries
+- Execute SQL queries
 
-2\. Read data from an existing Hive installation 
+- Read data from an existing Hive installation 
   
 ### Datasets and DataFrames
 
