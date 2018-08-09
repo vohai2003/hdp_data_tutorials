@@ -47,8 +47,7 @@ Spark SQl is a Spark module for structured data processing. It has interfaces th
 Things you can do with Spark SQL:
 
 - Execute SQL queries
-
-- Read data from an existing Hive installation 
+- Read data from an existing Hive installation
   
 ### Datasets and DataFrames
 
@@ -80,7 +79,7 @@ In preparation for this tutorial you need to download two files, people.txt and 
 cd /tmp
 ~~~
 
-2\. Copy and paste the command to download the people.txt:L
+2\. Copy and paste the command to download the people.txt:
 
 ~~~bash
 #Download people.txt
@@ -133,19 +132,19 @@ DataFrame API provides easier access to data since it looks conceptually like a 
 
 At a `scala>` REPL prompt, type the following:
 
-~~~ js
+~~~scala
 val df = spark.read.json("/tmp/people.json")
 ~~~
 
 Using `df.show`, display the contents of the DataFrame:
 
-~~~ js
+~~~scala
 df.show
 ~~~
 
 You should see an output similar to:
 
-~~~ js
+~~~scala
 ...
 +----+-------+
 | age|   name|
@@ -162,7 +161,7 @@ scala>
 
 Now, lets select "name" and "age" columns and increment the "age" column by 1:
 
-~~~ js
+~~~scala
 df.select(df("name"), df("age") + 1).show()
 ~~~
 
@@ -183,7 +182,7 @@ scala>
 
 To return people older than 21, use the filter() function:
 
-~~~ js
+~~~scala
 df.filter(df("age") > 21).show()
 ~~~
 
@@ -202,7 +201,7 @@ scala>
 
 Next, to count the number of people of specific age, use groupBy() & count() functions:
 
-~~~ js
+~~~scala
 df.groupBy("age").count().show()
 ~~~
 
@@ -227,7 +226,7 @@ Type the following commands(one line a time) into your Spark-shell:
 
 1\. Import the necessary libraries
 
-~~~ js
+~~~scala
 import org.apache.spark.sql._
 import org.apache.spark.sql.Row
 import org.apache.spark.sql.types._
@@ -268,13 +267,13 @@ val peopleDF = spark.createDataFrame(rowRDD, schema)
 
 6\. Creates a temporary view using the DataFrame
 
-~~~js 
+~~~js
 peopleDF.createOrReplaceTempView("people")
 ~~~
 
 7\. SQL can be run over a temporary view created using DataFrames
 
-~~~js 
+~~~js
 val results = spark.sql("SELECT name FROM people")
 ~~~
 
@@ -317,7 +316,7 @@ Let's try the simplest example of creating a dataset by applying a *toDS()* func
 
 At the `scala>` prompt, copy & paste the following:
 
-~~~ js
+~~~scala
 val ds = Seq(1, 2, 3).toDS()
 
 ds.show
@@ -370,7 +369,7 @@ val people = spark.read.json(path).as[Person] // Creates a DataFrame
 
 To view contents of people DataFrame type:
 
-~~~ js
+~~~scala
 people.show
 ~~~
 
