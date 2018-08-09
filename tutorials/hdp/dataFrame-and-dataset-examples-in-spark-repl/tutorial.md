@@ -1,6 +1,6 @@
 ---
 title: DataFrame and Dataset Examples in Spark REPL
-author: Robert Hryniewicz
+author: sandbox team
 tutorial-id: 391
 experience: Beginner
 persona: Developer
@@ -20,61 +20,123 @@ series: HDP > Develop with Hadoop > Apache Spark
 This tutorial will get you started with Apache Spark and will cover:
 
 - How to use the Spark DataFrame & Dataset API
-- How to use SparkSQL Thrift Server for JDBC/ODBC access
-
-Interacting with Spark will be done via the terminal (i.e. command line).
+- How to use the SparkSQL interface via [Shell-in-a-Box](https://hortonworks.com/tutorial/learning-the-ropes-of-the-hortonworks-sandbox/#terminal-access)
 
 ## Prerequisites
 
-This tutorial assumes that you are running an HDP Sandbox.
-
-Please ensure you complete the prerequisites before proceeding with this tutorial.
-
--   Downloaded and Installed the [Hortonworks Sandbox](https://hortonworks.com/products/sandbox/)
--   Reviewed [Learning the Ropes of the HDP Sandbox](https://hortonworks.com/tutorial/learning-the-ropes-of-the-hortonworks-sandbox/)
+- [Downloaded and Installed latest Hortonworks Data Platform (HDP) Sandbox](https://hortonworks.com/downloads/#sandbox)
+  - You will need **8GB** of memory dedicated for the virtual machine, meaning that you should have at least **12GB** of memory on your system
+- [Learning the Ropes of the HDP Sandbox](https://hortonworks.com/tutorial/learning-the-ropes-of-the-hortonworks-sandbox/)
+- Basic [Scala](http://www.dhgarrette.com/nlpclass/scala/basics.html) syntax
+- [Getting Started with Apache Zeppelin](https://hortonworks.com/tutorial/getting-started-with-apache-zeppelin/)
+- Download the following data sets:
 
 ## Outline
 
--   [DataFrame API Example](#dataframe-api-example)
--   [DataSet API Example](#dataset-api-example)
+- [Concepts](#concepts)
+- [Environment Setup](#environment-setup)
+- [DataFrame API Example](#dataframe-api-example)
+- [DataSet API Example](#dataset-api-example)
+- [Conclusion](#conclusion)
+- [Further Reading](#further-reading)
 
--   [Further Reading](#further-reading)
+## Concepts
 
+### Spark SQL
 
-## DataFrame API Example
+Spark SQl is a Spark module for structured data processing. It has interfaces that provide Spark with additional information about the structure of both the data and the computation being performed. The additional information is used for optimization.
 
-**Spark 1.6.x Version**
+Things you can do with Spark SQL:
 
- DataFrame API provides easier access to data since it looks conceptually like a Table and a lot of developers from Python/R/Pandas are familiar with it.
+1\. Execute SQL queries
 
-Assuming you start as `root` user, switch to user *spark*:
+2\. Read data from an existing Hive installation 
+  
+### Datasets and DataFrames
+
+A Dataset is a type of interface that provides the benefits of RDD (strongly typed) and Spark SQL's optimization. It is important to note that a Dataset can be constructed from JVM objects and then manipulated using complex functional transformations, however, they are beyond this quick guide.
+
+A DataFrame is a Dataset organized into named columns. Conceptually, they are equivalent to a table in a relational database or a DataFrame in R or Python. DataFrames can be created from various sources such as:
+
+1\. Structured Data Files
+
+2\. Tables in Hive
+
+3\. External Databases
+
+4\. Existing RDDs
+
+Key difference between the Dataset and the DataFrame is that Datasets are strongly typed.
+
+Learn more about [Datasets and DataFrames](https://spark.apache.org/docs/latest/sql-programming-guide.html#datasets-and-dataframes).
+
+## Environment Setup
+
+### Download the Dataset
+
+In preparation for this tutorial you need to download two files, people.txt and people.json into your  Sandbox's **tmp** folder. The commands below should be typed into [Shell-in-a-Box](sandbox-hdp.hortonworks.com:4200)
+
+1\. Assuming you start as `root` user:
 
 ~~~ bash
-su spark
+cd /tmp
 ~~~
 
-Next, upload people.txt and people.json files to HDFS:
+2\. Copy and paste the command to download the people.txt:L
 
-~~~ bash
-cd /usr/hdp/current/spark-client
-hdfs dfs -copyFromLocal examples/src/main/resources/people.txt /tmp/people.txt
-hdfs dfs -copyFromLocal examples/src/main/resources/people.json /tmp/people.json
+~~~bash
+#Download people.txt
+wget https://raw.githubusercontent.com/hortonworks/data-tutorials/master/tutorials/hdp/dataFrame-and-dataset-examples-in-spark-repl/assets/people.txt
 ~~~
 
-Launch the Spark Shell:
+3\. Copy and paste the command to download the people.json:
+
+~~~bash
+#Download people.json
+wget https://raw.githubusercontent.com/hortonworks/data-tutorials/master/tutorials/hdp/dataFrame-and-dataset-examples-in-spark-repl/assets/people.json
+~~~
+
+### Upload the dataset to HDFS
+
+1\. Before moving the files into HDFS you need to login under **hdfs** user in order to give root user permission to perform file operations:
+
+~~~bash
+#Login as hdfs user to give root permissions for file operations
+su hdfs
+cd
+~~~
+
+2\. Next, upload people.txt and people.json files to HDFS:
+
+~~~bash
+#Copy files from local system to HDF
+hdfs dfs -put /tmp/people.txt /tmp/people.txt
+hdfs dfs -put /tmp/people.json /tmp/people.json
+~~~
+
+3\.Verify that both files were copied into HDFS **/tmp** folder by copying the following commands:
+
+~~~bash
+#Verify that files were move to HDF
+hdfs dfs -ls /tmp
+~~~
+
+Now, we are ready to start the examples.
+
+4\.Launch the Spark Shell:
 
 ~~~ bash
 spark-shell
 ~~~
 
+## DataFrame API Example
+
+DataFrame API provides easier access to data since it looks conceptually like a Table and a lot of developers from Python/R/Pandas are familiar with it.
+
 At a `scala>` REPL prompt, type the following:
 
 ~~~ js
-val sqlContext = new org.apache.spark.sql.SQLContext(sc)
-~~~
-then
-~~~ js
-val df = sqlContext.jsonFile("/tmp/people.json")
+val df = spark.read.json("/tmp/people.json")
 ~~~
 
 Using `df.show`, display the contents of the DataFrame:
@@ -87,7 +149,6 @@ You should see an output similar to:
 
 ~~~ js
 ...
-15/12/16 13:28:15 INFO YarnScheduler: Removed TaskSet 2.0, whose tasks have all completed, from pool
 +----+-------+
 | age|   name|
 +----+-------+
@@ -99,18 +160,12 @@ You should see an output similar to:
 scala>
 ~~~
 
-**Additional DataFrame API examples**
+### Additional DataFrame API examples
 
-Continuing at the `scala>` prompt, type the following to import sql functions:
-
-~~~ js
-import org.apache.spark.sql.functions._ 
-~~~
-
-and select "name" and "age" columns and increment the "age" column by 1:
+Now, lets select "name" and "age" columns and increment the "age" column by 1:
 
 ~~~ js
-df.select(df("name"), df("age") + 1).show()
+df.select(df("name"), df("age") + 1).show()
 ~~~
 
 This will produce an output similar to the following:
@@ -131,7 +186,7 @@ scala>
 To return people older than 21, use the filter() function:
 
 ~~~ js
-df.filter(df("age") > 21).show()
+df.filter(df("age") > 21).show()
 ~~~
 
 This will produce an output similar to the following:
@@ -160,93 +215,105 @@ This will produce an output similar to the following:
 +----+-----+
 | age|count|
 +----+-----+
-|null|    1|
 |  19|    1|
+|null|    1|
 |  30|    1|
 +----+-----+
 
 scala>
 ~~~
 
-**Programmatically Specifying Schema**
+### Programmatically Specifying Schema
+
+Type the following commands(one line a time) into your Spark-shell:
+
+1\. Import the necessary libraries
 
 ~~~ js
-import org.apache.spark.sql._ 
+import org.apache.spark.sql._
+import org.apache.spark.sql.Row
+import org.apache.spark.sql.types._
+import spark.implicits._
+~~~
 
-// Create sql context from an existing SparkContext (sc)
-val sqlContext = new org.apache.spark.sql.SQLContext(sc)
+2\. Create and RDD
 
-// Create people RDD
-val people = sc.textFile("/tmp/people.txt")
+~~~js
+val peopleRDD = spark.sparkContext.textFile("/tmp/people.txt")
+~~~
 
-// Encode schema in a string
-val schemaString = "name age"
+3\. Encode the Schema in a string
 
-// Import Spark SQL data types and Row
-import org.apache.spark.sql.types.{StructType,StructField,StringType} 
+~~~js
+val schemaString = "name age"
+~~~
 
-// Generate the schema based on the string of schema
-val schema = 
-  StructType(
-    schemaString.split(" ").map(fieldName => StructField(fieldName, StringType, true)))
+4\. Generate the schema based on the string of schema
 
-// Convert records of people RDD to Rows
-val rowRDD = people.map(_.split(",")).map(p => Row(p(0), p(1).trim))
+~~~js
+val fields = schemaString.split(" ").map(fieldName => StructField(fieldName, StringType, nullable = true))
 
-// Apply the schema to the RDD
-val peopleSchemaRDD = sqlContext.createDataFrame(rowRDD, schema)
+val schema = StructType(fields)
+~~~
 
-// Register the SchemaRDD as a table
-peopleSchemaRDD.registerTempTable("people")
+5\. Convert records of the RDD (people) to Rows
 
-// Execute a SQL statement on the 'people' table
-val results = sqlContext.sql("SELECT name FROM people")
+~~~js
+val rowRDD = peopleRDD.map(_.split(",")).map(attributes => Row(attributes(0), attributes(1).trim))
+~~~
 
-// The results of SQL queries are SchemaRDDs and support all the normal RDD operations.
-// The columns of a row in the result can be accessed by ordinal
-results.map(t => "Name: " + t(0)).collect().foreach(println)
+6\.  Apply the schema to the RDD
+
+~~~js
+val peopleDF = spark.createDataFrame(rowRDD, schema)
+~~~
+
+6\. Creates a temporary view using the DataFrame
+
+~~~js 
+peopleDF.createOrReplaceTempView("people")
+~~~
+
+7\. SQL can be run over a temporary view created using DataFrames
+
+~~~js 
+val results = spark.sql("SELECT name FROM people")
+~~~
+
+8\.The results of SQL queries are DataFrames and support all the normal RDD operations. The columns of a row in the result can be accessed by field index or by field name
+
+~~~js
+results.map(attributes => "Name: " + attributes(0)).show()
 ~~~
 
 This will produce an output similar to the following:
 
-~~~ js
-15/12/16 13:29:19 INFO DAGScheduler: Job 9 finished: collect at :39, took 0.251161 s
-15/12/16 13:29:19 INFO YarnHistoryService: About to POST entity application_1450213405513_0012 with 10 events to timeline service http://green3:8188/ws/v1/timeline/
-Name: Michael
-Name: Andy
-Name: Justin
+~~~ bash
+...
++-------------+
+|        value|
++-------------+
+|Name: Michael|
+|   Name: Andy|
+| Name: Justin|
++-------------+
 
 scala>
 ~~~
 
-To exit type `exit`.
-
-
 ## DataSet API Example
 
-If you haven't done so already in previous sections, make sure to upload people data sets (people.txt and people.json) to HDFS:
+If you haven't done so already in previous sections, make sure to upload people data sets (people.txt and people.json) to HDFS: [Environment Setup](https://hortonworks.com/tutorial/dataframe-and-dataset-examples-in-spark-repl/#environment-setup) and imported the libraries in step 1 of **Programmatically Specifying Schema** above:
 
-~~~ bash
-cd /usr/hdp/current/spark-client
-hdfs dfs -copyFromLocal examples/src/main/resources/people.txt /tmp/people.txt
-hdfs dfs -copyFromLocal examples/src/main/resources/people.json /tmp/people.json
-~~~
+Finally, if you haven't already:
 
-And if you haven't already, switch to user *spark*:
-
-~~~ bash
-su spark
-~~~
-
-**Spark 1.6.x Version**
-
-The Spark Dataset API brings the best of RDD and Data Frames together, for type safety and user functions that run directly on existing JVM types.
-
-**Launch Spark Shell**
+Launch Spark Shell
 
 ~~~ bash
 spark-shell
 ~~~
+
+The Spark Dataset API brings the best of RDD and Data Frames together, for type safety and user functions that run directly on existing JVM types.
 
 Let's try the simplest example of creating a dataset by applying a *toDS()* function to a sequence of numbers.
 
@@ -254,6 +321,7 @@ At the `scala>` prompt, copy & paste the following:
 
 ~~~ js
 val ds = Seq(1, 2, 3).toDS()
+
 ds.show
 ~~~
 
@@ -275,6 +343,7 @@ To apply *Person* class to hardcoded data type:
 
 ~~~ bash
 case class Person(name: String, age: Long)
+
 val ds = Seq(Person("Andy", 32)).toDS()
 ~~~
 
@@ -298,7 +367,7 @@ Finally, let's map data read from *people.json* to a *Person* class. The mapping
 
 ~~~ bash
 val path = "/tmp/people.json"
-val people = sqlContext.read.json(path) // Creates a DataFrame
+val people = spark.read.json(path).as[Person] // Creates a DataFrame
 ~~~
 
 To view contents of people DataFrame type:
@@ -338,7 +407,7 @@ View the contents of the Dataset type
 pplDS.show
 ~~~
 
-You should see the following
+You should see the following:
 
 ~~~ bash
 +------+---+
@@ -349,7 +418,15 @@ You should see the following
 +------+---+
 ~~~
 
-To exit enter `:quit`.
+To exit type:
+
+~~~bash
+:quit
+~~~
+
+# Summary
+
+Congratulations! You now know more about the role that Spark SQL, Datasets and DataFrames have in Spark. Additionally, you learned how to use the SparkSQL interface via Shell-in-a-Box and view the content of Datasets.
 
 ## Further Reading
 
