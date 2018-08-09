@@ -19,13 +19,13 @@ series: HDP > Develop with Hadoop > Apache Spark
 
 ![spark-mllib-logo](assets/spark-mllib-logo.png)
 
-In this tutorial, we will introduce you to Machine Learning with Apache Spark. The hands-on lab for this tutorial is an Apache Zeppelin notebook that has all the steps necessary to ingest and explore data, train, test, visualize, and save a model. We will cover a basic Linear Regression model that will allow us perform simple predictions on a sample data. This model can be further expanded and modified to fit your needs. Most importantly, by the end of this tutorial, you will understand how to create an end-to-end pipeline for setting up and training simple models in Spark.
+In this tutorial, we will introduce you to Machine Learning with Apache Spark. The hands-on portion for this tutorial is an Apache Zeppelin notebook that has all the steps necessary to ingest and explore data, train, test, visualize, and save a model. We will cover a basic Linear Regression model that will allow us perform simple predictions on a sample data. This model can be further expanded and modified to fit your needs. Most importantly, by the end of this tutorial, you will understand how to create an end-to-end pipeline for setting up and training simple models in Spark.
 
 ## Prerequisites
 
 - Downloaded and deployed the [Hortonworks Data Platform (HDP)](https://hortonworks.com/downloads/#sandbox) Sandbox
 - [Getting Started with Apache Zeppelin](https://hortonworks.com/tutorial/getting-started-with-apache-zeppelin/)
-- Having basic knowledge of [Scala](http://www.dhgarrette.com/nlpclass/scala/basics.html). The Zeppelin notebook uses basic syntax.
+- Having basic knowledge of [Scala](http://www.dhgarrette.com/nlpclass/scala/basics.html)
 
 ## Outline
 
@@ -39,19 +39,25 @@ In this tutorial, we will introduce you to Machine Learning with Apache Spark. T
 
 Machine Learning models can be applied to accomplish a variety of tasks from Classification, to Collaborative Filtering, Clustering, and Regression.
 
-We start with Linear Regression as this is one one of the most common approaches for estimating unknown parameters after training on a known dataset. In this tutorial, we are training on a 2D dataset, so our Linear Regression model can be intuitively thought as curve fitting. With more parameters, or features, we can make interesting predictions, for example, what should be a price listing range for a house with three bedrooms, two baths, 20 years old, and in a specific zip code area. Using Linear Regression for pricing houses given a set of input parameters works surprisingly well provided a large enough sample dataset. To cover edge cases, however, other Machine Learning methods might have to be used such as Random Forests or Gradient Boosted Trees, which we will cover in detail in future tutorials.
+We start with Linear Regression as this is one of the most common approaches for estimating unknown parameters after training on a known dataset. In this tutorial, we are training on a 2D dataset, so our Linear Regression model can be intuitively thought as curve fitting. With more parameters, or features, we can make interesting predictions, for example, what should be a price listing range for a house with three bedrooms, two baths, 20 years old, and in a specific zip code area. Using Linear Regression for pricing houses given a set of input parameters works surprisingly well provided a large enough sample dataset. To cover edge cases, however, other Machine Learning methods might have to be used such as Random Forests or Gradient Boosted Trees, which we will cover in detail in future tutorials.
 
-There are multiple steps in this lab we will cover.
+There are five major steps in this tutorial we will cover.
 
-First, the dataset will consist of pairs of inputs and expected outputs. You may think of this as (x, y) pairs, with x being the input and y being the output. We will have approximately twenty points in our small training dataset.
+- First, the dataset will consist of pairs of inputs and expected outputs. You may think of this as (x, y) pairs, with x being the input and y being the output. We will have approximately twenty points in our small training dataset.
 
-Next, we will construct a Linear Regression pipeline where we specify the input and output columns, and the model we want to use (i.e. Linear Regression). Once the pipeline is created, we will use the **fit** function to fit the data to a model (i.e. train the model).
+- Second, we will construct a Linear Regression pipeline by specifying the input and output columns, and the model we want to use (i.e. Linear Regression). Once the pipeline is created, we will use the **fit** function to fit the data to a model (i.e. train the model).
 
-Third, we will summarize the model results focusing on a) Root Mean Square Error (RMSE) as another measure of differences between predicted by model and observed values (taking in account all the differences or residuals) with lower value indicating a better fit; b) R2 or R Squared, also called coefficient of determination or goodness of fit, with the higher values indicating better fit (on a 0 to 1 scale); and c) residuals that indicate difference between the observed value and the estimated value of the quantify of interest. With these snapshot measures, a Data Scientist can quickly understand model fitness and compare different trained models to choose the best one.
+- Third, we will summarize the model results focusing on:
 
-Fourth, with the trained model we will make predictions and see how individual predictions compare to original (expected) values.
+  - Root Mean Square Error (RMSE) as another measure of differences between predicted by model and observed values (taking in account all the differences or residuals) with lower value indicating a better fit.
 
-Finally, we will graph the model as a straight line overlaid over the original training data points. This will give you a quick visual snapshot on the fitness of the model.
+  - R2 or R Squared, also called coefficient of determination or goodness of fit, with the higher values indicating better fit (on a 0 to 1 scale).
+
+  - Residuals that indicate difference between the observed value and the estimated value of the quantify of interest. With these snapshot measures, a Data Scientist can quickly understand model fitness and compare different trained models to choose the best one.
+
+- Fourth, with the trained model we will make predictions and see how individual predictions compare to original (expected) values.
+
+- Fifth, we will graph the model as a straight line overlaid over the original training data points. This will give you a quick visual snapshot on the fitness of the model.
 
 ## What is a Model
 
@@ -79,13 +85,13 @@ To summarize, we will be
 
 4\. predicting output using the model
 
-By the end of the notebook you will be able to visualize the linear fitting prediction that your model generated:
+5\. By the end of the notebook you will be able to visualize the linear fitting prediction that your model generated:
 
 ![linreg-match](assets/linreg-match.jpg)
 
 ## Import the Zeppelin Notebook
 
- Great! now you are familiar with the concepts used in this tutorial and you are ready to Import the _Introduction to Machine Learning using Linear Regression_ notebook into your Zeppelin environment. (If at any point you have any issues, make sure to checkout the [Getting Started with Apache Zeppelin](https://hortonworks.com/tutorial/getting-started-with-apache-zeppelin/) tutorial).
+ Great! now you are familiar with how to train a Linear Regression Machine Learning model and you are ready to Import the _Introduction to Machine Learning using Linear Regression_ notebook into your Zeppelin environment. (If at any point you have any issues, make sure to checkout the [Getting Started with Apache Zeppelin](https://hortonworks.com/tutorial/getting-started-with-apache-zeppelin/) tutorial).
 
 To import the notebook, go to the Zeppelin home screen.
 
@@ -109,16 +115,16 @@ Once the **Introduction to Machine Learning using Linear Regression** notebook i
 
 ## Summary
 
-We hope that you've been able to successfully run this first lab introducing basic, yet very common, Linear Regression model.
+We hope that you've been able to successfully run this first tutorial introducing basic, yet very common, Machine Learning application. Through this tutorial we learned how to generate and explore data, train, test, visualize, and save a Linear Regression Machine Learning model.
 
 Next, learn how to create machine learning models to process a sentiment analysis on a batch of tweets on the [Twitter sentiment analysis](https://hortonworks.com/tutorial/sentiment-analysis-with-apache-spark/); additionally, if you would like to learn more on how to deploy machine learning models in production, checkout this tutorial on [deploying machine learning models with structured streaming](https://hortonworks.com/tutorial/deploying-machine-learning-models-using-spark-structured-streaming/).
 
 ## Further Reading
 
-- [Hortonworks Apache Spark Tutorials](https://hortonworks.com/tutorials/?filters=apache-spark) are your natural next step where you can explore Spark in more depth.
-- [Hortonworks Community Connection (HCC)](https://community.hortonworks.com/spaces/85/data-science.html?type=question) is a great resource for questions and answers on Spark, Data Analytics/Science, and many more Big Data topics.
-- [Hortonworks Apache Spark Docs](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.0/spark-overview/content/analyzing_data_with_apache_spark.html) - official Spark documentation.
-- [Hortonworks Apache Zeppelin Docs](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.0/zeppelin-overview/content/overview.html) - official Zeppelin documentation.
+- [Hortonworks Apache Spark Tutorials](https://hortonworks.com/tutorials/?filters=apache-spark) are a great resource to explore Spark in more depth
+- [Hortonworks Community Connection (HCC)](https://community.hortonworks.com/spaces/85/data-science.html?type=question) 
+- [Hortonworks Apache Spark Docs](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.0/spark-overview/content/analyzing_data_with_apache_spark.html)
+- [Hortonworks Apache Zeppelin Docs](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.0/zeppelin-overview/content/overview.html)
 
 <!-- Commenting out HDCloud for now
 
