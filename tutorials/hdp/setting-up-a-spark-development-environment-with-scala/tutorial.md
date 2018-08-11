@@ -362,6 +362,6 @@ We have installed the needed dependencies and Integrated Developing Environment 
 ## Further Reading
 
 - [Setting up a Spark Development Environment with Python](https://hortonworks.com/tutorial/setting-up-a-spark-development-environment-with-python/)
-- [Setting up a Spark Development Environment with java](https://hortonworks.com/tutorial/setting-up-a-spark-development-environment-with-java/)
+- [Setting up a Spark Development Environment with Java](https://hortonworks.com/tutorial/setting-up-a-spark-development-environment-with-java/)
 - [Hortonworks Community Connection (HCC)](https://community.hortonworks.com/spaces/85/data-science.html?type=question)
 - [Spark Tutorials](https://hortonworks.com/tutorials/?tab=product-hdp&filters=apache-spark)
