@@ -96,6 +96,8 @@ scalaVersion := "2.11.12"
 libraryDependencies += "org.apache.spark" %% "spark-core" % "2.2.0"
 ~~~
 
+Ensure that your changes are imported without any issues:
+
 ![intellij-sbt-file](assets/intellij-sbt-file.jpg)
 
 After you save the file, IntelliJ will automatically import the libraries and documentation needed to run Spark.
