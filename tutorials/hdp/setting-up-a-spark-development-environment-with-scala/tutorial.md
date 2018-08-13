@@ -114,7 +114,7 @@ Where in our case the Group Id is "org.apache.spark", Artifact Id is "spark-core
 
 For our first **_Hello Scala_** application we're going to build a simple program that performs a word count on the collected works of Shakespeare. Right click and save [shakespeare.txt](assets/shakespeare.txt) to your computer, later we'll want to Spark to retrieve this file from HDFS (Hadoop Distributed File System), so let's place it there.
 
-To upload to HDFS, first make sure the sandbox is on, then navigate to sandbox-hdp.hortonworks.com:8080 and login (default username/password is maria_dev/maria_dev).
+To upload to HDFS, first make sure the sandbox is on, then navigate to [sandbox-hdp.hortonworks.com:8080](sandbox-hdp.hortonworks.com:8080) and login (default username/password is maria_dev/maria_dev).
 
 Once you've logged into Ambari Manager, mouse over the drop-down menu on the upper-right hand corner and click on Files View. Then open the tmp folder and click the upload button in the upper-right corner to upload the file.
 
@@ -155,11 +155,9 @@ Now right click on the text editor and select **Run 'HelloScala'**. If everythin
 Now that we know the environment is set up correctly, replace the file with this code:
 
 ~~~scala
-package main.scala
-
 import org.apache.spark.{SparkConf, SparkContext}
 
-object Main {
+object HelloScala {
 
   def main(args: Array[String]) {
 
@@ -179,7 +177,7 @@ object Main {
 
     counts.foreach(println)
     System.out.println("Total words: " + counts.count());
-    counts.saveAsTextFile("/tmp/shakespeareWordCount");
+    counts.saveAsTextFile("/tmp/shakespeareWordCount")
   }
 
 }
