@@ -351,11 +351,11 @@ export SPARK_JAVA_OPTS=-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,add
 
 This will let you attach a debugger at port 8086. You'll need to make sure port 8086 is able to receive inbound connections. Then in IntelliJ go to Run -> Edit Configurations:
 
-![intellij6](assets/intellij6.png)
+![edit-configs](assets/edit-configs.jpg)
 
 Then click the + button at the upper-left and add a new remote configuration. Fill the host and port fields with your host ip address and 8086.
 
-![intellij7](assets/intellij7.png)
+![sandbox-host](assets/sandbox-host.jpg)
 
 If you run this debug configuration from your IDE immediately after submitting your Spark job, the debugger will attach and Spark will stop at breakpoints. You can also inspect the values of live variables within your program. This is invaluable when trying to pin down bugs in your code.
 
