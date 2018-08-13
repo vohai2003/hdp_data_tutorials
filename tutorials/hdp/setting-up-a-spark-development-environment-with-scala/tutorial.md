@@ -17,12 +17,14 @@ series: HDP > Develop with Hadoop > Apache Spark
 
 ## Introduction
 
-This tutorial will teach you how to set up a full development environment for developing and debugging Spark applications. For this tutorial we'll be using Scala, but Spark also supports development with [Java](https://hortonworks.com/tutorial/setting-up-a-spark-development-environment-with-scala/), and [Python](https://hortonworks.com/tutorial/setting-up-a-spark-development-environment-with-python/). We will be using be using **[IntelliJ](https://www.jetbrains.com/idea/download) _Version: 2018.2_** as our IDE running on **_Mac OSx High Sierra_**, and since we're using [Scala](https://docs.scala-lang.org/) we'll use [SBT](https://www.scala-sbt.org/1.x/docs/index.html) as our build manager. By the end of the tutorial, you'll know how to set up IntelliJ, how to use SBT to manage dependencies, how to package and deploy your Spark application, and how to connect your live program to a debugger.
+This tutorial will teach you how to set up a full development environment for developing and debugging Spark applications. For this tutorial we'll be using Scala, but Spark also supports development with [Java](https://hortonworks.com/tutorial/setting-up-a-spark-development-environment-with-java/), and [Python](https://hortonworks.com/tutorial/setting-up-a-spark-development-environment-with-python/). We will be using be using **[IntelliJ](https://www.jetbrains.com/idea/download) _Version: 2018.2_** as our IDE running on **_Mac OSx High Sierra_**, and since we're using [Scala](https://docs.scala-lang.org/) we'll use [SBT](https://www.scala-sbt.org/1.x/docs/index.html) as our build manager. By the end of the tutorial, you'll know how to set up IntelliJ, how to use SBT to manage dependencies, how to package and deploy your Spark application, and how to connect your live program to a debugger.
 
 ## Prerequisites
 
 - Downloaded and deployed the [Hortonworks Data Platform (HDP)](https://hortonworks.com/downloads/#sandbox) Sandbox
 - Basic [Scala](http://www.dhgarrette.com/nlpclass/scala/basics.html) syntax
+- Installed [IntelliJ](https://www.jetbrains.com/idea/)
+- Installed [Java Development Kit (JDK)](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
 - Installed [Scala _Version 2.11.8_](https://www.scala-lang.org/download/) or higher
 - Installed [SBT](https://www.scala-sbt.org/download.html)
 - Installed [Apache Spark](https://spark.apache.org/downloads.html) _Version 2.x_ or higher
@@ -41,7 +43,7 @@ This tutorial will teach you how to set up a full development environment for de
 
 ## Set up IntelliJ
 
-To install the IntelliJ Scala plugin navigate to **preferences > Plugins > Browse Repositories > search for and install the Scala**. Your screen should look something like this:
+To install the IntelliJ Scala plugin navigate to **preferences > Plugins > Browse Repositories > search and install Scala**. Your screen should look something like this:
 
 ![intellij-scala-plugin](assets/intellij-scala-plugin.jpg)
 
@@ -128,17 +130,17 @@ Head back to your IDE and if it does not exist yet make a folder under _src/main
 
 ![resources-folder](assets/resources-folder.jpg)
 
-Next, create a new class class. Right click _scala_ > _New_ > _Scala Class_. When the IDE asks whether to create a class, object or trait, choose object. Name the file Main.scala.
+Next, create a new class under `HelloScala/src/main/scala`. Right click _scala_ > _New_ > _Scala Class_.
 
 ![new-scala-class](assets/new-scala-class.jpg)
 
-name your class **_HelloScala_** and choose **Object** Kind then click _ok_.
+When the IDE asks whether to create a class, object or trait, choose **object**. Name the file **HelloScala**.
 
 ![new-object](assets/new-object.jpg)
 
 Copy this into your new file:
 
-~~~ scala
+~~~scala
 object HelloScala {
   def main(args: Array[String]): Unit = {
     println("HelloWorld!")
@@ -183,9 +185,11 @@ object Main {
 }
 ~~~
 
-As before, right click on the text editor and select **Run 'HelloScala'** to run the program. This should run the Spark job and print the frequency of each word that appears in Shakespeare.
+As before, right click on the text editor and select **Run 'HelloScala'** to run the program. This should run the Spark job and print the frequency of each word that appears in Shakespeare, the expected output looks like this:
 
-If you browse to the directory specified on
+![output-ide](assets/output-ide.jpg)
+
+Additionally, if you browse to the directory specified on
 
 ~~~scala
 counts.saveAsTextFile("/tmp/shakespeareWordCount");
