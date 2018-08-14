@@ -32,16 +32,16 @@ Spark SQL uses the Spark engine to execute SQL queries either on data sets persi
 
 This tutorial is a part of series of hands-on tutorials to get you started with HDP using Hortonworks sandbox. Please ensure you complete the prerequisites before proceeding with this tutorial.
 
-- Downloaded and Installed [Hortonworks Sandbox](https://hortonworks.com/products/sandbox/)
+- Downloaded and Installed the Latest [Hortonworks DataPlatform](https://hortonworks.com/products/sandbox/) Sandbox
 - [Learning the Ropes of the HDP Sandbox](https://hortonworks.com/tutorial/learning-the-ropes-of-the-hortonworks-sandbox/)
 
 This tutorial will be using Spark 2.x API syntax for all the examples.
 
 ## Outline
 
-- [Concepts](#concetps)
+- [Concepts](#concepts)
 - [Environment Setup](#environment-setup)
-- [Creating a SparkSession](#creating-hivecontext)
+- [Creating a SparkSession](#creating-a-sparksession)
 - [Creating ORC Tables](#creating-orc-tables)
 - [Loading the File and Creating a RDD](#loading-the-file-and-creating-a-rdd)
 - [Creating a Schema](#creating-a-schema)
@@ -70,7 +70,7 @@ Predicate push down uses those indexes to determine which stripes in a file need
 
 A **Resilient Distributed Dataset** (RDD), is an immutable collection of objects that is partitioned and distributed across multiple physical nodes of a YARN cluster and that can be operated in parallel.
 
-Once an RDD is instantiated, you can apply a [series of operations](https://spark.apache.org/docs/1.2.0/programming-guide.html#rdd-operations). All operations fall into one of two types: [transformations](https://spark.apache.org/docs/1.2.0/programming-guide.html#transformations) or [actions](https://spark.apache.org/docs/1.2.0/programming-guide.html#actions). **Transformation** operations, as the name suggests, create new datasets from an existing RDD and build out the processing DAG that can then be applied on the partitioned dataset across the YARN cluster. An **Action** operation, on the other hand, executes DAG and returns a value.
+Once an RDD is instantiated, you can apply a [series of operations](https://spark.apache.org/docs/2.3.1/programming-guide.html#rdd-operations). All operations fall into one of two types: [transformations](https://spark.apache.org/docs/2.3.1/programming-guide.html#transformations) or [actions](https://spark.apache.org/docs/2.3.1/programming-guide.html#actions). **Transformation** operations, as the name suggests, create new datasets from an existing RDD and build out the processing DAG that can then be applied on the partitioned dataset across the YARN cluster. An **Action** operation, on the other hand, executes DAG and returns a value.
 
 Normally, we would have directly loaded the data in the ORC table we created above and then created an RDD from the same, but in this to cover a little more surface of Spark we will create an RDD directly from the CSV file on HDFS and then apply Schema on the RDD and write it back to the ORC table.
 
