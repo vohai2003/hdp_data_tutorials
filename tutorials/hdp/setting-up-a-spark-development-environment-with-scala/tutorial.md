@@ -114,11 +114,27 @@ Where in our case the Group Id is "org.apache.spark", Artifact Id is "spark-core
 
 For our first **_Hello Scala_** application we're going to build a simple program that performs a word count on the collected works of Shakespeare. Right click and save [shakespeare.txt](assets/shakespeare.txt) to your computer, later we'll want to Spark to retrieve this file from HDFS (Hadoop Distributed File System), so let's place it there.
 
-To upload to HDFS, first make sure the sandbox is on, then navigate to [sandbox-hdp.hortonworks.com:8080](sandbox-hdp.hortonworks.com:8080) and login (default username/password is maria_dev/maria_dev).
+### Upload to HDFS
 
-Once you've logged into Ambari Manager, mouse over the drop-down menu on the upper-right hand corner and click on Files View. Then open the tmp folder and click the upload button in the upper-right corner to upload the file.
+To upload to HDFS:
+
+1\. Make sure the sandbox is on
+
+2\. Navigate to sandbox-hdp.hortonworks.com:8080
+
+3\. Login (default username/password is maria_dev/maria_dev)
+
+4\. Log into Amabari Manager
+
+5\. Hover over the drop-down menu on the upper-right hand corner
+
+6\. Click on Files View
 
 ![select-files-view](assets/select-files-view.jpg)
+
+7\. Open the tmp folder
+
+8\. Click on the upload button and select shakespeare.txt
 
 Make sure the file is named shakespeare.txt.
 
@@ -221,19 +237,19 @@ The first thing we want to do is change this line:
 val textFile = sc.textFile("src/main/resources/shakespeare.txt")
 ~~~
 
-_to this:_
+to this:
 
 ~~~scala
 val textFile = sc.textFile("hdfs:///tmp/shakespeare.txt")
 ~~~
 
-_and this:_
+and this:
 
 ~~~scala
 counts.saveAsTextFile("/tmp/shakespeareWordCount");
 ~~~
 
-_to this:_
+to this:
 
 ~~~scala
 counts.saveAsTextFile("hdfs:///tmp/shakespeareWordCount");
