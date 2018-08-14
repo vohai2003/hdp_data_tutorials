@@ -41,19 +41,20 @@ This tutorial will be using Spark 2.x API syntax for all the examples.
 
 - [Concepts](#concetps)
 - [Environment Setup](#environment-setup)
-- [Starting the Spark shell](#starting-the-spark-shell)
-- [Creating HiveContext](#creating-hivecontext)
-- [Creating ORC tables](#creating-orc-tables)
-- [Loading the file and creating a RDD](#loading-the-file-and-creating-a-rdd)
-- [Creating a schema](#creating-a-schema)
-- [Registering a temporary table](#registering-a-temporary-table)
-- [Saving as an ORC file](#saving-as-an-orc-file)
+- [Creating a SparkSession](#creating-hivecontext)
+- [Creating ORC Tables](#creating-orc-tables)
+- [Loading the File and Creating a RDD](#loading-the-file-and-creating-a-rdd)
+- [Creating a Schema](#creating-a-schema)
+- [Registering a Temporary Table](#registering-a-temporary-table)
+- [Saving as an ORC File](#saving-as-an-orc-file)
 - [Summary](#summary)
 - [Further Reading](#further-reading)
 
 ## Concepts
 
-### Hive Context
+### Apache Hive
+
+Apache Hive provides SQL interface to query data stored in various databases and files systems that integrate with Hadoop. Hive enables analysts familiar with SQL to run queries on large volumes of data. Hive has three main functions: data summarization, query and analysis. Hive provides tools that enable easy data extraction, transformation and loading (ETL).
 
 Spark SQL supports reading and writing data stored in Apache Hive. It is important to note that Spark distribution does not include the many dependencies that Hive need. However, if those dependencies can be found on the classpath then Spark can load them automatically.
 
@@ -65,7 +66,7 @@ ORC is a self-describing type-aware columnar file format designed for Hadoop wor
 
 Predicate push down uses those indexes to determine which stripes in a file need to be read for a particular query and the row indexes can narrow the search to a particular set of 10,000 rows. ORC supports the complete set of types in Hive, including the complex types: structs, lists, maps, and unions.
 
-### RDD's
+### Resilient Distributed Dataset
 
 A **Resilient Distributed Dataset** (RDD), is an immutable collection of objects that is partitioned and distributed across multiple physical nodes of a YARN cluster and that can be operated in parallel.
 
@@ -146,7 +147,7 @@ val spark = SparkSession
    .getOrCreate()
 ~~~
 
-## Creating ORC tables
+## Creating ORC Tables
 
 Specifying `as orc` at the end of the SQL statement below ensures that the Hive table is stored in the ORC format.
 
@@ -156,7 +157,7 @@ spark.sql("DROP TABLE yahoo_orc_table")
 spark.sql("CREATE TABLE yahoo_orc_table (date STRING, open_price FLOAT, high_price FLOAT, low_price FLOAT, close_price FLOAT, volume INT, adj_price FLOAT) stored as orc")
 ~~~
 
-## Loading the file and creating a RDD
+## Loading the File and Creating a RDD
 
 With the command below we instantiate an RDD:
 
@@ -181,7 +182,7 @@ res4: Array[String] = Array(Date,Open,High,Low,Close,Volume,Adj Close, 2015-04-2
 52900,44.66, 2015-04-17,45.30,45.44,44.25,44.45,13305700,44.45, 2015-04-16,45.82,46.13,45.53,45.78,13800300,45.78)
 ~~~
 
-### Separating the header from the data
+### Separating the Header from the Data
 
 Let’s assign the first row of the RDD above to a new variable:
 
@@ -207,7 +208,7 @@ the first row to be seen is indeed only the data in the RDD
 data.first
 ~~~
 
-## Creating a schema
+## Creating a Schema
 
 Let's create the schema, copy and paste the command below:
 
@@ -215,7 +216,7 @@ Let's create the schema, copy and paste the command below:
 case class YahooStockPrice(date: String, open: Float, high: Float, low: Float, close: Float, volume: Integer, adjClose: Float)
 ~~~
 
-### Attaching the schema to the parsed data
+### Attaching the Schema to the Parsed Data
 
 Create an RDD of Yahoo Stock Price objects and register it as a table.
 
@@ -287,7 +288,7 @@ root
  |-- adjClose: float (nullable = false)
 ~~~
 
-## Registering a temporary table
+## Registering a Temporary Table
 
 Now let’s give this RDD a name, so that we can use it in Spark SQL statements:
 
@@ -295,7 +296,7 @@ Now let’s give this RDD a name, so that we can use it in Spark SQL statements:
 stockprice.createOrReplaceTempView("yahoo_stocks_temp") 
 ~~~
 
-### Querying against the table
+### Querying Against the Table
 
 Now that our schema’s RDD with data has a name, we can use Spark SQL commands to query it. Remember the table below is not a Hive table, it is just a RDD we are querying with SQL.
 
@@ -323,7 +324,7 @@ Stock Entry: [1996-04-15,35.74992,36.0,30.0,32.25,79219200,1.34375]
 Stock Entry: [1996-04-12,25.24992,43.00008,24.49992,33.0,408720000,1.375]
 ~~~~
 
-## Saving as an ORC file
+## Saving as an ORC File
 
 Now let’s persist back the RDD into the Hive ORC table we created before.
 
@@ -337,7 +338,7 @@ To store results in a hive directory rather than user directory, use this path i
 results.write.format("orc").save("/apps/hive/warehouse/yahoo_stocks_orc")
 ~~~
 
-### Reading the ORC file
+### Reading the ORC File
 
 Let’s now try to read back the ORC file, we just created back into an RDD
 
