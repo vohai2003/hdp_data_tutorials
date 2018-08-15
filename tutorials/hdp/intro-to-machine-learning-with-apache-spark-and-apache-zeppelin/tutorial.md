@@ -134,7 +134,6 @@ In this section you will learn to install Anaconda on your HDP sandbox. Anaconda
 ### Appendix Prerequisites
 
 - Successfully imported and completed the [Zeppelin Notebook](#import-the-zeppelin-notebook) for this tutorial
-- Ensure your Sandbox has at least 4GB of free disk space
 
 ### Installing Pandas
 
