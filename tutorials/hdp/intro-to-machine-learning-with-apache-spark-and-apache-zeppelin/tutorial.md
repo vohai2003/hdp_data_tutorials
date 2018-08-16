@@ -127,17 +127,17 @@ Next, learn how to create machine learning models to process a sentiment analysi
 - [Hortonworks Apache Spark Docs](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.0/spark-overview/content/analyzing_data_with_apache_spark.html)
 - [Hortonworks Apache Zeppelin Docs](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.0/zeppelin-overview/content/overview.html)
 
-## Appendix A Installing Anaconda on the Hortonworks Data Platform Sandbox
+## Appendix A: Installing Anaconda on the Hortonworks Data Platform Sandbox
 
 In this section you will learn to install Anaconda on your HDP sandbox. Anaconda is an open source distribution of Python and R which contains over 200 packages for Machine Learning and Data Science applications; additionally, Anaconda includes [Conda](https://conda.io/docs/), a platform agnostic package and environment management application. The Anaconda distribution contains [Pandas](https://pandas.pydata.org/) and all of its dependencies, Pandas is used on this tutorial to help visualize the output of the model you have trained.
 
 ### Appendix Prerequisites
 
-- Successfully imported and completed the [Zeppelin Notebook](#import-the-zeppelin-notebook) for this tutorial
+- Successfully imported and completed the [Introduction to Machine Learning with Spark Zeppelin Notebook](#import-the-zeppelin-notebook) for this tutorial
 
 ### Installing Pandas
 
-1\. Navigate to sandbox-hdp.hortonworks.com:4200 to launch [Shell in a Box](https://hortonworks.com/tutorial/learning-the-ropes-of-the-hortonworks-sandbox/#shell-web-client-method).
+1\. Navigate to sandbox-hdp.hortonworks.com:4200 to launch [Shell-in-a-Box](https://hortonworks.com/tutorial/learning-the-ropes-of-the-hortonworks-sandbox/#shell-web-client-method).
 
 > NOTE: The default **username/password** is **root/hadoop**.
 
@@ -163,7 +163,7 @@ To begin the installation run the following command:
 sh Anaconda2-5.2.0-Linux-x86_64.sh -u
 ~~~
 
-and accept the terms
+and accept the terms:
 
 ![accept-terms-anaconda](assets/accept-terms-anaconda.jpg)
 
@@ -181,7 +181,7 @@ Great! now you are the proud owner of an HDP Sandbox with Anaconda, now let's li
 
 5\. Using Pandas with Zeppelin
 
-Open a browser and navigate to Zeppelin UI at sandbox-hdp.hortonworks.com:9995
+Open a browser and navigate to Zeppelin UI at [sandbox-hdp.hortonworks.com:9995](sandbox-hdp.hortonworks.com:9995)
 
 Next, select the dropdown menu labeled **anonymous** and select interpreter settings:
 
