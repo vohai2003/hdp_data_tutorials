@@ -34,6 +34,7 @@ In this tutorial, we will introduce you to Machine Learning with Apache Spark. T
 - [Import the Zeppelin Notebook](#import-the-zeppelin-notebook)
 - [Summary](#summary)
 - [Further Reading](#further-reading)
+- [Appendix A: Installing Anaconda on the Hortonworks Data Platform Sandbox](#appendix-a-installing-anaconda-on-the-hortonworks-data-platform-sandbox)
 
 ## Concepts
 
@@ -126,11 +127,84 @@ Next, learn how to create machine learning models to process a sentiment analysi
 - [Hortonworks Apache Spark Docs](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.0/spark-overview/content/analyzing_data_with_apache_spark.html)
 - [Hortonworks Apache Zeppelin Docs](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.0/zeppelin-overview/content/overview.html)
 
-<!-- Commenting out HDCloud for now
+## Appendix A: Installing Anaconda on the Hortonworks Data Platform Sandbox
 
-### Option 1: Setup Hortonworks Data Cloud (HDCloud) on AWS
+In this section you will learn to install Anaconda on your HDP sandbox. Anaconda is an open source distribution of Python and R which contains over 200 packages for Machine Learning and Data Science applications; additionally, Anaconda includes [Conda](https://conda.io/docs/), a platform agnostic package and environment management application. The Anaconda distribution contains [Pandas](https://pandas.pydata.org/) and all of its dependencies, Pandas is used on this tutorial to help visualize the output of the model you have trained.
 
-This option is ideal if you want to experience a production-ready multi-node cluster in a cloud.
+### Appendix Prerequisites
 
-See the [Getting Started with HDCloud](https://hortonworks.com/tutorial/getting-started-with-apache-spark-and-apache-zeppelin-on-hdcloud/) tutorial for details.
--->
+- Successfully imported and completed the [Introduction to Machine Learning with Spark Zeppelin Notebook](#import-the-zeppelin-notebook) for this tutorial
+
+### Installing Pandas
+
+1\. Navigate to sandbox-hdp.hortonworks.com:4200 to launch [Shell-in-a-Box](https://hortonworks.com/tutorial/learning-the-ropes-of-the-hortonworks-sandbox/#shell-web-client-method).
+
+> NOTE: The default **username/password** is **root/hadoop**.
+
+2\. Install bzip2:
+
+~~~bash
+yum install bzip2
+~~~
+
+3\. Download Anaconda:
+
+~~~bash
+wget https://repo.anaconda.com/archive/Anaconda2-5.2.0-Linux-x86_64.sh
+~~~
+
+> NOTE: This is Anaconda for Python 2.7, but if you would prefer a different version you can find it at [Anaconda's website](https://www.anaconda.com/download).
+
+4\. Install Anaconda change install location
+
+To begin the installation run the following command:
+
+~~~bash
+sh Anaconda2-5.2.0-Linux-x86_64.sh -u
+~~~
+
+and accept the terms:
+
+![accept-terms-anaconda](assets/accept-terms-anaconda.jpg)
+
+Once you have accepted the terms and conditions of Anaconda you will be asked where you will like to install the application, choose the following location:
+
+~~~bash
+/home/zeppelin/
+~~~
+
+![anaconda-install-location](assets/anaconda-install-location.jpg)
+
+Once the installation process is underway you will be asked if you want to modify your _.bashrc_ and install VSCode, note that neither of these are necessary for our purposes, feel free to say no.
+
+Great! now you are the proud owner of an HDP Sandbox with Anaconda, now let's link these awesome packages to Zeppelin.
+
+5\. Using Pandas with Zeppelin
+
+Open a browser and navigate to Zeppelin UI at [sandbox-hdp.hortonworks.com:9995](sandbox-hdp.hortonworks.com:9995)
+
+Next, select the dropdown menu labeled **anonymous** and select interpreter settings:
+
+![open-interpreter-settings](assets/open-interpreter-settings.jpg)
+
+Once you are in the interpreter settings menu scroll down and find the **spark2** interpreter then click on edit:
+
+![edit-spark-interpreter](assets/edit-spark-interpreter.jpg)
+
+Next, locate the **_zeppelin.pyspark.python_** property and enter the path to the python binary that we intalled with anaconda and click Save:
+
+~~~bash
+/home/zeppelin/bin/python2.7
+~~~
+
+![enter-bin-path](assets/enter-bin-path.jpg)
+
+Now Zeppelin is linked to python with all of Anacondas packages at your disposal. Navigate back to Zeppelin Notebook UI and open your [_Introduction to Machine Learning with Apache Spark Notebook_](#import-the-zeppelin-notebook), then locate the paragraphs that require Pandas
+
+Next, click on the gear icon on the upper right-hand side of the paragraph and select **_Enable run_**:
+
+![enable-run](assets/enable-run.jpg)
+
+Now run your Notebook again from the beginning and this time feel free to run all of the paragraphs, you will see a beautiful visualization of the model you just trained.
+
+![visualization](assets/visualization.jpg)
