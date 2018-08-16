@@ -133,7 +133,7 @@ In this section you will learn to install Anaconda on your HDP sandbox. Anaconda
 
 ### Appendix Prerequisites
 
-- Successfully imported and completed the [Introduction to Machine Learning with Spark Zeppelin Notebook](#import-the-zeppelin-notebook) for this tutorial
+- Successfully imported and completed the [Introduction to Machine Learning with Apache Spark](#import-the-zeppelin-notebook) Zeppelin Notebook for this tutorial
 
 ### Installing Pandas
 
