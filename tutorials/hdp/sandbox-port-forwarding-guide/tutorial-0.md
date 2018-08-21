@@ -89,12 +89,6 @@ When CDA has been deployed both HDP and HDF are displayed as running containers:
 
 The Sandbox may also run using Docker which is native to the host operating system; for example, rather than running a VM to instantiate the containers you may directly interact with the docker daemon
 
-The script in the VM that creates configures the proxy server is located at:
-
-~~~bash
-/sandbox/proxy/generate-proxy-deploy-script.sh
-~~~
-
 ## HDP vs HDF
 
 ![hdp-stand-alone](assets/both-stand-alone.jpg)
@@ -113,9 +107,9 @@ Hortonworks Connected Data Architecture (CDA) is composed of both Hortonworks Da
 
 ![hortonworks-connected-data-platforms](assets/HDF_secure_data_collection.png)
 
-As data is coming in from the edge, it is collected, curated and analyzed in real-time, on premise or in the cloud using the HDF framework. You can also convert the your Data-In-Motion into Data-At-Rest with the HDP framework. HDP allows you to store, manage and perform further analytics. 
+As data is coming in from the edge, it is collected, curated and analyzed in real-time, on premise or in the cloud using the HDF framework. You can also convert the your Data-In-Motion into Data-At-Rest with the HDP framework. HDP allows you to store, manage and perform further analytics.
 
-In order for HDF to send data into HDP, both sandboxes need to be set up to communicate with each other. If you would like to know more about the deployment of the CDA architecture check out the [Sandbox Deployment and Install Guide](https://hortonworks.com/tutorial/sandbox-deployment-and-install-guide/) under the **Advanced Topic**. When CDA is enabled a script internal to the Sandbox takes into account what base you started with and calls on the Docker daemon to instantiate the image of the complementing Sandbox flavour (e.g. HDP installs HDF, and HDF installs HDP).
+In order for HDF to send data into HDP, both sandboxes need to be set up to communicate with each other. If you would like to know more about the deployment of CDA check out the [Sandbox Deployment and Install Guide](https://hortonworks.com/tutorial/sandbox-deployment-and-install-guide/) under the **Advanced Topic**. When CDA is enabled a script internal to the Sandbox takes into account what base you started with and calls on the Docker daemon to instantiate the image of the complementing Sandbox flavour (e.g. HDP installs HDF, and HDF installs HDP).
 
 In the image below we used HDP as our base and launched the initialization script for CDA as you can see all the needed components for HDF are being loaded into a new container:
 
@@ -127,7 +121,7 @@ A custom Docker network was created between the running containers through Docke
 
 ## Summary
 
-Congratuations, you have learned a great deal about the structure of our Sandbox, how HDP and HDF are implemented, and you have learned what CDA is and how it can be useful. Additionally, you have learned about the inter-container communication made possible by Docker's internal network and communication with the outside world done via NGINX. Now that you know the internal workings of CDA on the Sandbox, bring your understanding to practice with these great CDA ready tutorials:
+Congratulations, you have learned a great deal about the structure of our Sandbox, how HDP and HDF are implemented, and you have learned what CDA is and how it can be useful. Additionally, you have learned about the inter-container communication made possible by Docker's internal network and communication with the outside world done via NGINX. Now that you know the internal workings of CDA on the Sandbox, bring your understanding to practice with these great CDA ready tutorials:
 
 - [Analyze IOT Weather Station Data via Connected Data Architecture](https://hortonworks.com/tutorial/analyze-iot-weather-station-data-via-connected-data-architecture)
 - [Real-Time Event Processing in NiFi, SAM, Schema Registry, and SuperSet](https://hortonworks.com/tutorial/real-time-event-processing-in-nifi-sam-schema-registry-and-superset/)
