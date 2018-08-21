@@ -19,11 +19,11 @@ series: HDP > Hadoop Administration > Hortonworks Sandbox
 
 ## Introduction
 
-This informational tutorial will explain the current Hortonworks Sandbox architecture, starting in HDP 2.6.5 a new Sandbox structure is introduced making it possible to instantiate two single node clusters (i.e. HDP and HDF) within a single Sandbox with the purpose of combining the best features of the Data-At-Rest and Data-In-Motion methodologies in a single environment. Have a look at the graphical representation of the Sandbox below, it shows where the Sandbox exists in relation to the outside world, the specific instance depicted is the Connected Data Architecure (CDA) if you are not yet familiarized with the concept of CDA do not worry, we'll review this in a later section.
+This informational tutorial will explain the current Hortonworks Sandbox architecture, starting in HDP 2.6.5 a new Sandbox structure is introduced making it possible to instantiate two single node clusters (i.e. HDP and HDF) within a single Sandbox with the purpose of combining the best features of the Data-At-Rest and Data-In-Motion methodologies in a single environment. Have a look at the graphical representation of the Sandbox below, it shows where the Sandbox exists in relation to the outside world, the instance depicted is of the Connected Data Architecure (CDA) if you are not yet familiarized with the concept of CDA do not worry, we will review it at a later section.
 
 ![cda-architecture](assets/cda-architecture.jpg)
 
-At a high level the Sandbox is a Linux (CentOS) Virtual Machine leveraging docker to host different Sandbox distributions, namely [HDP](https://hortonworks.com/products/data-platforms/hdp/) or [HDF](https://hortonworks.com/products/data-platforms/hdf/). In order to orchestrate communication between the outside world and the Sandbox a reverse proxy server NGINX is containerized and configured to only open the ports needed to the outside world enabling us to granularly interact with containers; moreover, the inter-container communication is delegated to Docker's internal network.
+At a high level the Sandbox is a Linux (CentOS 7) Virtual Machine leveraging docker to host different Sandbox distributions, namely [HDP](https://hortonworks.com/products/data-platforms/hdp/) or [HDF](https://hortonworks.com/products/data-platforms/hdf/). In order to orchestrate communication between the outside world and the Sandbox a reverse proxy server NGINX is containerized and configured to only open the ports needed to the outside enabling us to granularly interact with each container.
 
 ## Prerequisites
 
@@ -71,7 +71,7 @@ Now that you are in the Virtual Machine hosting the containers view the running 
 docker ps
 ~~~
 
-If you started out with HDP you will see two containers running, the first is the NGINX proxy container followed by a list of open ports and where they are being forwarded. Because, in this case, HDP was used as a base we can see that it is also listed as a running container.
+If you started out with HDP you will see two containers running, the first is the NGINX proxy container followed by a list of open ports and where they are being forwarded. Since HDP was used as a base we can see that it is listed as a running container.
 
 ![docker-ps](assets/docker-ps.jpg)
 
@@ -84,6 +84,10 @@ If you started out with HDP you will see two containers running, the first is th
 When CDA has been deployed both HDP and HDF are displayed as running containers:
 
 ![cda-dockerps](assets/cda-dockerps.jpg)
+
+### Native Docker Sandbox
+
+The Sandbox may also run using Docker which is native to the host operating system; for example, rather than running a VM to instantiate the containers you may directly interact with the docker daemon
 
 The script in the VM that creates configures the proxy server is located at:
 
@@ -109,16 +113,23 @@ Hortonworks Connected Data Architecture (CDA) is composed of both Hortonworks Da
 
 ![hortonworks-connected-data-platforms](assets/HDF_secure_data_collection.png)
 
-As data is coming in from the edge, it is collected, curated and analyzed in real-time, on premise or in the cloud using the HDF framework. You can also convert the your Data-In-Motion into Data-At-Rest with the HDP framework. HDP allows you to store, manage and perform further analytics. In order for HDF to send data into HDP, both sandboxes need to be set up to communicate with each other.
+As data is coming in from the edge, it is collected, curated and analyzed in real-time, on premise or in the cloud using the HDF framework. You can also convert the your Data-In-Motion into Data-At-Rest with the HDP framework. HDP allows you to store, manage and perform further analytics. 
 
-CDA takes advantage of the sandboxes properties of being Docker containers by taking the HDF Docker container as the base sandbox inside a virtual machine. A bridge was created between these two sandboxes through Docker Engine. One of the many advantages of being a container inside Docker Engine is that containers can communicate directly with each other through a Docker network named bridge.
+In order for HDF to send data into HDP, both sandboxes need to be set up to communicate with each other. If you would like to know more about the deployment of the CDA architecture check out the [Sandbox Deployment and Install Guide](https://hortonworks.com/tutorial/sandbox-deployment-and-install-guide/) under the **Advanced Topic**. When CDA is enabled a script internal to the Sandbox takes into account what base you started with and calls on the Docker daemon to instantiate the image of the complementing Sandbox flavour (e.g. HDP installs HDF, and HDF installs HDP).
+
+In the image below we used HDP as our base and launched the initialization script for CDA as you can see all the needed components for HDF are being loaded into a new container:
+
+![pulling-hdf](assets/pulling-hdf.jpg)
+
+CDA takes advantage of the sandboxes properties of being Docker containers by taking the HDF Docker container as the base sandbox inside a virtual machine. A custom Docker network was created between the running containers through Docker Engine. One of the many advantages of being a container inside Docker Engine is that containers can communicate directly with each other through a Docker network named bridge.
 
 ![cda-network](assets/cda-network.jpg)
 
-## Native Docker Sandbox
-
-PLACE HOLDER
-
 ## Summary
 
-You've successfully modified the sandbox container's startup script and VirtualBox settings in order to add in new port forwards.  The forwarded ports allow you to access processes running on the sandbox from your host system (i.e. your computer and browser).
+Congratuations, you have learned a great deal about the structure of our Sandbox, how HDP and HDF are implemented and you have learned about the Sandbox architecture and how CDA is implemented using Docker containers. Additionally, you have learned about the inter-container communication made possible by Docker's internal network.
+
+## Further Reading
+
+- [Hortonworks Connected Data Platforms](https://hortonworks.com/products/data-platforms/)
+- [HDP Documentation](https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.6.5/index.html)
