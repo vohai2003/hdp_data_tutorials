@@ -91,7 +91,17 @@ The script in the VM that creates configures the proxy server is located at:
 /sandbox/proxy/generate-proxy-deploy-script.sh
 ~~~
 
+## HDP vs HDF
+
 ![hdp-stand-alone](assets/both-stand-alone.jpg)
+
+### HDF (Data-In-Motion)
+
+Data-In-Motion is the idea where data is being ingested from all sorts of different devices into a flow or stream. While the data is moving throughout this flow, components or as NiFi calls them “processors” are performing actions on the data to modify, transform, aggregate and route it. Data-In-Motion covers a lot of the preprocessing stage in building a Big Data Application. For instance, data preprocessing is where Data Engineers work with the raw data to format it into a better schema, so Data Scientists can focus on analyzing and visualizing the data.
+
+### HDP (Data-At-Rest)
+
+Data-At-Rest is the idea where data is not moving and is stored in a database or robust datastore across a distributed data storage such as Hadoop Distributed File System (HDFS). Instead of sending the data to the queries, the queries are being sent to the data to find meaningful insights. At this stage data, data processing and analysis occurs in building a Big Data Application.
 
 ## What is CDA?
 
@@ -101,18 +111,9 @@ Hortonworks Connected Data Architecture (CDA) is composed of both Hortonworks Da
 
 As data is coming in from the edge, it is collected, curated and analyzed in real-time, on premise or in the cloud using the HDF framework. You can also convert the your Data-In-Motion into Data-At-Rest with the HDP framework. HDP allows you to store, manage and perform further analytics. In order for HDF to send data into HDP, both sandboxes need to be set up to communicate with each other.
 
-CDA takes advantage of the sandboxes properties of being Docker containers by taking the HDF Docker container as the base sandbox inside a virtual machine.
- A bridge was created between these two sandboxes through Docker Engine. One of the many advantages of being a container inside Docker Engine is that containers can communicate directly with each other through a Docker network named bridge.
-
-
+CDA takes advantage of the sandboxes properties of being Docker containers by taking the HDF Docker container as the base sandbox inside a virtual machine. A bridge was created between these two sandboxes through Docker Engine. One of the many advantages of being a container inside Docker Engine is that containers can communicate directly with each other through a Docker network named bridge.
 
 ![cda-network](assets/cda-network.jpg)
-
-
-
-## What does enabling CDA do to the Sandbox?
-
-Place Holder
 
 ## Native Docker Sandbox
 
