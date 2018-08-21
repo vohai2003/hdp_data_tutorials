@@ -29,13 +29,13 @@ At a high level the Sandbox is a Linux (CentOS 7) Virtual Machine leveraging doc
 
 - Sandbox [Deployment and Install Guide](https://hortonworks.com/tutorial/sandbox-deployment-and-install-guide/)
 - Learning the Ropes of the [HDP Sandbox](https://hortonworks.com/tutorial/learning-the-ropes-of-the-hortonworks-sandbox/)
+- Basic understanding of [Docker Containers](https://docs.docker.com/engine/docker-overview/)
 
 ## Outline
 
 - [Docker Architecture](#docker-architecture)
 - [HDP vs HDF](#hdp-vs-hdf)
 - [What is CDA?](#what-is-cda)
-- [Native Docker Sandbox](#native-docker-sandbox)
 - [Summary](#summary)
 - [Further Reading](#further-reading)
 
@@ -79,7 +79,7 @@ If you started out with HDP you will see two containers running, the first is th
 
 |                      CONTAINER ID                      |                                   IMAGE                                  |                                          COMMAND                                          |                 CREATED                 |                              STATUS                             |                                            PORTS                                            |                              NAMES                              |
 |:------------------------------------------------------:|:------------------------------------------------------------------------:|:-----------------------------------------------------------------------------------------:|:---------------------------------------:|:---------------------------------------------------------------:|:-------------------------------------------------------------------------------------------:|:---------------------------------------------------------------:|
-| Container ID given to an instantiated image by docker. | The executable package from which your container has been instantiated.  | Command used to instantiate your container, typically this is the path of an initialization script. | How long ago the container was created. | A container may be: </br>UP</br> UP-PAUSED </br>RESTARTING </br>DEAD </br>CREATED </br>EXITED | Open ports. Note that the proxy container also tells us where ports are being forwarded to. | This is the container name e.g. "sandbox-hdp" & "sandbox-proxy" |
+| Container ID given to an instantiated image by docker. | The executable package from which your container has been instantiated.  | Command used to instantiate your container, typically this is the path of an initialization script. | How long ago the container was created. | A container may be: </br>UP</br> UP-PAUSED </br>RESTARTING </br>DEAD </br>CREATED </br>EXITED. | Open ports. Note that the proxy container also tells us where ports are being forwarded to. | This is the container name e.g. "sandbox-hdp" & "sandbox-proxy" |
 
 When CDA has been deployed both HDP and HDF are displayed as running containers:
 
@@ -121,15 +121,20 @@ In the image below we used HDP as our base and launched the initialization scrip
 
 ![pulling-hdf](assets/pulling-hdf.jpg)
 
-CDA takes advantage of the sandboxes properties of being Docker containers by taking the HDF Docker container as the base sandbox inside a virtual machine. A custom Docker network was created between the running containers through Docker Engine. One of the many advantages of being a container inside Docker Engine is that containers can communicate directly with each other through a Docker network named bridge.
+A custom Docker network was created between the running containers through Docker Engine, this is one of the many advantages of being a container because inside the Docker Engine containers can communicate directly with each other through a Docker network named bridge, thus making it possible for the single node clusters to communicate.
 
 ![cda-network](assets/cda-network.jpg)
 
 ## Summary
 
-Congratuations, you have learned a great deal about the structure of our Sandbox, how HDP and HDF are implemented and you have learned about the Sandbox architecture and how CDA is implemented using Docker containers. Additionally, you have learned about the inter-container communication made possible by Docker's internal network.
+Congratuations, you have learned a great deal about the structure of our Sandbox, how HDP and HDF are implemented, and you have learned what CDA is and how it can be useful. Additionally, you have learned about the inter-container communication made possible by Docker's internal network and communication with the outside world done via NGINX. Now that you know the internal workings of CDA on the Sandbox, bring your understanding to practice with these great CDA ready tutorials:
+
+- [Analyze IOT Weather Station Data via Connected Data Architecture](https://hortonworks.com/tutorial/analyze-iot-weather-station-data-via-connected-data-architecture)
+- [Real-Time Event Processing in NiFi, SAM, Schema Registry, and SuperSet](https://hortonworks.com/tutorial/real-time-event-processing-in-nifi-sam-schema-registry-and-superset/)
+- [Deploy Machine Learning Models using Spark Structured Streaming](https://hortonworks.com/tutorial/deploying-machine-learning-models-using-spark-structured-streaming/)
 
 ## Further Reading
 
 - [Hortonworks Connected Data Platforms](https://hortonworks.com/products/data-platforms/)
 - [HDP Documentation](https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.6.5/index.html)
+- [Hortonworks Next-Gen Data Platforms and Solutions](https://hortonworks.com/products/)
