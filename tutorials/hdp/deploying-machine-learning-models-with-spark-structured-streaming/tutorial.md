@@ -56,9 +56,13 @@ As you can see, Nifi has a Publish Kafka processor that lets you easily export t
 
 ## Building a Spark Streaming Application
 
-We're now ready to build a Spark Streaming application to deploy our model. [Click here](https://github.com/hortonworks/data-tutorials/blob/master/tutorials/hdp/deploying-machine-learning-models-with-spark-structured-streaming/assets/sentimentAnalysis.zip?raw=true) to download the Sentiment Analysis code.
+We're now ready to build a Spark Streaming application to deploy our model. Clone this Scala application using your terminal:
 
-Unpack the **.zip** file and load this into your favorite text editor or IDE so you can follow along. Open the file /src/main/scala/Collect.scala, which is where we stream from Kafka.
+``
+git clone https://github.com/Gregw135/sentimentAnalysis
+``
+
+You should load this into your favorite text editor or IDE so you can follow along. Open the file /src/main/scala/Collect.scala, which is where we stream from Kafka.
 
 In Spark 2.0 introduced SparkSession, which is a simpler way of initializing a Spark program. We create a Spark Session using this line:
 
@@ -68,6 +72,7 @@ val spark = SparkSession
       .appName("SentimentAnalysis")
       .getOrCreate()
 ```
+
 
 Spark 2.0 also introduced a new API for streaming called Structured Streaming. One advantage of  Structured Streaming versus the older streaming API is for its ability to send incremental updates to its output data stores. For example, suppose we wanted to stream in tweets and record the average sentiment for each word for every five minute window. In previous versions of Spark Streaming it's possible to build a rolling aggregate for each word and send these to an external data store, like HBase or MySQL. However, if a tweet arrives late there was no way for Spark to update the aggregates sent to the data store. With Structured Streaming Spark can be setup to remember the aggregates for some time after they've been sent, and if late data arrives, it can retrieve the aggregate and send an update to the external data store.
 
