@@ -56,13 +56,9 @@ As you can see, Nifi has a Publish Kafka processor that lets you easily export t
 
 ## Building a Spark Streaming Application
 
-We're now ready to build a Spark Streaming application to deploy our model. Clone this Scala application using your terminal:
+We're now ready to build a Spark Streaming application to deploy our model. [Click here](https://github.com/hortonworks/data-tutorials/blob/master/tutorials/hdp/deploying-machine-learning-models-with-spark-structured-streaming/assets/sentimentAnalysis.zip?raw=true) to download the Sentiment Analysis code.
 
-``
-git clone https://github.com/Gregw135/sentimentAnalysis
-``
-
-You should load this into your favorite text editor or IDE so you can follow along. Open the file /src/main/scala/Collect.scala, which is where we stream from Kafka.
+Unpack the **.zip** file and load this into your favorite text editor or IDE so you can follow along. Open the file /src/main/scala/Collect.scala, which is where we stream from Kafka.
 
 In Spark 2.0 introduced SparkSession, which is a simpler way of initializing a Spark program. We create a Spark Session using this line:
 
