@@ -15,7 +15,7 @@ series: HDP > Hadoop Administration > Hortonworks Sandbox
 
 # Sandbox Port Forwarding Guide
 
-# Current Sandbox Architecture
+# CDA and Sandbox Architecture
 
 ## Introduction
 
