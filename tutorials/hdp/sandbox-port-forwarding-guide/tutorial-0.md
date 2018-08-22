@@ -19,7 +19,7 @@ series: HDP > Hadoop Administration > Hortonworks Sandbox
 
 ## Introduction
 
-This informational tutorial will explain the current Hortonworks Sandbox architecture, starting in HDP 2.6.5 a new Sandbox structure is introduced making it possible to instantiate two single node clusters (i.e. HDP and HDF) within a single Sandbox with the purpose of combining the best features of the Data-At-Rest and Data-In-Motion methodologies in a single environment. Have a look at the graphical representation of the Sandbox below, it shows where the Sandbox exists in relation to the outside world, the instance depicted is of the Connected Data Architecure (CDA) if you are not yet familiarized with the concept of CDA do not worry, we will review it at a later section.
+This tutorial will explain the current Hortonworks Sandbox architecture, starting in HDP 2.6.5 a new Sandbox structure is introduced making it possible to instantiate two single node clusters (i.e. HDP and HDF) within a single Sandbox with the purpose of combining the best features of the Data-At-Rest and Data-In-Motion methodologies in a single environment. Have a look at the graphical representation of the Sandbox below, it shows where the Sandbox exists in relation to the outside world, the instance depicted is of the Connected Data Architecure (CDA) if you are not yet familiarized with the concept of CDA do not worry, we will review it at a later section.
 
 ![cda-architecture](assets/cda-architecture.jpg)
 
@@ -29,11 +29,13 @@ At a high level the Sandbox is a Linux (CentOS 7) Virtual Machine leveraging doc
 
 - Sandbox [Deployment and Install Guide](https://hortonworks.com/tutorial/sandbox-deployment-and-install-guide/)
 - Learning the Ropes of the [HDP Sandbox](https://hortonworks.com/tutorial/learning-the-ropes-of-the-hortonworks-sandbox/)
+- Learning the Ropes of the [HDF Sandbox](https://hortonworks.com/tutorial/getting-started-with-hdf-sandbox/)
 - Basic understanding of [Docker Containers](https://docs.docker.com/engine/docker-overview/)
 
 ## Outline
 
 - [Docker Architecture](#docker-architecture)
+- [Sandbox Proxy](#sandbox-proxy)
 - [HDP vs HDF](#hdp-vs-hdf)
 - [What is CDA?](#what-is-cda)
 - [Summary](#summary)
@@ -45,15 +47,64 @@ At a high level the Sandbox is a Linux (CentOS 7) Virtual Machine leveraging doc
 
 In the Docker architecture above, Docker registry are services used for storing Docker images, such as Docker Hub. Docker Host is the computer Docker runs on. Diving deeper into the host, you can see the Docker Daemon, which is used to create and manage Docker objects, such as images, containers, networks and volumes. The user or client is able to interact with Docker daemon via Client Docker CLI. The Docker daemon is a long-running program also known as a server. The CLI utilizes Docker’s REST API to interact with the Docker daemon. As you can observe, the Docker Engine is a client-server application comprised of Client Docker CLI, REST API and Docker daemon.
 
+## Sandbox Proxy
+
+On this new architecture NGINX is used as a reverse proxy server; traditionally, a proxy server is used as an intermediary which forwards traffic across multiple clients in the internet. In contrast, a reverse proxy server resides behind a firewall and directs incoming requests to specific back-end servers, in our case these severs are the HDP and HDF containers.
+
+### Why a Reverse Proxy Server is Needed
+
+One of the biggest obstacles to overcome with this architecture is keeping ports consistent and reduce conflicts as much as possible between containers; for example, we wanted to keep Ambari UI as port 8080 across any Sandbox. The best solution is to keep the default ports as they are but distinguish the back-end server by domain name, this is why in this build we must change the host's name from:
+
+~~~text
+sandbox.hortonworks.com:<PORT>
+~~~
+
+to
+
+~~~text
+sandbox-hdp.hortonworks.com:<PORT>
+
+and
+
+sandbox-hdf.hortonworks.com:<PORT>
+~~~
+
+This allows us to maintain consistency across different Sandboxes and avoid conflicts, so when CDA is deployed we may reach Ambari UI at:
+
+~~~text
+sandbox-hdp.hortonworks.com:8080
+~~~
+
+and
+
+~~~text
+sandbox-hdf.hortonworks.com:8080
+~~~
+
+In this example Ambari UI is reachable for different Sandboxes at the same time by specifying the domain name of the Sandbox we are trying to reach:
+
+![both-running](assets/both-running.png)
+
+Cool stuff right? Now let's take a look at where out containers are in relation to our virtual environment.
+
 ### View Running Containers
 
-If you would like to visualize the running Sandbox container and proxy you you must log on to the host, you may chose to follow along; however, it is not necessary. If you use the standard sandbox `ssh -p 2222 root@sandbox-hdp.hortonworks.com`, you will actually log into the sandbox container, not the containing VM where Docker changes are made. You want to log into the VM running Docker with the following command:
+If you would like to visualize the running Sandbox container and proxy you you must log on to the host, you may chose to follow along; however, this is not necessary.
+
+In this architecture you may log on to the Sandbox or the host, here is a complete list of the TCP open ports for SSH services:
+
+| Destination     | TCP Port for SSH |
+|:---------------:|:----------------:|
+| HDP             | 2201             |
+| HDF             | 2202             |
+| VM - VirtualBox | 2200             |
+| VM - VMWare     | 22               |
 
 If you are running a VirtualBox Sandbox:
 
 ~~~bash
-# SSH on to the sandbox using Virtual Box
-ssh root@sandbox-hdp.hortonworks.com -p 2202
+# SSH on to the sandbox using VirtualBox
+ssh root@sandbox-hdp.hortonworks.com -p 2200
 ~~~
 
 Or if you are using VMWare:
@@ -71,7 +122,7 @@ Now that you are in the Virtual Machine hosting the containers view the running 
 docker ps
 ~~~
 
-If you started out with HDP you will see two containers running, the first is the NGINX proxy container followed by a list of open ports and where they are being forwarded. Since HDP was used as a base we can see that it is listed as a running container.
+If you started out with HDP you will see two containers running, the first is the NGINX proxy container followed by a list of open ports and where they are being forwarded. Since HDP was used as a base in this example we can see that it is listed as a running container.
 
 ![docker-ps](assets/docker-ps.jpg)
 
@@ -85,9 +136,19 @@ When CDA has been deployed both HDP and HDF are displayed as running containers:
 
 ![cda-dockerps](assets/cda-dockerps.jpg)
 
+We can also find what Docker images are in our Sandbox ready for deployment by running this command:
+
+~~~bash
+docker images
+~~~
+
+This tells us that we have a HDP, HDF, and Sandbox-Proxy (NGINX) images ready for deployment:
+
+![docker-images](assets/docker-images.jpg)
+
 ### Native Docker Sandbox
 
-The Sandbox may also run using Docker which is native to the host operating system; for example, rather than running a VM to instantiate the containers you may directly interact with the docker daemon
+The Sandbox may also run using Docker which is native to the host operating system; for example, rather than running a VM to instantiate the containers you may directly interact with the docker daemon. In the Docker architecure for the Sandbox you directly interact with Docker environment as your native operating system is the host for the Sandboxes.
 
 ## HDP vs HDF
 
@@ -109,19 +170,19 @@ Hortonworks Connected Data Architecture (CDA) is composed of both Hortonworks Da
 
 As data is coming in from the edge, it is collected, curated and analyzed in real-time, on premise or in the cloud using the HDF framework. You can also convert the your Data-In-Motion into Data-At-Rest with the HDP framework. HDP allows you to store, manage and perform further analytics.
 
-In order for HDF to send data into HDP, both sandboxes need to be set up to communicate with each other. If you would like to know more about the deployment of CDA check out the [Sandbox Deployment and Install Guide](https://hortonworks.com/tutorial/sandbox-deployment-and-install-guide/) under the **Advanced Topic**. When CDA is enabled a script internal to the Sandbox takes into account what base you started with and calls on the Docker daemon to instantiate the image of the complementing Sandbox flavour (e.g. HDP installs HDF, and HDF installs HDP).
+In order for HDF to send data into HDP, both sandboxes need to be set up to communicate with each other. If you would like to know more about the deployment of CDA check out the [Sandbox Deployment and Install Guide](https://hortonworks.com/tutorial/sandbox-deployment-and-install-guide/) under the **Advanced Topic** section. When CDA is enabled a script internal to the Sandbox takes into account what base you started with and calls on the Docker daemon to instantiate the image of the complementing Sandbox flavour (e.g. HDP installs HDF, and HDF installs HDP).
 
-In the image below we used HDP as our base and launched the initialization script for CDA as you can see all the needed components for HDF are being loaded into a new container:
+In the image below we used HDP as our base and launched the initialization script for CDA. As you can see all the needed components for HDF are being loaded into a new container:
 
 ![pulling-hdf](assets/pulling-hdf.jpg)
 
-A custom Docker network was created between the running containers through Docker Engine, this is one of the many advantages of being a container because inside the Docker Engine containers can communicate directly with each other through a Docker network named bridge, thus making it possible for the single node clusters to communicate.
+A custom Docker network was created between the running containers through Docker Engine, this is one of the many advantages of being a container because inside the Docker Engine containers can communicate directly with each other through a Docker network named bridge, thus making it possible for the clusters to communicate.
 
 ![cda-network](assets/cda-network.jpg)
 
 ## Summary
 
-Congratulations, you have learned a great deal about the structure of our Sandbox, how HDP and HDF are implemented, and you have learned what CDA is and how it can be useful. Additionally, you have learned about the inter-container communication made possible by Docker's internal network and communication with the outside world done via NGINX. Now that you know the internal workings of CDA on the Sandbox, bring your understanding to practice with these great CDA ready tutorials:
+Congratulations, you have learned a great deal about the structure of our Sandbox, and how HDP and HDF single node clusters are implemented. Additionally, you have learned what CDA is and how it can be used to capture insights from both Data-At-Rest and Data-In-Motion. Additionally, you have learned about the inter-container communication made possible by Docker's internal network and communication with the outside world done via NGINX. Now that you know the internal workings of CDA on the Sandbox, bring your understanding to practice with these great CDA ready tutorials:
 
 - [Analyze IOT Weather Station Data via Connected Data Architecture](https://hortonworks.com/tutorial/analyze-iot-weather-station-data-via-connected-data-architecture)
 - [Real-Time Event Processing in NiFi, SAM, Schema Registry, and SuperSet](https://hortonworks.com/tutorial/real-time-event-processing-in-nifi-sam-schema-registry-and-superset/)
