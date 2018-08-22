@@ -100,23 +100,31 @@ In this architecture you may log on to the Sandbox or the host, here is a comple
 | VM - VirtualBox | 2200             |
 | VM - VMWare     | 22               |
 
-If you are running a VirtualBox Sandbox:
+If you are running the  VirtualBox VM:
 
 ~~~bash
-# SSH on to the sandbox using VirtualBox
+# SSH on to VirtualBox Virtual Machine
 ssh root@sandbox-hdp.hortonworks.com -p 2200
 ~~~
 
 Or if you are using VMWare:
 
 ~~~bash
-# SSH on to the sandbox using VMWare
+# SSH on to VMWare Virtual Machine
 ssh root@sandbox-hdp.hortonworks.com -p 22
 ~~~
 
 > Note: The default password is **hadoop**.
 
-Now that you are in the Virtual Machine hosting the containers view the running containers within docker:
+Now that you are in the Virtual Machine hosting the containers we can see what Docker images are ready for deployment:
+
+~~~bash
+docker images
+~~~
+
+![docker-images](assets/docker-images.jpg)
+
+Furthermore, we can see what containers are currently running by using the following command:
 
 ~~~bash
 docker ps
@@ -135,16 +143,6 @@ If you started out with HDP you will see two containers running, the first is th
 When CDA has been deployed both HDP and HDF are displayed as running containers:
 
 ![cda-dockerps](assets/cda-dockerps.jpg)
-
-We can also find what Docker images are in our Sandbox ready for deployment by running this command:
-
-~~~bash
-docker images
-~~~
-
-This tells us that we have a HDP, HDF, and Sandbox-Proxy (NGINX) images ready for deployment:
-
-![docker-images](assets/docker-images.jpg)
 
 ### Native Docker Sandbox
 
@@ -168,7 +166,11 @@ Hortonworks Connected Data Architecture (CDA) is composed of both Hortonworks Da
 
 ![hortonworks-connected-data-platforms](assets/HDF_secure_data_collection.png)
 
-As data is coming in from the edge, it is collected, curated and analyzed in real-time, on premise or in the cloud using the HDF framework. You can also convert the your Data-In-Motion into Data-At-Rest with the HDP framework. HDP allows you to store, manage and perform further analytics.
+### Why CDA?
+
+As data is coming in from the edge, it is collected, curated and analyzed in real-time, on premise or in the cloud using the HDF framework. Once the data has been captured you can convert the your Data-In-Motion into Data-At-Rest with the HDP framework to gain further insights.
+
+### How CDA is made possible in the sandbox
 
 In order for HDF to send data into HDP, both sandboxes need to be set up to communicate with each other. If you would like to know more about the deployment of CDA check out the [Sandbox Deployment and Install Guide](https://hortonworks.com/tutorial/sandbox-deployment-and-install-guide/) under the **Advanced Topic** section. When CDA is enabled a script internal to the Sandbox takes into account what base you started with and calls on the Docker daemon to instantiate the image of the complementing Sandbox flavour (e.g. HDP installs HDF, and HDF installs HDP).
 
