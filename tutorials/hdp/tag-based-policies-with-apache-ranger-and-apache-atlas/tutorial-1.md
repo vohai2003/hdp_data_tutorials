@@ -45,13 +45,13 @@ Once in the Ambari click on the **Ranger** service on the service Stack on the l
 In the **Save Configuration** window that appears, write `Enable Audit to Solr Feature`, then select **Save**, next click **OK** button on Dependent Configurations window.
 Finally, click **Proceed Anyway** on the **Save Configuration Changes** window, and click **OK**.
 
-![enable_audit_to_solr](assets/images/activate_ranger_audit_to_solr.png)
+![enable_audit_to_solr](assets/images/activate-ranger-audit-to-solr.png)
 
 ## Restart All Services Affected
 
 After Enabling Ranger Audit to Solr, there are services that will need to be restarted for the changes to take effect on our sandbox:
 
-![affected_services](assets/images/affected_services.jpg)
+![affected_services](assets/images/affected-services.jpg)
 
 Let's start by restarting services from the top of the Ambari Stack.
 

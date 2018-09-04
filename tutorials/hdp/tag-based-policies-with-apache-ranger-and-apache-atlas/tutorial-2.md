@@ -48,7 +48,7 @@ Keep in mind, for this new table, no policies have been created to authorize wha
 
 1\. Go to **Hive View 2.0**. Hover over the Ambari views and select **Hive View 2.0**.
 
-![menu_hive_view2](assets/images/menu_hive_view2.jpg)
+![menu_hive_view2](assets/images/menu-hive-view2.jpg)
 
 2\. Create the `employee` table:
 
@@ -155,7 +155,7 @@ You should have your policy configured like this:
 
 5\. Click on `Add` and you can see the list of policies that are present in `Sandbox_hive`.
 
-![employee_policy_added_rajops](assets/images/employee_policy_added_rajops.jpg)
+![employee_policy_added_rajops](assets/images/employee-policy-added-rajops.jpg)
 
 6\. Disable the `Hive Global Tables Allow` Policy to take away `raj_ops` and `maria_dev`
 access to the employee table's ssn and location column data.
@@ -183,7 +183,7 @@ select * from employee;
 
 3\. You will notice a red message appears. Click on the **NOTIFICATIONS** tab:
 
-![maria_dev_access_error](assets/images/load_data_authorization_error.jpg)
+![maria_dev_access_error](assets/images/load-data-authorization-error.jpg)
 
 Authorization error will appear. This is expected as the user `maria_dev` and
 `raj_ops` do not have access to 2 columns in this table (ssn and location).
@@ -337,7 +337,7 @@ the hive table `employee` columns specified by `PII` tag.
 
 Please verify that Allow Conditions section is looking like this:
 
-![allow_conditions_rajops](assets/images/allow_conditions_rajops.png)
+![allow_conditions_rajops](assets/images/allow-conditions-rajops.png)
 
 This signifies that only `raj_ops` is allowed to do any operation on the columns that are specified by PII tag. Click `Add`.
 
