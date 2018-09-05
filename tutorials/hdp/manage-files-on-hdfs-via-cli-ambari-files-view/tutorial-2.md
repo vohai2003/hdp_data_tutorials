@@ -99,7 +99,7 @@ We will upload two files from our local machine: **geolocation.csv** and **truck
 
 An Upload file window appears:
 
-![upload_file_window](assets/tutorial2/upload_file_window.jpg)
+![upload_file_window](assets/tutorial2/upload_file_window.png)
 
 2\. Click on the cloud with an arrow. A window with files from your local machine appears, find **geolocation.csv** in the **Downloads/drivers_datasets** folder, select it and then press **open** button.
 
