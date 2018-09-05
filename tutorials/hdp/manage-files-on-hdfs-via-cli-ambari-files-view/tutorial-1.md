@@ -57,6 +57,7 @@ wget https://raw.githubusercontent.com/hortonworks/data-tutorials/master/tutoria
 Let's learn by writing the syntax. You will be able to copy and paste the following example commands into your terminal. Let's login under **hdfs** user, so we can give root user permission to perform file operations:
 
 ~~~bash
+#Login under hdfs user
 su hdfs
 cd
 ~~~
