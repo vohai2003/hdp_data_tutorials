@@ -24,21 +24,7 @@ In this section of the tutorial you will begin assigning policies to the users o
 
 ## Concepts
 
-Before we learn to assign policies based on a user's role with Ranger, we should become acquainted with the personas who reside within the HDP Sandbox.
-
-Here is a brief description of them:
-
-- raj_ops: Big Data Operations
-- maria_dev: Big Data Developer
-
-Raj is our administrator and thus has full access to most of Ambari's services.
-Maria is our developer and thus has limited access to our cluster's services.
-
-**Username** – raj_ops
-**Password** – raj_ops
-
-**Username** – maria_dev
-**Password** – maria_dev
+The Sandbox's Hive policies are such that when a new table is created, everyone has access to it. This is convenient for us because the data in the tables we create is fictitious; however, image a scenario where a Hive table hold sensitive information (e.g. SSN, or Birthplace) we should be able to Govern the data and only give access to authorized users. In this section we will recreate a scenario where certain users do not have access to sensitive data; however, Raj our cluster operator has been approved to access the data, so we will create Tag Based Policies to granularly grant him access to the sensitive data.
 
 ## Access Without Tag Based Policies
 

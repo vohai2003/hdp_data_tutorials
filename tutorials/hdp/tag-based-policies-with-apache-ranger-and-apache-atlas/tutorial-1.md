@@ -26,6 +26,24 @@ In this section of the tutorial we will prepare the Sandbox environment by enabl
 
 Before we begin creating, assigning, and editing tag policies we must enable Ranger audit to Solr and start the services needed to assign policies. Additionally, we will stop services not necessary for this tutorial.
 
+Additionally, we should become acquainted with the personas who reside within the HDP Sandbox.
+
+Here is a brief description of them:
+
+- raj_ops: Big Data Operations
+- maria_dev: Big Data Developer
+
+Raj is our administrator and thus has full access to most of Ambari's services.
+Maria is our developer and thus has limited access to our cluster's services.
+
+**Username** – raj_ops
+**Password** – raj_ops
+
+**Username** – maria_dev
+**Password** – maria_dev
+
+In order to set up our enviroment we will use our cluster operator Raj_ops.
+
 ## Enable Ranger audit to Solr
 
 Log into Ambari as **raj_ops** user. Username & Password : `raj_ops/raj_ops`
@@ -59,7 +77,7 @@ Let's start by restarting services from the top of the Ambari Stack.
 
 1\. Select **HDFS**, then click on **Service Actions**. Click on **Restart All** to restart all components of HDFS. It will also restart all affected components of HDFS.
 
-![restart_all_hdfs_components](assets/images/restart_all_hdfs_components.jpg)
+![restart_all_hdfs_components](assets/images/restart-all-hdfs-components.jpg)
 
 2\. On the **Confirmation** window, press **Confirm Restart All**.
 
@@ -128,7 +146,7 @@ Restart the remaining services in this order:
 - Knox
 - Ranger
 
-![services_left_to_restart](assets/images/services_left_to_restart.jpg)
+![services_left_to_restart](assets/images/services-left-to-restart.jpg)
 
 > Note: Also turn off maintenance mode for **HBase**, **Atlas** and **Kafka**.
 
@@ -150,7 +168,7 @@ Make sure "ranger_audits" is displayed in Ambari Infra Solr as in the picture be
 
 **Dashboard** -> **Cloud** -> **Graph**
 
-![verify_ranger_audit_solr_collection_created](assets/images/verify_ranger_audit_solr_collection_created.jpg)
+![verify_ranger_audit_solr_collection_created](assets/images/verify-ranger-audit-solr-collection-created.jpg)
 
 ## Summary
 
