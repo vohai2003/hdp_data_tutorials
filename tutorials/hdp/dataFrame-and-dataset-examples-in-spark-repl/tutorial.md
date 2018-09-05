@@ -235,19 +235,19 @@ import spark.implicits._
 
 2\. Create and RDD
 
-~~~js
+~~~scala
 val peopleRDD = spark.sparkContext.textFile("/tmp/people.txt")
 ~~~
 
 3\. Encode the Schema in a string
 
-~~~js
+~~~scala
 val schemaString = "name age"
 ~~~
 
 4\. Generate the schema based on the string of schema
 
-~~~js
+~~~scala
 val fields = schemaString.split(" ").map(fieldName => StructField(fieldName, StringType, nullable = true))
 
 val schema = StructType(fields)
@@ -255,31 +255,31 @@ val schema = StructType(fields)
 
 5\. Convert records of the RDD (people) to Rows
 
-~~~js
+~~~scala
 val rowRDD = peopleRDD.map(_.split(",")).map(attributes => Row(attributes(0), attributes(1).trim))
 ~~~
 
 6\.  Apply the schema to the RDD
 
-~~~js
+~~~scala
 val peopleDF = spark.createDataFrame(rowRDD, schema)
 ~~~
 
 6\. Creates a temporary view using the DataFrame
 
-~~~js
+~~~scala
 peopleDF.createOrReplaceTempView("people")
 ~~~
 
 7\. SQL can be run over a temporary view created using DataFrames
 
-~~~js
+~~~scala
 val results = spark.sql("SELECT name FROM people")
 ~~~
 
 8\.The results of SQL queries are DataFrames and support all the normal RDD operations. The columns of a row in the result can be accessed by field index or by field name
 
-~~~js
+~~~scala
 results.map(attributes => "Name: " + attributes(0)).show()
 ~~~
 
