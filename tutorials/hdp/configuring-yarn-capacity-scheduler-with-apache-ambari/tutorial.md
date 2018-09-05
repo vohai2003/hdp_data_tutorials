@@ -164,7 +164,7 @@ Click **Save** and confirm on the dialog box:
 ![popup](assets/popup.png)
 
 ~~~text
-Changed Capacity Scheduler Config
+Changed Capacity Scheduler Config.
 ~~~
 
 At this point, the configuration is saved but we still need to restart the affected components by the configuration change as indicated in the orange band below:
