@@ -26,5 +26,5 @@ You will explore integration of Apache Atlas and Apache Ranger, and introduced t
 
 ## Outline
 
-- Setting up the environment
-- Assigning Tag based Policies with Atlas
+- [Setting up the environment](https://hortonworks.com/tutorial/tag-based-policies-with-apache-ranger-and-apache-atlas/section/1)
+- [Assigning Tag based Policies with Atlas](https://hortonworks.com/tutorial/tag-based-policies-with-apache-ranger-and-apache-atlas/section/2)
