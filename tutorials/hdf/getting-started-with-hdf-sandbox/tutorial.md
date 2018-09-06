@@ -235,18 +235,6 @@ The HDF sandbox cheat sheet is a reference of common knowledge and tasks often d
 | admin | refer to [Admin Password Reset](#admin-password-reset) |
 | raj_ops | raj_ops |
 
-**OS Level Authorization**
-
-| Name id(s) | HDFS Authorization | Ambari Authorization | Ranger Authorization |
-|:----------:|:------------------:|:--------------------:|:--------------------:|
-| Sam Admin | Max Ops | Ambari Admin | Admin access |
-
-**Other Differences**
-
-| Name id(s) | Sandbox Role | View Configurations | Start/Stop/Restart Service | Modify Configurations | Add/delete services | Install Components | Manage Users/Groups | Manage Ambari Views | Atlas UI Access | [Sample Ranger Policy Access](https://hortonworks.com/tutorial/tag-based-policies-with-apache-ranger-and-apache-atlas/#sample-ranger-policy) |
-|:----------:|:------------:|:-------------------:|:--------------------------:|:---------------------:|:-------------------:|:------------------:|:-------------------:|:-------------------:|:---------------:|:--------------------:|
-| Sam Admin | Ambari Admin | Yes | Yes | Yes | Yes | Yes | Yes | Yes | Yes | NA |
-
 ### Sandbox Version
 
 When you run into an issue, one of the first things someone will ask is "_what sandbox version are you using_"? To get this information:
