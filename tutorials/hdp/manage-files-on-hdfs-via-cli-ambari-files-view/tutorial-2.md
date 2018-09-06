@@ -15,7 +15,17 @@ In the previous tutorial, we learned to manage files on the Hadoop Distributed F
 - Downloaded and Installed latest [Hortonworks Data Platform (HDP) Sandbox](https://hortonworks.com/downloads/#sandbox)
 - [Learning the Ropes of the HDP Sandbox](https://hortonworks.com/hadoop-tutorial/learning-the-ropes-of-the-hortonworks-sandbox/)
 
-### Download the Driver Related Datasets
+## Outline
+
+- [Download the Drivers Related Datasets](#download-the-drivers-related-datasets)
+- [Create a Directory in HDFS, Upload a file and List Contents](#create-a-directory-in-hdfs-upload-a-file-and-list-contents)
+- [Find Out Space Utilization in a HDFS Directory](#find-out-space-utilization-in-a-hdfs-directory)
+- [Download Files From HDFS to Local Machine](#download-files-from-hdfs-to-local-machine)
+- [Explore Two Advanced Features](#explore-two-advanced-features)
+- [Summary](#summary)
+- [Further Reading](#further-reading)
+
+### Download the Drivers Related Datasets
 
 We will download **geolocation.csv** and **trucks.csv** data onto our local filesystems of the sandbox. The commands are tailored for mac and linux users.
 
@@ -49,16 +59,7 @@ mkdir drivers-datasets
 mv geolocation.csv trucks.csv drivers-datasets/
 ~~~
 
-## Outline
-
-- [Step 1: Create a Directory in HDFS, Upload a file and List Contents](#create-a-directory-in-hdfs-upload-a-file-and-list-contents)
-- [Step 2: Find Out Space Utilization in a HDFS Directory](#find-out-space-utilization-in-a-hdfs-directory)
-- [Step 3: Download File From HDFS to Local Machine(Mac, Windows, Linux)](#download-files-hdfs-to-local-file-system)
-- [Step 4: Explore Two Advanced Features](#explore-two-advanced-features)
-- [Summary](#summary)
-- [Further Reading](#further-reading)
-
-## Step 1: Create a Directory in HDFS, Upload a file and List Contents
+## Create a Directory in HDFS, Upload a file and List Contents
 
 ### Create Directory Tree in User
 
@@ -115,7 +116,7 @@ Each time we open a directory, the Files View automatically lists the contents. 
 
 1\. Let's navigate back to the **user** directory to examine the details given by the contents. Reference the image below while you read the Directory Contents Overview.
 
-**/** Directory Contents Overview of Columns
+Directory Contents Overview of Columns
 
 - **Name** are the files/folders
 - **Size** contains bytes for the Contents
@@ -126,7 +127,7 @@ Each time we open a directory, the Files View automatically lists the contents. 
 
 ![files_view_web_interface](assets/tutorial2/files_view_web_interface.jpg)
 
-## Step 2: Find Out Space Utilization in a HDFS Directory
+## Find Out Space Utilization in a HDFS Directory
 
 In the command line when the directories and files are listed with the `hadoop fs -du /user/hadoop/`, the size of the directory and file is shown. In Files View, we must navigate to the file to see the size, we are not able to see the **size** of the directory even if it contains files.
 
@@ -134,7 +135,7 @@ Let's view the size of **geolocation.csv** file. Navigate through `/user/hadoop/
 
 ![geolocation_csv](assets/tutorial2/geolocation_csv.jpg)
 
-## Step 3: Download File From HDFS to Local Machine(Mac, Windows, Linux)
+## Download File From HDFS to Local Machine
 
 Files View enables users to download files and folders to their local machine with ease.
 
@@ -142,7 +143,7 @@ Let's download the **geolocation.csv** file to our computer. Click on the file's
 
 ![download_file_hdfs_local_machine](assets/tutorial2/download_file_hdfs_local_machine.jpg)
 
-## Step 4: Explore Two Advanced Features
+## Explore Two Advanced Features
 
 ### Concatenate Files
 
