@@ -1,6 +1,6 @@
 ---
 title: New tutorial name
-author: You, because you are writing it!
+author: sandbox-team
 tutorial-id: Ask for tutorial ID assignment policy.
 experience: Beginner, Intermediate, Advanced
 persona: Example (Data Scientist & Analyst)
