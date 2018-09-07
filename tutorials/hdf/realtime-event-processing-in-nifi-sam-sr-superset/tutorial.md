@@ -291,11 +291,11 @@ DESCRIPTION: HDF and HDP Services Selected for CDA
 
 SELECT SERVICES:
 
-HDF on the Right Side:
+HDF:
 
 KAFKA, STORM, ZOOKEEPER
 
-HDP on the Left Side:
+HDP:
 
 DRUID, HBASE, HDFS, HIVE
 ~~~
