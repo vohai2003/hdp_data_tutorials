@@ -18,7 +18,7 @@ series: This important as it will determine where the tutorial is posted example
 ## Introduction
 
 This is the introductory paragraph for the tutorial. This section will typically introduce the topic and the overall goals and objectives of the tutorial. A paragraph that introduces what technologies the user will learn to use in the tutorial to solve the problem for some use case. This template is made for Spark specifically because many of these tutorials will include a Zeppelin Notebook, because we are in the business of tutorials and increasing traffic to the Hortonworks website we want to keep all relevant content and important information in the tutorial and not in the Notebook.
-<!-- If you need to add comments HTML commenting is recommended -->
+<!-- If you need to add comments HTML commenting is recosmmended -->
 
 ## Prerequisites
 
