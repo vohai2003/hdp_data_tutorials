@@ -1,13 +1,13 @@
 ---
 title: Interactive SQL on Hadoop with Hive LLAP
-author: George Rueda de Leon
+author: tutorials-team
 tutorial-id: 720
 experience: Intermediate
 persona: Data Scientist & Analyst
 source: Hortonworks
 use case: EDW Optimization
 technology: Apache Ambari, Apache Hive, Tableau
-release: hdp-2.6.0
+release: hdp-2.6.5
 environment: Sandbox
 product: HDP
 series: HDP > Develop with Hadoop > Hello World, HDP > Develop with Hadoop > Apache Hive
@@ -35,10 +35,10 @@ The goal of this tutorial is to learn how to enable interactive SQL query perfor
 
 ## Prerequisites
 
--   This tutorial requires [HDP Sandbox](https://hortonworks.com/downloads/#sandbox).
+-   Downloaded and deployed the [Hortonworks Data Platform (HDP)](https://hortonworks.com/downloads/#sandbox) Sandbox
 -   Must have installed [Hortonworks ODBC Driver for Apache Hive](https://hortonworks.com/downloads/#addons)
 -   Must have installed [Tableau](https://www.tableau.com/). For this tutorial, we’re using Tableau version 10.2.
--   This tutorial assumes you have a **16GB** memory (or more) computer and does its best to maximize available resources. Working on the sandbox is limited. If you’re looking to try Hive LLAP at big data scales, check out [Fast Analytics in the Cloud with Hive LLAP](https://hortonworks.com/tutorial/fast-analytics-in-the-cloud-with-hive-llap/).
+-   This tutorial assumes you have a computer with **16GB** memory (or more). Working on the sandbox is limited. If you’re looking to try Hive LLAP at big data scales, check out [Fast Analytics in the Cloud with Hive LLAP](https://hortonworks.com/tutorial/fast-analytics-in-the-cloud-with-hive-llap/).
 -   This tutorial requires making some configurations to the Sandbox and allocating additional resources. In order to run this tutorial you will need to be able to allocate **11 GB RAM** to the Sandbox virtual machine.
 -   If you are not familiar with HDP Sandbox, the following tutorial provides an introduction:
 [Learning the Ropes of the HDP Sandbox](https://hortonworks.com/tutorial/learning-the-ropes-of-the-hortonworks-sandbox/)
@@ -66,7 +66,7 @@ When you import the Sandbox in VirtualBox, change the Appliance settings to incr
 
 ### Enable Ambari Admin Login
 
-We need to change the Sandbox configuration using Ambari to enable LLAP. This requires us to first [reset Ambari admin password](https://hortonworks.com/tutorial/learning-the-ropes-of-the-hortonworks-sandbox/#setup-ambari-admin-password) and then logon.
+We need to change the Sandbox configuration using Ambari to enable LLAP. This requires us to first [reset Ambari admin password](https://hortonworks.com/tutorial/learning-the-ropes-of-the-hortonworks-sandbox/#admin-password-reset) and then logon.
 
 > NOTE: Confirm you can log into Ambari as **admin** before continuing.
 
@@ -74,7 +74,7 @@ We need to change the Sandbox configuration using Ambari to enable LLAP. This re
 
 The Sandbox ships with a few small tables, but to get a more substantial feel of LLAP we can generate a larger dataset. This part is optional and if you’re in a hurry you can skip it. For this demo we will generate 2 GB of data based on the standard TPC-H benchmark. To simplify things, all data generation and loading are handled by a single bundle you can download and run on your Sandbox.
 
-To get started, [log into the console](http://127.0.0.1:4200/), then follow these steps:
+To get started, [log into the console](http://sandbox-hdp.hortonworks.com:4200/), then follow these steps:
 
 1\. Log in to the console as root.
 
