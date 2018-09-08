@@ -16,9 +16,10 @@ While the demo application runs, you will gain an understanding of how Kafka rec
 - [View Data in Kafka Topics](#view-data-in-kafka-topics)
 - [Next: Learn Basic Operations of Kafka](#next-learn-basic-operations-of-kafka)
 
+
 ## Environment Setup
 
-If you have the latest Hortonworks DataFlow (HDF) Sandbox installed, then the demo comes pre-installed.
+If you have the latest Hortonworks DataFlow (HDF) Sandbox installed, then the demo comes preinstalled.
 
 Open a terminal on your local machine and access the sandbox through the shell-in-a-box method. Please visit [Learning the Ropes of the HDP Sandbox](https://hortonworks.com/tutorial/learning-the-ropes-of-the-hortonworks-sandbox/#environment-setup) to review this method.
 
@@ -34,19 +35,20 @@ A NiFi simulator generates data of two types: TruckData and TrafficData as a CSV
 
 From the terminal, we can see the two Kafka Topics that have been created:
 
-~~~bash
+~~~
 /usr/hdf/current/kafka-broker/bin/kafka-topics.sh --list --zookeeper localhost:2181
 ~~~
 
 Results:
 
-~~~bash
-Output:
-trucking_data_driverstats
-trucking_data_joined
-trucking_data_traffic
-trucking_data_truck_enriched
 ~~~
+Output:
+trucking_data_driverstats                                        
+trucking_data_joined                                               
+trucking_data_traffic
+trucking_data_truck_enriched           
+~~~
+
 
 ## View Data in Kafka Topics
 
@@ -54,21 +56,19 @@ As messages are persisted into the Kafka Topics from the producer, you can see t
 
 View Data for Kafka Topic: **trucking_data_truck_enriched**:
 
-~~~bash
-/usr/hdf/current/kafka-broker/bin/kafka-console-consumer.sh --bootstrap-server sandbox-hdf.hortonworks.com:6667 --topic trucking_data_truck_enriched --from-beginning
+~~~
+/usr/hdf/current/kafka-broker/bin/kafka-console-consumer.sh --zookeeper localhost:2181 --topic trucking_data_truck_enriched --from-beginning
 ~~~
 
 View Data for Kafka Topic: **trucking_data_traffic**:
 
-~~~bash
-/usr/hdf/current/kafka-broker/bin/kafka-console-consumer.sh --bootstrap-server sandbox-hdf.hortonworks.com:6667 --topic trucking_data_traffic --from-beginning
+~~~
+/usr/hdf/current/kafka-broker/bin/kafka-console-consumer.sh --zookeeper localhost:2181 --topic trucking_data_traffic --from-beginning
 ~~~
 
 As you can see Kafka acts as a robust queue that receives data and allows for it to be transmitted to other systems.
 
-~~~text
-Note: You may notice the is data encoded in a format we cannot read, this format is necessary for Schema Registry. The reason we are using Schema Registry is because we need it for Stream Analytics Manager to pull data from Kafka.
-~~~
+> Note: You may notice the is data encoded in a format we cannot read, this format is necessary for Schema Registry. The reason we are using Schema Registry is because we need it for Stream Analytics Manager to pull data from Kafka.
 
 ## Next: Learn Basic Operations of Kafka
 
