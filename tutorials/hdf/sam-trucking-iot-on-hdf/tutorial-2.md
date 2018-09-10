@@ -30,7 +30,6 @@ Skills you will gain:
 Start your HDF Sandbox via Docker, VMware or VirtualBox.
 
 1\. Head to Ambari at `sandbox-hdf.hortonworks.com:8080`.
-Login credentials `username/password = admin/admin`.
 
 2\. Wait for SAM to start indicated by the green check mark.
 
@@ -80,7 +79,7 @@ Both components are accessible from the **Components** tab.
 
 2\. In the AUTO ADD field is where you insert your Ambari Cluster URL. The information you must include is as follows, you would take the definition and overwrite it to be your Ambari URL:
 
-~~~bash
+~~~text
 Definition:
 
 http://ambari_host:port/api/v1/clusters/CLUSTER_NAME
@@ -91,17 +90,29 @@ http://sandbox-hdf.hortonworks.com:8080/api/v1/clusters/Sandbox
 
 > Note: CLUSTER_NAME can be found in Ambari UI under admin(user)->Manage Ambari->Versions->Cluster
 
-3\. Click AUTO ADD, you'll be prompted for Ambari login credentials: `user/password` = `admin/admin`
+3\. Click AUTO ADD, you'll be prompted for Ambari login credentials as seen below::
+
+![service_pool_credentials](assets/images/service_pool_credentials.jpg)
+
+Use your **admin** credentials to sign in.
+
+**Table 1**: Ambari Login credentials
+
+| Username | Password |
+|:---:|:---:|
+| admin | **setup process |
 
 The result after adding the Ambari Cluster URL will be that SAM retrieves all Ambari Services and creates a new service pool.
+
+![hdf_service_pool](assets/images/hdf_service_pool.jpg)
 
 > Note: To view the existing service pool: click the three squares near the service pool name, then press Edit.
 
 ### Create an Environment
 
-1\. Open Environment
+1\. Open **Environments**
 
-2\. On the top right of the page, you would click the plus button to add a new environment. When adding the enviroment for Trucking IoT application, we performed the following actions.
+2\. On the top right of the page, you would click the plus button to add a new environment. When adding the environment for Trucking IoT application, we performed the following actions.
 
 3\. Name the Environment. In our case, we chose the name:
 
@@ -123,17 +134,19 @@ Kafka, Storm, Ambari Infra, Zookeeper
 
 6\. Then we clicked OK to add the new environment.
 
-> Note: To view the existing environment: click the three squares near the environment name, then press Edit.
+> Note: To view the existing environment: click the three squares near the environment name, then press Edit. An images similar to the one below will appear:
+
+![existing_sandboxenvironment](assets/images/existing_sandboxenvironment.jpg)
 
 ### Add an Application
 
-A quick recap, we just explored the pre-exising service pool and environment for the Trucking IoT SAM application we will build. The topology, you will build from scratch. Let's become SAM Developers.
+A quick recap, we just explored the pre-existing service pool and environment for the Trucking IoT SAM application we will build. The topology, you will build from scratch. Let's become SAM Developers.
 
-1\. Click on the SAM Logo in the top right corner to enter the My Applications page.
+1\. Click on the SAM Logo in the top right corner to enter the **My Applications** page.
 
 2\. Click on the Add Symbol in the top right of the page, select **New Application**.
 
-The Add Application window will appear, enter the following information:
+The **Add Application** window will appear, enter the following information:
 
 ~~~bash
 Name: Trucking-IoT-Demo
@@ -162,8 +175,8 @@ Before we start adding components to the canvas, lets verify our Kafka topics an
 Output you should see:
 
 ~~~bash
-trucking_data_driverstats                                     
-trucking_data_joined                                           
+trucking_data_driverstats
+trucking_data_joined
 trucking_data_traffic
 trucking_data_truck_enriched
 ~~~
@@ -183,7 +196,6 @@ If you don't see the topics listed above, then create them:
 # trucking_data_truck_enriched
 /usr/hdf/current/kafka-broker/bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 10 --topic trucking_data_truck_enriched
 ~~~
-
 
 **Note:** For more information on how Schemas are being registered into Schema Registry and the architecture works, visit [Schema Registry in Trucking IoT on HDF](https://hortonworks.com/tutorial/schema-registry-in-trucking-iot-on-hdf/)
 
@@ -211,6 +223,7 @@ Enter the following properties for the first Kafka Source you opened:
 | Security Protocol       | PLAINTEXT       |
 | Bootstrap Servers       | sandbox-hdf.hortonworks.com:6667       |
 | Kafka Topic       | trucking_data_traffic       |
+| Reader Schema Branch  | MASTER |
 | Reader Schema Version | 1 |
 | Consumed Group ID | c |
 | **Tab**       | **OPTIONAL**       |
@@ -226,6 +239,7 @@ When you are done, click OK.
 | Security Protocol       | PLAINTEXT       |
 | Bootstrap Servers       | sandbox-hdf.hortonworks.com:6667       |
 | Kafka Topic       | trucking_data_truck_enriched       |
+| Reader Schema Branch  | MASTER |
 | Reader Schema Version | 1 |
 | Consumed Group ID | c |
 | **Tab**       | **OPTIONAL**       |
@@ -275,17 +289,15 @@ When you are done, click OK.
 
 ![join_rule_connect](assets/images/join_rule_connect.jpg)
 
-Enter the following properties:
+Select **+Add New Rules** and enter the following properties: 
 
 | RULE    | Properties     |
 | :------------- | :------------- |
 | Name       | FilterNormalEvents       |
 | **Tab**       | **CONFIGURATION**       |
-| Add New Rule `Rule Name`       | IsViolation       |
-| Add New Rule `Description`       | IsViolation       |
-| Add New Rule `Create Query`       | Select field name `eventType`       |
-| Add New Rule `Create Query`       | Select operations `NOT_EQUAL`       |
-| Add New Rule `Create Query`       | Select field name - Type `Normal`       |
+| New Rule `Rule Name`       | IsViolation       |
+| New Rule `Description`       | IsViolation       |
+| New Rule `Create Condition`       | `eventType <> 'Normal'`|
 
 ~~~
 Query Preview:
@@ -297,7 +309,7 @@ eventType <> 'Normal'
 
 7\. Once you click OK, the new rule will appear in the table of rules for the RULE processor. Click OK again to save your configuration. Now connect RULE processor to the AGGREGATE processor.
 
-FilterEvents-AGGREGATE window will appear, select OK. Enter the following properties for the AGGREGATE processor:
+FilterNormalEvents-AGGREGATE window will appear, select OK. Enter the following properties for the AGGREGATE processor:
 
 | AGGREGATE    | Properties     |
 | :------------- | :------------- |
@@ -311,44 +323,39 @@ FilterEvents-AGGREGATE window will appear, select OK. Enter the following proper
 | SLIDING INTERVAL | Seconds |
 | TIMESTAMP FIELD | eventTime |
 | LAG IN SECONDS | 1 |
-| **BOX** | **Output Fields** |
-| INPUT | speed |
-|AGGREGATE FUNCTION | AVG |
-| OUTPUT | averageSpeed |
-| INPUT | foggy|
-| AGGREGATE FUNCTION | SUM |
-| OUTPUT | totalFog |
-| INPUT | rainy|
-| AGGREGATE FUNCTION | SUM |
-| OUTPUT | totalRain |
-| INPUT | windy|
-| AGGREGATE FUNCTION | SUM |
-| OUTPUT | totalWind |
-| INPUT | eventTime|
-| AGGREGATE FUNCTION | SUM |
-| OUTPUT | totalViolations |
 
+Continue to enter the following expressions to FilterNormalEvents-AGGREGATE, to add a new expression select the plus sign next to the first aggregate expression. You can scroll down to view the additional expression fields.
 
+| **AGGREGATE EXPRESSION** | **FIELDS NAME** |
+|:---------------------| :----------------|
+| AVG(speed)  | averageSpeed |
+| SUM(foggy)  | totalFog  |
+| SUM(rainy)  | totalRain |
+| SUM(windy)  | totalWind |
+| SUM(eventTime | totalViolations |
+
+![aggregate_expressions](assets/images/aggregate_expressions.jpg)
 
 Once you click OK, the configuration has been confirmed.
 
 8\. Add 2 KAFKA SINK components onto the canvas.
 
-Connect AverageSpeed processor to Kafka Sink 1 (ToAvgSpeed). Configure the processor with the following property values:
+Connect TimeSeriesAnalysis processor to Kafka Sink 1 (ToDriverStats). Configure the processor with the following property values:
 
 | KAFKA SINK 1   | Properties     |
 | :------------- | :------------- |
 | **Tab** | **REQUIRED** |
 | Name       | ToDriverStats     |
 | CLUSTER NAME | Sandbox |
-| Kafka Topic | trucking_data_driverstats|
+| Kafka Topic | trucking_data_driverstats |
+| Writer Schema Branch | Master |
 | Writer Schema Version | 1 |
 | Security Protocol | PLAINTEXT |
 | Bootstrap Servers | sandbox-hdf.hortonworks.com:6667 |
 
 Click OK to confirm configuration.
 
-Connect ViolationEvents processor to Kafka Sink 2 (ToViolationEvents). Configure the processor with the following property values:
+Connect FilterNormalEvents processor to Kafka Sink 2 (ToDataJoined). Configure the processor with the following property values:
 
 | KAFKA SINK 2  | Properties     |
 | :------------- | :------------- |
@@ -356,6 +363,7 @@ Connect ViolationEvents processor to Kafka Sink 2 (ToViolationEvents). Configure
 | Name       | ToDataJoined    |
 | CLUSTER NAME | Sandbox |
 | Kafka Topic | trucking_data_joined |
+| Writer Schema Branch | Master |
 | Writer Schema Version | 1 |
 | Security Protocol | PLAINTEXT |
 | Bootstrap Servers | sandbox-hdf.hortonworks.com:6667 |
@@ -388,11 +396,11 @@ Lets open web shell client: `http://sandbox-hdf.hortonworks.com:4200`
 Lets check the data in our Kafka Sink topics:
 
 ~~~bash
-# trucking_violations
-/usr/hdf/current/kafka-broker/bin/kafka-console-consumer.sh --zookeeper localhost:2181 --topic trucking_data_driverstats --from-beginning
+# trucking_data_driverstats
+/usr/hdf/current/kafka-broker/bin/kafka-console-consumer.sh --bootstrap-server sandbox-hdf.hortonworks.com:6667 --topic trucking_data_driverstats --from-beginning
 
-# trucking_avg_speed
-/usr/hdf/current/kafka-broker/bin/kafka-console-consumer.sh --zookeeper localhost:2181 --topic trucking_data_joined --from-beginning
+# trucking_data_joined
+/usr/hdf/current/kafka-broker/bin/kafka-console-consumer.sh --bootstrap-server sandbox-hdf.hortonworks.com:6667 --topic trucking_data_joined --from-beginning
 ~~~
 
 > Note: press control + C to exit from the Kafka view messages.
