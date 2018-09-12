@@ -248,7 +248,7 @@ The HDF sandbox cheat sheet is a reference of common knowledge and tasks often d
 
 When you run into an issue, one of the first things someone will ask is "_what sandbox version are you using_"? To get this information:
 
-Login using [shell web client](http://sandbox-hdp.hortonworks.com:4200) and execute: `sandbox-version`. The output should look something like:
+Login using [Shell-In-A-Box](http://sandbox-hdp.hortonworks.com:4200) and execute: `sandbox-version`. The output should look something like:
 
 ![sandbox-version](assets/images/sandbox-version.jpg)
 
