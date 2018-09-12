@@ -23,7 +23,7 @@ By the end of this tutorial, you will be familiar with the data-in-motion tools 
 
 ## Prerequisites
 
-- Downloaded and Installed [HDF Sandbox](https://hortonworks.com/tutorial/sandbox-deployment-and-install-guide/)
+- Downloaded and deployed the [Hortonworks Data Platform (HDP)](https://hortonworks.com/downloads/#sandbox) Sandbox
 
 ## Outline
 
@@ -33,7 +33,7 @@ By the end of this tutorial, you will be familiar with the data-in-motion tools 
 - [Welcome Page](#welcome-page)
 - [Explore Ambari](#explore-ambari)
 - [Further Reading](#further-reading)
-- [Appendix A: Reference Sheet](#appendix-a-reference-sheet)
+- [Appendix A: Reference Sheet](#appendix-a-sandbox-reference-sheet)
   - [Login Credentials](#login-credentials)
   - [Sandbox Version](#sandbox-version)
   - [Admin Password Reset](#admin-password-reset)
@@ -104,7 +104,7 @@ If you're using **VirtualBox** or **VMWare**, you can confirm the IP address by 
 
 > **Note:** Guest VM Welcome Window for BRIDGED Sandbox
 
-> **Note:** If you're using Azure, your IP address is located on the dashboard, refer to [**Set a Static IP**](https://hortonworks.com/tutorial/sandbox-deployment-and-install-guide/section/4/#set-a-static-ip)
+If you're using Azure, your IP address is located on the dashboard, refer to [**Set a Static IP**](https://hortonworks.com/tutorial/sandbox-deployment-and-install-guide/section/4/#settings-form)
 
 ### Map Sandbox IP to Your Desired Hostname in the Hosts File
 
@@ -112,26 +112,34 @@ Mac, Linux and Windows all have a hosts file. This file once configured enables 
 
 **Mac users**:
 
--   ```echo '{IP-Address} sandbox.hortonworks.com sandbox-hdp.hortonworks.com sandbox-hdf.hortonworks.com' | sudo tee -a /private/etc/hosts```
+```bash
+echo '{IP-Address} sandbox.hortonworks.com sandbox-hdp.hortonworks.com sandbox-hdf.hortonworks.com' | sudo tee -a /private/etc/hosts
+```
 
 **Linux users**:
 
-- ```echo '{IP-Address} sandbox.hortonworks.com sandbox-hdp.hortonworks.com sandbox-hdf.hortonworks.com' | sudo tee -a /etc/hosts```
+```bash
+echo '{IP-Address} sandbox.hortonworks.com sandbox-hdp.hortonworks.com sandbox-hdf.hortonworks.com' | sudo tee -a /etc/hosts
+```
 
 **Windows users**:
 
 - Run Notepad as **administrator**.
 - Open **hosts** file located in: ```c:\Windows\System32\drivers\etc\hosts```
-- Add ```{IP-Address}   localhost   sandbox.hortonworks.com   sandbox-hdp.hortonworks.com   sandbox-hdf.hortonworks.com```
+- Add `{IP-Address}   localhost   sandbox.hortonworks.com   sandbox-hdp.hortonworks.com   sandbox-hdf.hortonworks.com`
 - Save the file
 
-> IMPORTANT: Replace **{IP-Address}** with [Sandbox IP Address](#learn-the-ip-address-of-your-sandbox)
+> IMPORTANT: Replace **{IP-Address}** with [Sandbox IP Address](#determine-ip-address-of-your-sandbox)
 
 ## Terminal Access
 
  Refer to [Login Credentials](#login-credentials) for list of users and passwords. You can also login using **root**, using password **hadoop**, which may require you to change the password - remember it!
 
- If you login using credentials other than **root**, you may be required to use **sudo** before the command. For example: ```sudo ambari-server status```.
+ If you login using credentials other than **root**, you may be required to use **sudo** before the command. For example:
+
+```bash
+ sudo ambari-server status
+ ```
 
 #### Secure Shell Method:
 
@@ -148,12 +156,16 @@ The **shell web client** is also known as **shell-in-a-box**. It's an easy way t
 Using the terminal of your choice, you can transfer files to/from sandbox and local machine.
 
 - Transfer file from local machine to sandbox:
-  - ```scp -P 2202 <local_directory_file> root@sandbox-hdf.hortonworks.com:<sandbox_directory_file>```
+
+```bash
+scp -P 2202 <local_directory_file> root@sandbox-hdf.hortonworks.com:<sandbox_directory_file>
+```
 
 - Transfer file from sandbox to local machine:
- ```bash
- scp -P 2202 root@sandbox-hdf.hortonworks.com:<sandbox_directory_file> <local_directory_file> 
- ```
+
+```bash
+scp -P 2202 root@sandbox-hdf.hortonworks.com:<sandbox_directory_file> <local_directory_file>
+```
 
 Do you notice the difference between the two commands?
 
@@ -218,7 +230,7 @@ The HDF sandbox cheat sheet is a reference of common knowledge and tasks often d
 
 | User | Password |
 |:------:|----------:|
-| admin | refer to [Admin Password Reset](#admin-password-reset) |
+| admin | Refer to [Admin Password Reset](#admin-password-reset) |
 
 **OS Level Authorization**
 
@@ -236,7 +248,7 @@ The HDF sandbox cheat sheet is a reference of common knowledge and tasks often d
 
 When you run into an issue, one of the first things someone will ask is "_what sandbox version are you using_"? To get this information:
 
-Login using [shell web client](http://sandbox-hdp.hortonworks.com:4200) and execute: ```sandbox-version```. The output should look something like:
+Login using [shell web client](http://sandbox-hdp.hortonworks.com:4200) and execute: `sandbox-version`. The output should look something like:
 
 ![sandbox-version](assets/images/sandbox-version.jpg)
 
@@ -247,11 +259,15 @@ Login using [shell web client](http://sandbox-hdp.hortonworks.com:4200) and exec
 Due to possibility of passwords being vulnerable to being hacked, we recommend
 you change your Ambari admin password to be unique.
 
-1. Open [shell web client](http://sandbox-hdf.hortonworks.com:4200) (aka shell-in-a-box):
+1. Open [Shell-In-A-Box](http://sandbox-hdf.hortonworks.com:4200):
 
 2. The login using credentials: **root** / **hadoop**
 
-3. Type the following commands: ```ambari-admin-password-reset```
+3. Type the following commands:
+
+```bash
+ambari-admin-password-reset
+```
 
 > IMPORTANT: The first time you login as **root**, you may be required to change the password - remember it!
 
