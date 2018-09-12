@@ -1,6 +1,6 @@
 ---
 title: Learning the Ropes of the HDF Sandbox
-author: tutorials-team
+author: sandbox-team
 tutorial-id: 761
 experience: Beginner
 persona: Administrator
