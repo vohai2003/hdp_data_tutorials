@@ -165,7 +165,7 @@ The Sandbox Welcome Page is also known as the **Splash Page**. It runs on port n
 
 It looks like this:
 
-![hdf_splash_screen_step1](assets/images/new_splashscreen.jpg)
+![hdf_splash_screen_step1](assets/images/hdf_splash_screen_step1.jpg)
 
 **Launch Dashboard** opens two browser windows - Ambari interface and beginner tutorial. You should login to Ambari using the username and password based on the tutorial requirements. Most of the tutorials use **admin**. Refer to [Login Credentials](#login-credentials) for list of users and passwords.
 
