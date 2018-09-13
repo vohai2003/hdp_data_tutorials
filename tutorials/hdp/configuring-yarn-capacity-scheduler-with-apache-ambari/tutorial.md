@@ -205,7 +205,7 @@ Finally, select **Make Current** and re-start services one last time.
 
 In this tutorial, you learned how to configure different queues and allotment of resources to those queues. Hope this brief tour of using YARN's Capacity Scheduler gave you some ideas on how to achieve better utilization of Hadoop clusters.
 
-## Further Reading
+## Further Reading 
 
 Check out some Hortonworks Community Connection articles to explore more about Capacity Scheduler:
 
