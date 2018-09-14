@@ -1,13 +1,13 @@
 ---
 title: Learning the Ropes of the HDP Sandbox
-author: Edgar Orendain
+author: sandbox-team
 tutorial-id: 160
 experience: Beginner
 persona: Developer
 source: Hortonworks
 use case: Data Discovery
 technology: Apache Ambari
-release: hdp-2.6.0
+release: hdp-3.0.0
 environment: Sandbox
 product: HDP
 series: HDP > Develop with Hadoop > Hello World
@@ -25,21 +25,21 @@ Let's begin our Hadoop journey...
 
 ## Prerequisites
 
--   Downloaded and Installed [Hortonworks Sandbox](https://hortonworks.com/tutorial/sandbox-deployment-and-install-guide/)
+- Downloaded and Installed [Hortonworks Sandbox](https://hortonworks.com/tutorial/sandbox-deployment-and-install-guide/)
 
 ## Outline
 
--   [Environment Setup](#environment-setup)
--   [Terminal Access](#terminal-access)
--   [Welcome Page](#welcome-page)
--   [Explore Ambari](#explore-ambari)
--   [Explore Sandbox in Azure](#explore-sandbox-in-azure)
--   [Further Reading](#further-reading)
--   [Appendix A: Reference Sheet](#appendix-a-reference-sheet)
-    -   [Login Credentials](#login-credentials)
-    -   [Sandbox Version](#sandbox-version)
-    -   [Admin Password Reset](#admin-password-reset)
--   [Appendix B: Troubleshoot](#appendix-b-troubleshoot)
+- [Environment Setup](#environment-setup)
+- [Terminal Access](#terminal-access)
+- [Welcome Page](#welcome-page)
+- [Explore Ambari](#explore-ambari)
+<!-- - [Explore Sandbox in Azure](#explore-sandbox-in-azure)--->
+- [Further Reading](#further-reading)
+- [Appendix A: Reference Sheet](#appendix-a-reference-sheet)
+  - [Login Credentials](#login-credentials)
+  - [Sandbox Version](#sandbox-version)
+  - [Admin Password Reset](#admin-password-reset)
+- [Appendix B: Troubleshoot](#appendix-b-troubleshoot)
 
 ## Environment setup
 
@@ -56,11 +56,11 @@ By default, the VM attaches to Network Address Translation (NAT) network mode. T
 How we are forwarding all incoming traffic from a specific host interface to the guest in our sandbox is by specifying an IP of that host like the following:
 
 ~~~bash
-VBoxManage modifyvm "Hortonworks Sandbox HDP 2.6.5" --natpf1 "Sandbox Splash Page,tcp,127.0.0.1,1080,,1080"
+VBoxManage modifyvm "Hortonworks Sandbox HDP 3.0.0" --natpf1 "Sandbox Splash Page,tcp,127.0.0.1,1080,,1080"
 .
 .
 .
-VBoxManage modifyvm "Hortonworks Sandbox HDP 2.6.5" --natpf1 "Sandbox Host SSH,tcp,127.0.0.1,2122,,22"
+VBoxManage modifyvm "Hortonworks Sandbox HDP 3.0.0" --natpf1 "Sandbox Host SSH,tcp,127.0.0.1,2122,,22"
 ~~~
 
 You can find the set network by opening the VM **settings** and then select the **network** tab.
@@ -69,7 +69,7 @@ You can find the set network by opening the VM **settings** and then select the 
 
 In this mode, the guest receives direct access to the network, which the host has been connected. The router assigns an IP address to the guest. On that network, instead of there being just the host IP address visible, now the guest IP address is visible too. Thus, external devices, such as MiNiFi running on a Raspberry Pi, are able to connect to the guest via it's IP address.
 
-When would you need this mode? It is needed for Connected Data Architecture. To configure this mode, first power down your guest vm, click settings, switch to the network tab and change the **attach to** network to be **Bridged Adapter**.
+When would you need this mode? It is needed for Connected Data Architecture(CDA). To configure this mode, first power down your guest vm, click settings, switch to the network tab and change the **attach to** network to be **Bridged Adapter**.
 
 ![Bridged Adapter](assets/bridged_adapter.jpg)
 
@@ -103,18 +103,18 @@ Mac, Linux and Windows all have a hosts file. This file once configured enables 
 
 **Mac users**:
 
--   ```echo '{IP-Address} sandbox.hortonworks.com sandbox-hdp.hortonworks.com sandbox-hdf.hortonworks.com' | sudo tee -a /private/etc/hosts```
+- ```echo '{IP-Address} sandbox.hortonworks.com sandbox-hdp.hortonworks.com sandbox-hdf.hortonworks.com' | sudo tee -a /private/etc/hosts```
 
 **Linux users**:
 
--   ```echo '{IP-Address} sandbox.hortonworks.com sandbox-hdp.hortonworks.com sandbox-hdf.hortonworks.com' | sudo tee -a /etc/hosts```
+- ```echo '{IP-Address} sandbox.hortonworks.com sandbox-hdp.hortonworks.com sandbox-hdf.hortonworks.com' | sudo tee -a /etc/hosts```
 
 **Windows users**:
 
--   Run Notepad as **administrator**.
--   Open **hosts** file located in: ```c:\Windows\System32\drivers\etc\hosts```
--   Add ```{IP-Address}   localhost   sandbox.hortonworks.com   sandbox-hdp.hortonworks.com   sandbox-hdf.hortonworks.com```
--   Save the file
+- Run Notepad as **administrator**.
+- Open **hosts** file located in: ```c:\Windows\System32\drivers\etc\hosts```
+- Add ```{IP-Address}   localhost   sandbox.hortonworks.com   sandbox-hdp.hortonworks.com   sandbox-hdf.hortonworks.com```
+- Save the file
 
 > IMPORTANT: Replace **{IP-Address}** with [Sandbox IP Address](#learn-the-ip-address-of-your-sandbox)
 
@@ -122,7 +122,7 @@ Mac, Linux and Windows all have a hosts file. This file once configured enables 
 
  Refer to [Login Credentials](#login-credentials) for list of users and passwords. You can also login using **root**, using password **hadoop**, which may require you to change the password - remember it!
 
- If you login using credentials other than **root**, you may be required to use **sudo** before the command. For example: ```sudo ambari-server status```.
+ If you login using credentials other than **root**, you will be required to use **sudo** before the command. For example: ```sudo ambari-server status```.
 
 #### Secure Shell Method:
 
@@ -132,17 +132,17 @@ Open your terminal (mac/linux) or Git Bash (Windows). Type the following command
 
 #### Shell Web Client Method:
 
-The **shell web client** is also known as **shell-in-a-box**. It's an easy way to issue shell commands without needing to install additional software. It uses **port 4200**, for example:  [sandbox-hdp.hortonworks.com:4200](http://sandbox-hdp.hortonworks.com:4200)
+The **shell web client** is also known as **Shell-in-a-Box**. It's an easy way to issue shell commands without needing to install additional software. It uses **port 4200**, for example:  [sandbox-hdp.hortonworks.com:4200](http://sandbox-hdp.hortonworks.com:4200)
 
 #### Send Data Between Sandbox and Local Machine
 
 Using the terminal of your choice, you can transfer files to/from sandbox and local machine.
 
--   Transfer file from local machine to sandbox:
-    -   ```scp -P 2222 <local_directory_file> root@sandbox-hdp.hortonworks.com:<sandbox_directory_file>```
+- Transfer file from local machine to sandbox:
+  - ```scp -P 2222 <local_directory_file> root@sandbox-hdp.hortonworks.com:<sandbox_directory_file>```
 
--   Transfer file from sandbox to local machine:
-    -   ```scp -P 2222 root@sandbox-hdp.hortonworks.com:<sandbox_directory_file> <local_directory_file> ```
+- Transfer file from sandbox to local machine:
+  - ```scp -P 2222 root@sandbox-hdp.hortonworks.com:<sandbox_directory_file> <local_directory_file> ```
 
 Do you notice the difference between the two commands?
 
@@ -150,7 +150,7 @@ To send data from local machine to sandbox, the local machine directory path com
 
 ## Welcome Page
 
-The Sandbox Welcome Page is also known as the **Splash Page**. It runs on port number **:8888**. To open it, use your host address and append the port number. For example: [http://sandbox-hdp.hortonworks.com:8888/](http://sandbox-hdp.hortonworks.com:8888/)
+The Sandbox Welcome Page is also known as the **Splash Page**. It runs on port number **:1080**. To open it, use your host address and append the port number. For example: [http://sandbox-hdp.hortonworks.com:1080/](http://sandbox-hdp.hortonworks.com:1080/splash.html)
 
 It looks like this:
 
@@ -162,25 +162,24 @@ It looks like this:
 
 ## Explore Ambari
 
--   Ambari Dashboard runs on port **:8080**. For example, [http://sandbox-hdp.hortonworks.com:8080](http://sandbox-hdp.hortonworks.com:8080)
--   Login to as **admin**, refer to [Admin Password Reset](#admin-password-reset)
--   Select **Manage Ambari**
+- Ambari Dashboard runs on port **:8080**. For example, [http://sandbox-hdp.hortonworks.com:8080](http://sandbox-hdp.hortonworks.com:8080)
+- Login to as **admin**, refer to [Admin Password Reset](#admin-password-reset)
+- Select **Manage Ambari**
 
 ![manage-ambari](assets/manage-ambari.jpg)
 
 The following screen will be displayed:
 
-![Lab0_3](assets/ambari_welcome_learning_the_ropes_sandbox.jpg)
+![Lab0_3](assets/ambari-welcome-learning-the-ropes-sandbox.jpg)
 
-1.  “**Operate Your Cluster**” will take you to the Ambari Dashboard which is the primary UI for Hadoop Operators
-2.  “**Manage Users + Groups**” allows you to add & remove Ambari users and groups
-3.  “**Clusters**” allows you to grant permission to Ambari users and groups
-4.  “**Ambari User Views**” list the set of Ambari Users views that are part of the cluster
-5.  “**Deploy Views**” provides administration for adding and removing Ambari User Views
+1. “**Dashboard**” will take you to the Ambari Dashboard which is the primary UI for Hadoop Operators
+2. “**Administration of Users**” allows you to add & remove Ambari users and groups
+3. “**Cluster Management**” allows you to grant permission to Ambari users and groups
+4. “**Ambari User Views**” list the set of Ambari Users views that are part of the cluster
 
--   Click on **Go to Dashboard** and you should see a similar screen:
+- Click on **Go to Dashboard** and you should see a similar screen:
 
-![Lab0_4](assets/Lab0_4.png)
+![Lab0_4](assets/Lab0-4.jpg)
 
 Explorer by click on:
 
@@ -188,9 +187,9 @@ Explorer by click on:
 
 and then on:
 
-2\.  **Dashboard**, **Services**, **Hosts**, **Alerts**, **Admin** and User Views icon (represented by 3×3 matrix ) to become familiar with the Ambari resources available to you.
+2\.  **Background Operations**,**Alerts**, **Admin** and User **Views**, icon (represented by 3×3 matrix ) to become familiar with the Ambari resources available to you.
 
-## Explore Sandbox in Azure
+<!--- ## Explore Sandbox in Azure
 
 Similar to the [Welcome Page](#welcome-page), we will append port number **:8888** to the host address on Azure. The public IP address is generated when you deployed the HDP Sandbox in Azure. Take note of this IP address. In this example, the IP address is 23.99.9.232. Your machine will have a different IP address.
 
@@ -202,7 +201,7 @@ Similar to the [Welcome Page](#welcome-page), we will append port number **:8888
 
 Open your terminal (mac and linux) or putty (windows). Here again, `host` is the public IP address provided by Azure. Give the username and password that you provided while deploying the sandbox on Azure. Use the following command to access the Sandbox through SSH:
 
-~~~
+~~~bash
 # Usage:
       ssh <username>@<host> -p 22;
 ~~~
@@ -215,7 +214,7 @@ Open your terminal (mac and linux) or putty (windows). Here again, `host` is the
 
 Open your web browser. Replace the following text by your `host` into your browser to access the Sandbox through the shell. Provide the same username and password that you gave while deploying the sandbox on Azure.
 
-~~~
+~~~bash
 # Usage:
     #  _host_:4200
 ~~~
@@ -244,13 +243,13 @@ ambari-agent restart
 
 > **Note:** Now you can login to ambari as an admin user to perform operations, such as starting and stopping services.
 
-![Terminal Update Ambari admin password Azure](assets/azure_update_admin_password_learning_ropes_sandbox.png)
+![Terminal Update Ambari admin password Azure](assets/azure_update_admin_password_learning_ropes_sandbox.png)--->
 
 ## Further Reading
 
--   [Hadoop Tutorial - Getting Started with HDP](https://hortonworks.com/tutorial/hadoop-tutorial-getting-started-with-hdp/)
--   [HDP Documentation](https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.6.4/index.html)
--   [Hortonworks Documentation](http://docs.hortonworks.com/)
+- [Hadoop Tutorial - Getting Started with HDP](https://hortonworks.com/tutorial/hadoop-tutorial-getting-started-with-hdp/)
+- [HDP Documentation](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.0/index.html)
+- [Hortonworks Documentation](http://docs.hortonworks.com/)
 
 ## Appendix A: Reference Sheet
 
@@ -319,19 +318,19 @@ Login using [shell web client](http://sandbox-hdp.hortonworks.com:4200) and exec
 Due to possibility of passwords being vulnerable to being hacked, we recommend
 you change your Ambari admin password to be unique.
 
-1.  Open [shell web client](http://sandbox-hdp.hortonworks.com:4200) (aka shell-in-a-box):
+1. Open [Shell Web Client](http://sandbox-hdp.hortonworks.com:4200) (aka Shell-in-a-Box):
 
-2.  The login using credentials: **root** / **hadoop**
+2. The login using credentials: **root** / **hadoop**
 
-3.  Type the following commands: ```ambari-admin-password-reset```
+3. Type the following commands: ```ambari-admin-password-reset```
 
 > IMPORTANT: The first time you login as **root**, you may be required to change the password - remember it!
 
 ## Appendix B: Troubleshoot
 
--   [Hortonworks Community Connection](https://hortonworks.com/community/forums/) (HCC) is a good resource to find answers to problems you may encounter during your Hadoop journey.
+- [Hortonworks Community Connection](https://hortonworks.com/community/forums/) (HCC) is a good resource to find answers to problems you may encounter during your Hadoop journey.
 
--   **hangs** / **Long running processes**
+- **hangs** / **Long running processes**
 
 At times you may encounter a job, query or request that just seems to run forever and does not complete. It may be because it's in the **ACCEPTED** state. A good place to begin looking is in the [ResourceManager](http://sandbox-hdp.hortonworks.com:8088/). If you know a job has completed, but the Resource Manager still thinks it's running - kill it!
 
