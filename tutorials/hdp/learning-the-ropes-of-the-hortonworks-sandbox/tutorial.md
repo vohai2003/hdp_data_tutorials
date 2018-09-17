@@ -151,7 +151,7 @@ To send data from local machine to sandbox, the local machine directory path com
 
 ## Welcome Page
 
-The Sandbox Welcome Page is also known as the **Splash Page**. It runs on port number **:8888**. To open it, use your host address and append the port number. For example: [http://sandbox-hdp.hortonworks.com:8888/](http://sandbox-hdp.hortonworks.com:8888/)
+The Sandbox Welcome Page is also known as the **Splash Page**. It runs on port number **:1080**. To open it, use your host address and append the port number. For example: [sandbox-hdp.hortonworks.com:1080/](http://sandbox-hdp.hortonworks.com:1080/)
 
 It looks like this:
 
@@ -163,7 +163,7 @@ It looks like this:
 
 ## Explore Ambari
 
-- Ambari Dashboard runs on port **:8080**. For example, [http://sandbox-hdp.hortonworks.com:8080](http://sandbox-hdp.hortonworks.com:8080)
+- Ambari Dashboard runs on port **:8080**. For example, [sandbox-hdp.hortonworks.com:8080](http://sandbox-hdp.hortonworks.com:8080)
 - Login to as **admin**, refer to [Admin Password Reset](#admin-password-reset)
 - Select **Manage Ambari**
 
