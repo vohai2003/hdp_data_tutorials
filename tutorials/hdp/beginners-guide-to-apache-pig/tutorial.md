@@ -79,7 +79,7 @@ Navigate to `/user/maria_dev` or a path of your choice, click `Upload` and `Brow
 
 ## Create Your Script
 
->Note: In this tutorial Vi is used; however, any text editor will work as long as the files we create are on the Sandbox.
+>Note: In this tutorial Vi is used; however, any text editor will work as long as the files we create are stored on the Sandbox.
 
 Navigate to [http://sandbox-hdp.hortonworks.com:4200/](http://sandbox-hdp.hortonworks.com:4200/) (Shell-In-A-Box) and sign in as root.
 
