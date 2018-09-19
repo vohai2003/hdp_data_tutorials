@@ -58,7 +58,7 @@ Let’s use the above two csv files `(drivers.csv and timesheet.csv)` to create 
 
 ![select_files_view](assets/select_files_view.jpg)
 
-Go to the `/tmp` folder and if it is not already present, create a new directory called `data` using the controls toward the top of the screen. Click next to the folder and click `Permissions`. Make sure to check (blue) all of the permissions boxes.
+Go to the `/tmp` folder and if it is not already present, create a new directory called `data` using the controls toward the top of the screen. Click next to the folder and click **Permissions**. Make sure to check (blue) all of the permissions boxes.
 
 ![edit_permissions](assets/edit_permissions.jpg)
 
