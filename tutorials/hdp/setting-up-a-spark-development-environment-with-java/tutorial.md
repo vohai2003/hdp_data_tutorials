@@ -35,10 +35,11 @@ This tutorial will teach you how to set up a full development environment for de
 - [Maven Configuration](#maven-configuration)
 - [Create a Spark Application](#create-a-spark-application)
 - [Deploying to the Sandbox](#deploying-to-the-sandbox)
-- [Deploying to the Cloud](#deploying-to-the-cloud)
 - [Live Debugging](#live-debugging)
 - [Summary](#summary)
 - [Further Reading](#further-reading)
+
+<!--- Add to outline once cloud is ready [Deploying to the Cloud](#deploying-to-the-cloud)--->
 
 ## Creating a new IntelliJ Project
 
@@ -307,7 +308,7 @@ Your console should print the frequency of each word that appears in Shakespeare
 
 Additionally, if you open the File View in Ambari you should see results under /tmp/shakespeareWordCount. This shows the results have also been stored in HDFS.
 
-## Deploying to the Cloud
+<!--- ## Deploying to the Cloud
 
 In this section we'll learn how to deploy our code to a real cluster. If you don't have a cluster available you can quickly set one up using [Hortonworks Cloud Solutions](https://hortonworks.com/products/data-platforms/cloud/).
 
@@ -335,7 +336,7 @@ Notice that we specified the parameters **--master yarn** instead of **--master 
 
 The parameter **--deploy-mode client** indicates we want to use the current machine as the driver machine for Spark. The driver machine is a single machine that initiates a Spark job, and is also where summary results are collected when the job is finished. Alternatively, we could have specified **--deploy-mode cluster**, which would have allowed YARN to choose the driver machine.
 
-It's important to note that a poorly written Spark program can accidentally try to bring back many Terabytes of data to the driver machine, causing it to crash. For this reason you shouldn't use the master node of your cluster as your driver machine. Many organizations submit Spark jobs from what's called an edge node, which is a separate machine that isn't used to store data or perform computation. Since the edge node is separate from the cluster, it can go down without affecting the rest of the cluster. Edge nodes are also used for data science work on aggregate data that has been retrieved from the cluster. For example, a data scientist might submit a Spark job from an edge node to transform a 10 TB dataset into a 1 GB aggregated dataset, and then do analytics on the edge node using tools like R and Python. If you plan on setting up an edge node, make sure that machine doesn't have the DataNode or HostManager components installed, since these are the data storage and compute components of the cluster. You can check this on the host tab in Ambari.
+It's important to note that a poorly written Spark program can accidentally try to bring back many Terabytes of data to the driver machine, causing it to crash. For this reason you shouldn't use the master node of your cluster as your driver machine. Many organizations submit Spark jobs from what's called an edge node, which is a separate machine that isn't used to store data or perform computation. Since the edge node is separate from the cluster, it can go down without affecting the rest of the cluster. Edge nodes are also used for data science work on aggregate data that has been retrieved from the cluster. For example, a data scientist might submit a Spark job from an edge node to transform a 10 TB dataset into a 1 GB aggregated dataset, and then do analytics on the edge node using tools like R and Python. If you plan on setting up an edge node, make sure that machine doesn't have the DataNode or HostManager components installed, since these are the data storage and compute components of the cluster. You can check this on the host tab in Ambari.--->
 
 ## Live Debugging
 
