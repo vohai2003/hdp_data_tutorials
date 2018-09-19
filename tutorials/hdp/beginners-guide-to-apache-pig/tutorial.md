@@ -329,4 +329,3 @@ Congratulations! You have successfully completed the tutorial and well on your w
 - [Apache Pig](https://hortonworks.com/tutorial/how-to-process-data-with-apache-pig/)
 - [Welcome to Apache Pig!](https://pig.apache.org/)
 - [Pig Latin Basics](https://pig.apache.org/docs/r0.12.0/basic.html#store)
-- [Programming Pig](http://www.amazon.com/Programming-Pig-Alan-Gates/dp/1449302645)
