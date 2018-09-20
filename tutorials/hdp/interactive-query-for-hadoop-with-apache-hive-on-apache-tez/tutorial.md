@@ -58,11 +58,13 @@ We will be uploading two csv files - **drivers.csv** and **timesheet.csv** on to
 
 ## Create Hive Tables from CSV files on DAS
 
-You may access DAS by selecting this service from the [Sandbox Splash Page](sandbox-hdp.hortonworks.com:1080/splash2.html)
+DAS can be accessed by selecting the service from [Sandbox Splash Page](http://sandbox-hdp.hortonworks.com:1080/splash2.html)
 
 ![das-ui-splash](assets/das-ui-splash.jpg)
 
-You may also access DAS by navigating to [sandbox-hdp.hortonworks.com:30800](sandbox-hdp.hortonworks.com:30800/#/). You will find the Data Analytics Studio UI:
+DAS is also accessible by navigating to [sandbox-hdp.hortonworks.com:30800](http://sandbox-hdp.hortonworks.com:30800/#/)
+
+You will find the Data Analytics Studio UI:
 
 ![welcome-to-das](assets/welcome-to-das.jpg)
 
@@ -80,13 +82,34 @@ Next, we will create tables based on the csv files we downloaded earlier.
 
 5\. Select **_Upload from Local_**
 
-6\. Drag and drop **drivers.csv** and **timesheet.csv** onto the browser or select them from your local directory
+6\. Drag and drop **drivers.csv** and **timesheet.csv** onto the browser or select the files from your local directory
 
 ![upload-files](assets/upload-files.jpg)
 
 7\. Review the data and the DDL, once you are satisfied select **create**
 
 ![review-data-ddl](assets/review-data-ddl.jpg)
+
+Here is a table of the DDL for your reference:
+
+**Driver Table**
+
+| Item      | Data Type |
+|-----------|-----------|
+| driverId  | int       |
+| name      | string    |
+| ssn       | big int   |
+| location  | string    |
+| certified | string    |
+| wageplan  | string    |
+
+**Timesheet Table**
+
+| driverId     | int |
+|--------------|-----|
+| week         | int |
+| hoursLogged  | int |
+| miles_logged | int |
 
 ## Speed Improvements
 
