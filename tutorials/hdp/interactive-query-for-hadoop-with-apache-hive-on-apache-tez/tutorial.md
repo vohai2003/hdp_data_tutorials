@@ -6,7 +6,7 @@ experience: Intermediate
 persona: Developer, Administrator, Data Scientist & Analyst
 source: Hortonworks
 use case: EDW Optimization
-technology: Apache Ambari, Apache Hive, Apache Tez
+technology: Apache Ambari, Apache Hive, Apache Tez, DAS
 release: hdp-3.0.0
 environment: Sandbox
 product: HDP
@@ -17,25 +17,22 @@ series: HDP > Develop with Hadoop > Hello World, HDP > Hadoop for Data Scientist
 
 ## Introduction
 
-In this tutorial, we’ll focus on taking advantage of the improvements to [Apache Hive](https://hortonworks.com/hadoop/hive) and [Apache Tez](https://hortonworks.com/hadoop/tez) through the work completed by the community as part of the [Stinger initiative](https://hortonworks.com/blog/100x-faster-hive/). These features will be discussed in this tutorial:
+In this tutorial, we’ll focus on taking advantage of the improvements to [Apache Hive](https://hortonworks.com/hadoop/hive) and [Apache Tez](https://hortonworks.com/hadoop/tez) through the work completed by the community as part of the [Stinger initiative](https://hortonworks.com/blog/100x-faster-hive/), some of the features which helped make Hive be over one hundred times faster are:
 
 - Performance improvements of Hive on Tez
 - Performance improvements of Vectorized Query
 - Cost-based Optimization Plans
 - Multi-tenancy with HiveServer2
-- SQL Compliance Improvements
 
 ## Prerequisites
 
-- Downloaded and Installed latest [Hortonworks Sandbox](https://hortonworks.com/downloads/#sandbox)
+- Downloaded and deployed the [Hortonworks Data Platform (HDP)](https://hortonworks.com/downloads/#sandbox) Sandbox
 - [Learning the Ropes of the HDP Sandbox](https://hortonworks.com/tutorial/learning-the-ropes-of-the-hortonworks-sandbox/)
-- Allow yourself around one hour to complete this tutorial
 
 ## Outline
 
 - [Download Data](#download-data)
-- [Upload Data Using HDFS Files View](#upload-data-using-hdfs-files-view)
-- [Create Hive Queries](#create-hive-queries)
+- [Create Hive Tables From CSV files on DAS](#create-hive-tables-from-csv-files-on-das)
 - [Speed Improvements](#speed-improvements)
 - [Configure MapReduce as Execution Engine in Hive view Settings Tab](#configure-mapreduce-as-execution-engine-in-hive-view-settings-tab)
 - [Test Query on MapReduce Engine](#test-query-on-mapreduce-engine)
@@ -48,84 +45,52 @@ In this tutorial, we’ll focus on taking advantage of the improvements to [Apac
 
 ## Download Data
 
-Download the driver data file from [here](assets/driver_data.zip).
+Download the data from our repository:
 
-Once you have the file you will need to unzip the file into a directory. We will be uploading two csv files - drivers.csv and timesheet.csv.
-
-## Upload Data Using HDFS Files View
-
-Let’s use the above two csv files `(drivers.csv and timesheet.csv)` to create two new tables using the following step. Navigate to `http://sandbox-hdp.hortonworks.com:8080` using your browser. Click the HDFS `Files view` from the dropdown menu.
-
-![select_files_view](assets/select_files_view.jpg)
-
-Go to the `/tmp` folder and if it is not already present, create a new directory called `data` using the controls toward the top of the screen. Click next to the folder and click **Permissions**. Make sure to check (blue) all of the permissions boxes.
-
-![edit_permissions](assets/edit_permissions.jpg)
-
-Now, let’s upload the above data files into HDFS and create two hive tables using the following steps.
-Upload the two files under `/tmp/data` using `Upload` at the top of the screen
-
-![uploaded_files](assets/uploaded_files.jpg)
-
-## Create Hive Queries
-
-Now head on over to [**Data Analytics Studio (DAS)**](sandbox-hdp.hortonworks.com:30800)
-
-![das-home](assets/das-home.jpg)
-
-We will now use hive and create the two tables. They will be named per the csv file names : `drivers` and `timesheet`.
-Use the following two queries to create the tables a then load the data
-
-### Create Table drivers
-
-~~~sql
-create table drivers
-(driverId int,
- name string,
- ssn bigint,
- location string,
- certified string,
- wageplan string)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-STORED AS TEXTFILE
-TBLPROPERTIES("skip.header.line.count"="1");
+~~~bash
+wget https://github.com/hortonworks/data-tutorials/raw/master/tutorials/hdp/interactive-query-for-hadoop-with-apache-hive-on-apache-tez/assets/driver_data.zip
+unzip driver_data.zip
 ~~~
 
-### Create Table timesheet
+Alternatively, [click here](assets/driver_data.zip) to download.
 
-~~~sql
-create table timesheet
-(driverId int,
- week int,
- hoursLogged int,
- milesLogged int)
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-STORED AS TEXTFILE
-TBLPROPERTIES("skip.header.line.count"="1");
-~~~
+We will be uploading two csv files - **drivers.csv** and **timesheet.csv** on to DAS to create tables from them.
 
-Two newly created tables should appear in a few seconds:
+## Create Hive Tables from CSV files on DAS
 
-![database_explorer](assets/database_explorer.jpg)
+You may access DAS by selecting this service from the [Sandbox Splash Page](sandbox-hdp.hortonworks.com:1080/splash2.html)
 
-### 3.3 Load Data into Query Tables
+![das-ui-splash](assets/das-ui-splash.jpg)
 
-We’re are now going to load the data into the two tables using the `LOAD DATA INPATH` Hive command
+You may also access DAS by navigating to [sandbox-hdp.hortonworks.com:30800](sandbox-hdp.hortonworks.com:30800/#/). You will find the Data Analytics Studio UI:
 
-~~~sql
-LOAD DATA INPATH '/tmp/data/drivers.csv' OVERWRITE INTO TABLE drivers;
-LOAD DATA INPATH '/tmp/data/timesheet.csv' OVERWRITE INTO TABLE timesheet;
-~~~
+![welcome-to-das](assets/welcome-to-das.jpg)
 
-You should now be able to obtain results when selecting small amounts of data from either table:
+Next, we will create tables based on the csv files we downloaded earlier.
 
-![select_data_drivers](assets/select_data_drivers.jpg)
+1\. Click on **Database**
+
+2\. Select the `+` button to add a new table
+
+3\. Click on **UPLOAD TABLE**
+
+![add-new-table](assets/add-new-table.jpg)
+
+4\. Select the **_Is first row header?_** checkbox
+
+5\. Select **_Upload from Local_**
+
+6\. Drag and drop **drivers.csv** and **timesheet.csv** onto the browser or select them from your local directory
+
+![upload-files](assets/upload-files.jpg)
+
+7\. Review the data and the DDL, once you are satisfied select **create**
+
+![review-data-ddl](assets/review-data-ddl.jpg)
 
 ## Speed Improvements
 
-To take a look at the speed improvements of Hive on Tez, we can run some sample queries.
+To experience the speed improvements of Hive on Tez, we will run some sample queries.
 
 By default, the Hive view runs with Tez as it's execution engine. That's because Tez has great speed improvements over the original MapReduce execution engine. But by how much exactly are these improvements? Well let's find out!
 
@@ -154,7 +119,7 @@ Save the changes and restart all services required.
 
 ## Test Query on MapReduce Engine
 
-We are now going to test a query using MapReduce as our execution engine. Execute the following query and wait for the results.
+We are now going to test a query using MapReduce as our execution engine. [Head back to DAS](sandbox-hdp.hortonworks.com:30800/#/) then execute the following query and wait for the results.
 
 ~~~sql
 select d.*, t.hoursLogged, t.milesLogged
@@ -226,7 +191,7 @@ To experience this further, you could use your own dataset, upload to your HDP S
 
 ## Track Hive on Tez Jobs
 
-You can track your Hive on Tez jobs in HDP Sandbox Web UI as well. Please go to : [http://sandbox-hdp.hortonworks.com:8088/ui2](http://sandbox-hdp.hortonworks.com:8088/ui2/#/cluster-overview) and track your jobs while running or post to see the details under the application tab.
+You can track your Hive on Tez jobs in HDP Sandbox Web UI as well by navigating to  [http://sandbox-hdp.hortonworks.com:8088/ui2](http://sandbox-hdp.hortonworks.com:8088/ui2/#/cluster-overview), here you can observe the running state of the queries we just experimented with, as well as the engine used in the background.
 
 ![all_applications](assets/all_applications.jpg)
 
@@ -234,7 +199,7 @@ You can click on your job and see further details.
 
 ## Summary
 
-You learned to perform basic hive queries, compared Hive on MapReduce and Tez Engine.
+You learned how to create Hive tables from `.csv` files using DAS. We also experimented with **MapReduce** and **Tez** to observe the speed improvements of Hive on Tez.
 
 ## Further Reading
 
