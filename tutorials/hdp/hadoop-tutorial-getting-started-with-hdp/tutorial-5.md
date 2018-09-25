@@ -14,24 +14,24 @@ In this tutorial we will introduce Apache Spark. In the earlier section of the l
 
 This tutorial is a part of a series of hands on tutorials to get you started on HDP using the Hortonworks sandbox. Please ensure you complete the prerequisites before proceeding with this tutorial.
 
--   Downloaded and Installed [Hortonworks Sandbox](https://hortonworks.com/downloads/#sandbox)
--   [Learning the Ropes of the HDP Sandbox](https://hortonworks.com/tutorial/learning-the-ropes-of-the-hortonworks-sandbox/)
--   [Loading Sensor Data into HDFS](https://hortonworks.com/tutorial/hadoop-tutorial-getting-started-with-hdp/section/2/)
--   [Hive - Data ETL](https://hortonworks.com/tutorial/hadoop-tutorial-getting-started-with-hdp/section/3/)
+- Downloaded and deployed the [Hortonworks Data Platform (HDP)](https://hortonworks.com/downloads/#sandbox) Sandbox
+- [Learning the Ropes of the HDP Sandbox](https://hortonworks.com/tutorial/learning-the-ropes-of-the-hortonworks-sandbox/)
+- [Loading Sensor Data into HDFS](https://hortonworks.com/tutorial/hadoop-tutorial-getting-started-with-hdp/section/2/)
+- [Hive - Data ETL](https://hortonworks.com/tutorial/hadoop-tutorial-getting-started-with-hdp/section/3/)
 
 ## Outline
 
--   [Concepts](#concepts)
--   [Apache Spark Basics](#apache-spark-basics)
--   [Configure Spark services using Ambari](#configure-spark-services-using-ambari)
--   [Create a Hive Context](#create-a-hive-context)
--   [Create a RDD from Hive Context](#create-a-rdd-from-hive-context)
--   [Querying Against a Table](#querying-against-a-table)
--   [Load and save data into Hive as ORC](#load-and-save-data-into-hive-as-orc)
--   [Full Spark Code Review](#full-spark-code-review)
--   [Summary](#summary)
--   [Further Reading](#further-reading)
--   [Appendix A: Run Spark in the Spark Interactive Shell](#run-spark-in-shell)
+- [Concepts](#concepts)
+- [Apache Spark Basics](#apache-spark-basics)
+- [Configure Spark services using Ambari](#configure-spark-services-using-ambari)
+- [Create a Hive Context](#create-a-hive-context)
+- [Create a RDD from Hive Context](#create-a-rdd-from-hive-context)
+- [Querying Against a Table](#querying-against-a-table)
+- [Load and save data into Hive as ORC](#load-and-save-data-into-hive-as-orc)
+- [Full Spark Code Review](#full-spark-code-review)
+- [Summary](#summary)
+- [Further Reading](#further-reading)
+- [Appendix A: Run Spark in the Spark Interactive Shell](#run-spark-in-shell)
 
 ## Concepts
 
@@ -43,7 +43,7 @@ Apache Spark was designed to be a fast, general-purpose, easy-to-use computing p
 
 [Apache Spark](https://hortonworks.com/hadoop/spark/) is a fast, in-memory data processing engine with elegant and expressive development [APIs](https://spark.apache.org/docs/1.6.1/api/R/index.html) in [Scala](https://spark.apache.org/docs/1.6.1/api/scala/index.html#package), [Java](https://spark.apache.org/docs/1.6.1/api/java/index.html), [Python](https://spark.apache.org/docs/1.6.1/api/python/index.html) and [R](https://spark.apache.org/docs/1.6.1/api/R/index.html) that allow data workers to efficiently execute machine learning algorithms that require fast iterative access to datasets. Spark on [Apache Hadoop YARN](https://hortonworks.com/hadoop/YARN) enables deep integration with Hadoop and other YARN enabled workloads in the enterprise.
 
-You can run batch application such as MapReduce types jobs or iterative algorithms that build upon each other. You can also run interactive queries and process streaming data with your application. Spark also provides a number of libraries which you can easily use to expand beyond the basic Spark capabilities such as Machine Learning algorithms, SQL, streaming, and graph processing. Spark runs on Hadoop clusters such as Hadoop YARN or Apache Mesos, or even in a Standalone Mode with its own scheduler. The Sandbox includes both Spark 1.6 and Spark 2.0.
+You can run batch application such as MapReduce types jobs or iterative algorithms that build upon each other. You can also run interactive queries and process streaming data with your application. Spark also provides a number of libraries which you can easily use to expand beyond the basic Spark capabilities such as Machine Learning algorithms, SQL, streaming, and graph processing. Spark runs on Hadoop clusters such as Hadoop YARN or Apache Mesos, or even in a Standalone Mode with its own scheduler. The Sandbox includes both Spark 1.6 and Spark 2.3.1.
 
 ![Lab4_1](assets/Lab4_1.png)
 
@@ -55,17 +55,17 @@ Let's get started!
 
 **Note:** If these services are disabled, start these services.
 
-![ambari_dashboard_lab4](assets/ambari_dashboard_lab4.jpg)
+![ambari-dash-running-spark](assets/ambari-dash-running-spark.jpg)
 
 2\. Open Zeppelin interface using browser URL:
 
-~~~
+~~~bash
 http://sandbox-hdp.hortonworks.com:9995/
 ~~~
 
 You should see a Zeppelin Welcome Page:
 
-![zeppelin_welcome_page](assets/zeppelin_welcome_page_lab4.png)
+![welcome-to-zeppelin](assets/welcome-to-zeppelin.jpg)
 
 Optionally, if you want to find out how to access the Spark shell to run code on Spark refer to [Appendix A](#run-spark-in-shell).
 
@@ -73,9 +73,9 @@ Optionally, if you want to find out how to access the Spark shell to run code on
 
 Click on a Notebook tab at the top left and select **Create new note**. Name your notebook `Compute Riskfactor with Spark`.
 
-![create_new_notebook_hello_hdp_lab4](assets/create_new_notebook_hello_hdp_lab4.png)
+crea![create-new-notebook](assets/create-new-notebook.jpg)
 
-![notebook_name_hello_hdp_lab4](assets/notebook_name_hello_hdp_lab4.png)
+![new-spark-note](assets/new-spark-note.jpg)
 
 ## Create a Hive Context
 
@@ -83,22 +83,25 @@ For improved Hive integration, [ORC file](https://hortonworks.com/blog/orcfile-i
 
 ### Import sql libraries:
 
-If you have gone through the Pig section, you have to drop the table `riskfactor` so that you can populate it again using Spark. Copy and paste the following code into your Zeppelin notebook, then click the play button. Alternatively, press `shift+enter` to run the code.
+If you already have a `riskfactor` table on your sandbox you must remove it so that you can populate it again using Spark. Copy and paste the following code into your Zeppelin notebook, then click the play button. Alternatively, press `shift+enter` to run the code.
 
 ~~~scala
-%jdbc(hive) show tables
+%jdbc(hive)
+show tables
 ~~~
 
 If you see a table named `riskfactor`, let us drop it:
 
 ~~~scala
-%jdbc(hive) drop table riskfactor
+%jdbc(hive)
+drop table riskfactor
 ~~~
 
 To verify table has been dropped, let us do show tables again:
 
 ~~~scala
-%jdbc(hive) show tables
+%jdbc(hive)
+show tables
 ~~~
 
 ![drop_table_lab4](assets/drop_table_lab4.jpg)
@@ -132,8 +135,8 @@ Typically, RDDs are instantiated by loading data from a shared filesystem, HDFS,
 
 Once a RDD is instantiated, you can apply a [series of operations](https://spark.apache.org/docs/1.2.0/programming-guide.html#rdd-operations). All operations fall into one of two types: [transformations](https://spark.apache.org/docs/1.2.0/programming-guide.html#transformations) or [actions](https://spark.apache.org/docs/1.2.0/programming-guide.html#actions).
 
--   **Transformation** operations, as the name suggests, create new datasets from an existing RDD and build out the processing DAG that can then be applied on the partitioned dataset across the YARN cluster. Transformations do not return a value. In fact, nothing is evaluated during the definition of these transformation statements. Spark just creates these Direct Acyclic Graphs or DAG, which will only be evaluated at runtime. We call this *lazy* evaluation.
--   An **Action** operation, on the other hand, executes a DAG and returns a value.
+- **Transformation** operations, as the name suggests, create new datasets from an existing RDD and build out the processing DAG that can then be applied on the partitioned dataset across the YARN cluster. Transformations do not return a value. In fact, nothing is evaluated during the definition of these transformation statements. Spark just creates these Direct Acyclic Graphs or DAG, which will only be evaluated at runtime. We call this *lazy* evaluation.
+- An **Action** operation, on the other hand, executes a DAG and returns a value.
 
 ### View List of Tables in Hive Warehouse
 
@@ -190,9 +193,9 @@ val geolocation_temp2 = hiveContext.sql("SELECT driverid, count(driverid) occura
 
 ![filter_drivers_nonnormal_events_hello_hdp_lab4](assets/filter_drivers_nonnormal_events_hello_hdp_lab4.png)
 
--   As stated earlier about RDD transformations, select operation is a RDD transformation and therefore does not return anything.
+- As stated earlier about RDD transformations, select operation is a RDD transformation and therefore does not return anything.
 
--   The resulting table will have a count of total non-normal events associated with each driver. Register this filtered table as a temporary table so that subsequent SQL queries can be applied to it.
+- The resulting table will have a count of total non-normal events associated with each driver. Register this filtered table as a temporary table so that subsequent SQL queries can be applied to it.
 
 
 ~~~scala
@@ -205,7 +208,7 @@ hiveContext.sql("show tables").show()
 ![register_filtered_table_hello_hdp_lab4](assets/register_filtered_table_hello_hdp_lab4.png)
 
 
--   You can view the result by executing an action operation on the RDD.
+- You can view the result by executing an action operation on the RDD.
 
 ~~~scala
 %spark2
@@ -220,7 +223,7 @@ geolocation_temp2.show(10)
 
 In this section we will perform a join operation geolocation_temp2 table has details of drivers and count of their respective non-normal events. drivermileage_temp1 table has details of total miles travelled by each driver.
 
--   We will join two tables on common column, which in our case is `driverid`.
+- We will join two tables on common column, which in our case is `driverid`.
 
 ~~~scala
 %spark2
@@ -229,7 +232,7 @@ val joined = hiveContext.sql("select a.driverid,a.occurance,b.totmiles from geol
 
 ![join_op_column_hello_hdp_lab4](assets/join_op_column_hello_hdp_lab4.png)
 
--   The resulting data set will give us total miles and total non-normal events for a particular driver. Register this filtered table as a temporary table so that subsequent SQL queries can be applied to it.
+- The resulting data set will give us total miles and total non-normal events for a particular driver. Register this filtered table as a temporary table so that subsequent SQL queries can be applied to it.
 
 ~~~scala
 %spark2
@@ -239,7 +242,7 @@ hiveContext.sql("show tables").show()
 
 ![register_joined_table_hello_hdp_lab4](assets/register_joined_table_hello_hdp_lab4.png)
 
--   You can view the result by executing action operation on RDD.
+- You can view the result by executing action operation on RDD.
 
 ~~~scala
 %spark2
@@ -267,7 +270,7 @@ risk_factor_spark.createOrReplaceTempView("risk_factor_spark")
 hiveContext.sql("show tables").show()
 ~~~
 
--   View the results
+- View the results
 
 ~~~scala
 %spark2
@@ -418,51 +421,51 @@ Congratulations! Let’s summarize the Spark coding skills and knowledge we acqu
 ## Further Reading
 
 To learn more about Spark, checkout these resources:
--   [Spark Tutorials](https://hortonworks.com/tutorials/?filters=apache-spark)
--   [Apache Spark](https://hortonworks.com/hadoop/spark/)
--   [Apache Spark Welcome](http://spark.apache.org/)
--   [Spark Programming Guide](http://spark.apache.org/docs/latest/programming-guide.html#passing-functions-to-spark)
--   [Learning Spark](http://www.amazon.com/Learning-Spark-Lightning-Fast-Data-Analysis/dp/1449358624/ref=sr_1_1?ie=UTF8&qid=1456010684&sr=8-1&keywords=apache+spark)
--   [Advanced Analytics with Spark](http://www.amazon.com/Advanced-Analytics-Spark-Patterns-Learning/dp/1491912766/ref=pd_bxgy_14_img_2?ie=UTF8&refRID=19EGG68CJ0NTNE9RQ2VX)
+- [Spark Tutorials](https://hortonworks.com/tutorials/?filters=apache-spark)
+- [Apache Spark](https://hortonworks.com/hadoop/spark/)
+- [Apache Spark Welcome](http://spark.apache.org/)
+- [Spark Programming Guide](http://spark.apache.org/docs/latest/programming-guide.html#passing-functions-to-spark)
+- [Learning Spark](http://www.amazon.com/Learning-Spark-Lightning-Fast-Data-Analysis/dp/1449358624/ref=sr_1_1?ie=UTF8&qid=1456010684&sr=8-1&keywords=apache+spark)
+- [Advanced Analytics with Spark](http://www.amazon.com/Advanced-Analytics-Spark-Patterns-Learning/dp/1491912766/ref=pd_bxgy_14_img_2?ie=UTF8&refRID=19EGG68CJ0NTNE9RQ2VX)
 
 ## Appendix A: Run Spark in the Spark Interactive Shell <a id="run-spark-in-shell"></a>
 
 1\.  Using the [built-in SSH Web Client](https://hortonworks.com/tutorial/learning-the-ropes-of-the-hortonworks-sandbox/#shell-web-client-method) (aka shell-in-a-box), logon using **maria_dev**/**maria_dev**
 
 2\.  Let's enter the Spark interactive shell by typing the command:
--   ```spark-shell```
+- ```spark-shell```
 
 This will load the default Spark Scala API. Issue the command `:help` for help and `:quit` to exit.
 
-![spark_shell_welcome_page](assets/spark_shell_hello_hdp_lab4.jpg)
+![shell-hello-hdp](assets/shell-hello-hdp.jpg)
 
--   Execute the commands:
+- Execute the commands:
 
-    -   ```val hiveContext = new org.apache.spark.sql.SparkSession.Builder().getOrCreate()```
-    -   ```hiveContext.sql("show tables").show()```
-    -   ```val geolocation_temp1 = hiveContext.sql("select * from geolocation")```
-    -   ```val drivermileage_temp1 = hiveContext.sql("select * from drivermileage")```
-    -   ```geolocation_temp1.createOrReplaceTempView("geolocation_temp1")```
-    -   ```drivermileage_temp1.createOrReplaceTempView("drivermileage_temp1")```
-    -   ```hiveContext.sql("show tables").show()```
-    -   ```val geolocation_temp2 = hiveContext.sql("SELECT driverid, count(driverid) occurance from geolocation_temp1 where event!='normal' group by driverid")```
-    -   ```geolocation_temp2.createOrReplaceTempView("geolocation_temp2")```
-    -   ```hiveContext.sql("show tables").show()```
-    -   ```geolocation_temp2.show(10)```
-    -   ```val joined = hiveContext.sql("select a.driverid,a.occurance,b.totmiles from geolocation_temp2 a,drivermileage_temp1 b where a.driverid=b.driverid")```
-    -   ```joined.createOrReplaceTempView("joined")```
-    -   ```hiveContext.sql("show tables").show()```
-    -   ```joined.show(10)```
-    -   ```val risk_factor_spark = hiveContext.sql("select driverid, occurance, totmiles, totmiles/occurance riskfactor from joined")```
-    -   ```risk_factor_spark.createOrReplaceTempView("risk_factor_spark")```
-    -   ```hiveContext.sql("show tables").show()```
-    -   ```risk_factor_spark.show(10)```
-    -   ```hiveContext.sql("DROP TABLE IF EXISTS finalresults")```
-    -   ```hiveContext.sql("create table finalresults( driverid String, occurance bigint, totmiles bigint, riskfactor double) stored as orc").toDF()```
-    -   ```hiveContext.sql("show tables").show()```
-    -   ```risk_factor_spark.write.format("orc").mode("overwrite").save("risk_factor_spark")```
-    -   ```hiveContext.sql("load data inpath 'risk_factor_spark' into table finalresults")```
-    -   ```hiveContext.sql("DROP TABLE IF EXISTS riskfactor")```
-    -   ```hiveContext.sql("create table riskfactor as select * from finalresults").toDF()```
-    -   ```val riskfactor_temp = hiveContext.sql("SELECT * from riskfactor")```
-    -   ```riskfactor_temp.show(10)```
+  - ```val hiveContext = new org.apache.spark.sql.SparkSession.Builder().getOrCreate()```
+  - ```hiveContext.sql("show tables").show()```
+  - ```val geolocation_temp1 = hiveContext.sql("select * from geolocation")```
+  - ```val drivermileage_temp1 = hiveContext.sql("select * from drivermileage")```
+  - ```geolocation_temp1.createOrReplaceTempView("geolocation_temp1")```
+  - ```drivermileage_temp1.createOrReplaceTempView("drivermileage_temp1")```
+  - ```hiveContext.sql("show tables").show()```
+  - ```val geolocation_temp2 = hiveContext.sql("SELECT driverid, count(driverid) occurance from geolocation_temp1 where event!='normal' group by driverid")```
+  - ```geolocation_temp2.createOrReplaceTempView("geolocation_temp2")```
+  - ```hiveContext.sql("show tables").show()```
+  - ```geolocation_temp2.show(10)```
+  - ```val joined = hiveContext.sql("select a.driverid,a.occurance,b.totmiles from geolocation_temp2 a,drivermileage_temp1 b where a.driverid=b.driverid")```
+  - ```joined.createOrReplaceTempView("joined")```
+  - ```hiveContext.sql("show tables").show()```
+  - ```joined.show(10)```
+  - ```val risk_factor_spark = hiveContext.sql("select driverid, occurance, totmiles, totmiles/occurance riskfactor from joined")```
+  - ```risk_factor_spark.createOrReplaceTempView("risk_factor_spark")```
+  - ```hiveContext.sql("show tables").show()```
+  - ```risk_factor_spark.show(10)```
+  - ```hiveContext.sql("DROP TABLE IF EXISTS finalresults")```
+  - ```hiveContext.sql("create table finalresults( driverid String, occurance bigint, totmiles bigint, riskfactor double) stored as orc").toDF()```
+  - ```hiveContext.sql("show tables").show()```
+  - ```risk_factor_spark.write.format("orc").mode("overwrite").save("risk_factor_spark")```
+  - ```hiveContext.sql("load data inpath 'risk_factor_spark' into table finalresults")```
+  - ```hiveContext.sql("DROP TABLE IF EXISTS riskfactor")```
+  - ```hiveContext.sql("create table riskfactor as select * from finalresults").toDF()```
+  - ```val riskfactor_temp = hiveContext.sql("SELECT * from riskfactor")```
+  - ```riskfactor_temp.show(10)```

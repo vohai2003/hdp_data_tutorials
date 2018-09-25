@@ -14,19 +14,19 @@ In this tutorial, you will be introduced to [Apache Pig](https://hortonworks.com
 
 The tutorial is a part of series of hands on tutorial to get you started on HDP using Hortonworks sandbox. Please ensure you complete the prerequisites before proceeding with this tutorial.
 
--   Downloaded and Installed [Hortonworks Sandbox](https://hortonworks.com/downloads/#sandbox)
--   [Learning the Ropes of the HDP Sandbox](https://hortonworks.com/tutorial/learning-the-ropes-of-the-hortonworks-sandbox/)
--   [Loading Sensor Data into HDFS](https://hortonworks.com/tutorial/hadoop-tutorial-getting-started-with-hdp/section/2/)
--   [Hive - Data ETL](https://hortonworks.com/tutorial/hadoop-tutorial-getting-started-with-hdp/section/3/)
+- Downloaded and Installed [Hortonworks Sandbox](https://hortonworks.com/downloads/#sandbox)
+- [Learning the Ropes of the HDP Sandbox](https://hortonworks.com/tutorial/learning-the-ropes-of-the-hortonworks-sandbox/)
+- [Loading Sensor Data into HDFS](https://hortonworks.com/tutorial/hadoop-tutorial-getting-started-with-hdp/section/2/)
+- [Hive - Data ETL](https://hortonworks.com/tutorial/hadoop-tutorial-getting-started-with-hdp/section/3/)
 
 ## Outline
 
--   [Pig Basics](#pig-basics)
--   [Create Pig Script](#create-pig-script)
--   [Quick Recap](#quick-recap)
--   [Execute Pig Script on Tez](#execute-pig-script-on-tez)
--   [Summary](#summary)
--   [Further Reading](#further-reading)
+- [Pig Basics](#pig-basics)
+- [Create Pig Script](#create-pig-script)
+- [Quick Recap](#quick-recap)
+- [Execute Pig Script on Tez](#execute-pig-script-on-tez)
+- [Summary](#summary)
+- [Further Reading](#further-reading)
 
 ## Pig Basics
 
@@ -40,14 +40,14 @@ Pig scripts are **translated into a series of MapReduce jobs** that are **run on
 
 ### Create Table riskfactor from Existing trucks_mileage Data
 
-Next, you will use Pig to compute the risk factor of each driver. Before we can run the Pig code, the _table must already exist in Hive_ to satisfy one of the _requirements for the HCatStorer() class_. The Pig code expects the following structure for a table named `riskfactor`. Execute the following DDL in the Hive View 2.0 query editor:
+Next, you will use Pig to compute the risk factor of each driver. Before we can run the Pig code, the _table must already exist in Hive_ to satisfy one of the _requirements for the HCatStorer() class_. The Pig code expects the following structure for a table named `riskfactor`. Execute the following DDL on DAS compose editor:
 
 ~~~sql
 CREATE TABLE riskfactor (driverid string, events bigint, totmiles bigint, riskfactor float)
 STORED AS ORC;
 ~~~
 
-![riskfactor_lab3](assets/riskfactor_lab3.png)
+![risk-factor](assets/risk-factor.jpg)
 
 ### Verify Table riskfactor was Created Successfully
 
@@ -71,11 +71,11 @@ On the left is a list of your scripts, and on the right is a composition box for
 
 The following screenshot shows and describes the various components and features of the Pig View:
 
-1.  Quick link to view existing scripts, UDFs, or History of prior runs
-2.  View your current script or prior History
-3.  Helper functions to help write your scripts
-4.  Arguments needed for script execution
-5.  Execute button to run your script
+1. Quick link to view existing scripts, UDFs, or History of prior runs
+2. View your current script or prior History
+3. Helper functions to help write your scripts
+4. Arguments needed for script execution
+5. Execute button to run your script
 
 ![pig_user_view_components_hello_hdp](assets/pig_user_view_components_hello_hdp.png)
 
@@ -93,12 +93,12 @@ Name the script **riskfactor.pig**, then click the **Create** button:
 
 We will use **HCatalog** to _load data into Pig_. HCatalog allows us to _share schema across tools_ and users within our Hadoop environment. It also allows us to _factor out schema_ and _location information from_ our _queries and scripts_ and _centralize them in a common repository_. Since it is in HCatalog we can use the **HCatLoader() function**. Pig allows us to give the table a name or alias and not have to worry about allocating space and defining the structure. We just have to worry about how we are processing the table.
 
--   We can use the Pig helper located below the name of your script file to give us a template for the line. Click on the **Pig helper -> HCatalog -> LOAD** template
--   The entry **%TABLE%** is highlighted in red for us. Type the name of the table which is `geolocation`.
--   Remember to add the **a =** before the template. This saves the results into a. Note the **‘=’** has to have a space before and after it.
--   Our completed line of code will look like:
+- We can use the Pig helper located below the name of your script file to give us a template for the line. Click on the **Pig helper -> HCatalog -> LOAD** template
+- The entry **%TABLE%** is highlighted in red for us. Type the name of the table which is `geolocation`.
+- Remember to add the **a =** before the template. This saves the results into a. Note the **‘=’** has to have a space before and after it.
+- Our completed line of code will look like:
 
-~~~pig
+~~~sql
 a = LOAD 'geolocation' USING org.apache.hive.hcatalog.pig.HCatLoader();
 ~~~
 
@@ -110,12 +110,12 @@ The script above loads data, in our case, from a file named **geolocation** usin
 
 The next step is to **select a subset of the records**, so we have the records of drivers _for which the event is not normal_. To do this in Pig we **use the Filter operator**. We **instruct Pig to Filter** our table and keep _all records where event !=“normal”_ and store this in b. With this one simple statement, Pig will look at each record in the table and filter out all the ones that do not meet our criteria.
 
--   We can use Pig Help again by clicking on the **Pig helper-> Relational Operators -> FILTER** template
--   We can replace **%VAR%** with **“a”** (hint: tab jumps you to the next field)
--   Our **%COND%** is “**event !='normal';** ” (note: single quotes are needed around normal and don’t forget the trailing semi-colon)
--   Complete line of code will look like:
+- We can use Pig Help again by clicking on the **Pig helper-> Relational Operators -> FILTER** template
+- We can replace **%VAR%** with **“a”** (hint: tab jumps you to the next field)
+- Our **%COND%** is “**event !='normal';** ” (note: single quotes are needed around normal and don’t forget the trailing semi-colon)
+- Complete line of code will look like:
 
-~~~pig
+~~~sql
 b = filter a by event != 'normal';
 ~~~
 
@@ -127,11 +127,11 @@ Copy-and-paste the above Pig code into the riskfactor.pig window.
 
 Since we have the right set of records, let's iterate through them. We use the **“foreach”** operator on the grouped data to iterate through all the records. We would also like to **know the number of non normal events associated with a driver**, so to achieve this we _add ‘1’ to every row_ in the data set.
 
--   Use Pig Help again by clicking on the **Pig helper -> Relational Operators -> FOREACH** template
--   Our **%DATA%** is **b** and the second **%NEW_DATA%** is “**driverid, event, (int) ‘1’ as occurance;**”
--   Complete line of code will look like:
+- Use Pig Help again by clicking on the **Pig helper -> Relational Operators -> FOREACH** template
+- Our **%DATA%** is **b** and the second **%NEW_DATA%** is “**driverid, event, (int) ‘1’ as occurance;**”
+- Complete line of code will look like:
 
-~~~pig
+~~~sql
 c = foreach b generate driverid, event, (int) '1' as occurance;
 ~~~
 
@@ -143,19 +143,19 @@ Copy-and-paste the above Pig code into the riskfactor.pig window:
 
 The **group** statement is important because it _groups the records by one or more relations_. In our case, we want to group by driver id and iterate over each row again to sum the non normal events.
 
--   Use the template **Pig helper -> Relational Operators -> GROUP %VAR% BY %VAR%**
--   First **%VAR%** takes **“c”** and second **%VAR%** takes “**driverid;**”
--   Complete line of code will look like:
+- Use the template **Pig helper -> Relational Operators -> GROUP %VAR% BY %VAR%**
+- First **%VAR%** takes **“c”** and second **%VAR%** takes “**driverid;**”
+- Complete line of code will look like:
 
-~~~pig
+~~~sql
 d = group c by driverid;
 ~~~
 
 Copy-and-paste the above Pig code into the riskfactor.pig window.
 
-*   Next use Foreach statement again to add the occurance.
+- Next use Foreach statement again to add the occurance.
 
-~~~pig
+~~~sql
 e = foreach d generate group as driverid, SUM(c.occurance) as t_occ;
 ~~~
 
@@ -165,17 +165,17 @@ e = foreach d generate group as driverid, SUM(c.occurance) as t_occ;
 
 In this section, we will load drivermileage table into Pig using **Hcatlog** and perform a **join** operation on driverid. The **resulting data** set will _give us total miles and total non normal events_ for a particular driver.
 
--   Load drivermileage using HcatLoader()
+- Load drivermileage using HcatLoader()
 
-~~~pig
+~~~sql
 g = LOAD 'drivermileage' using org.apache.hive.hcatalog.pig.HCatLoader();
 ~~~
 
--   Use the template **Pig helper ->Relational Operators->JOIN %VAR% BY**
--   Replace **%VAR%** by ‘**e**’ and after **BY** put ‘**driverid, g by driverid;**’
--   Complete line of code will look like:
+- Use the template **Pig helper ->Relational Operators->JOIN %VAR% BY**
+- Replace **%VAR%** by ‘**e**’ and after **BY** put ‘**driverid, g by driverid;**’
+- Complete line of code will look like:
 
-~~~pig
+~~~sql
 h = join e by driverid, g by driverid;
 ~~~
 
@@ -187,18 +187,19 @@ Copy-and-paste the above two Pig codes into the riskfactor.pig window.
 
 In this section, we will associate a driver risk factor with every driver. To **calculate driver risk factor**, _divide total miles travelled by non normal event occurrences_.
 
--   We will use **Foreach** statement again to compute driver risk factor for each driver.
--   Use the following code and paste it into your Pig script.
+- We will use **Foreach** statement again to compute driver risk factor for each driver.
+- Use the following code and paste it into your Pig script.
 
-~~~pig
+~~~sql
 final_data = foreach h generate $0 as driverid, $1 as events, $3 as totmiles, (float) $3/$1 as riskfactor;
 ~~~
 
--   As a final step, **store the data** into a table _using Hcatalog_.
+- As a final step, **store the data** into a table _using Hcatalog_.
 
-~~~pig
+~~~sql
 store final_data into 'riskfactor' using org.apache.hive.hcatalog.pig.HCatStorer();
 ~~~
+
 Here is the final code and what it will look like once you paste it into the editor.
 
 > Note: Refer to [Pig Latin Basics - store](http://pig.apache.org/docs/r0.14.0/basic.html#store) to learn more about the **store** operator.
@@ -211,7 +212,7 @@ Add Pig argument **-useHCatalog** (Case Sensitive).
 
 **Final Pig script should look like:**
 
-~~~pig
+~~~sql
 a = LOAD 'geolocation' using org.apache.hive.hcatalog.pig.HCatLoader();
 b = filter a by event != 'normal';
 c = foreach b generate driverid, event, (int) '1' as occurance;
@@ -231,13 +232,13 @@ Save the file `riskfactor.pig` by clicking the **Save** button in the left-hand 
 
 Before we execute the code, let’s review the code again:
 
--   The line `a = ` loads the geolocation table from HCatalog.
--   The line `b = ` filters out all the rows where the event is not ‘Normal’.
--   Then we add a column called occurrence and assign it a value of 1.
--   We then group the records by driverid and sum up the occurrences for each driver.
--   At this point we need the miles driven by each driver, so we load the table we created using Hive.
--   To get our final result, we join by the driverid the count of events in e with the mileage data in g.
--   Now it is real simple to calculate the risk factor by dividing the miles driven by the number of events
+- The line `a = ` loads the geolocation table from HCatalog.
+- The line `b = ` filters out all the rows where the event is not ‘Normal’.
+- Then we add a column called occurrence and assign it a value of 1.
+- We then group the records by driverid and sum up the occurrences for each driver.
+- At this point we need the miles driven by each driver, so we load the table we created using Hive.
+- To get our final result, we join by the driverid the count of events in e with the mileage data in g.
+- Now it is real simple to calculate the risk factor by dividing the miles driven by the number of events
 
 You need to configure the Pig Editor to use HCatalog so that the Pig script can load the proper libraries. In the Pig arguments text box, enter **-useHCatalog** and click the **Add** button:
 
@@ -278,9 +279,9 @@ Let's verify pig read from these tables successfully and stored the data into ou
 
 What results do our logs show us about our Pig Script?
 
--   Read 8000 records from our **geolocation** table
--   Read 100 records from our **drivermileage** table
--   Stored 99 records into our **riskfactor** table
+- Read 8000 records from our **geolocation** table
+- Read 100 records from our **drivermileage** table
+- Stored 99 records into our **riskfactor** table
 
 ### Verify Pig Script Successfully Populated Hive Table
 
@@ -298,7 +299,7 @@ Congratulations! Let’s summarize the Pig commands we learned in this tutorial 
 
 Strengthen your foundation of Pig Latin and reinforce why this scripting platform is beneficial for processing and analyzing massive data sets with these resources:
 
--   To practice more Pig programming, visit [Pig Tutorials](https://hortonworks.com/tutorials/?filters=apache-pig)
--   [Apache Pig](https://hortonworks.com/hadoop/pig/)
--   [Programming Pig](http://www.amazon.com/Programming-Pig-Alan-Gates/dp/1449302645/ref=sr_1_2?ie=UTF8&qid=1455994738&sr=8-2&keywords=pig+latin&refinements=p_72%3A2661618011)
--   [HDP DEVELOPER: APACHE PIG AND HIVE](https://hortonworks.com/training/class/hadoop-2-data-analysis-pig-hive/)
+- To practice more Pig programming, visit [Pig Tutorials](https://hortonworks.com/tutorials/?filters=apache-pig)
+- [Apache Pig](https://hortonworks.com/hadoop/pig/)
+- [Programming Pig](http://www.amazon.com/Programming-Pig-Alan-Gates/dp/1449302645/ref=sr_1_2?ie=UTF8&qid=1455994738&sr=8-2&keywords=pig+latin&refinements=p_72%3A2661618011)
+- [HDP DEVELOPER: APACHE PIG AND HIVE](https://hortonworks.com/training/class/hadoop-2-data-analysis-pig-hive/)
