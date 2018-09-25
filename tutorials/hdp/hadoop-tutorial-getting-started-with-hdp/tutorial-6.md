@@ -14,21 +14,21 @@ In this tutorial you will be introduced to Apache Zeppelin and teach you to visu
 
 The tutorial is a part of series of hands on tutorial to get you started on HDP using the Hortonworks sandbox. Please ensure you complete the prerequisites before proceeding with this tutorial.
 
--   Downloaded and Installed [Hortonworks Sandbox](https://hortonworks.com/downloads/#sandbox)
--   [Learning the Ropes of the HDP Sandbox](https://hortonworks.com/tutorial/learning-the-ropes-of-the-hortonworks-sandbox/)
--   [Loading Sensor Data into HDFS](https://hortonworks.com/tutorial/hadoop-tutorial-getting-started-with-hdp/section/2/)
--   [Hive - Data ETL](https://hortonworks.com/tutorial/hadoop-tutorial-getting-started-with-hdp/section/3/)
--   [Pig - Risk Factor](https://hortonworks.com/tutorial/hadoop-tutorial-getting-started-with-hdp/section/4/)
--   [Spark - Risk Factor](https://hortonworks.com/tutorial/hadoop-tutorial-getting-started-with-hdp/section/5/)
+- Downloaded and deployed the [Hortonworks Data Platform (HDP)](https://hortonworks.com/downloads/#sandbox) Sandbox
+- [Learning the Ropes of the HDP Sandbox](https://hortonworks.com/tutorial/learning-the-ropes-of-the-hortonworks-sandbox/)
+- [Loading Sensor Data into HDFS](https://hortonworks.com/tutorial/hadoop-tutorial-getting-started-with-hdp/section/2/)
+- [Hive - Data ETL](https://hortonworks.com/tutorial/hadoop-tutorial-getting-started-with-hdp/section/3/)
+- [Pig - Risk Factor](https://hortonworks.com/tutorial/hadoop-tutorial-getting-started-with-hdp/section/4/)
+- [Spark - Risk Factor](https://hortonworks.com/tutorial/hadoop-tutorial-getting-started-with-hdp/section/5/)
 
 ## Outline
 
--   [Apache Zeppelin](#apache-zeppelin)
--   [Create a Zeppelin Notebook](#create-a-zeppelin-notebook)
--   [Execute a Hive Query](#execute-a-hive-query)
--   [Build Charts Using Zeppelin](#build-charts-using-zeppelin)
--   [Summary](#summary)
--   [Further Reading](#further-reading)
+- [Apache Zeppelin](#apache-zeppelin)
+- [Create a Zeppelin Notebook](#create-a-zeppelin-notebook)
+- [Execute a Hive Query](#execute-a-hive-query)
+- [Build Charts Using Zeppelin](#build-charts-using-zeppelin)
+- [Summary](#summary)
+- [Further Reading](#further-reading)
 
 ## Apache Zeppelin
 
@@ -44,15 +44,15 @@ riskfactor data that we've collected earlier and visualize the result through gr
 
 Open Zeppelin interface using browser URL:
 
-~~~
+~~~bash
 http://sandbox-hdp.hortonworks.com:9995/
 ~~~
 
-![zeppelin_welcome_page_hello_hdp_lab4](assets/zeppelin_welcome_page_hello_hdp_lab4.png)
+![welcome-to-zeppelin](assets/welcome-to-zeppelin.jpg)
 
 Click on a Notebook tab at the top left and select **Create new note**. Name your notebook `Driver Risk Factor`.
 
-![zeppelin_create_new_notebook](assets/zeppelin_create_new_notebook.png)
+![create-new-notebook](assets/create-new-notebook.jpg)
 
 ## Execute a Hive Query
 
@@ -60,14 +60,15 @@ Click on a Notebook tab at the top left and select **Create new note**. Name you
 
 In the previous Spark and Pig tutorials you already created a table `finalresults` or `riskfactor` which gives the risk factor associated with every driver. We will use the data we generated in this table to visualize which drivers have the highest risk factor. We will use the jdbc Hive interpreter to write queries in Zeppelin.
 
-1) Copy and paste the code below into your Zeppelin note.
+1\. Copy and paste the code below into your Zeppelin note.
 
-~~~
+~~~sql
 %jdbc(hive)
 SELECT * FROM riskfactor
 ~~~
 
-2) Click the play button next to "ready" or "finished" to run the query in the Zeppelin notebook.
+2\. Click the play button next to "ready" or "finished" to run the query in the Zeppelin notebook.
+
 Alternative way to run query is "shift+enter."
 
 Initially, the query will produce the data in tabular format as shown in the screenshot.
@@ -106,7 +107,7 @@ dropping the different table fields to see what kind of results you can obtain.
 
 8\. Let' try a different query to find which cities and states contain the drivers with the highest risk factors.
 
-~~~
+~~~sql
 %jdbc(hive)
 SELECT a.driverid, a.riskfactor, b.city, b.state
 FROM riskfactor a, geolocation b where a.driverid=b.driverid
@@ -131,6 +132,6 @@ try to make better sense and meaning from the numbers!
 
 ## Further Reading
 
--   [Zeppelin on HDP](https://hortonworks.com/hadoop/zeppelin/)
--   [Apache Zeppelin Docs](https://zeppelin.incubator.apache.org/docs/)
--   [Zeppelin Homepage](https://zeppelin.incubator.apache.org/)
+- [Zeppelin on HDP](https://hortonworks.com/hadoop/zeppelin/)
+- [Apache Zeppelin Docs](https://zeppelin.incubator.apache.org/docs/)
+- [Zeppelin Homepage](https://zeppelin.incubator.apache.org/)
