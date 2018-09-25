@@ -86,9 +86,9 @@ Below is the `Composition Editor`. A query may span multiple lines. At the botto
 
 1\. `Execute` the query.
 
-2\. `Visual Explain` the query.
+2\. `Save As` the query with a name and save the current query and open a new Worksheet window for another query.
 
-3\. `Save As` the query with a name and save the current query and open a new Worksheet window for another query.
+3\. `Visual Explain` the query.
 
 ![das-compose-editor](assets/das-compose-editor.jpg)
 
