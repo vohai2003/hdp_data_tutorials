@@ -35,7 +35,7 @@ This tutorial is a part of a series of hands on tutorials to get you started on 
 
 ## Concepts
 
-MapReduce has been useful, but the amount of time it takes for the jobs to run can at times be exhaustive. Also, MapReduce jobs only work for a specific set of use cases. There is a need for computing framework that works for a wider set of use cases.
+MapReduce has been useful, but the amount of time it takes for the jobs to run can at times be exhaustive. Furthermore, MapReduce jobs only work for a specific set of use cases. There is a need for computing framework that works for a wider set of use cases.
 
 Apache Spark was designed to be a fast, general-purpose, easy-to-use computing platform. It extends the MapReduce model and takes it to a whole other level. The speed comes from the in-memory computations. Applications running in memory allow for much faster processing and response.
 
@@ -43,7 +43,7 @@ Apache Spark was designed to be a fast, general-purpose, easy-to-use computing p
 
 [Apache Spark](https://hortonworks.com/hadoop/spark/) is a fast, in-memory data processing engine with elegant and expressive development [APIs](https://spark.apache.org/docs/1.6.1/api/R/index.html) in [Scala](https://spark.apache.org/docs/1.6.1/api/scala/index.html#package), [Java](https://spark.apache.org/docs/1.6.1/api/java/index.html), [Python](https://spark.apache.org/docs/1.6.1/api/python/index.html) and [R](https://spark.apache.org/docs/1.6.1/api/R/index.html) that allow data workers to efficiently execute machine learning algorithms that require fast iterative access to datasets. Spark on [Apache Hadoop YARN](https://hortonworks.com/hadoop/YARN) enables deep integration with Hadoop and other YARN enabled workloads in the enterprise.
 
-You can run batch application such as MapReduce types jobs or iterative algorithms that build upon each other. You can also run interactive queries and process streaming data with your application. Spark also provides a number of libraries which you can easily use to expand beyond the basic Spark capabilities such as Machine Learning algorithms, SQL, streaming, and graph processing. Spark runs on Hadoop clusters such as Hadoop YARN or Apache Mesos, or even in a Standalone Mode with its own scheduler. The Sandbox includes both Spark 1.6 and Spark 2.3.1.
+You can run batch application such as MapReduce types jobs or iterative algorithms that build upon each other. You can also run interactive queries and process streaming data with your application. Spark also provides a number of libraries which you can easily use to expand beyond the basic Spark capabilities such as Machine Learning algorithms, SQL, streaming, and graph processing. Spark runs on Hadoop clusters such as Hadoop YARN or Apache Mesos, or even in a Standalone Mode with its own scheduler. The Sandbox includes Spark 2.3.1.
 
 ![Lab4_1](assets/Lab4_1.png)
 
@@ -69,11 +69,13 @@ You should see a Zeppelin Welcome Page:
 
 Optionally, if you want to find out how to access the Spark shell to run code on Spark refer to [Appendix A](#run-spark-in-shell).
 
-3\.  Create a Zeppelin Notebook
+3\. Create a Zeppelin Notebook
 
-Click on a Notebook tab at the top left and select **Create new note**. Name your notebook `Compute Riskfactor with Spark`.
+Click on a Notebook tab at the top left and select **Create new note**. Name your notebook:
 
-crea![create-new-notebook](assets/create-new-notebook.jpg)
+`Compute Riskfactor with Spark`
+
+![create-new-notebook](assets/create-new-notebook.jpg)
 
 ![new-spark-note](assets/new-spark-note.jpg)
 
@@ -117,20 +119,19 @@ val hiveContext = new org.apache.spark.sql.SparkSession.Builder().getOrCreate()
 
 ## Create a RDD from Hive Context
 
-**What is a RDD?**
+**What is an RDD?**
 
 Spark’s primary core abstraction is called a Resilient Distributed Dataset or RDD. It is a distributed collection of elements that is parallelized across the cluster. In other words, a RDD is an immutable collection of objects that is partitioned and distributed across multiple physical nodes of a YARN cluster and that can be operated in parallel.
 
 There are three methods for creating a RDD:
 
-1.  Parallelize an existing collection. This means that the data already resides within Spark and can now be operated on in parallel.
-2.  Create a RDD by referencing a dataset. This dataset can come from any storage source supported by Hadoop such as HDFS, Cassandra, HBase etc.
-3.  Create a RDD by transforming an existing RDD to create a new RDD.
+1. Parallelize an existing collection. This means that the data already resides within Spark and can now be operated on in parallel.
+2. Create a RDD by referencing a dataset. This dataset can come from any storage source supported by Hadoop such as HDFS, Cassandra, HBase etc.
+3. Create a RDD by transforming an existing RDD to create a new RDD.
 
 We will be using the later two methods in our tutorial.
 
 **RDD Transformations and Actions**
-
 Typically, RDDs are instantiated by loading data from a shared filesystem, HDFS, HBase, or any data source offering a Hadoop InputFormat on a YARN cluster.
 
 Once a RDD is instantiated, you can apply a [series of operations](https://spark.apache.org/docs/1.2.0/programming-guide.html#rdd-operations). All operations fall into one of two types: [transformations](https://spark.apache.org/docs/1.2.0/programming-guide.html#transformations) or [actions](https://spark.apache.org/docs/1.2.0/programming-guide.html#actions).
@@ -197,16 +198,13 @@ val geolocation_temp2 = hiveContext.sql("SELECT driverid, count(driverid) occura
 
 - The resulting table will have a count of total non-normal events associated with each driver. Register this filtered table as a temporary table so that subsequent SQL queries can be applied to it.
 
-
 ~~~scala
 %spark2
 geolocation_temp2.createOrReplaceTempView("geolocation_temp2")
 hiveContext.sql("show tables").show()
 ~~~
 
-
 ![register_filtered_table_hello_hdp_lab4](assets/register_filtered_table_hello_hdp_lab4.png)
-
 
 - You can view the result by executing an action operation on the RDD.
 
@@ -215,9 +213,7 @@ hiveContext.sql("show tables").show()
 geolocation_temp2.show(10)
 ~~~
 
-
 ![view_results_op_on_rdd_hello_hdp_lab4](assets/view_results_op_on_rdd_hello_hdp_lab4.png)
-
 
 ### Perform join Operation
 
@@ -262,7 +258,7 @@ val risk_factor_spark = hiveContext.sql("select driverid, occurance, totmiles, t
 
 ![calculate_riskfactor_hello_hdp_lab4](assets/calculate_riskfactor_hello_hdp_lab4.png)
 
-*   The resulting data set will give us total miles and total non-normal events and what is a risk for a particular driver. Register this filtered table as a temporary table so that subsequent SQL queries can be applied to it.
+- The resulting data set will give us total miles and total non-normal events and what is a risk for a particular driver. Register this filtered table as a temporary table so that subsequent SQL queries can be applied to it.
 
 ~~~scala
 %spark2
@@ -421,6 +417,7 @@ Congratulations! Let’s summarize the Spark coding skills and knowledge we acqu
 ## Further Reading
 
 To learn more about Spark, checkout these resources:
+
 - [Spark Tutorials](https://hortonworks.com/tutorials/?filters=apache-spark)
 - [Apache Spark](https://hortonworks.com/hadoop/spark/)
 - [Apache Spark Welcome](http://spark.apache.org/)
