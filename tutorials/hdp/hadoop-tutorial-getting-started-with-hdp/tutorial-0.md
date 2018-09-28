@@ -36,7 +36,6 @@ Here is the video of [Analyzing Geolocation Data](http://youtu.be/n8fdYHoEEAM) t
 - [Concepts to strengthen your foundation in the Hortonworks Data Platform (HDP)](https://hortonworks.com/tutorial/hadoop-tutorial-getting-started-with-hdp/section/1/)
 - [Loading Sensor Data into HDFS](https://hortonworks.com/tutorial/hadoop-tutorial-getting-started-with-hdp/section/2/)
 - [Hive - Data ETL](https://hortonworks.com/tutorial/hadoop-tutorial-getting-started-with-hdp/section/3/)
-- [Pig - Risk Factor](https://hortonworks.com/tutorial/hadoop-tutorial-getting-started-with-hdp/section/4/)
 - [Spark - Risk Factor](https://hortonworks.com/tutorial/hadoop-tutorial-getting-started-with-hdp/section/5/)
 - [Data Reporting with Zeppelin](https://hortonworks.com/tutorial/hadoop-tutorial-getting-started-with-hdp/section/6/)
 - [Data Reporting with Microsoft Excel for Windows](https://hortonworks.com/tutorial/hadoop-tutorial-getting-started-with-hdp/section/7/)
