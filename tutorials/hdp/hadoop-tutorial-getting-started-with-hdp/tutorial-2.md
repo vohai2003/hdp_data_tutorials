@@ -20,9 +20,9 @@ The tutorial is a part of series of hands on tutorial to get you started on HDP 
 ## Outline
 
 - [HDFS backdrop](#hdfs-backdrop)
-- [Download and Extract Sensor Data Files](#step1.1) – [**Geolocation.zip**](assets/datasets/Geolocation.zip)
-- [Load the Sensor Data into HDFS](#step1.2)
-- [Summary](#summary-lab1)
+- [Download and Extract Sensor Data Files](#download-and-extract-sensor-data-files)
+- [Load the Sensor Data into HDFS](#load-the-sensor-data-into-hdfs)
+- [Summary](#summary)
 - [Further Reading](#further-reading)
 
 ## HDFS backdrop
