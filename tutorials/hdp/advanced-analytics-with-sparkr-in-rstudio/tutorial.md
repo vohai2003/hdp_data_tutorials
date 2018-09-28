@@ -5,7 +5,7 @@ tutorial-id: 759
 experience: Intermediate
 persona: Data Scientist & Analyst
 source: Hortonworks
-use case: Predictive
+use case: Data Discovery
 technology: Apache Spark, Apache SparkR, Machine Learning
 release: hdp-3.0.0
 environment: Sandbox
