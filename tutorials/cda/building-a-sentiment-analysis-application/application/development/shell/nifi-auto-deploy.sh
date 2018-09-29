@@ -1,6 +1,11 @@
 #!/bin/bash
 
 ##
+# Author: James Medel
+# Email: jamesmedel94@gmail.com
+##
+
+##
 # Purpose: Automate building and starting the NiFi flow
 # How: The script backups the previous existing NiFi flow if any existed,
 # downloads the NiFi template, uploading the NiFi template via
