@@ -6,7 +6,7 @@ title: Deploying a Sentiment Classification Model
 
 ## Introduction
 
-Our next objective as a Data Engineer is to implement a Spark Structured Streaming application in Scala that pulls in the sentiment model from HDFS running on HDP, then pulls in fresh tweet data from Apache Kafka topic "tweet" running on HDP, does some processing to the enrich the current model by training it with fresh tweet data that has been classified as happy or sad and streams the enriched model to Apache Kafka topic "tweetsSentiment" running on HDF.
+Our next objective as a Data Engineer is to implement a Spark Structured Streaming application in Scala that pulls in the sentiment model from HDFS running on HDP, then pulls in fresh tweet data from Apache Kafka topic "tweet" running on HDP, does some processing by adding a sentiment score to each tweet based on the trained model output and streams each tweet with the new sentiment score field to Apache Kafka topic "tweetsSentiment" running on HDF.
 
 ## Prerequisites
 
@@ -15,7 +15,7 @@ Our next objective as a Data Engineer is to implement a Spark Structured Streami
 - Acquired Twitter Data
 - Cleaned Raw Twitter Data
 - Built a Sentiment Classification Model
-- Go through **[Setting up a Spark Development Environment with Scala](https://hortonworks.com/tutorial/setting-up-a-spark-development-environment-with-scala/)**, it will cover installing SBT, IntelliJ with Scala Plugin and some basic concepts that will be built upon in this tutorial
+- Go through **[Setting up a Spark Development Environment with Scala](https://hortonworks.com/tutorial/setting-up-a-spark-development-environment-with-scala/)**, it will cover **installing SBT**, **IntelliJ** with Scala Plugin and some basic concepts that will be built upon in this tutorial
 
 ## Outline
 
@@ -98,7 +98,7 @@ What do the keywords in the configuration file for SBT mean?
 
 ### SBT
 
-We will use SBT to import the **Spark libraries**, **Kafka library**, **Google gson library**, **tyesafe config library** and the **appropriate documentation** into IntelliJ. Thus, IntelliJ can recognize Spark and gson code. Copy and paste the following lines to the file `build.sbt` to overwrite it:
+We will use SBT to import the **Spark libraries**, **Kafka library**, **Google gson library**, **tyesafe config library** and the **appropriate documentation** into IntelliJ. Thus, IntelliJ can recognize Spark and GSON code. Copy and paste the following lines to the file **build.sbt** to overwrite it:
 
 ~~~scala
 name := "DeploySentimentModel"
@@ -163,11 +163,11 @@ Now that we added the Spark Structured Streaming application dependencies, we ar
 
 ### resources folder
 
-In your project, if the `resources` folder or directory does not exist yet, create a directory under `src/main` called `resources`, and create the `application.conf` file there.
+In your project, if the **resources** folder or directory does not exist yet, create a directory under **src/main** called `resources`, and create the `application.conf` file there.
 
 ### application.conf
 
-`application.conf` holds the configurations about our environment in which we will run the application. We will use the following configuration file and load configurations into **Scala**.
+**application.conf** holds the configurations about our environment in which we will run the application. We will use the following configuration file and load configurations into **Scala**.
 
 ~~~scala
 spark {
@@ -200,11 +200,11 @@ What configurations are we passing to Scala with this file?
 
 **application.conf Reference:**
 
-- For more information on scala configuration files, refer to [Loading Configurations in Scala](https://danielasfregola.com/2015/06/01/loading-configurations-in-scala/)
+- For more information on Scala configuration files, refer to [Loading Configurations in Scala](https://danielasfregola.com/2015/06/01/loading-configurations-in-scala/)
 
 ### Collect.scala
 
-Now that we have our application.conf file, we will reference it in the **Collect.scala** code file that we will implement. Create a **new file** in `src/main/scala` directory called `Collect.scala`. Copy and paste the following code into the file:
+Now that we have our **application.conf** file, we will reference it in the **Collect.scala** code file that we will implement. Create a **new file** called `Collect.scala` in **src/main/scala** directory. Copy and paste the following code into the file:
 
 ~~~scala
 package main.scala
@@ -344,7 +344,7 @@ object Collect {
 
 ### Predictor.scala
 
-Since we are referencing the Predictor class in **Collect.scala** source file to predict whether the tweet is happy or sad and it hasn't been implemented yet, we will develop **Predictor.scala** source file. Create a new Scala Class file in `src/main/scala` directory called `Predictor` and for **kind**, choose **Class**. Copy and paste the following code into the file
+Since we are referencing the Predictor class in **Collect.scala** source file to predict whether the tweet is happy or sad and it hasn't been implemented yet, we will develop **Predictor.scala** source file. Create a new Scala Class file called `Predictor` in **src/main/scala** directory and for **kind**, choose **Class**. Copy and paste the following code into the file
 
 ~~~scala
 package main.scala
@@ -425,9 +425,9 @@ Congratulations! You implemented a Spark Structured Streaming application that p
 
 ## Further Reading
 
-- [SBT and IntelliJ Scala Project]()
-- [Apache Spark Structured Streaming]()
-- [Apache Spark + Kafka Integration]()
-- [Google GSON Library]()
-- [Java - Scala JPMML Library]()
-- [SBT Assembly]()
+- [Building a Scala Project With IntelliJ and SBT](https://docs.scala-lang.org/getting-started-intellij-track/building-a-scala-project-with-intellij-and-sbt.html)
+- [Apache Spark Structured Streaming](https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html)
+- [Apache Spark 2.3.1 + Kafka Integration](https://spark.apache.org/docs/2.3.1/structured-streaming-kafka-integration.html)
+- [Google GSON Library](https://github.com/google/gson)
+- [Java JPMML API](https://github.com/jpmml)
+- [SBT Assembly](https://github.com/sbt/sbt-assembly)
