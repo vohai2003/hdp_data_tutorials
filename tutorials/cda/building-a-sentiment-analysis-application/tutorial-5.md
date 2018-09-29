@@ -13,9 +13,7 @@ Our next objective is to build the sentiment classification model using our clea
 - Enabled Connected Data Architecture
 - Setup the Development Environment
 - Acquired Twitter Data
-- **Cleaned Raw Twitter Data** - Make sure you executed the Spark code from the
-previous notebook `Cleaning-Raw-Twitter-Data` cause this part of the project is
-dependent on the data being cleaned
+- **Cleaned Raw Twitter Data**
 
 ## Outline
 
@@ -28,7 +26,7 @@ dependent on the data being cleaned
 
 ### Create Zeppelin Notebook for Building the Model
 
-Open Zeppelin UI at `http://sandbox-hdp.hortonworks.com:9995`.
+Open Zeppelin UI at http://sandbox-hdp.hortonworks.com:9995.
 
 1\. Create new note.
 
@@ -190,7 +188,7 @@ Test Error Validation Set: 0.2623716153127918
 
 The results show that the model is very good at detecting unhappy messages (86% accuracy), and significantly less adept at identifying happy messages (64% accuracy). To improve this we could provide the model more examples of happy messages to learn from.
 
-Also note that our training accuracy is slightly higher than our validation accuracy. This is an example of slightly overfitting the training data. Since the training accuracy is only slightly higher than the validation accuracy, this is normal and not something we should concerned about. However, if the validation accuracy was significantly worse than the training accuracy it would mean the model had grossly overfit its training data. In that situation, you would want to either increase the amount of data available for training or decrease the number of parameters (the complexity) of the model.
+Also note that our training accuracy is slightly higher than our validation accuracy. This is an example of slightly overfitting the training data. Since the training accuracy is only slightly higher than the validation accuracy, this is normal and not something we should concerned about. However, if the validation accuracy was significantly worse than the training accuracy, it would mean the model had grossly overfit its training data. In that situation, you would want to either increase the amount of data available for training or decrease the number of parameters (the complexity) of the model.
 
 ### Taking a closer look
 
