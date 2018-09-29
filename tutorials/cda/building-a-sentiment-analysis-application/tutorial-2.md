@@ -257,27 +257,24 @@ The next set of commands will setup **HDFS** for holding the Tweet data that wil
 
 ~~~bash
 echo "Setting up HDFS for Tweet Data"
-su hdfs
 HDFS_TWEET_STAGING="/sandbox/tutorial-files/770/tweets_staging"
 LFS_TWEETS_PACKAGED_PATH="/sandbox/tutorial-files/770/tweets"
-mkdir -p $LFS_TWEETS_PACKAGED_PATH
+sudo -u hdfs mkdir -p $LFS_TWEETS_PACKAGED_PATH
 # Create tweets_staging hdfs directory ahead of time for hive
-hdfs dfs -mkdir -p $HDFS_TWEET_STAGING
+sudo -u hdfs hdfs dfs -mkdir -p $HDFS_TWEET_STAGING
 # Change HDFS ownership of tweets_staging dir to maria_dev
-hdfs dfs -chown -R maria_dev $HDFS_TWEET_STAGING
+sudo -u hdfs hdfs dfs -chown -R maria_dev $HDFS_TWEET_STAGING
 # Change HDFS tweets_staging dir permissions to everyone
-hdfs dfs -chmod -R 777 $HDFS_TWEET_STAGING
+sudo -u hdfs hdfs dfs -chmod -R 777 $HDFS_TWEET_STAGING
 # give anyone rwe permissions to /sandbox/tutorial-files/770
-hdfs dfs -chmod -R 777 /sandbox/tutorial-files/770
-wget https://github.com/james94/data-tutorials/raw/master/tutorials/cda/building-a-sentiment-analysis-application/application/setup/data/tweets.zip -O $LFS_TWEETS_PACKAGED_PATH/tweets.zip
-unzip $LFS_TWEETS_PACKAGED_PATH/tweets.zip -d $LFS_TWEETS_PACKAGED_PATH
-rm -rf $LFS_TWEETS_PACKAGED_PATH/tweets.zip
+sudo -u hdfs hdfs dfs -chmod -R 777 /sandbox/tutorial-files/770
+sudo -u hdfs wget https://github.com/james94/data-tutorials/raw/master/tutorials/cda/building-a-sentiment-analysis-application/application/setup/data/tweets.zip -O $LFS_TWEETS_PACKAGED_PATH/tweets.zip
+sudo -u hdfs unzip $LFS_TWEETS_PACKAGED_PATH/tweets.zip -d $LFS_TWEETS_PACKAGED_PATH
+sudo -u hdfs rm -rf $LFS_TWEETS_PACKAGED_PATH/tweets.zip
 # Remove existing (if any) copy of data from HDFS. You could do this with Ambari file view.
-hdfs dfs -rm -r -f $HDFS_TWEET_STAGING/* -skipTrash
+sudo -u hdfs hdfs dfs -rm -r -f $HDFS_TWEET_STAGING/* -skipTrash
 # Move downloaded JSON file from local storage to HDFS
-hdfs dfs -put $LFS_TWEETS_PACKAGED_PATH/* $HDFS_TWEET_STAGING
-# Exit HDFS user
-exit
+sudo -u hdfs hdfs dfs -put $LFS_TWEETS_PACKAGED_PATH/* $HDFS_TWEET_STAGING
 ~~~
 
 ### Setup Spark Service
