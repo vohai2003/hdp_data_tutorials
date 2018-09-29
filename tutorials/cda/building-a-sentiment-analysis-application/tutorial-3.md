@@ -11,11 +11,11 @@ Our next objective is to acquire sentiment data from Twitter's **[Decahose strea
 You will build one NiFi flow in a process group that ingests data from Twitter using
 your KEYS and TOKENS you obtained from creating your Twitter Developer App.
 Next you will massage the data extracting meaningful insight from JSON content
-from the Twitter feed. Finally at different points in the flow you will store
-the data into a Kafka topic, HDFS and the local file system.
+from the Twitter feed. Finally, you will store the data into a Kafka topic "tweets".
 
 You will build the second NiFi flow in another process group to consume data from
-a different Kafka topic, which has a trained sentiment model built with an external service SparkML and send the data to be stored into HBase.
+Kafka topic "tweetsSentiment", which has a trained sentiment model built with an
+external service SparkML and send the data to be stored into HBase.
 
 ## Prerequisites
 
@@ -31,11 +31,11 @@ a different Kafka topic, which has a trained sentiment model built with an exter
 
 ## Approach 1: Build a NiFi Flow For Acquisition and Storage
 
-After starting your sandbox, open HDF **NiFi UI** at `http://sandbox-hdf.hortonworks.com:9090/nifi`.
+After starting your sandbox, open HDF **NiFi UI** at http://sandbox-hdf.hortonworks.com:9090/nifi.
 
 ### 1\. Create AcquireTwitterData Process Group
 
-This capture group ingests Twitter's **[Decahose stream](https://developer.twitter.com/en/docs/tweets/sample-realtime/overview/streaming-likes)** through Twitter's [Sentiment Detection API](https://developer.twitter.com/en/use-cases/analyze.html), preprocesses the data, stores it into Kafka, HDFS and local file system for later analysis.
+This capture group ingests Twitter's **[Decahose stream](https://developer.twitter.com/en/docs/tweets/sample-realtime/overview/streaming-likes)** through Twitter's [Sentiment Detection API](https://developer.twitter.com/en/use-cases/analyze.html), preprocesses the data and stores it into Kafka later analysis.
 
 Drop the process group icon ![process_group](assets/images/acquire-twitter-data/process_group.jpg) onto the NiFi canvas.
 
@@ -104,7 +104,6 @@ Configure **EvaluateJsonPath** processor:
 | Setting | Value     |
 | :------------- | :------------- |
 | Name | `PullKeyAttributes` |
-| Bulletin Level | WARN |
 | Automatically Terminate Relationships | failure (**checked**) |
 | Automatically Terminate Relationships | unmatched (**checked**) |
 
@@ -220,9 +219,6 @@ Configure **PublishKafka_0_10** processor for relationship connection **tweet**:
 
 **Table 12: Properties Tab**
 
-To add a new user defined property in case one the following properties in the
-table isn't defined, press the plus button **+**.
-
 | Property | Value     |
 | :------------- | :------------- |
 | **Kafka Brokers**       | `sandbox-hdp.hortonworks.com:6667` |
@@ -242,7 +238,7 @@ Once NiFi writes your twitter data to Kafka, which you can check by viewing data
 
 ### Verify NiFi Stored Data
 
-Enter the **AcquireTwitterData** process group, press **control + mouse click** on PutHDFS processor of your choice, then press **View data provenance**.
+Enter the **AcquireTwitterData** process group, press **control + mouse click** on PublishKafka_0_10 processor of your choice, then press **View data provenance**.
 
 ![nifi_data_provenance](assets/images/acquire-twitter-data/nifi_data_provenance.jpg)
 
@@ -250,7 +246,7 @@ Press on **i** icon on the left row to view details about a provenance event. Ch
 
 ![provenance_event](assets/images/acquire-twitter-data/provenance_event.jpg)
 
-You will be able to see the data NiFi sent to the external process HDFS. The data below shows tweets dataset.
+You will be able to see the data NiFi sent to the external process Kafka. The data below shows tweets dataset.
 
 ![view_event_tweet](assets/images/acquire-twitter-data/view_event_tweet.jpg)
 
@@ -258,7 +254,7 @@ You will be able to see the data NiFi sent to the external process HDFS. The dat
 
 Make sure to exit the **AcquireTwitterData** process group and head back to **NiFi Flow** level.
 
-This capture group consumes data from Kafka that was brought in by Spark Structured Streaming and streams the contents of the flowfiles to Druid.
+This capture group consumes data from Kafka that was brought in by Spark Structured Streaming and streams the contents of the flowfiles to HBase.
 
 Drop the process group icon ![process_group](assets/images/acquire-twitter-data/process_group.jpg) onto the NiFi canvas next to **AcquireTwitterData** process group.
 
@@ -303,9 +299,6 @@ Configure **ConsumeKafka_0_10** processor:
 | Run Schedule       | `1 sec`       |
 
 **Table 15: Properties Tab**
-
-To add a new user defined property in case one the following properties in the
-table isn't defined, press the plus button **+**.
 
 | Property | Value     |
 | :------------- | :------------- |
@@ -370,9 +363,6 @@ Configure **AttributesToJSON** processor:
 | Run Schedule       | `1 sec`       |
 
 **Table 18: Properties Tab**
-
-To add a new user defined property in case one the following properties in the
-table isn't defined, press the plus button **+**.
 
 | Property | Value     |
 | :------------- | :------------- |
@@ -456,9 +446,6 @@ Configure **RouteOnAttribute** processor:
 
 **Table 23: Properties Tab**
 
-To add a new user defined property in case one the following properties in the
-table isn't defined, press the plus button **+**.
-
 | Property | Value     |
 | :------------- | :------------- |
 | **HBase Client Service**       | `HBase_1_1_2_ClientService` |
@@ -468,7 +455,7 @@ table isn't defined, press the plus button **+**.
 
 Click **APPLY**.
 
-Click **APPLY**. The yellow warning sign on **PutHBaseJSON** should turn to
+The yellow warning sign on **PutHBaseJSON** should turn to
 a red stop symbol. Now you have a completed NiFi flow with no warnings and ready
 to consume data from Kafka topic `tweetsSentiment` and stream records to HBase Data Table.
 
