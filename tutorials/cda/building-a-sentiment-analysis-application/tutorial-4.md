@@ -6,7 +6,7 @@ title: Cleaning the Raw Twitter Data
 
 ## Introduction
 
-Our next objective is to **load the tweet data** that NiFi stored in HDFS into Spark. We will **clean the records** to prevent bias in the model. We will **label our data**, so later our model that we create in next phase of development will be able to learn between happy and sad. We will **transform the data** into a feature vector (feature array) since Gradient Boosting model expects that format for the input.
+Our next objective is to **load the tweet data** that is currently in HDFS into Spark. We will **clean the records** to prevent bias in the model. We will **label our data**, so later our model that we create in next phase of development will be able to learn between happy and sad. We will **transform the data** into a feature vector (feature array) since Gradient Boosting model expects that format for the input.
 
 ## Prerequisites
 
