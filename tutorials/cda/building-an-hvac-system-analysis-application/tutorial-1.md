@@ -19,14 +19,12 @@ The appendix lists many of the common components that makeup the HVAC System.
 
 ## Outline
 
-- [HVAC Fundamentals](#hvac-fundamentals)
-- [HVAC Sensor Data](#hvac-sensor-data)
-- [HVAC Data Analysis](#hvac-data-analysis)
+- [HVAC System Analysis Fundamentals](#hvac-system-analysis-fundamentals)
 - [Summary](#summary)
 - [Further Reading](#further-reading)
 - [Appendix A: Components that make up an HVAC System](#appendix-a-components-that-make-up-an-hvac-system)
 
-## HVAC Fundamentals
+## HVAC System Analysis Fundamentals
 
 ### What is an HVAC System?
 
@@ -59,7 +57,7 @@ respiratory illness.
 - Medical facilities
 - Hazardous materials
 
-## HVAC Sensor Data
+### HVAC Sensor Data
 
 ### Where does the Sensor Data Come From?
 
@@ -85,7 +83,7 @@ For more information on the common sensors used in HVAC Systems, refer to [5 HVA
 The sensors help HVAC Systems run smoothly and safely, improve energy efficiency
 and preserve human health.
 
-## HVAC Data Analysis
+### HVAC Data Analysis
 
 Through analysis of the HVAC datasets, we can retrieve insight to see which HVAC
 System Models are adjusting the temperature in buildings most effectively. We
