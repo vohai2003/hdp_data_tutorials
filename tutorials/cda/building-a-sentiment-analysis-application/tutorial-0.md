@@ -6,7 +6,7 @@ experience: Advanced
 persona: Data Engineer, Data Scientist
 source: Hortonworks
 use case: Data Discovery
-technology: Apache Ambari, Apache NiFi, HDFS, Apache Hive, Apache HBase, Apache Spark, Apache Zeppelin
+technology: Apache Ambari, Apache NiFi, Apache Kafka, HDFS, Apache Hive, Apache HBase, Apache Spark, Apache Zeppelin
 release: hdp-3.0.0, hdf-3.2.0
 environment: Sandbox
 product: HDP, HDF
@@ -25,11 +25,13 @@ For this project, you will play the part of a Big Data Application Developer who
 - [HDF Sandbox](https://hortonworks.com/products/data-platforms/hdf/)
     - [Apache Ambari](https://ambari.apache.org/)
     - [Apache NiFi](https://nifi.apache.org/)
+    - [Apache Kafka](http://kafka.apache.org/)
 - [HDP Sandbox](https://hortonworks.com/products/data-platforms/hdp/)
     - [Apache Ambari](https://ambari.apache.org/)
     - [Apache Hadoop - HDFS](https://hadoop.apache.org/docs/r3.1.0/)
     - [Apache HBase](https://hbase.apache.org/)
     - [Apache Spark](https://spark.apache.org/)
+    - [Apache Kafka](http://kafka.apache.org/)
     - [Apache Zeppelin](https://zeppelin.apache.org/)
 
 ### Goals and Objectives
