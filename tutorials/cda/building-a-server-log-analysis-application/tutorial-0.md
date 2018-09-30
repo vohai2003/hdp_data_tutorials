@@ -6,7 +6,7 @@ experience: Intermediate
 persona: Data Engineer, Data Analyst
 source: Hortonworks
 use case: Data Discovery
-technology: Apache Ambari, Apache NiFi, HDFS, Apache Hive, Apache Spark, Apache Zeppelin
+technology: Apache Ambari, Apache NiFi, HDFS, Apache Spark, Apache Zeppelin
 release: hdp-3.0.0, hdf-3.2.0
 environment: Sandbox
 product: HDP
@@ -40,7 +40,6 @@ team should be cautious about.
 - [HDP Sandbox](https://hortonworks.com/products/data-platforms/hdp/)
     - [Apache Ambari](https://ambari.apache.org/)
     - [Apache Hadoop - HDFS](https://hadoop.apache.org/docs/r3.1.0/)
-    - [Apache Hive](https://hive.apache.org/)
     - [Apache Spark](https://spark.apache.org/)
     - [Apache Zeppelin](https://zeppelin.apache.org/)
 
