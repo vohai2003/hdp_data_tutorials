@@ -263,8 +263,7 @@ extension_df_count.registerTempTable('extension_df_count')
 
 ![count](assets/images/cleaning-raw-nasa-log-data/count.jpg)
 
-Create a temporary table for DataFrame `path_df`, then create a `Hive Table` based on that DataFrame,
-which can be used for data visualization with external tools, such as Tableau, Microsoft Excel, etc.
+Create a temporary table for DataFrame `path_df`.
 
 ~~~python
 %pyspark
