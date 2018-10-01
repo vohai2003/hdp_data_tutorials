@@ -103,7 +103,7 @@ We will use SBT to import the **Spark libraries**, **Kafka library**, **Google g
 ~~~scala
 name := "DeploySentimentModel"
 
-version := "1.0.0"
+version := "2.0.0"
 
 scalaVersion := "2.11.12"
 
