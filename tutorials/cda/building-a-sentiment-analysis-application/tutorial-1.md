@@ -14,7 +14,7 @@ the various sentiment analysis use cases.
 
 ## Prerequisites
 
-- Read through "Building a Customer Sentiment Analysis Application" overview
+- Read through "Building a Sentiment Analysis Application" overview
 
 ## Outline
 
