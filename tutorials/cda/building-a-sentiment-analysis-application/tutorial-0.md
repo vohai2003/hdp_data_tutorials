@@ -28,7 +28,7 @@ For this project, you will play the part of a Big Data Application Developer who
     - [Apache Kafka](http://kafka.apache.org/)
 - [HDP Sandbox](https://hortonworks.com/products/data-platforms/hdp/)
     - [Apache Ambari](https://ambari.apache.org/)
-    - [Apache Hadoop - HDFS](https://hadoop.apache.org/docs/r3.1.0/)
+    - [Apache Hadoop - HDFS](https://hadoop.apache.org/docs/r3.1.1/)
     - [Apache HBase](https://hbase.apache.org/)
     - [Apache Spark](https://spark.apache.org/)
     - [Apache Kafka](http://kafka.apache.org/)
