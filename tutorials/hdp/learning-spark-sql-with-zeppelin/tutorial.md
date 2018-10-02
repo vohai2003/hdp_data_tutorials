@@ -183,7 +183,7 @@ Once the **Learning Spark SQL** notebook is up, [bind the Shell Interpreter](htt
 
 ## Summary
 
-Once you have completed part one and part two of the lab you should have a basic tool set to start exploring new datasets using a high-level programmatic Dataset or DataFrame APIs, or a SQL API. Both APIs provide the same performance while giving you the choice to choose one or both to accomplish a task demanding high performance data exploration, wrangling, munging, and visualization.
+Once you have completed part one and part two of the lab you should have a basic toolset to start exploring new datasets using a high-level programmatic Dataset or DataFrame APIs, or a SQL API. Both APIs provide the same performance while giving you the choice to choose one or both to accomplish a task demanding high performance data exploration, wrangling, munging, and visualization.
 
 ## Further Reading
 
