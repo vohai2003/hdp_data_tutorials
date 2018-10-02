@@ -17,10 +17,10 @@ In this tutorial, we will explore important concepts that will strengthen your f
 
 ## Outline
 
-- [Hadoop & HDP](#hadoop-hdp)
+- [Hadoop & HDP](#concept-hadoop-&-hdp)
 - [HDFS](#hdfs)
-- [MapReduce & YARN](#mapreduce-yarn)
-- [Hive and Pig](#hive-pig)
+- [MapReduce & YARN](#mapreduce-&-yarn)
+- [Hive and Pig](#concept-hive-and-pig)
 - [Further Reading](#further-reading)
 
 ## Concept: Hadoop & HDP 
@@ -38,7 +38,6 @@ In this module you will learn about Apache Hadoop and what makes it scale to lar
 Apache Hadoop is an open source framework for distributed storage and processing of large sets of data on commodity hardware. Hadoop enables businesses to quickly gain insight from massive amounts of structured and unstructured data. Numerous Apache Software Foundation projects make up the services required by an enterprise to deploy, integrate and work with Hadoop. Refer to the blog reference below for more information on Hadoop.
 
 - Hortonworks Blog:
-  - [Understanding Hadoop 2.0](https://hortonworks.com/blog/understanding-hadoop-2-0/)
   - [How Apache Hadoop 3 Adds Value Over Apache Hadoop 2.0](https://hortonworks.com/blog/hadoop-3-adds-value-hadoop-2/)
 
 The base Apache Hadoop framework is composed of the following modules:
@@ -87,7 +86,7 @@ Apache Hadoop can be useful across a range of use cases spanning virtually every
 
 ### Hortonworks Data Platform (HDP)
 
-Hortonworks Data Platform (HDP) is a packaged software Hadoop distribution that aims to ease deployment and management of Hadoop clusters. Compared with simply downloading the various Apache code bases and trying to run them together a system, HDP greatly simplifies the use of Hadoop. Architected, developed, and built completely in the open, HDP provides an enterprise ready data platform that enables organizations to adopt a Modern Data Architecture.
+Hortonworks Data Platform (HDP) is a packaged software Hadoop distribution that aims to ease deployment and management of Hadoop clusters. Compared with simply downloading the various Apache code bases and trying to run them together in a system, HDP greatly simplifies the use of Hadoop. Architected, developed, and built completely in the open, HDP provides an enterprise ready data platform that enables organizations to adopt a Modern Data Architecture.
 
 With YARN as its architectural center it provides a data platform for multi-workload data processing across an array of processing methods – from batch through interactive to real-time, supported by key capabilities required of an enterprise data platform — spanning Governance, Security and Operations.
 
@@ -135,7 +134,7 @@ Ambari Files User View
 
 ![hdfs_files_view_base_folder_concepts](assets/hdfs_files_view_base_folder_concepts.jpg)
 
-Ambari Files User View provides a user friendly interface to upload, store and move data. Underlying all components in Hadoop is the Hadoop Distributed File System([HDFS](https://hortonworks.com/hadoop/hdfs/)).  This is the foundation of the Hadoop cluster. The HDFS file system manages how the datasets are stored in the Hadoop cluster. It is responsible for distributing the data across the datanodes, managing replication for redundancy and administrative tasks like adding, removing and recovery of data nodes.
+Ambari Files User View provides a user friendly interface to upload, store and move data. Underlying all components in Hadoop is the Hadoop Distributed File System ([HDFS](https://hortonworks.com/hadoop/hdfs/)).  This is the foundation of the Hadoop cluster. The HDFS file system manages how the datasets are stored in the Hadoop cluster. It is responsible for distributing the data across the datanodes, managing replication for redundancy and administrative tasks like adding, removing and recovery of data nodes.
 
 ## MapReduce & YARN
 
@@ -174,7 +173,7 @@ The Apache Hadoop projects provide a series of tools designed to solve big data 
 
 ### [Apache YARN](https://hortonworks.com/blog/apache-hadoop-yarn-background-and-an-overview/) (Yet Another Resource Negotiator)
 
-Hadoop HDFS is the data storage layer for Hadoop and MapReduce was the data-processing layer in Hadoop 1x. However, the MapReduce algorithm, by itself, isn’t sufficient for the very wide variety of use-cases we see Hadoop being employed to solve. Hadoop 2.0 presents YARN, as a generic resource-management and distributed application framework, whereby, one can implement multiple data processing applications customized for the task at hand. The fundamental idea of YARN is to split up the two major responsibilities of the JobTracker i.e. resource management and job scheduling/monitoring, into separate daemons: a global **ResourceManager** and per-application **ApplicationMaster** (AM).
+Hadoop HDFS is the data storage layer for Hadoop and MapReduce was the data-processing layer in Hadoop 1x. However, the MapReduce algorithm, by itself, isn’t sufficient for the very wide variety of use-cases we see Hadoop being employed to solve. YARN was introduced in Hadoop 2.0, as a generic resource-management and distributed application framework, whereby, one can implement multiple data processing applications customized for the task at hand. The fundamental idea of YARN is to split up the two major responsibilities of the JobTracker i.e. resource management and job scheduling/monitoring, into separate daemons: a global **ResourceManager** and per-application **ApplicationMaster** (AM).
 
 The ResourceManager and per-node slave, the NodeManager (NM), form the new, and generic, **system** for managing applications in a distributed manner.
 
@@ -208,7 +207,7 @@ Hive is an SQL like query language that enables those analysts familiar with SQL
 
 ### [Apache Hive](https://hive.apache.org/)
 
-Data analysts use Hive to explore, structure and analyze that data, then turn it into business insights. Hive implements a dialect of SQL (Hive QL) that focuses on analytics and presents a rich set of SQL semantics including OLAP functions, sub-queries, common table expressions and more. Hive allows SQL developers or users with SQL tools to easily query, analyze and process data stored in Hadoop.Hive also allows programmers familiar with the MapReduce framework to plug in their custom mappers and reducers to perform more sophisticated analysis that may not be supported by the built-in capabilities of the language.
+Data analysts use Hive to explore, structure and analyze that data, then turn it into business insights. Hive implements a dialect of SQL (HiveQL) that focuses on analytics and presents a rich set of SQL semantics including OLAP functions, sub-queries, common table expressions and more. Hive allows SQL developers or users with SQL tools to easily query, analyze and process data stored in Hadoop. Hive also allows programmers familiar with the MapReduce framework to plug in their custom mappers and reducers to perform more sophisticated analysis that may not be supported by the built-in capabilities of the language.
 
 Hive users have a choice of 3 runtimes when [executing SQL queries](https://hortonworks.com/blog/5-ways-make-hive-queries-run-faster/). Users can choose between Apache Hadoop MapReduce, Apache Tez or Apache Spark frameworks as their execution backend.
 
@@ -264,13 +263,13 @@ Stinger.next is a continuation of this initiative focused on even further enhanc
 
 ![Hive_4](assets/Hive_4.png)
 
-### Ambari Hive View 2.0 on Hortonworks Sandbox
+### Data Analytics Studio on Hortonworks Sandbox
 
-To make it easy to interact with Hive we use a tool in the Hortonworks Sandbox called the Data Analytics Studio. It provides an interactive interface to Hive 3. We can create, edit, save and run queries, and have Hive evaluate them for us using a series of Tez jobs.
+To make it easy to interact with Hive we use a tool in the Hortonworks Sandbox called Data Analytics Studio (DAS). It provides an interactive interface to Hive 3. We can create, edit, save and run queries, and have Hive evaluate them for us using a series of Tez jobs.
 
 Let’s now open Data Analytics Studio and get introduced to the environment. Navigate to [http://sandbox-hdp.hortonworks.com:30800](http://sandbox-hdp.hortonworks.com:30800/#/)
 
-Data Analytics Studio (DAS)
+Data Analytics Studio
 
 ![das](assets/das.jpg)
 
@@ -331,19 +330,20 @@ The user can run Pig in two modes, using either the “pig” command or the “
 
 ## Further Reading
 
-- HDFS is one of the 4 components of [Apache Hadoop](http://hadoop.apache.org/) the other 3 are Hadoop Common, [Hadoop YARN](http://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html) and [Hadoop MapReduce](https://hortonworks.com/hadoop/mapreduce/).
-- To learn more about YARN watch the following [YARN introduction video](https://www.youtube.com/watch?v=ZYXVNxmMchc&list=PL2y_WpKCCNQc-7RJNoYym4_g7EZb3yzJW).
-- [Hadoop 2.7.0 Blog](https://hortonworks.com/blog/apache-hadoop-2-7-0-released/)
-- [Understanding Hadoop 2.0](https://hortonworks.com/blog/understanding-hadoop-2-0/)
+- HDFS is one of the 4 components of [Apache Hadoop](http://hadoop.apache.org/) the other 3 are Hadoop Common, [Hadoop YARN](http://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html) and [Hadoop MapReduce](https://hortonworks.com/hadoop/mapreduce/)
+- Announcing [HDP 3.0](https://hortonworks.com/blog/announcing-general-availability-hortonworks-data-platform-3-0-0-ambari-2-7-0-smartsense-1-5-0/)
+- To learn more about YARN watch the following [YARN introduction video](https://www.youtube.com/watch?v=ZYXVNxmMchc&list=PL2y_WpKCCNQc-7RJNoYym4_g7EZb3yzJW)
+- [Hadoop 3 Blogs](https://hortonworks.com/blog/apache-hadoop-2-7-0-released/)
+- [Apache Hadoop 3.1 A Giant Leap For Big Data](https://hortonworks.com/blog/apache-hadoop-3-1-giant-leap-big-data/)
 
 - [Apache Ambari](https://ambari.apache.org/) is an open source and open community based web based tool for Hadoop operations which has been extended via [Ambari User Views](https://cwiki.apache.org/confluence/display/AMBARI/Views) to provide a growing list of developer tools as User Views.
-- Follow this link to learn more about the [Ambari User VIews included in HDP](https://hortonworks.com/hadoop/ambari/).
+- Follow this link to learn more about the [Ambari features included in HDP](https://hortonworks.com/hadoop/ambari/).
 
 **Hive Blogs**:
 
+- [Hive 3 Overview](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.0/hive-overview/content/hive_whats_new_in_this_release_hive.html)
 - [Cost-Based Optimizer Makes Apache Hive 0.14 More Than 2.5X Faster](https://hortonworks.com/blog/cost-based-optimizer-makes-apache-hive-0-14-more-than-2-5x-faster/)
 - [Discover HDP 2.2: Even Faster SQL Queries with Apache Hive and Stinger.next](http://www.slideshare.net/hortonworks/discoverhdp22faster-sql-queries-with-hive)
-- [Announcing Apache Hive 2.1](https://hortonworks.com/blog/announcing-apache-hive-2-1-25x-faster-queries-much/)
 - [HIVE 0.14 Cost Based Optimizer (CBO) Technical Overview](https://hortonworks.com/blog/hive-0-14-cost-based-optimizer-cbo-technical-overview/)
 - [5 Ways to Make Your Hive Queries Run Faster](https://hortonworks.com/blog/5-ways-make-hive-queries-run-faster/)
 - [Secure JDBC and ODBC Clients’ Access to HiveServer2](https://hortonworks.com/blog/secure-jdbc-odbc-clients-access-hiveserver2/)
@@ -374,12 +374,6 @@ The user can run Pig in two modes, using either the “pig” command or the “
 
 - [YARN series-1](https://hortonworks.com/blog/resource-localization-in-yarn-deep-dive/)
 - [YARN series-2](https://hortonworks.com/blog/apache-hadoop-yarn-hdp-2-2-substantial-step-forward-enterprise-hadoop/)
-
-**Slider Blogs:**
-
-- [Announcing Apache Slider 0.60.0](https://hortonworks.com/blog/announcing-apache-slider-0-60-0/)
-- [Onboarding Long Running Services to Apache Hadoop YARN Using Apache Slider](https://hortonworks.com/blog/onboarding-long-running-services-apache-hadoop-yarn-using-apache-slider/)
-- [Build YARN Apps on Hadoop with Apache Slider: Technical Preview Now Available](https://hortonworks.com/blog/apache-slider-technical-preview-now-available/)
 
 **Capacity Scheduler Blogs:**
 

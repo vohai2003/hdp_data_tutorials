@@ -14,7 +14,7 @@ In this section, you will be introduced to Apache Hive. In the earlier section, 
 
 The tutorial is a part of a series of hands on tutorials to get you started on HDP using the Hortonworks sandbox. Please ensure you complete the prerequisites before proceeding with this tutorial.
 
-- Downloaded and Installed [Hortonworks Sandbox](https://hortonworks.com/downloads/#sandbox)
+- Downloaded and deployed the [Hortonworks Data Platform (HDP)](https://hortonworks.com/downloads/#sandbox) Sandbox
 - [Learning the Ropes of the HDP Sandbox](https://hortonworks.com/tutorial/learning-the-ropes-of-the-hortonworks-sandbox/)
 - [Sensor Data loaded into HDFS](https://hortonworks.com/tutorial/hadoop-tutorial-getting-started-with-hdp/section/2/#step-2---load-the-sensor-data-into-hdfs-)
 
@@ -38,7 +38,11 @@ Apache Hive presents a relational view of data in HDFS. Hive can represent data 
 
 To make it easy to interact with Hive we use a tool in the Hortonworks Sandbox called Data Analytics Studio.   [DAS](https://docs.hortonworks.com/HDPDocuments/DAS/DAS-1.0.0/operations/content/das_overview.html) provides an interactive interface to Hive. We can create, edit, save and run queries, and have Hive evaluate them for us using a series of Tez jobs.
 
-Let’s now open DAS and get introduced to the environment. On your favorite browser navigate to [http://sandbox-hdp.hortonworks.com:30800/#/](http://sandbox-hdp.hortonworks.com:30800/#/) while your sandbox is running.
+Let’s now open DAS and get introduced to the environment. From Ambari Dashboard Select **Data Analytics Studio** and click on `Data Analytics Studio UI`
+
+![open-das](assets/open-das.jpg)
+
+ Alternatively, use your favorite browser navigate to [http://sandbox-hdp.hortonworks.com:30800/#/](http://sandbox-hdp.hortonworks.com:30800/#/) while your sandbox is running.
 
 Now let’s take a closer look at the SQL editing capabilities Data Analytics Studio:
 
@@ -74,7 +78,7 @@ Starting from DAS Main Menu:
 
 Complete form as follows:
 
-- Select checkbox: **Is first row Header**
+- Select checkbox: **Is first row Header: True**
 - Select **Upload from HDFS**
 - Set **Enter HDFS Path** to `/user/maria_dev/data/trucks.csv`
 - Click **Preview**
@@ -205,7 +209,7 @@ select count(*) from trucks;
 
 What did you notice about performance after running hive queries from shell?
 
-- Queries using the shell run faster because hive runs the query directory in hadoop whereas in Ambari Hive View, the query must be accepted by a rest server before it can submitted to hadoop.
+- Queries using the shell run faster because hive runs the query directory in hadoop whereas in DAS, the query must be accepted by a rest server before it can submitted to hadoop.
 - You can get more information on the [Beeline from the Hive Wiki](https://cwiki.apache.org/confluence/display/Hive/HiveServer2+Clients#HiveServer2Clients-Beeline–CommandLineShell).
 - Beeline is based on [SQLLine](http://sqlline.sourceforge.net/).
 
@@ -266,7 +270,7 @@ Some **key resources** to **learn more about vectorization** and some of the **k
 
 ## Analyze the Trucks Data
 
-Next we will be using Hive, Pig and Zeppelin to analyze derived data from the geolocation and trucks tables.  The business objective is to better understand the risk the company is under from fatigue of drivers, over-used trucks, and the impact of various trucking events on risk.   In order to accomplish this, we will apply a series of transformations to the source data, mostly though SQL, and use Pig or Spark to calculate risk. In the last lab on Data Visualization, we will be using _Zeppelin_ to **generate a series of charts to better understand risk**.
+Next we will be using Hive, and Zeppelin to analyze derived data from the geolocation and trucks tables.  The business objective is to better understand the risk the company is under from fatigue of drivers, over-used trucks, and the impact of various trucking events on risk. In order to accomplish this, we will apply a series of transformations to the source data, mostly though SQL, and use Spark to calculate risk. In the last lab on Data Visualization, we will be using _Zeppelin_ to **generate a series of charts to better understand risk**.
 
 ![Lab2_211](assets/Lab2_211.png)
 
@@ -274,7 +278,7 @@ Let’s get started with the first transformation. We want to **calculate the mi
 
 ### Create Table truck_mileage From Existing Trucking Data
 
-Using the Ambari Hive View 2.0, execute the following query:
+Using DAS, execute the following query:
 
 ~~~sql
 CREATE TABLE truck_mileage STORED AS ORC AS SELECT truckid, driverid, rdate, miles, gas, miles / gas mpg FROM trucks LATERAL VIEW stack(54, 'jun13',jun13_miles,jun13_gas,'may13',may13_miles,may13_gas,'apr13',apr13_miles,apr13_gas,'mar13',mar13_miles,mar13_gas,'feb13',feb13_miles,feb13_gas,'jan13',jan13_miles,jan13_gas,'dec12',dec12_miles,dec12_gas,'nov12',nov12_miles,nov12_gas,'oct12',oct12_miles,oct12_gas,'sep12',sep12_miles,sep12_gas,'aug12',aug12_miles,aug12_gas,'jul12',jul12_miles,jul12_gas,'jun12',jun12_miles,jun12_gas,'may12',may12_miles,may12_gas,'apr12',apr12_miles,apr12_gas,'mar12',mar12_miles,mar12_gas,'feb12',feb12_miles,feb12_gas,'jan12',jan12_miles,jan12_gas,'dec11',dec11_miles,dec11_gas,'nov11',nov11_miles,nov11_gas,'oct11',oct11_miles,oct11_gas,'sep11',sep11_miles,sep11_gas,'aug11',aug11_miles,aug11_gas,'jul11',jul11_miles,jul11_gas,'jun11',jun11_miles,jun11_gas,'may11',may11_miles,may11_gas,'apr11',apr11_miles,apr11_gas,'mar11',mar11_miles,mar11_gas,'feb11',feb11_miles,feb11_gas,'jan11',jan11_miles,jan11_gas,'dec10',dec10_miles,dec10_gas,'nov10',nov10_miles,nov10_gas,'oct10',oct10_miles,oct10_gas,'sep10',sep10_miles,sep10_gas,'aug10',aug10_miles,aug10_gas,'jul10',jul10_miles,jul10_gas,'jun10',jun10_miles,jun10_gas,'may10',may10_miles,may10_gas,'apr10',apr10_miles,apr10_gas,'mar10',mar10_miles,mar10_gas,'feb10',feb10_miles,feb10_gas,'jan10',jan10_miles,jan10_gas,'dec09',dec09_miles,dec09_gas,'nov09',nov09_miles,nov09_gas,'oct09',oct09_miles,oct09_gas,'sep09',sep09_miles,sep09_gas,'aug09',aug09_miles,aug09_gas,'jul09',jul09_miles,jul09_gas,'jun09',jun09_miles,jun09_gas,'may09',may09_miles,may09_gas,'apr09',apr09_miles,apr09_gas,'mar09',mar09_miles,mar09_gas,'feb09',feb09_miles,feb09_gas,'jan09',jan09_miles,jan09_gas ) dummyalias AS rdate, miles, gas;
