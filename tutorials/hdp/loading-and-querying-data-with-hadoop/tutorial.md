@@ -25,8 +25,8 @@ We will describe how to ingest data into HDFS, to create tables and perform quer
 
 ## Prerequisites
 
-- Downloaded and Installed latest [Hortonworks Data Platform (HDP) Sandbox](https://hortonworks.com/downloads/#sandbox)
-- Completed [Learning the Ropes of the HDP Sandbox](https://hortonworks.com/tutorial/learning-the-ropes-of-the-hortonworks-sandbox/) tutorial
+- Downloaded and deployed the [Hortonworks Data Platform (HDP)](https://hortonworks.com/downloads/#sandbox) Sandbox
+- [Learning the Ropes of the HDP Sandbox](https://hortonworks.com/tutorial/learning-the-ropes-of-the-hortonworks-sandbox/) tutorial
 
 ## Outline
 
@@ -52,13 +52,13 @@ users.tsv
 
 ## Create Hive Tables with Data Analytics Studio
 
-Logon to Ambari user/password: maria_dev/maria_dev.
+Logon to Ambari user/password: **maria_dev/maria_dev**.
 
 1\. Select the **Data Analytics Studio** (DAS) service.
 
 2\. Navigate to the **Data Analytics Studio UI** located on the right hand side of the Ambari page.
 
-- Alternatively, you can access the DAS UI directly by using port 38000:[sandbox.hdp.hortonworks.com:30800](http://sandbox-hdp.hortonworks.com:30800/)
+- Alternatively, you can access the DAS UI directly by using port 30800:[sandbox.hdp.hortonworks.com:30800](http://sandbox-hdp.hortonworks.com:30800/)
 
 ![das-ui-navigate](assets/das-ui-navigate.jpg)
 
