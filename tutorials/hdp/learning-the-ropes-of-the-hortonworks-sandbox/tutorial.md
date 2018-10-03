@@ -40,7 +40,7 @@ Let's begin our Hadoop journey...
   - [Sandbox Version](#sandbox-version)
   - [Admin Password Reset](#admin-password-reset)
 - [Appendix B: Troubleshoot](#appendix-b-troubleshoot)
-- [Appendix C: Troubleshoot](#appendix-b-troubleshoot)
+- [Appendix C: Determine Network Adapter of Your VirtualBox Sandbox](#appendix-c-determine-network-adpater-of-your-virtualbox-sandbox)
 
 ## Environment setup
 
@@ -306,7 +306,6 @@ you change your Ambari admin password to be unique.
 At times you may encounter a job, query or request that just seems to run forever and does not complete. It may be because it's in the **ACCEPTED** state. A good place to begin looking is in the [ResourceManager](http://sandbox-hdp.hortonworks.com:8088/). If you know a job has completed, but the Resource Manager still thinks it's running - kill it!
 
 ![rm-kill](assets/rm-kill.jpg)
-
 
 ## Appendix C: Determine Network Adapter of Your VirtualBox Sandbox
 
