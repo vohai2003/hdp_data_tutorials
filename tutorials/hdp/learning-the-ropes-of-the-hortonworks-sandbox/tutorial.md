@@ -58,13 +58,7 @@ Once the Sandbox VM or container is installed, it settles to the host of your en
 
 If you're using **VirtualBox** or **VMWare**, you can confirm the IP address by waiting for the installation to complete and confirmation screen will tell you the IP address your sandbox resolves to. For example:
 
-![Host Address of Sandbox Environment](assets/guest_vm_NAT_mode_hdp265_83.png)
-
-<!--- >> **Note:** Guest VM Welcome Window for NAT Sandbox --->
-
-![Host Address of Sandbox Environment](assets/guest_vm_BRIDGED_mode_welcome_screen.jpg)
-
-<!--- >> **Note:** Guest VM Welcome Window for BRIDGED Sandbox --->
+![guest-vm-hdp-welcome-screen](assets/guest-vm-hdp-welcome-screen.jpg)
 
 > **Note:** If you're using Azure, your IP address is located on the dashboard, refer to [**Set a Static IP**](https://hortonworks.com/tutorial/sandbox-deployment-and-install-guide/section/4/#set-a-static-ip)
 
@@ -99,7 +93,7 @@ Mac, Linux and Windows all have a hosts file. This file once configured enables 
 
 Open your terminal (mac/linux) or Git Bash (Windows). Type the following command to access the Sandbox through **ssh user@hostname -p port**. For example: ```ssh root@sandbox-hdp.hortonworks.com -p 2222```
 
-![Mac Terminal SSH](assets/secure_shell_sandbox_learning_the_ropes_sandbox.jpg)
+![secure-shell-sandbox](assets/secure-shell-sandbox.jpg)
 
 #### Shell Web Client Method:
 
@@ -219,7 +213,7 @@ ambari-agent restart
 ## Further Reading
 
 - [Hadoop Tutorial - Getting Started with HDP](https://hortonworks.com/tutorial/hadoop-tutorial-getting-started-with-hdp/)
-- [HDP Documentation](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.0/index.html)
+- [HDP Documentation](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.1/index.html)
 - [Hortonworks Documentation](http://docs.hortonworks.com/)
 
 ## Appendix A: Reference Sheet
@@ -336,3 +330,13 @@ When would you need this mode? It is needed for Connected Data Architecture(CDA)
 ![Bridged Adapter](assets/bridged_adapter.jpg)
 
 > WARNING: First make sure your computer is connected to a router, else this feature will not work cause there is no router to assign an IP address to the guest vm.
+
+If you're using **VirtualBox** or **VMWare**, you can confirm the IP address by waiting for the installation to complete and confirmation screen will tell you the IP address your sandbox resolves to. For example:
+
+![Host Address of Sandbox Environment](assets/guest-vm-NAT-mode.jpg)
+
+ >> **Note:** Guest VM Welcome Window for NAT Sandbox --->
+
+![Host Address of Sandbox Environment](assets/guest-vm-bridged-mode-welcome-screen.jpg)
+
+ >> **Note:** Guest VM Welcome Window for BRIDGED Sandbox --->
