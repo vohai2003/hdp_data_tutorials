@@ -40,7 +40,7 @@ To provide further control and predictability on sharing of resources, the Capac
 
 ## Outline
 
-- [Configuring the Capacity Scheduler](#configure-scheduler)
+- [Configuring the Capacity Scheduler](#configuring-the-capacity-scheduler)
 - [Rollback the Configuration Version](#rollback-version)
 - [Summary](#summary)
 - [Further Reading](#further-reading)
