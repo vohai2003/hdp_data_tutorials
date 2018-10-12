@@ -333,7 +333,7 @@ Continue to enter the following expressions to FilterNormalEvents-AGGREGATE, to 
 | SUM(foggy)  | totalFog  |
 | SUM(rainy)  | totalRain |
 | SUM(windy)  | totalWind |
-| SUM(eventTime | totalViolations |
+| SUM(eventTime) | totalViolations |
 
 ![aggregate_expressions](assets/images/aggregate_expressions.jpg)
 

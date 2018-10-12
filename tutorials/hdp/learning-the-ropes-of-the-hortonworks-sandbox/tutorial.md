@@ -33,7 +33,6 @@ Let's begin our Hadoop journey...
 - [Terminal Access](#terminal-access)
 - [Welcome Page](#welcome-page)
 - [Explore Ambari](#explore-ambari)
-<!-- - [Explore Sandbox in Azure](#explore-sandbox-in-azure)--->
 - [Further Reading](#further-reading)
 - [Appendix A: Reference Sheet](#appendix-a-reference-sheet)
   - [Login Credentials](#login-credentials)
@@ -42,7 +41,8 @@ Let's begin our Hadoop journey...
 - [Appendix B: Troubleshoot](#appendix-b-troubleshoot)
 - [Appendix C: Determine Network Adapter of Your VirtualBox Sandbox](#appendix-c-determine-network-adpater-of-your-virtualbox-sandbox)
 
-<!--- Add the following link to the outline once Azure is available - [Explore Sandbox in Azure](#explore-sandbox-in-azure)--->
+<!--- [Explore Sandbox in Azure](#explore-sandbox-in-azure) 
+Add the following link to the outline once Azure is available - [Explore Sandbox in Azure](#explore-sandbox-in-azure)--->
 
 ## Environment setup
 
@@ -70,17 +70,17 @@ Mac, Linux and Windows all have a hosts file. This file once configured enables 
 
 **Mac users**:
 
-- ```echo '{IP-Address} sandbox.hortonworks.com sandbox-hdp.hortonworks.com sandbox-hdf.hortonworks.com' | sudo tee -a /private/etc/hosts```
+- ```echo '{IP-Address} sandbox-hdp.hortonworks.com sandbox-hdf.hortonworks.com' | sudo tee -a /private/etc/hosts```
 
 **Linux users**:
 
-- ```echo '{IP-Address} sandbox.hortonworks.com sandbox-hdp.hortonworks.com sandbox-hdf.hortonworks.com' | sudo tee -a /etc/hosts```
+- ```echo '{IP-Address} sandbox-hdp.hortonworks.com sandbox-hdf.hortonworks.com' | sudo tee -a /etc/hosts```
 
 **Windows users**:
 
 - Run Notepad as **administrator**.
 - Open **hosts** file located in: ```c:\Windows\System32\drivers\etc\hosts```
-- Add ```{IP-Address}   localhost   sandbox.hortonworks.com   sandbox-hdp.hortonworks.com   sandbox-hdf.hortonworks.com```
+- Add ```{IP-Address}   localhost  sandbox-hdp.hortonworks.com   sandbox-hdf.hortonworks.com```
 - Save the file
 
 > IMPORTANT: Replace **{IP-Address}** with [Sandbox IP Address](#determine-ip-address-of-your-sandbox)
@@ -140,8 +140,8 @@ The following screen will be displayed:
 ![Lab0_3](assets/ambari-welcome-learning-the-ropes-sandbox.jpg)
 
 1. “**Dashboard**” will take you to the Ambari Dashboard which is the primary UI for Hadoop Operators
-2. “**Administration of Users**” allows you to add & remove Ambari users and groups
-3. “**Cluster Management**” allows you to grant permission to Ambari users and groups
+2. “**Cluster Management**” allows you to grant permission to Ambari users and groups
+3. “**Administration of Users**” allows you to add & remove Ambari users and groups
 4. “**Ambari User Views**” list the set of Ambari Users views that are part of the cluster
 
 - Click on **Go to Dashboard** and you should see a similar screen:
