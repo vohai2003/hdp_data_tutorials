@@ -1,8 +1,8 @@
 ---
-title: Sandbox Docs - HDP 2.6.5
+title: Sandbox Docs - HDP 3.0.1
 ---
 
-# Sandbox Docs - HDP 2.6.5
+# Sandbox Docs - HDP 3.0.1
 
 ## Outline
 
@@ -17,7 +17,6 @@ title: Sandbox Docs - HDP 2.6.5
 - [HDP Services Started Automatically on Startup](#hdp-services-started-automatically-on-startup)
 - [HDP Services Not Started Automatically on Startup](#hdp-services-not-started-automatically-on-startup)
 - [Further Reading](#further-reading)
-
 
 ## Release Notes
 
@@ -36,25 +35,26 @@ October 2018
 
 ## Behavior Changes
 
-- Virtual machines are now Connected Data Architecture (CDA) ready
+- CDA requires a minimum of 26 GB
 - Kafka is now off by default
-- Builds now include Superset and Druid, both turned off
+- Hive View 2.0 is replaced with Data Analytics Studio
+- Pig View is no longer a part of HDP
+- Hive is now in a separate catalog from all other services. In order to use Hive along with other services a [HiveWarehouseConnector](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.1/integrating-hive/content/hive_hivewarehouseconnector_for_handling_apache_spark_data.html) is needed
 
 ## Known Issues
 
-- 
+- LLAP
 
 ## Limitations
 
 This is a list of common limitations along with their workarounds.
-- RMP-3586 - Due to dependency of the underlying OS and Virtual machine application, the following may occur when suspending the virtual machine:
-  - Region Server service for HBase may be stopped when returning back from suspended state. It will need to be restarted.
-  - Ambari Metrics may be stopped when returning back from suspended state since it now uses an embedded HBase.
-  - **Workaround**: Avoid having to suspend your virtual machine.
+
+Pig Views is no longer a part of HDP; as a consequence, Pig scripts in the Sandbox are executed on Grub.
 
 ## System Information
 
 Operating System and Java versions that the Sandbox has installed.
+
 - OS Version (docker container)
   - CentOS release 7.5.1804 (Core)
   - Java Version (docker container)
@@ -91,7 +91,7 @@ These components are offered by the Hortonworks distribution, but not included i
 
 ### Newly Added HDP Supported Packages
 
-- Data Analytics Studio
+- Data Analytics Studio 1.0.0.0.0
 
 ### Deprecated Services
 
@@ -174,6 +174,6 @@ Because of the limited resources available in the sandbox virtual machine enviro
 
 ## Further Reading
 
-- [Hortonworks Leads Industry Performance Customer Choice HDP 2.6](https://hortonworks.com/press-releases/hortonworks-leads-industry-performance-customer-choice-hdp-2-6)
-- [Hortonworks Connected Data Platforms](https://hortonworks.com/products/data-platforms/)
+- [Hortonworks DataFlow 3.0 Simplifies Development of Streaming Analytics Applications](https://hortonworks.com/press-releases/hortonworks-dataflow-3-0/)
+- [Hortonworks Hybrid Data Platforms](https://hortonworks.com/products/data-platforms/)
 - [HDP Documentation](https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.6.5/index.html)

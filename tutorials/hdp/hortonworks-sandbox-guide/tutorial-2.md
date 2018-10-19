@@ -36,14 +36,16 @@ October 2018
 ## System Information
 
 Operating System and Java versions that the Sandbox has installed.
-- CentOS release 7.5.1804
+
+- CentOS release 7.5.1804 (Core)
 - Kernel: 4.17.1-1
-- Java: OpenJDK version 1.8.0_171
+- openJDK version “1.8.0.181”
 
 Image File Sizes:
-- Docker – 7 GB
-- VMware – 8 GB
-- Virtualbox – 8 GB
+
+- Docker – 7.8 GB
+- VMware – 8.6 GB
+- Virtualbox – 8.6 GB
 
 ### Databases Used
 
@@ -77,5 +79,5 @@ To fully use these services, you must allocate more memory to the sandbox's virt
 
 ## Further Reading
 
-- [Hortonworks Connected Data Platforms](https://hortonworks.com/products/data-platforms/)
+- [Hortonworks Hyrbid Data Platforms](https://hortonworks.com/products/data-platforms/)
 - [HDF Documentation](https://docs.hortonworks.com/HDPDocuments/HDF3/HDF-3.1.1/index.html)
