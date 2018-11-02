@@ -12,7 +12,7 @@ In this section of the tutorial we will prepare the Sandbox environment by enabl
 
 ## Prerequisites
 
-- Downloaded and deployed the [Hortonworks Data Platform (HDP)](https://hortonworks.com/downloads/#sandbox) Sandbox
+- Downloaded and Installed the latest [Hortonworks Data Platform (HDP) Sandbox](https://hortonworks.com/downloads/#sandbox)
 - [Learning the Ropes of the HDP Sandbox](https://hortonworks.com/tutorial/learning-the-ropes-of-the-hortonworks-sandbox/)
 
 ## Outline
@@ -30,7 +30,7 @@ In this section of the tutorial we will prepare the Sandbox environment by enabl
 
 Before we begin creating, assigning, and editing tag policies we must enable Ranger audit to Solr and start the services needed to assign policies. Additionally, we will stop services not necessary for this tutorial.
 
-Additionally, we should become acquainted with the personas who reside within the HDP Sandbox.
+Furthermore, we should become acquainted with the personas who reside within the HDP Sandbox.
 
 Here is a brief description of them:
 
@@ -46,58 +46,64 @@ Maria is our developer and thus has limited access to our cluster's services.
 **Username** – maria_dev
 **Password** – maria_dev
 
-In order to set up our enviroment we will use our cluster operator Raj_ops.
+In order to set up our environment we will use our cluster administrator **admin**.
 
 ## Enable Ranger audit to Solr
 
-Log into Ambari as **raj_ops** user. Username & Password : `raj_ops/raj_ops`
+Use your HDP **admin** credentials to sign in.
 
-Once in the Ambari click on the **Ranger** service on the service Stack on the left and follow these steps to enable audit to Solr:
+**Table 1**: Ambari Login credentials
 
-1. Ensure you are in Ranger service UI
+| Username | Password |
+|:---:|:---:|
+| admin | **setup process |
 
-2. select the **Configs** tab
+> [Setup Ambari Admin Password Manually](https://hortonworks.com/tutorial/learning-the-ropes-of-the-hortonworks-sandbox/#admin-password-reset)
+
+Once in Ambari click on the **Ranger** service on the service Stack on the left and follow these steps to enable audit to Solr:
+
+1. Ensure you are in Ranger service
+
+2. Select the **Configs** tab
 
 3. **Ranger Audit** tab
 
-4. Turn **ON** Ranger's Audit to Solr feature
+4. Turn **ON** Ranger's Audit to Solr and SolrCloud features
 
 5. **Save** this configuration
 
-In the **Save Configuration** window that appears, write `Enable Audit to Solr Feature`, then select **Save**, next click **OK** button on Dependent Configurations window.
+In the **Save Configuration** window that appears, write `Enable Audit to Solr and SolrCloud Feature`, then select **Save**, next click **OK** button on Dependent Configurations window.
 Finally, click **Proceed Anyway** on the **Save Configuration Changes** window, and click **OK**.
 
-![enable_audit_to_solr](assets/images/activate-ranger-audit-to-solr.png)
+![enable-audit-to-solr-and-solrcloud](assets/images/enable-ranger-audit-to-solr-and-solrcloud.jpg)
 
 ## Restart All Services Affected
 
-After Enabling Ranger Audit to Solr, there are services that will need to be restarted for the changes to take effect on our sandbox:
+After Enabling Ranger Audit to Solr and SolrCloud, there are services that will need to be restarted for the changes to take effect on our sandbox:
 
-![affected_services](assets/images/affected-services.jpg)
+![affected-services](assets/images/affected-services.jpg)
 
-Let's start by restarting services from the top of the Ambari Stack.
+### Restart the Zookeeper Service
 
-### Restart HDFS Service
+1\. Select **Zookeeper**, then click on **Service Actions**. Click on **Restart All** to restart all components of Zookeeper. It will also restart all affected components of Zookeeper.
 
-1\. Select **HDFS**, then click on **Service Actions**. Click on **Restart All** to restart all components of HDFS. It will also restart all affected components of HDFS.
-
-![restart_all_hdfs_components](assets/images/restart-all-hdfs-components.jpg)
+![restart-all-zookeeper-components](assets/images/restart-all-zookeeper-components.jpg)
 
 2\. On the **Confirmation** window, press **Confirm Restart All**.
 
-![hdfs_confirmation_restart](assets/images/hdfs_confirmation_restart.jpg)
+![zookeeper-confirmation-restart](assets/images/zookeeper-confirmation-restart.jpg)
 
-**Background Operation Running** window will appear showing HDFS currently is being restarted. This window will appear for other services you perform a service action upon.
+**Background Operation Running** window will appear showing Zookeeper currently is being restarted. This window will appear for other services you perform a service action upon.
 
-![background_operation_running_hdfs](assets/images/background_operation_running_hdfs.jpg)
+![background-operation-running-hdfs](assets/images/background-operation-running-zookeeper.jpg)
 
 Click **OK** button in bottom right corner.
 
-3\. Once HDFS finishes restarting, you will be able to see the components health.
+3\. Once Zookeeper finishes restarting, you will be able to see the components health.
 
-![hdfs_service_restart_result](assets/images/hdfs_service_restart_result.jpg)
+![zookeeper-service-restart-result](assets/images/hdfs-service-restart-result.jpg)
 
-You may notice there is one component still needs to be restarted. **SNameNode** says **Stopped**. Click on its name.
+<!---You may notice there is one component that still needs to be restarted. **SNameNode** says **Stopped**. Click on its name.
 
 You are taken to the **Hosts Summary** page. It lists all components related to every service within the Ambari stack for the Sandbox host.
 
@@ -105,17 +111,17 @@ You are taken to the **Hosts Summary** page. It lists all components related to 
 
 ![host_components](assets/images/host_components.jpg)
 
-Starting SNameNode is like restarting it since it was initially off, it will be refreshed from the recent changes from Ranger Audit config.
+Starting SNameNode is like restarting it since it was initially off, it will be refreshed from the recent changes from Ranger Audit config.--->
 
 5\. Let's get back to Ambari Dashboard, click on the Ambari icon ![ambari_icon](assets/images/ambari_icon.jpg) in the top left corner.
 
-6\. Head back to **HDFS** Service's **Summary** page. Click on **Service Actions** dropdown, click **Turn off Maintenance Mode**.
+<!--_ 6\. Head back to **HDFS** Service's **Summary** page. Click on **Service Actions** dropdown, click **Turn off Maintenance Mode**. 
 
 7\. When the **Confirmation** window appears, confirm you want to **Turn off Maintenance Mode**, click **OK**.
 
-Next, an **Information** window will appear conveying the result, click **OK**.
+Next, an **Information** window will appear conveying the result, click **OK**.--->
 
-Now **HDFS** service has been successfully restarted. Initially, we did **Restart All**, which restarted most components, but some components have to be manually restarted like **SNameNode**.
+Now **HDFS** service has been successfully restarted. Initially, we did **Restart All**, which restarted all components.
 
 ## Stop Services Not Used in Tag Based Policies
 
@@ -128,11 +134,10 @@ Stopping a service is a similar process as we did before, but instead of using *
 1\. Stop the following services in this order:
 
 - Oozie
-- Flume
 - Spark2
 - Zeppelin
 
-![stop_services_not_needed](assets/images/stop_services_not_needed.jpg)
+![stop_services_not_needed](assets/images/stop-services-not-needed.jpg)
 
 ### Restart the Other Affected Services from Ranger Config
 
@@ -140,33 +145,43 @@ Stopping a service is a similar process as we did before, but instead of using *
 
 Restart the remaining services in this order:
 
-- YARN
-- Hive
-- HBase
-- Storm
-- Ambari Infra
-- Atlas
-- Kafka
-- Knox
+- Infra Solr
 - Ranger
+- HDFS
+- YARN
+- MapReduce2
+- Tez
+- Hive
+- HBase (Turn Off Maintenance Mode then restart HBase)
+- Sqoop
+- Storm (Turn Off Maintenance Mode then restart Storm)
+- Atlas (Turn Off Maintenance Mode then restart Atlas)
+- Kafka (Turn off Maintenance Mode then restart Kakfa)
+- Knox
 
-![services_left_to_restart](assets/images/services-left-to-restart.jpg)
+![services-left-to-restart](assets/images/services-left-to-restart.jpg)
 
-> Note: Also turn off maintenance mode for **HBase**, **Atlas** and **Kafka**.
+If **Knox** doesn't re-start due to the **KNOX GATEWAY** failing, then:
+
+1\. Click on **Knox Gateway**
+
+2\. Find **Knox Gateway** under components and Start **Knox Gateway** 
+
+3\. Go back to Knox's **Host Actions** and **Resstart All Components**
 
 2\. In your **Background Operations Running** window, it should show that all the above services are being restarted.
 
-![remaining_services_restarted](assets/images/remaining_services_restarted.jpg)
+![remaining-services-restarted](assets/images/remaining-services-restarted.jpg)
 
-![remaining_services_restart_result1](assets/images/remaining_services_restart_result1.jpg)
+![remaining-services-restart-result1](assets/images/remaining-services-restart-result1.jpg)
 
 > Note: **Atlas Metadata Server** might fail to restart, all you need to do is go to the component and individually start it
 
 ### Verify "ranger_audits" is created in Ambari Infra Solr
 
-Once we restart Ranger, you should verify that **ranger_audits** is started:
+Once services have been restarted, you should verify that **ranger_audits** is started:
 
-**Ambari** -> **Ambari Infra** -> **Quick Links** -> **Solr Admin UI**
+**Ambari** -> **Infra Solr** -> **Quick Links** -> **Solr Admin UI**
 
 Make sure "ranger_audits" is displayed in Ambari Infra Solr as in the picture below:
 
@@ -176,7 +191,7 @@ Make sure "ranger_audits" is displayed in Ambari Infra Solr as in the picture be
 
 ## Summary
 
-Great now that we have set up the enviroment for us to work with let's get to work assigning Tag Based Policies with Atlas.
+Great now that we have set up the environment for us to work with let's get to work assigning Tag Based Policies with Atlas.
 
 ## Further Reading
 
