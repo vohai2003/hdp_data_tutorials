@@ -17,6 +17,8 @@ series: HDP >
 
 ## Introduction
 
+Data Analytics Studio or DAS forms part of Hortonworks Data Plane
+
 ![das](assets/das.png)
 
 Intro Intro
