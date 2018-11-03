@@ -17,11 +17,20 @@ series: HDP >
 
 ## Introduction
 
+![das](assets/das.png)
+
 Intro Intro
+
+
 
 ## Prerequisites
 
+- Downloaded and deployed the [Hortonworks Data Platform (HDP)](https://hortonworks.com/downloads/#sandbox) Sandbox
+- Ensure Spark version 2.x or later is installed
+
 ## Outline
+
+![welcome-to-das](assets/welcome-to-das.jpg)
 
 ## Concepts
 
