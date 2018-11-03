@@ -23,24 +23,24 @@ This tutorial walks through the steps for creating data in Apache Hive through A
 
 ## Prerequisites
 
-- [Download Hortonworks Sandbox](https://hortonworks.com/downloads/#sandbox)
-- Complete the [Learning the Ropes of the HDP Sandbox tutorial,](https://hortonworks.com/hadoop-tutorial/learning-the-ropes-of-the-hortonworks-sandbox/) you will need it for logging into Ambari.
-- 10 GB RAM
+- Downloaded and deployed the [Hortonworks Data Platform (HDP)](https://hortonworks.com/downloads/#sandbox) Sandbox
+- [Learning the Ropes of the HDP Sandbox tutorial,](https://hortonworks.com/hadoop-tutorial/learning-the-ropes-of-the-hortonworks-sandbox/) you will need it for logging into Ambari
+- 12 GB of RAM
 
 ## Outline
 
--   [1: Configure Hive to work with Atlas](#configure-hive-with-atlas)
--   [2: Start Kafka, Storm, HBase, Ambari Infra and Atlas](#start-services)
--   [3: Sqoop-Hive Lineage](#sqoop-hive-lineage)
--   [4: Kafka – Storm Lineage](#kafka-storm-lineage)
--   [Summary](#summary)
--   [Further Reading](#further-reading)
+- [Configure Hive to work with Atlas](#configure-hive-to-work-with-atlas)
+- [Start Kafka, Storm, HBase, Infra Solr and Atlas](#start-kafka-storm-hbase-infra-solr-and-atlas)
+- [Sqoop-Hive Lineage](#sqoop-hive-lineage)
+- [Kafka – Storm Lineage](#kafka-storm-lineage)
+- [Summary](#summary)
+- [Further Reading](#further-reading)
 
-## 1: Configure Hive to work with Atlas <a id="configure-hive-with-atlas"></a>
+## Configure Hive to work with Atlas
 
 Started by logging into Ambari as **raj_ops** user. User name - **raj_ops** and password - **raj_ops**.
 
-### 1.1: View the Services Page
+### View the Services Page
 
 ![ambari_dashboard_rajops](assets/ambari_dashboard_rajops.png)
 
@@ -59,48 +59,39 @@ Next search `hive.warehouse.subdir.inherit.perms` in the filter text box. This p
 
 Click `Save` after you make the change. Write **Atlas-hive hook enabled** in the prompt and then proceed with saving the change. You have to Restart Hive now. Click on `Restart` and then `Restart All Affected`.
 
-## 2: Start Kafka, Storm, HBase, Ambari Infra and Atlas <a id="start-services"></a>
+## Start Kafka, Storm, HBase, Infra Solr and Atlas
 
 From the Dashboard page of Ambari, click on `Kafka` from the list of installed services.
 
-![new_select_kafka](assets/new_select_kafka.png)
+![select_kafka](assets/select-kafka.jpg)
 
-### 2.1: Start Kafka Service
+### Start Kafka Service
 
 From the Kafka page, click on `Service Actions -> Start`
 
-![start_kafka](assets/start_kafka.png)
+![start-kafka](assets/start-kafka.jpg)
 
 Check the `Maintenance Mode` box and click on `Confirm Start`:
 
-![confirmation_kafka](assets/confirmation_kafka.png)
+![confirm-start](assets/confirm-start.jpg)
 
 Wait for Kafka to start (It may take a few minutes to turn green)
 
-![new_started_kafka](assets/new_started_kafka.png)
-
 In the same way you started Kafka above, start other required services (in order):
+
 1. Storm
 2. HBase
-3. Ambari Infra
+3. Infra Solr
 4. Atlas
 
-### Enable Atlas Webhook for sqoop and storm
-
-
-
-### 2.2: Stop Services
+### Stop Unneeded Services
 
 Stop some services like **Spark, Oozie, Flume and Zeppelin** which are not required in this tutorial. Turn On the **Maintenance mode** also.
 Your Ambari dashboard page should look like this:
 
 ![new_ambari_dashboard_rajops](assets/new_ambari_dashboard_rajops.png)
 
-## 3: Sqoop-Hive Lineage <a id="sqoop-hive-lineage"></a>
-
-We need a script for creating a MySQL table, then importing the table using Sqoop into Hive.
-
-### 3.1: Log into the Sandbox.
+### Log into the Sandbox.
 
 First access the Sandbox Web Shell Client at `sandbox-hdp.hortonworks.com:4200`. The first time password for root user is `hadoop`.
 
@@ -108,34 +99,39 @@ Alternatively, you could "ssh" into the sandbox from your terminal or Windows Ub
 
 Text you should see on your screen looks similar:
 
-~~~
+~~~bash
 sandbox login: root
 root@sandbox.hortonworks.com's password:
 Last login: Fri Jan  5 06:05:29 2018 from 10.0.2.2
 [root@sandbox-hdp ~]#
 ~~~
 
-### 3.2: Download & extract the demo script
+### Download & extract the demo script
 
 Run the following command to get to the scripts for the tutorial.
 
-~~~
+~~~bash
 mkdir crosscomponent_demo
 cd crosscomponent_demo
 wget https://github.com/hortonworks/data-tutorials/raw/master/tutorials/hdp/cross-component-lineage-with-apache-atlas-across-apache-sqoop-hive-kafka-storm/assets/crosscomponent_scripts.zip
 unzip crosscomponent_scripts.zip
-cd crosscomponent_scripts/sqoop-demo
 ~~~
+
+## Sqoop-Hive Lineage <a id="sqoop-hive-lineage"></a>
+
+We need a script for creating a MySQL table, then importing the table using Sqoop into Hive.
+
+cd crosscomponent_scripts/sqoop-demo
 
 ![download_and_extract](assets/download_and_extract.png)
 
 ![download_and_extract2](assets/download_and_extract2.png)
 
-### 3.3: Create a mysql table
+### Create a mysql table
 
 Run the below command in your terminal to login into mysql shell, create a table called **test_table_sqoop1** and then insert two records:
 
-~~~
+~~~bash
 cat 001-setup-mysql.sql | mysql -u root -p
 ~~~
 
@@ -143,7 +139,7 @@ cat 001-setup-mysql.sql | mysql -u root -p
 
 ![setup_mysql_script](assets/setup_mysql_script.png)
 
-### 3.4: Run the SQOOP Job
+### Run the SQOOP Job
 
 Before we run the sqoop job, let's **configure the Atlas Sqoop Hook** via commands:
 
@@ -201,62 +197,72 @@ You will see the lineage like given below. You can hover at each one of them to 
 
 ![hive_lineage](assets/hive_lineage.jpg)
 
-## 4: Kafka – Storm Lineage <a id="kafka-storm-lineage"></a>
+## Kafka – Storm Lineage 
 
 The following steps will show the lineage of data between Kafka topic **my-topic-01** to Storm topology **storm-demo-topology-01**, which stores the output in the HDFS folder (`/user/storm/storm-hdfs-test`).
 
-### 4.1: Create a Kafka topic to be used in the demo
+### Create a Kafka topic to be used in the demo
 
 Run the following commands to create a new Kafka topic **my-topic-01**
 
-~~~
-cd ../storm-demo
+~~~bash
+cd ~/crosscomponent_demo/crosscomponent_scripts/storm-demo/
 sh 001-create_topic.sh
 ~~~
 
 ![create_topic_script](assets/create_topic_script.png)
 
-### 4.2: Create a HDFS folder for output
+### Create a HDFS folder for output
 
 Run the following command to create a new HDFS directory under /user/storm
 
-~~~
+~~~bash
 sh 002-create-hdfs-outdir.sh
 ~~~
 
 ![create_hdfs_directory_script](assets/create_hdfs_directory_script.png)
 
-### 4.3: Download STORM job jar file (optional)
+> Note: If you would like to find the source code for the Job we are about to run in can be found by executing the following command:
 
-Source is available at https://github.com/yhemanth/storm-samples.
-Run the following command:
-
-~~~
+~~~bash
 sh 003-download-storm-sample.sh
-~~~
-
-As the jar files is already downloaded in the vm, you would see the below information:
-
-~~~
-Storm Jar file is already download in /root/crosscomponent_demo/crosscomponent_scripts/storm-demo/lib folder
-You can view the source for this at https://github.com/yhemanth/storm-samples
 ~~~
 
 ![download_storm_script](assets/download_storm_script.png)
 
-### 4.4: Run the Storm Job
+### Kafka Storm Lineage
 
-Before we run the deploy the Storm Topology, we need to enable Atlas Hook in Storm Configs.
+The Storm Job you are about to execute is in JAR format, the original source code can be found on [yhemanth's github repository](https://github.com/yhemanth/storm-samples/tree/master/src/main/java/com/dsinpractice/storm/samples).
 
-1\. **Navigate to Ambari UI**, click on **Storm**, then **Configs**.
+In this example Atlas is leveraged to track the lineage of the Storm job with Kafka. This is a snippet of the code we are using, note that this is a simple word count algorithm; however, what we are interested in is the resultant lineage:
 
-2\. Search for `storm.atlas.hook` and to the right of "Enable Atlas Hook," **check the box**. Then save the configuration as **enable storm atlas hook**, click save.
+~~~java
+public static class WordCount extends BaseBasicBolt {
+        Map<String, Integer> counts = new HashMap<String, Integer>();
 
-![enable_storm_atlas_hook](assets/enable_storm_atlas_hook.jpg)
+        @Override
+        public void execute(Tuple tuple, BasicOutputCollector collector) {
+            String word = tuple.getString(0);
+            Integer count = counts.get(word);
+            if (count == null)
+                count = 0;
+            count++;
+            counts.put(word, count);
+            collector.emit(new Values(word, count));
+        }
 
-Run the following command:
+        @Override
+        public void declareOutputFields(OutputFieldsDeclarer declarer) {
+            declarer.declare(new Fields("word", "count"));
+        }
 
+        ...
+}
 ~~~
+
+To run this job execute the following command:
+
+~~~bash
 sh 004-run-storm-job.sh
 ~~~
 
@@ -264,7 +270,7 @@ sh 004-run-storm-job.sh
 
 ![run_storm_script2](assets/run_storm_script2.png)
 
-### 4.5: View ATLAS UI for the lineage
+### View ATLAS UI for the lineage
 
 Go to the Atlas UI http://localhost:21000/. Search for: **kafka_topic** this time and Click on: `my-topic-01`
 
@@ -274,7 +280,7 @@ Scroll down and you will see a lineage of all the operations from Kafka to Storm
 
 ![kafka_storm_lineage](assets/kafka_storm_lineage.jpg)
 
-## Summary <a id="summary"></a>
+## Summary
 
 **Apache Atlas** is the only governance solution for Hadoop that has native hooks within multiple Hadoop components and delivers lineage across these components. With the new preview release, Atlas now supports lineage across data movement in Apache Sqoop, Hive, Kafka, Storm and in Falcon.
 
