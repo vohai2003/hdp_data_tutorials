@@ -1,13 +1,13 @@
 ---
 title: Cross Component Lineage with Apache Atlas across Apache Sqoop, Hive, Kafka & Storm
-author: Mushtaq Rizvi
+author: sandbox-team
 tutorial-id: 610
 experience: Beginner
 persona: Developer
 source: Hortonworks
 use case: Data Discovery
 technology: Apache Atlas, Apache Sqoop, Apache Hive, Apache Kafka, Apache Storm
-release: hdp-2.6.0
+release: hdp-3.0.1
 environment: Sandbox
 product: HDP
 series: HDP > Hadoop Administration > Security
@@ -18,21 +18,21 @@ series: HDP > Hadoop Administration > Security
 ## Introduction
 
 Hortonworks introduced [Apache Atlas](https://hortonworks.com/blog/apache-atlas-project-proposed-for-hadoop-governance/) as part of the [Data Governance Initiative](https://hortonworks.com/press-releases/hortonworks-establishes-data-governance-initiative/), and has continued to deliver on the vision for open source solution for centralized metadata store, data classification, data lifecycle management and centralized security.
-Atlas is now offering, as a tech preview, cross component lineage functionality, delivering a complete view of data movement across a number of analytic engines such as Apache Storm, Kafka, Falcon and Hive.
+Atlas is now offering, as a tech preview, cross component lineage functionality, delivering a complete view of data movement across a number of analytic engines such as Apache Storm, Kafka, and Hive.
 This tutorial walks through the steps for creating data in Apache Hive through Apache Sqoop and using Apache Kafka with Apache Storm.
 
 ## Prerequisites
 
 - Downloaded and deployed the [Hortonworks Data Platform (HDP)](https://hortonworks.com/downloads/#sandbox) Sandbox
-- [Learning the Ropes of the HDP Sandbox tutorial,](https://hortonworks.com/hadoop-tutorial/learning-the-ropes-of-the-hortonworks-sandbox/) you will need it for logging into Ambari
+- [Learning the Ropes of the HDP Sandbox tutorial,](https://hortonworks.com/hadoop-tutorial/learning-the-ropes-of-the-hortonworks-sandbox/)
 - 12 GB of RAM
 
 ## Outline
 
 - [Configure Hive to work with Atlas](#configure-hive-to-work-with-atlas)
 - [Start Kafka, Storm, HBase, Infra Solr and Atlas](#start-kafka-storm-hbase-infra-solr-and-atlas)
-- [Sqoop-Hive Lineage](#sqoop-hive-lineage)
-- [Kafka – Storm Lineage](#kafka-storm-lineage)
+- [Sqoop - Hive Lineage](#sqoop-hive-lineage)
+- [Kafka - Storm Lineage](#kafka-storm-lineage)
 - [Summary](#summary)
 - [Further Reading](#further-reading)
 
@@ -42,20 +42,16 @@ Started by logging into Ambari as **raj_ops** user. User name - **raj_ops** and 
 
 ### View the Services Page
 
-![ambari_dashboard_rajops](assets/ambari_dashboard_rajops.png)
+![services-page](assets/services-page.jpg)
 
 From the Dashboard page of Ambari, click on `Hive` from the list of installed services.
 Then click on `Configs` tab and search `atlas.hook.hive.synchronous` in the filter text box.
 
-![search_hive_config](assets/search_hive_config.png)
+![search-hook](assets/search-hook.jpg)
 
 This property takes a boolean value and specifies whether to run the Atlas-Hive hook synchronously or not. By default, it is false, change it to `true` so that you can capture the lineage for hive operations.
 
-![save_hive_config](assets/save_hive_config.jpg)
-
-Next search `hive.warehouse.subdir.inherit.perms` in the filter text box. This property takes a boolean value too. By default it is set to `true`, change it to `false` to avoid **AccessControlException** since HDP 2.5 and up comes with a patch for [BUG-55664](https://hortonworks.jira.com/browse/BUG-55664) that adds HIVE_WAREHOUSE_INHERIT_PERMS, which was not part of HDP 2.4. Thus, the hive table directories permissions will be derived from dfs umask.
-
-![hive_warehouse_perms_config](assets/hive_warehouse_perms_config.jpg)
+![save-hive-hook](assets/save-hive-hook.jpg)
 
 Click `Save` after you make the change. Write **Atlas-hive hook enabled** in the prompt and then proceed with saving the change. You have to Restart Hive now. Click on `Restart` and then `Restart All Affected`.
 
@@ -86,23 +82,23 @@ In the same way you started Kafka above, start other required services (in order
 
 ### Stop Unneeded Services
 
-Stop some services like **Spark, Oozie, Flume and Zeppelin** which are not required in this tutorial. Turn On the **Maintenance mode** also.
+Stop some services like **Spark, Oozie, Flume and Zeppelin** which are not required in this tutorial also turn on **Maintenance mode**.
 Your Ambari dashboard page should look like this:
 
-![new_ambari_dashboard_rajops](assets/new_ambari_dashboard_rajops.png)
+![final-services](assets/final-services.jpg)
 
 ### Log into the Sandbox.
 
 First access the Sandbox Web Shell Client at `sandbox-hdp.hortonworks.com:4200`. The first time password for root user is `hadoop`.
 
-Alternatively, you could "ssh" into the sandbox from your terminal or Windows Ubuntu Shell. `ssh root@localhost -p 2222`.
+Alternatively, you could "ssh" into the sandbox from your terminal or Windows Ubuntu Shell. `ssh root@sandbox-hdp.hortonworks.com -p 2222`
 
 Text you should see on your screen looks similar:
 
 ~~~bash
 sandbox login: root
 root@sandbox.hortonworks.com's password:
-Last login: Fri Jan  5 06:05:29 2018 from 10.0.2.2
+Last login: DDD MMM  D HH:MM:SS YYYY from x.x.x.x
 [root@sandbox-hdp ~]#
 ~~~
 
@@ -117,11 +113,13 @@ wget https://github.com/hortonworks/data-tutorials/raw/master/tutorials/hdp/cros
 unzip crosscomponent_scripts.zip
 ~~~
 
-## Sqoop-Hive Lineage <a id="sqoop-hive-lineage"></a>
+## Sqoop - Hive Lineage
 
 We need a script for creating a MySQL table, then importing the table using Sqoop into Hive.
 
-cd crosscomponent_scripts/sqoop-demo
+~~~bash
+cd ~/crosscomponent_demo/crosscomponent_scripts/sqoop-demo/
+~~~
 
 ![download_and_extract](assets/download_and_extract.png)
 
@@ -143,7 +141,7 @@ cat 001-setup-mysql.sql | mysql -u root -p
 
 Before we run the sqoop job, let's **configure the Atlas Sqoop Hook** via commands:
 
-~~~
+~~~bash
 cp /etc/atlas/conf/atlas-application.properties /etc/sqoop/conf
 ln -s /usr/hdp/2.6.4.0-91/atlas/hook/sqoop/*.jar /usr/hdp/2.6.4.0-91/sqoop/lib/
 ~~~
@@ -155,7 +153,7 @@ If you want to read up on Sqoop Hook from the documentation, visit [Sqoop Atlas 
 
 Run the below command in your terminal. It is a **sqoop import** command to transfer the data from mysql table **test_table_sqoop1** to the hive table **test_hive_table1**. The hive table do not have to be pre-created, it would be created on fly.
 
-~~~
+~~~bash
 sh 002-run-sqoop-import.sh
 ~~~
 
@@ -174,7 +172,7 @@ It will run the map-reduce job and at the end, you can see your new Hive table c
 CTAS stands for **create table as select**. We would create one more table in Hive from the table imported by the sqoop job above. The second table name is **cur_hive_table1** and we will create the table using beeline shell:
 Run the below command in your terminal
 
-~~~
+~~~bash
 cat 003-ctas-hive.sql | beeline -u "jdbc:hive2://localhost:10000/default" -n hive -p hive -d org.apache.hive.jdbc.HiveDriver
 ~~~
 
@@ -182,12 +180,12 @@ cat 003-ctas-hive.sql | beeline -u "jdbc:hive2://localhost:10000/default" -n hiv
 
 ### 3.6: View ATLAS UI for the lineage
 
-Click on http://sandbox-hdp.hortonworks.com:21000. Credentials are:
+Navigate to http://sandbox-hdp.hortonworks.com:21000 Credentials are:
 
-User name - **holger_gov**
-Password - **holger_gov**
+User name - **admin**
+Password - **admin123**
 
-![atlas_login](assets/atlas_login.png)
+![atlas-login](assets/atlas-login.jpg)
 
 Click on `Search by Text` and type **cur_hive_table1**
 
@@ -197,7 +195,7 @@ You will see the lineage like given below. You can hover at each one of them to 
 
 ![hive_lineage](assets/hive_lineage.jpg)
 
-## Kafka – Storm Lineage 
+## Kafka – Storm Lineage
 
 The following steps will show the lineage of data between Kafka topic **my-topic-01** to Storm topology **storm-demo-topology-01**, which stores the output in the HDFS folder (`/user/storm/storm-hdfs-test`).
 
@@ -210,7 +208,7 @@ cd ~/crosscomponent_demo/crosscomponent_scripts/storm-demo/
 sh 001-create_topic.sh
 ~~~
 
-![create_topic_script](assets/create_topic_script.png)
+![create-topic](assets/create-topic.jpg)
 
 ### Create a HDFS folder for output
 
@@ -220,7 +218,7 @@ Run the following command to create a new HDFS directory under /user/storm
 sh 002-create-hdfs-outdir.sh
 ~~~
 
-![create_hdfs_directory_script](assets/create_hdfs_directory_script.png)
+![create-hdfs-dir](assets/create-hdfs-dir.jpg)
 
 > Note: If you would like to find the source code for the Job we are about to run in can be found by executing the following command:
 
@@ -228,7 +226,7 @@ sh 002-create-hdfs-outdir.sh
 sh 003-download-storm-sample.sh
 ~~~
 
-![download_storm_script](assets/download_storm_script.png)
+![source-code](assets/source-code.jpg)
 
 ### Kafka Storm Lineage
 
@@ -266,19 +264,23 @@ To run this job execute the following command:
 sh 004-run-storm-job.sh
 ~~~
 
-![run_storm_script](assets/run_storm_script.png)
+![start-storm](assets/start-storm.jpg)
 
-![run_storm_script2](assets/run_storm_script2.png)
+![004-end](assets/004-end.jpg)
 
 ### View ATLAS UI for the lineage
 
-Go to the Atlas UI http://localhost:21000/. Search for: **kafka_topic** this time and Click on: `my-topic-01`
+Navigate to the Atlas UI http://sandbox-hdp.hortonworks.com:21000/. Search for: **kafka_topic** this time and Click on: `my-topic-01`
 
 ![search_kafka_topic](assets/search_kafka_topic.jpg)
 
 Scroll down and you will see a lineage of all the operations from Kafka to Storm.
 
 ![kafka_storm_lineage](assets/kafka_storm_lineage.jpg)
+
+Note that the lineage will be tracked for every cross component operation, here is an example of running the Storm Job multiple times:
+
+![multiple-topologies](assets/multiple-topologies.jpg)
 
 ## Summary
 
