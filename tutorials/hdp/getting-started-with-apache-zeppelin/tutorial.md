@@ -214,13 +214,13 @@ Open **Web Shell** by navigating to http://sandbox-hdp.hortonworks.com:4200
 To display a list of the available interpreters issue the following command:
 
 ~~~bash
-/usr/hdp/3.0.1.0-187/zeppelin/bin/install-interpreter.sh --list
+/usr/hdp/current/zeppelin-server/bin/install-interpreter.sh --list
 ~~~
 
 next, issue the following command:
 
 ~~~bash
-/usr/hdp/3.0.1.0-187/zeppelin/bin/install-interpreter.sh --name shell,jdbc,python...
+/usr/hdp/current/zeppelin-server/bin/install-interpreter.sh --name shell,jdbc,python...
 ~~~
 
 > Note: In this example we are highlighting shell, jdbc, and python; however, any community supported interpreter can be installed this way.
