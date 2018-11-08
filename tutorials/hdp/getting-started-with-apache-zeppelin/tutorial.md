@@ -43,6 +43,7 @@ The purpose of this tutorial is to guide you through basic functionalities of Ze
 - [Adding a Paragraph](#adding-a-paragraph)
 - [Running a Paragraph](#running-a-paragraph)
 - [Clearing Paragraph Output](#clearing-paragraph-output)
+- [Installing an Interpreter](#installing-an-interpreter)
 - [Creating an Interpreter](#creating-an-interpreter)
 - [Binding an Interpreter](#binding-an-interpreter)
 - [Exporting a Notebook](#exporting-a-notebook)
@@ -192,9 +193,9 @@ There are two ways of running a paragraph in a Zeppelin Notebook, step 1 and 2 c
 
 To clear the output of a specific paragraph:
 
-1\.Click on the gear located on the far right hand side of the paragraph.
+1\. Click on the gear located on the far right hand side of the paragraph.
 
-2\.Select **Clear Output**
+2\. Select **Clear Output**
 
 ![Clearing the Output of a Paragraph](assets/clear_a_paragraph_output.jpg)
 
@@ -203,6 +204,34 @@ This will clear the output of that specific paragraph
 To clear the output of the whole Zeppelin Notebook go to the top of the Notebook and select the eraser icon. A prompt will appear asking *Do you want to clear all output?* Press **OK**.  
 
 ![Clearing the Output of all Paragraphs](assets/clear_all_outputs.jpg)
+
+## Installing an Interpreter
+
+In this section we will review how to install a Zeppelin interpreter for use in the Zeppelin UI. Please note the [supported interpreters](https://zeppelin.apache.org/supported_interpreters.html) to ensure that the interpreter you want to install.
+
+Open **Web Shell** by navigating to http://sandbox-hdp.hortonworks.com:4200
+
+To display a list of the available interpreters issue the following command:
+
+~~~bash
+/usr/hdp/3.0.1.0-187/zeppelin/bin/install-interpreter.sh --list
+~~~
+
+next, issue the following command:
+
+~~~bash
+/usr/hdp/3.0.1.0-187/zeppelin/bin/install-interpreter.sh --name shell,jdbc,python...
+~~~
+
+> Note: In this example we are highlighting shell, jdbc, and python; however, any community supported interpreter can be installed this way.
+
+ Output you should see:
+
+ ![install-interpreter-shell](assets/install-interpreter-shell.jpg)
+
+ Restart Zeppelin from Ambari UI.
+
+Refer to [creating an interpreter section](#creating-an-interpreter) to enable usage on the Zeppelin Web Application.
 
 ## Creating an Interpreter
 
