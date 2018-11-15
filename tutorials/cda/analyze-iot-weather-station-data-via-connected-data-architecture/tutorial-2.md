@@ -104,14 +104,14 @@ sudo apt-get update && sudo apt-get install oracle-java8-jdk
 
 1\. Download MiNiFi Java Agent from [Apache nifi minifi Downloads](http://nifi.apache.org/minifi/download.html) under section **Releases -> MiNiFi (Java) -> Binaries**.
 
-2\. Click on `minifi-[latest-version]-bin.zip`, then download MiNiFi from any of the links provided onto your computer.
+2\. Click on **minifi-[latest-version]-bin.zip**, then download MiNiFi from any of the links provided onto your computer.
 
 ![download_links_minifi](assets/tutorial2/download_links_minifi.jpg)
 
 **Figure 8:** Downloading MiNiFi
 
 3\. Use Pi Finder's **Upload** button to transport MiNiFi application onto your
-Raspberry Pi. Select `minifi-[latest-version]-bin.zip` and click **Open**.
+Raspberry Pi. Select **minifi-[latest-version]-bin.zip** and click **Open**.
 
 ![upload_minifi_to_rpi](assets/tutorial2/upload_minifi_to_rpi.jpg)
 
@@ -131,7 +131,7 @@ In this section, you download MiNiFi toolkit onto your computer because it is ne
 
 1\. Download MiNiFi Toolkit from [Apache nifi minifi Downloads](http://nifi.apache.org/minifi/download.html) under section **Releases -> MiNiFi Toolkit Binaries -> [latest-version] - Compatible with MiNiFi Java [latest-version]**.
 
-2\. Click on `minifi-toolkit-[latest-version]-bin.zip` then download MiNiFi Toolkit from any of the links provided onto your computer.
+2\. Click on **minifi-toolkit-[latest-version]-bin.zip** then download MiNiFi Toolkit from any of the links provided onto your computer.
 
 3\. Go to the location where MiNiFi was downloaded and Unzip MiNiFi Toolkit
 using your favorite decompression software:
@@ -158,15 +158,15 @@ SSH into the Raspberry Pi using Adafruit's Pi Finder **Terminal** button.
 
 **Figure 11:** raspi-config main menu
 
-2\. Select `4. Internationalisation Options`. Press "Enter" on keyboard.
+2\. Select **4. Internationalisation Options**. Press "Enter" on keyboard.
 
-3\. Select `I2 Change Timezone`.
+3\. Select **I2 Change Timezone**.
 
 ![change_timezone](assets/tutorial2/change_timezone.png)
 
 **Figure 12:** Internationalisation Options Menu
 
-4\. Select your appropriate `Geographic area`.
+4\. Select your appropriate **Geographic area**.
 
 - Ex: US
 
@@ -174,7 +174,7 @@ SSH into the Raspberry Pi using Adafruit's Pi Finder **Terminal** button.
 
 **Figure 13:** Geographic area Selection Items
 
-5\. Select your appropriate `Time zone`.
+5\. Select your appropriate **Time zone**.
 
 - Ex: Pacific Ocean
 
@@ -182,17 +182,17 @@ SSH into the Raspberry Pi using Adafruit's Pi Finder **Terminal** button.
 
 **Figure 14:** Time Zone Selection Items
 
-6\. You are brought back to the menu. Select `<Finish>`. Your new calibrated time should display:
+6\. You are brought back to the menu. Select **<Finish>**. Your new calibrated time should display:
 
 ![output_calibrated_time](assets/tutorial2/output_calibrated_time.png)
 
 **Figure 15:** Time Zone Calibrated
 
-### Step 2: Configure Bridged Adapter Network for VirtualBox
+### Step 2: Configure Bridged Adapter Network
 
-VirtualBox will be shown as an example in the tutorial flow, but if you are
-a VMware user, the settings will be similar. Open VirtualBox Manager.
-If your Guest VM is running, it will need to be stopped.
+### VirtualBox User
+
+Open VirtualBox Manager. If your Guest VM is running, it will need to be stopped.
 
 1\. Click the Settings gear.
 
@@ -200,23 +200,22 @@ If your Guest VM is running, it will need to be stopped.
 
 3\. In the **Attached to** field, select from the dropdown menu, **Bridged Adapter**.
 
-4\. Verify in **System** tab that the Base Memory is set to **32GB of RAM**.
-
-<!--
-
-You can keep the default setting for the Name of the Bridged Network.
-
 ![set_vm_bridged_network](assets/tutorial2/set_vm_bridged_network.jpg)
 
 **Figure 16:** Setting VirtualBox Guest VM to Bridged Adapter
 
-> Note: Verify your System RAM (Base Memory) is at least 12288 MB (12GB)
+> Note: You can keep the default setting for the Name of the Bridged Network.
 
-![verify_vm_ram_12gb](assets/tutorial2/verify_vm_ram_12gb.jpg)
+4\. Make sure in **System** tab that the Base Memory is set to **32GB of RAM**.
 
-**Figure 17:** Verifying RAM allocation is 32GB
+Since we are using VirtualBox, both the welcome screen and ssh
+that are under both header sections are for VirtualBox. You will see you can
+access the web applications from the hostname, ex: **localhost**, or the
+explicit **IP address**.
 
--->
+![sb-guest-welcome](assets/tutorial2/sb-guest-welcome.jpg)
+
+**Figure 17:** VirtualBox Sandbox Welcome
 
 ### Step 3: Map Bridged IP to Desired Hostname in hosts file
 
@@ -230,15 +229,18 @@ Select **hosts** file and **open** it.
 
 ![hosts-file-w10](assets/tutorial2/hosts-file-w10.jpg)
 
+**Figure 18:** hosts file
+
 Copy the line with the current IP address mapped to the sandbox hostnames. Comment out that line. Now paste the line below the commented out line.
 
-Replace the current IP address with the Guest VM Bridged IP.
+Earlier when we turn on the sandbox, we were able to get the IP address from the
+virtual machine window.
 
-![sb-guest-welcome](assets/tutorial2/sb-guest-welcome.jpg)
-
-For example, **10.14.2.47** is the one generated for this current session in an office space, but your IP will be different.
+For example on VirtualBox, the IP address **10.14.2.223** is the one generated for this current session in an office space, but your IP will probably be different.
 
 ![hosts-file-updates](assets/tutorial2/hosts-file-updates.jpg)
+
+**Figure 19:** modify hosts file
 
 Save the modified file, **ctrl + s**.
 
@@ -246,7 +248,7 @@ Save the modified file, **ctrl + s**.
 
 Similar to windows, open the **hosts** file at path **/private/etc/hosts**. Modify the file with your Bridged IP mapped to the sandbox hostnames.
 
-For example, **10.14.2.47** is the Guest VM Bridged IP generated for this current session in an office space, but your IP will be different.
+For example, **10.14.2.223** is the VirtualBox IP generated for this current session in an office space, but your IP will be different.
 
 ~~~bash
 ##
@@ -256,7 +258,7 @@ For example, **10.14.2.47** is the Guest VM Bridged IP generated for this curren
 # when the system is booting.  Do not change this entry.
 ##       
 # 127.0.0.1       localhost sandbox-hdp.hortonworks.com sandbox-hdf.hortonworks.com sandbox-host
-10.14.2.47       localhost sandbox.hortonworks.com sandbox-hdp.hortonworks.com sandbox-hdf.hortonworks.com
+10.14.2.223       localhost sandbox.hortonworks.com sandbox-hdp.hortonworks.com sandbox-hdf.hortonworks.com
 255.255.255.255 broadcasthost
 ::1             localhost
 ~~~
@@ -267,14 +269,14 @@ Save the modified file.
 
 Similar to windows, open the **hosts** file at path **/etc/hosts**. Modify the file with your Bridged IP mapped to the sandbox hostnames.
 
-For example, **10.14.2.47** is the Guest VM Bridged IP generated for this current session in an office space, but your IP will be different.
+For example, **10.14.2.223** is the VirtualBox Guest VM IP generated for this current session in an office space, but your IP will be different.
 
 ~~~bash
 # File is generated from /sandbox/gen-hosts.sh
 # Do not remove the following line, or various programs
 # that require network functionality will fail.
 127.0.0.1         localhost.localdomain localhost sandbox-hdp.hortonworks.com sandbox-hdf.hortonworks.com sandbox-host
-10.14.2.47       localhost sandbox.hortonworks.com sandbox-hdp.hortonworks.com sandbox-hdf.hortonworks.com
+10.14.2.223       localhost sandbox.hortonworks.com sandbox-hdp.hortonworks.com sandbox-hdf.hortonworks.com
 ~~~
 
 Save the modified file.
@@ -293,7 +295,7 @@ If you need help setting the Ambari admin password,
 If unsure, login to Ambari **admin** Dashboard
 
 - for HDF at http://sandbox-hdf.hortonworks.com:8080 and verify **NiFi** starts up, else start it.
-- for HDP at http://sandbox-hdp.hortonworks.com:8080 and verify **HDFS**, **Spark2**, **HBase** and **Zeppelin** starts up, else start them.
+- for HDP at http://sandbox-hdp.hortonworks.com:8080 and verify **HDFS**, **HBase** and **Zeppelin** starts up, else start them.
 
 ### Step 5: Configure NiFi via HDF's Ambari
 
@@ -303,31 +305,25 @@ If unsure, login to Ambari **admin** Dashboard
 
 You will configure NiFi Site-To-Site protocol by exposing an IP address and a socket port, so external NiFi nodes or MiNiFi agents can connect to NiFi master node.
 
-Head to `Advanced NiFi-Properties` in Ambari Config Settings for NiFi. Update the following configurations similar to the image below:
+Head to **Advanced NiFi-Properties** in Ambari Config Settings for NiFi. Update the following configurations similar to the image below:
 
 1\. Enter **NiFi Service** in Ambari Stack
 
 2\. Enter **NiFi Configs**
 
-3\. Filter search for **nifi.remote**
+3\. Filter search for `nifi.remote`
 
-![advanced_nifi_properties](assets/tutorial2/nifi_properties_sitetosite.jpg)
-
-**Figure 16:** Update NiFi Config for Site-to-Site
-
-4\. Insert `<your-guest-vm-bridged-ip-address>` in **nifi.remote.input.host**. The image above shows **10.14.2.47**, which was the IP address assigned by the router in an **office network**, for a **home network**, we can see in the image below that the IP address was changed to **192.168.2.10**.
-
-> Note: `<your-guest-vm-bridged-ip-address>` for linux can be found with the terminal command: `hostname -I`. Yet, when you open the sandbox, we present a welcome screen to you that displays the IP address of your guest vm from bridged adapter network. Since we are using VirtualBox, there is a typo "For VMware:", which actually shows the guest vm ip address we want from our VirtualBox VM. VMware Guest VM welcome screen will have the IP address for the VMware Guest VM.
-
-![sb-guest-welcome](assets/tutorial2/sb-guest-welcome.jpg)
-
-**Figure 17:** Get Guest VM IP Address from Sandbox Welcome Screen
+4\. Insert `<your-guest-vm-bridged-ip-address>` in **nifi.remote.input.host**. For example, we inserted `10.14.2.223`.
 
 5\. Verify **nifi.remote.input.http.enabled** checked
 
 6\. Insert `15500` in **nifi.remote.input.socket.port**.
 
 7\. Save the configuration. Write in Notes `Configured NiFi for Socket Site-To-Site`
+
+![advanced_nifi_properties](assets/tutorial2/advanced_nifi_properties.jpg)
+
+**Figure 20:** Update NiFi Config for Site-to-Site
 
 Now NiFi is configured for Socket Site-To-Site protocol. If you encounter issues deploying MiNiFi to NiFi flow, it could be because the value **nifi.remote.iput.host** changed or **nifi.remote.input.socket.port** you chose is already being used. Of course there are other reasons for issues, but these two are ones to be mindful of.
 
@@ -341,11 +337,11 @@ Restart NiFi from Ambari with the **orange restart button** for the changes to t
 
 Add the GeoLite2 to HDF Sandbox CentOS, which is a database filled with Public IP Addresses mapped to geographic insights.
 
-1\. Access HDF Web Shell Client at `sandbox-hdf.hortonworks.com:4200`. User/Password is `root/hadoop`.
+1\. Access HDF Web Shell Client at http://sandbox-hdf.hortonworks.com:4200. User/Password is `root/hadoop`.
 
 ![hdf_web_shell](assets/tutorial2/hdf_web_shell.jpg)
 
-**Figure 18:** HDF Web Shell
+**Figure 21:** HDF Web Shell
 
 > Note: You will be prompted to change the password if this is your first time logging into the Sandbox.
 
@@ -375,7 +371,7 @@ pwd
 
 ![geolite_dbfile_path](assets/tutorial2/geolite_dbfile_path.jpg)
 
-**Figure 19:** Path to Geolite DB Lookup Table "GeoLite2-City.mmdb"
+**Figure 22:** Path to Geolite DB Lookup Table "GeoLite2-City.mmdb"
 
 Note down the folder name that GeoLite2-City.mmdb is located in on your system. According to the image above, the full pathname is: `/sandbox/tutorial-files/820/nifi/input/GeoFile/GeoLite2-City_20180605/GeoLite2-City.mmdb`
 
@@ -408,13 +404,13 @@ Recommended Hardware:
 
 ![microsd_microsd_adapter](assets/tutorial2/microsd_microsd_adapter.png)
 
-**Figure 20:** MicroSD on left and microSD Card Adapter on right
+**Figure 23:** MicroSD on left and microSD Card Adapter on right
 
 2\. Insert the microSD Adapter into the computer.
 
 ![insert_microsdAdater_laptop](assets/tutorial2/insert_microsdAdater_laptop.png)
 
-**Figure 21:** microSD Adapter Inserted into Computer
+**Figure 24:** microSD Adapter Inserted into Computer
 
 ### Download Raspbian OS Image
 
@@ -432,11 +428,11 @@ You will create a Raspbian bootable OS on microSD card using etcher.io graphic i
 
 ![etcher_dashboard](assets/tutorial2/etcher_dashboard.png)
 
-**Figure 22:** Etcher Dashboard to Create a Bootable OS on microSD
+**Figure 25:** Etcher Dashboard to Create a Bootable OS on microSD
 
 ![etcher_created_bootable_os](assets/tutorial2/etcher_created_bootable_os.png)
 
-**Figure 23:** Flash Complete, Bootable OS Now Created
+**Figure 26:** Flash Complete, Bootable OS Now Created
 
 Once the operation completes, Etcher automatically unmounts the SD card and is safe to eject.
 
@@ -454,7 +450,7 @@ df
 
 ![disk_utility_sd_unmount](assets/tutorial2/disk_utility_sd_unmount.png)
 
-**Figure 24:** MAC Disk Utility to Unmount Device for Writing to it
+**Figure 27:** MAC Disk Utility to Unmount Device for Writing to it
 
 4\. Head to terminal, in the Downloads folder where the Raspbian OS is located, run the DD command to write a bootable Raspbian OS onto micro SD card:
 
@@ -468,7 +464,7 @@ The DD operation will take 1 to 5 minutes until completion.
 
 ![dd_opearation_completion_result](assets/tutorial2/dd_opearation_completion_result.png)
 
-**Figure 25:** Progress of Creating Bootable OS on microSD
+**Figure 28:** Progress of Creating Bootable OS on microSD
 
 After the dd operation completes, you should see the Raspbian bootable OS successfully transferred over to the SD card.
 
@@ -485,7 +481,7 @@ bcm2708-rpi-b-plus.dtb  bcm2710-rpi-cm3.dtb   fixup_cd.dat  kernel7.img   start_
 bcm2708-rpi-b.dtb       bootcode.bin          fixup_db.dat  overlays      start_x.elf
 ~~~
 
-**Figure 26:** Create SSH file to Enable SSH Access to Raspberry Pi
+**Figure 29:** Create SSH file to Enable SSH Access to Raspberry Pi
 
 > Note: the path to the SD card is `/Volumes/boot`. `touch ssh` creates a new file. `ls -ltr` verifies new file was created.
 
@@ -493,13 +489,13 @@ bcm2708-rpi-b.dtb       bootcode.bin          fixup_db.dat  overlays      start_
 
 ![microsd_inserted_to_rpi](assets/tutorial2/microsd_inserted_to_rpi.png)
 
-**Figure 27:** MicroSD Inserted into Raspberry Pi
+**Figure 30:** MicroSD Inserted into Raspberry Pi
 
 7\. Connect ethernet cable to the Raspberry Pi to give it internet access, connect the 5V for power and the Pi should start up.
 
 ![power-ethernet_rpi](assets/tutorial2/power-ethernet_rpi.png)
 
-**Figure 28:** Raspberry Pi Ethernet Cable Connected for Internet Access
+**Figure 31:** Raspberry Pi Ethernet Cable Connected for Internet Access
 
 The Pi's default login credentials:
 

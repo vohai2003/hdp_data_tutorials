@@ -9,8 +9,8 @@ use case: Internet of Things
 technology: Apache NiFi, Apache MiNiFi, Raspberry Pi, Apache Zookeeper, Apache HBase, Apache Phoenix
 release: hdp-3.0.1, hdf-3.2.0
 environment: Sandbox
-product: HDP, HDF
-series: HDP > Hadoop for Data Engineers & Data Scientists > Real World Examples, HDF > Develop Data Flow & Streaming Applications > Real World Examples
+product: CDA
+series: CDA > Data Science Applications
 ---
 
 # Analyze IoT Weather Station Data via Connected Data Architecture
@@ -64,7 +64,7 @@ By the end of this tutorial series, you will acquire the fundamental knowledge t
 
 ## Prerequisites
 
-- Downloaded and deployed the [Hortonworks Data Platform (HDP)](https://hortonworks.com/downloads/#sandbox)
+- Downloaded and deployed the [Hortonworks Data Platform (HDP)](https://hortonworks.com/downloads/#sandbox) Sandbox
 - Read through [Learning the Ropes of the HDP Sandbox](https://hortonworks.com/tutorial/learning-the-ropes-of-the-hortonworks-sandbox/) to setup hostname mapping to IP address
 - If you don't have 32GB of dedicated RAM for HDP Sandbox, then refer to [Deploying Hortonworks Sandbox on Microsoft Azure](https://hortonworks.com/tutorial/sandbox-deployment-and-install-guide/section/4/)
 - Enabled Connected Data Architecture:
