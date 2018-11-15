@@ -238,7 +238,7 @@ we will use it to log into Atlas.
 
 [sandbox-hdp.hortonworks.com:21000](http://sandbox-hdp.hortonworks.com:21000/)
 
-username & password : **admin/admin123**
+username & password : **admin/hortonworks1**
 
 ![atlas_login](assets/images/atlas-login.jpg)
 
