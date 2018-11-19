@@ -96,8 +96,6 @@ If you're using **VirtualBox** or **VMWare**, you can confirm the IP address by 
 
 > **Note:** Guest VM Welcome Window for BRIDGED Sandbox
 
-<!--- > **Note:** If you're using Azure, your IP address is located on the dashboard, refer to [**Set a Static IP**](https://hortonworks.com/tutorial/sandbox-deployment-and-install-guide/section/4/#set-a-static-ip)--->
-
 ### Map Sandbox IP to Your Desired Hostname in the Hosts File
 
 Mac, Linux and Windows all have a hosts file. This file once configured enables the IP address of the sandbox to be mapped to a hostname that is easier to remember than a number.
