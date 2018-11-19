@@ -101,9 +101,19 @@ Make sure the virtual machine is shutdown before modifying configurations. **Rig
 
 ![vmware-settings](assets/vmware-settings.jpg)
 
-Select **Processors & Memory** and modify memory accordingly. Restart virtual machine.
+First we must upgrade the virtual image to be able to upgrade the memory click on compatibility:
+
+![compatibility](assets/compatibility.jpg)
+
+Next, click upgrade:
+
+![upgrade](assets/upgrade.jpg)
+
+next return to "**Show All**" and select **Processors & Memory** and modify memory accordingly.
 
 ![vmware-memory-settings](assets/vmware-memory-settings.jpg)
+
+Finally restart the virtual machine for changes to take place.
 
 ### Run Script to Enable CDA
 
