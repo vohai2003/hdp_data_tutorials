@@ -41,14 +41,10 @@ November 2018
 
 ## Behavior Changes
 
-- CDA requires a minimum of 32 GB
 - Kafka is now off by default
 - Hive View 2.0 is replaced with Data Analytics Studio
 - Ambari Database changed to external PostgreSQL 9.6 as DAS is dependent on PostgreSQL
 - Infra solr is now ambari infra solr
-- 
-
->>>>>>>>> add deprecation link
 
 - Pig View is no longer a part of HDP
 - Hive is now in a separate catalog from all other services. In order to use Hive along with other services a [HiveWarehouseConnector](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.1/integrating-hive/content/hive_hivewarehouseconnector_for_handling_apache_spark_data.html) is needed
