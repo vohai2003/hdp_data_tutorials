@@ -20,9 +20,14 @@ title: Sandbox Docs - HDP 3.0.1
 
 ## Release Notes
 
-October 2018
+November 2018
 
 - The VirtualBox and VMWare releases of the HDP sandbox had their OS-level packages updated, including a version update to Docker 18.03.0
+
+- General Availability Sandbox was tested with the following VMWare, VirtualBox, and Docker versions:
+  - **VMWare** Professional Version 10.1.3 (9472307)
+  - **VirtualBox** Version 5.2.22 r126460 (Qt5.6.3)
+  - **Docker** _(MAC/LINUX):_ Docker version: 18.06.1-ce. _(WNDOWS):_ Docker version: 18.03.0-ce.
 
 - Image MD5 Checksums:
   - VirtualBox – **checksumhere**
@@ -32,21 +37,28 @@ October 2018
 - HDP Stack and Ambari: The Sandbox uses the following versions of Ambari and HDP stack. Please use the following release note links provided to view Ambari and HDP stack specific information.
   - [HDP 3.0.1 Product Release Notes](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.1/release-notes/content/relnotes.html)
   - [Ambari 2.7.1.0 Release Notes](https://docs.hortonworks.com/HDPDocuments/Ambari-2.7.1.0/bk_ambari-release-notes/content/ch_relnotes-ambari-2.7.1.0.html)
+  - [DAS Release Notes](https://docs.hortonworks.com/HDPDocuments/DAS/DAS-1.1.0/release-notes/das-release-notes.pdf)
 
 ## Behavior Changes
 
-- CDA requires a minimum of 26 GB
+- CDA requires a minimum of 32 GB
 - Kafka is now off by default
 - Hive View 2.0 is replaced with Data Analytics Studio
+- Ambari Database changed to external PostgreSQL 9.6 as DAS is dependent on PostgreSQL
+- Infra solr is now ambari infra solr
+- 
 
 >>>>>>>>> add deprecation link
 
 - Pig View is no longer a part of HDP
 - Hive is now in a separate catalog from all other services. In order to use Hive along with other services a [HiveWarehouseConnector](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.1/integrating-hive/content/hive_hivewarehouseconnector_for_handling_apache_spark_data.html) is needed
+- Hive JDBC Standalone Jar Download now available from Hive Quick Links in Ambari
+
 
 ## Known Issues
 
 - LLAP not enabled by default
+- General Availability Sandbox Docker version for Windows is not compatible with Docker version 18.06.1-ce. Windows with Docker must use [version: 18.03.0-ce](https://docs.docker.com/docker-for-windows/release-notes/#docker-community-edition-18030-ce-win59-2018-03-26).
 
 ## Limitations
 
