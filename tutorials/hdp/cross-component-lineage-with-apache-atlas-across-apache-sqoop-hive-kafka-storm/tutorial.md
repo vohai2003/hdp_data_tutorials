@@ -31,8 +31,8 @@ This tutorial walks through the steps for creating data in Apache Hive through A
 
 - [Configure Hive to work with Atlas](#configure-hive-to-work-with-atlas)
 - [Start Kafka, Storm, HBase, Infra Solr and Atlas](#start-kafka-storm-hbase-infra-solr-and-atlas)
-- [Sqoop - Hive Lineage](#sqoop-hive-lineage)
-- [Kafka - Storm Lineage](#kafka-storm-lineage)
+- [Sqoop and Hive Lineage](#sqoop-and-hive-lineage)
+- [Kafka and Storm Lineage](#kafka-and-storm-lineage)
 - [Summary](#summary)
 - [Further Reading](#further-reading)
 
@@ -104,16 +104,10 @@ Last login: DDD MMM  D HH:MM:SS YYYY from x.x.x.x
 
 ### Download & extract the demo script
 
-Let's first switch user to hive as this is the only user with access to hive managed tables:
-
-~~~bash
-su hive
-cd ~
-~~~
-
 Run the following command to get to the scripts for the tutorial.
 
 ~~~bash
+cd /tmp/sandbox/
 mkdir crosscomponent_demo
 cd crosscomponent_demo
 wget https://github.com/hortonworks/data-tutorials/raw/master/tutorials/hdp/cross-component-lineage-with-apache-atlas-across-apache-sqoop-hive-kafka-storm/assets/crosscomponent_scripts.zip
@@ -124,7 +118,7 @@ unzip crosscomponent_scripts.zip
 
 ![download-and-extract2](assets/download-and-extract2.jpg)
 
-## Sqoop - Hive Lineage
+## Sqoop and Hive Lineage
 
 We need a script for creating a MySQL table, then importing the table using Sqoop into Hive.
 
@@ -134,9 +128,22 @@ cd ~/crosscomponent_demo/crosscomponent_scripts/sqoop-demo/
 
 ### Create a mysql table
 
+Let's first switch user to hive as this is the only user with access to hive managed tables:
+
+~~~bash
+su hive
+cd crosscomponent_demo/crosscomponent_scripts/sqoop-demo/
+~~~
+
 In the sqoop-demo directory we will find three files which we will leverage to work across Hadoop components and track their lineage.
 
-The first script **001-setup-mysql.sql** is in charge of creating a new MySQL database and table and populate the table with data, the contents of the first file are as follows:
+The first script **001-setup-mysql.sql** is in charge of creating a new MySQL database and table and populate the table with data to execute enter the following command:
+
+~~~bash
+cat 001-setup-mysql.sql | mysql -u root -p
+~~~
+
+The contents of the script are shown below:
 
 ~~~sql
 CREATE DATABASE IF NOT EXISTS test;
@@ -150,12 +157,6 @@ INSERT INTO test_table_sqoop1 VALUES ( 'Rafael Coss', 'San Jose,CA');
 INSERT INTO test_table_sqoop1 VALUES ( 'Edgar Orendain', 'Mountain View,CA');
 ~~~
 
-to execute enter the following command:
-
-~~~bash
-cat 001-setup-mysql.sql | mysql -u root -p
-~~~
-
 > NOTE: default password for mysql root user is **hortonworks1**. Enter it then press enter when prompted for password
 
 ![setup-mysql-script](assets/setup-mysql-script.jpg)
@@ -164,16 +165,17 @@ cat 001-setup-mysql.sql | mysql -u root -p
 
 
 The script below is a **sqoop import** command to transfer the data from mysql table **test_table_sqoop1** to the hive table **test_hive_table1**. The hive table do not have to be pre-created, it would be created on fly.
-
-~~~bash
-#!/bin/bash
-sqoop import --connect jdbc:mysql://sandbox-hdp.hortonworks.com/test --table test_table_sqoop1 --hive-import --hive-table test_hive_table1 --username root -P -m 1 --fetch-size 1 
-~~~
-
 to execute the script above issue the following command:
 
 ~~~bash
 sh 002-run-sqoop-import.sh
+~~~
+
+These are the contents of **002-run-sqoop-import.sh**
+
+~~~bash
+#!/bin/bash
+sqoop import --connect jdbc:mysql://sandbox-hdp.hortonworks.com/test --table test_table_sqoop1 --hive-import --hive-table test_hive_table1 --username root -P -m 1 --fetch-size 1 
 ~~~
 
 > NOTE: default password for mysql root user is **hortonworks1**. Enter it then press enter when prompted for password
@@ -190,17 +192,17 @@ It will run the map-reduce job and at the end, you can see your new Hive table c
 
 CTAS stands for **create table as select**. We would create one more table in Hive from the table imported by the sqoop job above. The second table name is **cur_hive_table1** and we will create the table using beeline shell:
 
+Run the below command in your terminal
+
+~~~bash
+cat 003-ctas-hive.sql | beeline -u "jdbc:hive2://sandbox-hdp.hortonworks.com:10000/default" -n hive -p hive -d org.apache.hive.jdbc.HiveDriver
+~~~
+
 these are the contents of the script:
 
 ~~~sql
 CREATE TABLE IF NOT EXISTS cur_hive_table1
 AS SELECT * FROM test_hive_table1;
-~~~
-
-Run the below command in your terminal
-
-~~~bash
-cat 003-ctas-hive.sql | beeline -u "jdbc:hive2://sandbox-hdp.hortonworks.com:10000/default" -n hive -p hive -d org.apache.hive.jdbc.HiveDriver
 ~~~
 
 ### View ATLAS UI for the lineage
@@ -212,7 +214,7 @@ Password - **admin123**
 
 ![atlas-login](assets/atlas-login.jpg)
 
-Click on **Search by Text** and type **cur_hive_table1**
+Click on **Search by Text** and type `cur_hive_table1`
 
 ![search_hive_table](assets/search_hive_table.jpg)
 
@@ -220,7 +222,7 @@ You will see the lineage like given below. You can hover at each one of them to 
 
 ![hive_lineage](assets/hive_lineage.jpg)
 
-## Kafka – Storm Lineage
+## Kafka and Storm Lineage
 
 The following steps will show the lineage of data between Kafka topic **my-topic-01** to Storm topology **storm-demo-topology-01**, which stores the output in the HDFS folder (`/user/storm/storm-hdfs-test`).
 
@@ -232,17 +234,18 @@ Now let's move to the storm demo directory
 cd ~/crosscomponent_demo/crosscomponent_scripts/storm-demo/
 ~~~
 
-The following script creates a new Kafka topic **my-topic-01**:
-
-~~~bash
-#!/bin/bash
-/usr/hdp/current/kafka-broker/bin/kafka-topics.sh --create --topic my-topic-01 --zookeeper sandbox-hdp.hortonworks.com:2181 --partitions 1 --replication-factor 1
-~~~
-
+The following script creates a new Kafka topic **my-topic-01**
 execute the script:
 
 ~~~bash
 sh 001-create_topic.sh
+~~~
+
+Below are the contents of the script:
+
+~~~bash
+#!/bin/bash
+/usr/hdp/current/kafka-broker/bin/kafka-topics.sh --create --topic my-topic-01 --zookeeper sandbox-hdp.hortonworks.com:2181 --partitions 1 --replication-factor 1
 ~~~
 
 ![create-topic](assets/create-topic.jpg)
@@ -265,7 +268,7 @@ sh 003-download-storm-sample.sh
 
 ![source-code](assets/source-code.jpg)
 
-### Kafka Storm Lineage
+### Kafka Storm Lineage in Atlas
 
 The Storm Job you are about to execute is in JAR format, the original source code can be found on [yhemanth's github repository](https://github.com/yhemanth/storm-samples/tree/master/src/main/java/com/dsinpractice/storm/samples).
 
@@ -311,7 +314,7 @@ Navigate to the Atlas UI http://sandbox-hdp.hortonworks.com:21000/
 
 Usename and password for Atlas: **admin/admin123**
 
- Search for: **kafka_topic** this time and Click on: **my-topic-01**
+ Search for: **kafka_topic** this time and Click on: `my-topic-01`
 
 ![search_kafka_topic](assets/search_kafka_topic.jpg)
 
