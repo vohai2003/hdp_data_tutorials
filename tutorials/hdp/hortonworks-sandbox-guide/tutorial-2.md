@@ -27,7 +27,7 @@ June 2018
 
 - HDF Stack and Ambari: The Sandbox uses the following versions of Ambari and HDF stack. Please use the following release note links provided to view Ambari and HDF stack specific information.
   - [HDF 3.1.1 Product Release Notes](https://docs.hortonworks.com/HDPDocuments/HDF3/HDF-3.1.1/bk_release-notes/content/ch_hdf_relnotes.html)
-  - [Ambari 2.6.1 Release Notes](https://docs.hortonworks.com/HDPDocuments/Ambari-2.6.1.0/bk_ambari-release-notes/content/ch_relnotes-ambari-2.6.1.0.html)
+  - [Ambari 2.7.1 Release Notes](https://docs.hortonworks.com/HDPDocuments/Ambari-2.7.1.0/bk_ambari-release-notes/content/ch_relnotes-ambari-2.7.1.0.html)
 
 ## Behavior Changes
 
