@@ -19,7 +19,7 @@ series: HDP > Hadoop Administration > Hortonworks Sandbox
 
 Welcome to the Hortonworks Sandbox!
 
-The sections attached contain the release documentation for the newest version of the General Availability Sanddbox.
+The sections attached contain the release documentation for the newest version of the latest General Availability Sandbox.
 
 
 ## Outline

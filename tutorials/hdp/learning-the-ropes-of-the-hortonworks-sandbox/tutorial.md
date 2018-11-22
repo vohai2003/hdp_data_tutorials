@@ -268,6 +268,69 @@ Some notable differences between these users in the Sandbox are mentioned below:
 | Amy (amy_ds) | Service Operator | Yes | Yes | No | No | No | No | No | No | SELECT |
 | Holger (holger_gov) | Service Administrator | Yes | Yes | Yes | No | No | No | No | Yes | SELECT, CREATE, DROP |
 
+### Open a port for custom use
+
+Refer to the [Sandbox Guide](https://github.com/hortonworks/data-tutorials/blob/master/tutorials/hdp/hortonworks-sandbox-guide/tutorial-3.md) for ports available for custom use.
+
+In this example we will use the fictional port **1234**, note that this port is not available for custom use.
+
+**SSH onto the Sandbox Host**
+
+If you are running the  VirtualBox VM:
+
+~~~bash
+# SSH on to VirtualBox Virtual Machine
+ssh root@sandbox-hdp.hortonworks.com -p 2200
+~~~
+
+Or if you are using VMWare:
+
+~~~bash
+# SSH on to VMWare Virtual Machine
+ssh root@sandbox-hdp.hortonworks.com -p 22
+~~~
+
+> Note: The default password is **hadoop**.
+
+Change directories to `/sandbox/deploy-scripts/assets/`
+
+~~~bash
+cd /sandbox/deploy-scripts/assets/
+~~~
+
+> NOTE: On the docker version of the Sandbox the script is found on `deploy-scripts/assets/generate-proxy-deploy-script.sh`
+
+Under the assets directory you will find a file named `generate-proxy-deploy-script.sh`, edit it:
+
+~~~bash
+vi generate-proxy-deploy-script.sh
+~~~
+
+search for the `tcpPortsHDP` array and enter the port that you would like to forward:
+
+![new-port](assets/new-port.jpg)
+
+to save and exit press **esc** and enter `:x`
+
+to execute your changes re-run the script:
+
+~~~bash
+cd /sandbox/deploy-scripts
+assets/generate-proxy-deploy-script.sh
+~~~
+
+and deploy the reverse proxy with your changes:
+
+~~~bash
+/sandbox/proxy/proxy-deploy.sh
+~~~
+
+Finally, add the port forward on your virtual environment
+
+Settings -> Network -> Advanced -> Port Forwarding -> Add New
+
+Now restart the virtual machine and enjoy your new port.
+
 ### Sandbox Version
 
 When you run into an issue, one of the first things someone will ask is "_what sandbox version are you using_"? To get this information:

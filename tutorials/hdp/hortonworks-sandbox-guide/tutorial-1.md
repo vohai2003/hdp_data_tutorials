@@ -47,11 +47,12 @@ November 2018
 
 - Connected Data Architecture is disabled by default, it will remain disabled until further notice
 - Hive View 2.0 has been replaced with Data Analytics Studio
-
+- UI/UX improvements included in Ambari 2.7.1
 - Kafka is now off by default
 - Ambari Database changed to external PostgreSQL 9.6 as DAS is dependent on PostgreSQL
 - Ambari Infra is now Ambari Infra Solr
 - Pig View has been removed
+- Tez View has been removed
 - Hive is now in a separate catalog from all other services. In order to use Hive along with other services a [HiveWarehouseConnector](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.1/integrating-hive/content/hive_hivewarehouseconnector_for_handling_apache_spark_data.html) is needed
 - **Hive Warehouse** directory `/apps/hive/warehouse/` has been split into two new locations
   - **Hive Managed Tables:** `/warehouse/tablespace/managed/hive`
@@ -60,14 +61,14 @@ November 2018
 
 ## Known Issues
 
-- LLAP not enabled by default
 - Docker version of Sandbox for Windows is not compatible with Docker version 18.06.1-ce. Users deploying the Sandbox using Docker on Windows must use Docker [version: 18.03.0-ce](https://docs.docker.com/docker-for-windows/release-notes/#docker-community-edition-18030-ce-win59-2018-03-26).
 
 ## Limitations
 
 This is a list of common limitations along with their workarounds.
 
-Pig Views is no longer a part of HDP, Pig scripts are interpreted using Grub
+- Pig Views is no longer a part of HDP, Pig scripts are interpreted using Grub. Additionally, a [Zeppelin Pig interpreter](https://zeppelin.apache.org/docs/0.7.0/interpreter/pig.html) can be used
+- LLAP not enabled by default, Hive is used without LLAP
 
 ## System Information
 
@@ -100,7 +101,7 @@ These are a list of databases used within Sandbox along with the corresponding H
 
 ### HDP Supported Components Not Installed
 
-These components are offered by the Hortonworks distribution, but not included in the Sandbox.
+These components are offered by the Hortonworks Data Platform, but not included in the Sandbox.
 
 - Apache Accumulo
 - Apache Mahout
@@ -112,6 +113,8 @@ These components are offered by the Hortonworks distribution, but not included i
 - Data Analytics Studio 1.0.2.1.0.2.0-6
 
 ### Deprecated Services
+
+The following services are deprecated on the Hortonworks Data Platform, as well as the Sandbox.
 
 - Apache Falcon
   - Notes: Marked deprecated as of HDP 2.6.0 and has been removed from HDP 3.0.0 onward.
@@ -136,7 +139,7 @@ When the virtual machine is booted up, the following services are started. If no
 - Nfs
   - Portmap - Unlike the other processes that are launched by HDFS user, these are run as root user.
   - The nfs process doesn’t show up as a name for jps output
-- HIVE
+- Hive
   - RunJar - webhcat - org.apache.hadoop.util.RunJar Run as hcat user
   - RunJar - metastore - org.apache.hadoop.util.RunJar
   - RunJar - hiveserver2 - org.apache.hadoop.util.RunJar
@@ -194,5 +197,6 @@ Because of the limited resources available in the sandbox virtual machine enviro
 
 - [Hortonworks DataFlow 3.0 Simplifies Development of Streaming Analytics Applications](https://hortonworks.com/press-releases/hortonworks-dataflow-3-0/)
 - [Hortonworks Hybrid Data Platforms](https://hortonworks.com/products/data-platforms/)
+- [Ambari 2.7.1](https://docs.hortonworks.com/HDPDocuments/Ambari-2.7.1.0/bk_ambari-release-notes/content/ch_relnotes-ambari-2.7.1.0.html)
 - [HDP Documentation](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.1/index.html)
 - [Data Analytics Studio](https://hortonworks.com/products/dataplane/data-analytics-studio/)
