@@ -120,19 +120,13 @@ unzip crosscomponent_scripts.zip
 
 ## Sqoop and Hive Lineage
 
-We need a script for creating a MySQL table, then importing the table using Sqoop into Hive.
-
-~~~bash
-cd ~/crosscomponent_demo/crosscomponent_scripts/sqoop-demo/
-~~~
-
 ### Create a mysql table
 
 Let's first switch user to hive as this is the only user with access to hive managed tables:
 
 ~~~bash
 su hive
-cd crosscomponent_demo/crosscomponent_scripts/sqoop-demo/
+cd /tmp/sandbox/crosscomponent_demo/crosscomponent_scripts/sqoop-demo/
 ~~~
 
 In the sqoop-demo directory we will find three files which we will leverage to work across Hadoop components and track their lineage.
@@ -228,10 +222,16 @@ The following steps will show the lineage of data between Kafka topic **my-topic
 
 ### Create a Kafka topic to be used in the demo
 
-Now let's move to the storm demo directory
+Now let's switch users to continue
 
 ~~~bash
-cd ~/crosscomponent_demo/crosscomponent_scripts/storm-demo/
+su root
+~~~
+
+and chage directory to the storm demo directory
+
+~~~bash
+cd /tmp/sandbox/crosscomponent_demo/crosscomponent_scripts/storm-demo/
 ~~~
 
 The following script creates a new Kafka topic **my-topic-01**
@@ -310,7 +310,7 @@ sh 004-run-storm-job.sh
 
 ### View ATLAS UI for the lineage
 
-Navigate to the Atlas UI http://sandbox-hdp.hortonworks.com:21000/
+Navigate to the Atlas UI [http://sandbox-hdp.hortonworks.com:21000/](http://sandbox-hdp.hortonworks.com:21000/)
 
 Usename and password for Atlas: **admin/admin123**
 

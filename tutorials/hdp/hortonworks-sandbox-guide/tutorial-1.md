@@ -30,37 +30,44 @@ November 2018
   - **Docker** _(MAC/LINUX):_ Docker version: 18.06.1-ce. _(WNDOWS):_ Docker version: 18.03.0-ce.
 
 - Image MD5 Checksums:
-  - VirtualBox – **checksumhere**
-  - VMware – **checksumhere**
-  - Docker – **checksumhere**
+  - VirtualBox – **00af979499f183e7c8f8472adf95d5f7**
+  - VMware – **27647270291a839f9ba964c82a86b00c**
+  - Docker – **2936a3b68dee8ef26224f51e53a7d3b7**
 
 - HDP Stack and Ambari: The Sandbox uses the following versions of Ambari and HDP stack. Please use the following release note links provided to view Ambari and HDP stack specific information.
-  - [HDP 3.0.1 Product Release Notes](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.1/release-notes/content/relnotes.html)
-  - [Ambari 2.7.1.0 Release Notes](https://docs.hortonworks.com/HDPDocuments/Ambari-2.7.1.0/bk_ambari-release-notes/content/ch_relnotes-ambari-2.7.1.0.html)
-  - [DAS Release Notes](https://docs.hortonworks.com/HDPDocuments/DAS/DAS-1.1.0/release-notes/das-release-notes.pdf)
+
+  - HDP 3.0.1.0 Version 3.0.1.0-187
+    - [HDP 3.0.1 Product Release Notes](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.1/release-notes/content/relnotes.html)
+  - Ambari Version 2.7.1.0
+    - [Ambari 2.7.1.0 Release Notes](https://docs.hortonworks.com/HDPDocuments/Ambari-2.7.1.0/bk_ambari-release-notes/content/ch_relnotes-ambari-2.7.1.0.html)
+  - Data Analytics Studio Version 1.0.2.0.0
+    - [DAS Release Notes](https://docs.hortonworks.com/HDPDocuments/DAS/DAS-1.1.0/release-notes/das-release-notes.pdf)
 
 ## Behavior Changes
 
+- Connected Data Architecture is disabled by default, it will remain disabled until further notice
+- Hive View 2.0 has been replaced with Data Analytics Studio
+
 - Kafka is now off by default
-- Hive View 2.0 is replaced with Data Analytics Studio
 - Ambari Database changed to external PostgreSQL 9.6 as DAS is dependent on PostgreSQL
-- Infra solr is now ambari infra solr
-
-- Pig View is no longer a part of HDP
+- Ambari Infra is now Ambari Infra Solr
+- Pig View has been removed
 - Hive is now in a separate catalog from all other services. In order to use Hive along with other services a [HiveWarehouseConnector](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.1/integrating-hive/content/hive_hivewarehouseconnector_for_handling_apache_spark_data.html) is needed
+- **Hive Warehouse** directory `/apps/hive/warehouse/` has been split into two new locations
+  - **Hive Managed Tables:** `/warehouse/tablespace/managed/hive`
+  - **User Managed Tables:** `/warehouse/tablespace/external/hive`
 - Hive JDBC Standalone Jar Download now available from Hive Quick Links in Ambari
-
 
 ## Known Issues
 
 - LLAP not enabled by default
-- General Availability Sandbox Docker version for Windows is not compatible with Docker version 18.06.1-ce. Windows with Docker must use [version: 18.03.0-ce](https://docs.docker.com/docker-for-windows/release-notes/#docker-community-edition-18030-ce-win59-2018-03-26).
+- Docker version of Sandbox for Windows is not compatible with Docker version 18.06.1-ce. Users deploying the Sandbox using Docker on Windows must use Docker [version: 18.03.0-ce](https://docs.docker.com/docker-for-windows/release-notes/#docker-community-edition-18030-ce-win59-2018-03-26).
 
 ## Limitations
 
 This is a list of common limitations along with their workarounds.
 
-Pig Views is no longer a part of HDP, Pig scripts are interpreted using Grub.
+Pig Views is no longer a part of HDP, Pig scripts are interpreted using Grub
 
 ## System Information
 
@@ -79,7 +86,7 @@ Operating System and Java versions that the Sandbox has installed.
 Image File Sizes:
 
 - VMware - 22.1 GB
-- VirtualBox - 22 GB
+- VirtualBox - 22.1 GB
 - Docker - 21.2 GB
 
 ### Databases Used
@@ -87,8 +94,8 @@ Image File Sizes:
 These are a list of databases used within Sandbox along with the corresponding HDP components that use them.
 
 - Ambari: Postgres
-- Hive Metastore : Mysql
-- Ranger: Mysql
+- Hive Metastore : MySQL
+- Ranger: MySQL
 - Oozie: derby (embedded)
 
 ### HDP Supported Components Not Installed
@@ -102,7 +109,7 @@ These components are offered by the Hortonworks distribution, but not included i
 
 ### Newly Added HDP Supported Packages
 
-- Data Analytics Studio 1.0.0.0.0
+- Data Analytics Studio 1.0.2.1.0.2.0-6
 
 ### Deprecated Services
 
@@ -151,7 +158,7 @@ When the virtual machine is booted up, the following services are started. If no
   - NodeManager - org.apache.hadoop.yarn.server.nodemanager.NodeManager
 - Zookeeper
   - QuorumPeerMain - org.apache.zookeeper.server.quorum.QuorumPeerMain
-- Zeppelin
+- Zeppelin Notebook
   - ZeppelinServer - org.apache.zeppelin.server.ZeppelinServer
 - Data Analytics Studio
 
@@ -187,4 +194,5 @@ Because of the limited resources available in the sandbox virtual machine enviro
 
 - [Hortonworks DataFlow 3.0 Simplifies Development of Streaming Analytics Applications](https://hortonworks.com/press-releases/hortonworks-dataflow-3-0/)
 - [Hortonworks Hybrid Data Platforms](https://hortonworks.com/products/data-platforms/)
-- [HDP Documentation](https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.6.5/index.html)
+- [HDP Documentation](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.1/index.html)
+- [Data Analytics Studio](https://hortonworks.com/products/dataplane/data-analytics-studio/)
