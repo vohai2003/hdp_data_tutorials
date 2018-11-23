@@ -61,15 +61,37 @@ If this is your first time setting up the **admin** password follow the instruct
 
 Once in Ambari click on the **Ranger** service on the service Stack on the left and follow these steps to enable audit to Solr:
 
-1. Ensure you are in Ranger service
+1\. Ensure you are in the **Ranger** service
 
-2. Select the **Configs** tab
+2\. Select the **Configs** tab
 
-3. **Ranger Audit** tab
+3\. Go to the **Ranger Plugin** Tab
 
-4. Turn **ON** Ranger's Audit to Solr and SolrCloud features
+4\. Turn **OFF** the following Ranger Plugins and then select **Save** the changes. Next click **OK** button on Dependent Configurations window.
+Finally, click **Proceed Anyway** on the **Save Configuration Changes** window, and click **OK**.
 
-5. **Save** this configuration
+- HDFS Ranger Plugin
+- YARN Ranger Plugin
+- Hive Ranger Plugin
+- Storm Ranger Plugin
+- Knox Ranger Plugin
+- Kafka Ranger Plugin
+- Atlas Ranger Plugin
+
+![ranger-plugin-turn-off](assets/images/ranger-plugin-turn-off.jpg)
+
+5\. Repeat steps 1-3 and now turn **ON** all the Ranger Plugins that you had turned **OFF** on step 4. **Save** the changes and the click the **OK** button on Dependent Configurations window.
+Finally, click **Proceed Anyway** on the **Save Configuration Changes** window, and click **OK**.
+
+![ranger-plugin-turn-on](assets/images/ranger-plugin-turn-on.jpg)
+
+6\. Now go to **Ranger** > **Configs**
+
+7\. Select the **Ranger Audit** tab
+
+8\. Turn **ON** Ranger's Audit to Solr and SolrCloud features
+
+9\. **Save** this configuration
 
 In the **Save Configuration** window that appears, write `Enable Audit to Solr and SolrCloud Feature`, then select **Save**, next click **OK** button on Dependent Configurations window.
 Finally, click **Proceed Anyway** on the **Save Configuration Changes** window, and click **OK**.
@@ -128,8 +150,11 @@ Restart the remaining services in this order:
 - Ranger
 - HDFS
 - YARN
+- MapReduce2
+- Tez
 - Hive
 - HBase (Turn Off Maintenance Mode then Restart All HBase)
+- Sqoop
 - Storm (Turn Off Maintenance Mode then Restart All Storm)
 - Atlas (Turn Off Maintenance Mode then Restart All Atlas)
 - Kafka (Turn off Maintenance Mode then Restart All Kakfa)
