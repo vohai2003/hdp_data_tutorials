@@ -57,11 +57,8 @@ Let's get started!
 
 ![ambari-dash-running-spark](assets/ambari-dash-running-spark.jpg)
 
-2\. Open Zeppelin interface using browser URL:
+2\. Open Zeppelin interface using URL: [http://sandbox-hdp.hortonworks.com:9995/](http://sandbox-hdp.hortonworks.com:9995/)
 
-~~~bash
-http://sandbox-hdp.hortonworks.com:9995/
-~~~
 
 You should see a Zeppelin Welcome Page:
 
@@ -129,7 +126,7 @@ In this tutorial we will use the CSV files we stored in HDFS in previous section
 /**
  * Let us first see what temporary views are already existent on our Sandbox
  */
-hiceContext.sql("SHOW TABLES").show()
+hiveContext.sql("SHOW TABLES").show()
 ~~~
 
 If you have not created any temporary views in this Spark instance there should not be any tables:
@@ -139,6 +136,7 @@ If you have not created any temporary views in this Spark instance there should 
 First we must read data from HDFS, in this case we are reading from a csv file without having defined the schema first:
 
 ~~~scala
+%spark2
 val geoLocationDataFrame = spark.read.format("csv").option("header", "true").load("hdfs:///user/maria_dev/data/geolocation.csv")
 
 /**
@@ -159,6 +157,7 @@ hiveContext.sql("SELECT * FROM geolocation LIMIT 15").show()
 Note that our data is casted onto the appropriate type when we register it as a temporary view:
 
 ~~~scala
+%spark2
 hiveContext.sql("DESCRIBE geolocation").show()
 ~~~
 
@@ -218,6 +217,7 @@ val drivermileage_temp0 = hiveContext.sql("SELECT * FROM drivermileage")
 Now let's register temporary global tables from our dataFrames and use SQL syntax to query against that table.
 
 ~~~scala
+%spark2
 geolocation_temp0.createOrReplaceTempView("geolocation_temp0")
 drivermileage_temp0.createOrReplaceTempView("drivermileage_temp0")
 
@@ -330,6 +330,7 @@ risk_factor_spark.show(10)
 After finding the risk factor for each driver we might want to store our results as a CSV on HDFS:
 
 ~~~scala
+%spark2
 risk_factor_spark.coalesce(1).write.csv("hdfs:///user/maria_dev/data/riskfactor")
 ~~~
 
