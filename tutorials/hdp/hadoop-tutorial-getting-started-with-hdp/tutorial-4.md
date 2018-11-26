@@ -137,7 +137,7 @@ First we must read data from HDFS, in this case we are reading from a csv file w
 
 ~~~scala
 %spark2
-val geoLocationDataFrame = spark.read.format("csv").option("header", "true").load("hdfs:///user/maria_dev/data/geolocation.csv")
+val geoLocationDataFrame = spark.read.format("csv").option("header", "true").load("hdfs:///tmp/data/geolocation.csv")
 
 /**
  * Now that we have the data loaded into a DataFrame, we can register a temporary view.
@@ -175,7 +175,7 @@ Alternatively, we can define our schema with specific types, we will explore thi
 import org.apache.spark.sql.types._
 
 /**
- * Recall from the previous tutorial section that the driverid schema only has two relations: 
+ * Recall from the previous tutorial section that the driverid schema only has two relations:
  * driverid (a String), and totmiles (a Double).
  */
 val drivermileageSchema = new StructType().add("driverid",StringType,true).add("totmiles",DoubleType,true)
@@ -185,7 +185,7 @@ Now we can populate `drivermileageSchema` with our CSV files residing in HDFS
 
 ~~~scala
 %spark2
-val drivermileageDataFrame = spark.read.format("csv").option("header", "true").schema(drivermileageSchema)load("hdfs:///user/maria_dev/data/drivermileage.csv")
+val drivermileageDataFrame = spark.read.format("csv").option("header", "true").schema(drivermileageSchema)load("hdfs:///tmp/drivermileage.csv")
 ~~~
 
 Finally, let's create a temporary view
@@ -331,7 +331,7 @@ After finding the risk factor for each driver we might want to store our results
 
 ~~~scala
 %spark2
-risk_factor_spark.coalesce(1).write.csv("hdfs:///user/maria_dev/data/riskfactor")
+risk_factor_spark.coalesce(1).write.csv("hdfs:///tmp/data/riskfactor")
 ~~~
 
 There will be a directory structure with our data under `user/maria_dev/data/` named `riskfactor` there we can find our csv file with a auto generated name given to it by Spark.
@@ -435,16 +435,17 @@ This will load the default Spark Scala API. Issue the command `:help` for help a
 
 ~~~scala
 val hiveContext = new org.apache.spark.sql.SparkSession.Builder().getOrCreate()
-/**
- * Let us first see what temporary views are already existent on our Sandbox
- */
+~~~
+
+~~~scala
 hiveContext.sql("SHOW TABLES").show()
-/**First we must read data from HDFS, in this case we are reading from a csv file without having defined the schema first.
- */
-val geoLocationDataFrame = spark.read.format("csv").option("header", "true").load("hdfs:///user/maria_dev/data/geolocation.csv")
-/**
- * Now that we have the data loaded into a DataFrame, we can register a temporary view.
- */
+~~~
+
+~~~scala
+val geoLocationDataFrame = spark.read.format("csv").option("header", "true").load("hdfs:///tmp/data/geolocation.csv")
+~~~
+
+~~~scala
 geoLocationDataFrame.createOrReplaceTempView("geolocation")
 hiveContext.sql("SELECT * FROM geolocation LIMIT 15").show()
 ~~~
@@ -454,14 +455,15 @@ hiveContext.sql("DESCRIBE geolocation").show()
 ~~~
 
 ~~~scala
-/**The SQL Types library allows us to define the data types of our schema
- */
 import org.apache.spark.sql.types._
-/**Recall from the previous tutorial section that the driverid schema only has two relations: 
- * driverid (a String), and totmiles (a Double).
- */
+~~~
+
+~~~scala
 val drivermileageSchema = new StructType().add("driverid",StringType,true).add("totmiles",DoubleType,true)
-val drivermileageDataFrame = spark.read.format("csv").option("header", "true").schema(drivermileageSchema)load("hdfs:///user/maria_dev/data/drivermileage.csv")
+~~~
+
+~~~scala
+val drivermileageDataFrame = spark.read.format("csv").option("header", "true").schema(drivermileageSchema)load("hdfs:///tmp/drivermileage.csv")
 drivermileageDataFrame.createOrReplaceTempView("drivermileage")
 ~~~
 
@@ -471,22 +473,37 @@ hiveContext.sql("SELECT * FROM drivermileage LIMIT 15").show()
 
 ~~~scala
 val geolocation_temp0 = hiveContext.sql("SELECT * FROM geolocation")
+~~~
+
+~~~scala
 val drivermileage_temp0 = hiveContext.sql("SELECT * FROM drivermileage")
+~~~
 
+~~~scala
 geolocation_temp0.createOrReplaceTempView("geolocation_temp0")
-drivermileage_temp0.createOrReplaceTempView("drivermileage_temp0")
+~~~
 
+~~~scala
+drivermileage_temp0.createOrReplaceTempView("drivermileage_temp0")
+~~~
+
+~~~scala
 hiveContext.sql("SHOW TABLES").show()
 ~~~
 
 ~~~scala
 val geolocation_temp1 = hiveContext.sql("SELECT driverid, count(driverid) occurance FROM geolocation_temp0 WHERE event!='normal' GROUP BY driverid")
+~~~
 
+~~~scala
 geolocation_temp1.show(10)
 ~~~
 
 ~~~scala
 geolocation_temp1.createOrReplaceTempView("geolocation_temp1")
+~~~
+
+~~~scala
 hiveContext.sql("SHOW TABLES").show()
 ~~~
 
@@ -496,20 +513,25 @@ hiveContext.sql("SELECT * FROM geolocation_temp1 LIMIT 15").show()
 
 ~~~scala
 val joined = hiveContext.sql("select a.driverid,a.occurance,b.totmiles from geolocation_temp1 a,drivermileage_temp0 b where a.driverid=b.driverid")
+~~~
 
-/**Register temporary view
- */
+~~~scala
 joined.createOrReplaceTempView("joined")
-/**We can view the result from our query with a select statement
- */
+~~~
+
+~~~scala
 hiveContext.sql("SELECT * FROM joined LIMIT 10").show()
 ~~~
 
 ~~~scala
 val risk_factor_spark = hiveContext.sql("select driverid, occurance, totmiles, (totmiles/occurance) riskfactor from joined")
+~~~
+
+~~~scala
 risk_factor_spark.createOrReplaceTempView("risk_factor_spark")
-/**Ensure our table is created as a temporary view
- */
+~~~
+
+~~~scala
 hiveContext.sql("SHOW TABLES").show()
 ~~~
 
@@ -518,11 +540,9 @@ val joined = hiveContext.sql("SELECT a.driverid,a.occurance,b.totmiles FROM geol
 ~~~
 
 ~~~scala
-/**View results
- */
 hiveContext.sql("SELECT * FROM risk_factor_spark LIMIT 15").show()
 ~~~
 
 ~~~scala
-risk_factor_spark.coalesce(1).write.csv("hdfs:///user/maria_dev/data/riskfactor")
+risk_factor_spark.coalesce(1).write.csvrisk_factor_spark.coalesce(1).write.csv("hdfs:///tmp/data/riskfactor")
 ~~~
