@@ -205,7 +205,7 @@ AS SELECT * FROM test_hive_table1;
 Navigate to http://sandbox-hdp.hortonworks.com:21000 Credentials are:
 
 User name - **admin**
-Password - **admin123**
+Password - **hortonworks1**
 
 ![atlas-login](assets/atlas-login.jpg)
 
