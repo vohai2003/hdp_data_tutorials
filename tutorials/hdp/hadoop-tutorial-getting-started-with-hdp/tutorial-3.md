@@ -80,7 +80,7 @@ Complete form as follows:
 
 - Select checkbox: **Is first row Header: True**
 - Select **Upload from HDFS**
-- Set **Enter HDFS Path** to `/user/maria_dev/data/trucks.csv`
+- Set **Enter HDFS Path** to `/tmp/data/trucks.csv`
 - Click **Preview**
 
 ![upload-table-path](assets/upload-table-path.jpg)
@@ -451,7 +451,7 @@ We will use these result to calculate all truck driver's risk factors in the nex
 
 ![select-drivermileage](assets/select-drivermileage.jpg)
 
-and store it at `/user/maria_dev/data/drivermileage`
+and store it at `/tmp/drivermileage`
 
 Next, navigate to HDFS as **maria_dev** and give permission to other users to use this file:
 

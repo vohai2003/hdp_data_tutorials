@@ -57,7 +57,7 @@ Click on a Notebook tab at the top left and select **Create new note**. Name you
 
 ## Download the Data
 
-Click [here to download the risk factor data](tbd) and upload it to HDFS under `user/maria_dev/data/`
+If you had trouble completing the previous tutorial or lost the **risk factor** data click [here to download it](tbd) and upload it to HDFS under `/tmp/data/`
 
 ![save-risk-factor](assets/save-risk-factor.jpg)
 
@@ -72,7 +72,7 @@ In the previous Spark tutorial you already created a table `finalresults` or `ri
 ~~~scala
 %spark2
 val hiveContext = new org.apache.spark.sql.SparkSession.Builder().getOrCreate()
-val riskFactorDataFrame = spark.read.format("csv").option("header", "true").load("hdfs:///user/maria_dev/data/riskfactor.csv")
+val riskFactorDataFrame = spark.read.format("csv").option("header", "true").load("hdfs:///tmp/data/riskfactor.csv")
 riskFactorDataFrame.createOrReplaceTempView("riskfactor")
 hiveContext.sql("SELECT * FROM riskfactor LIMIT 15").show()
 ~~~

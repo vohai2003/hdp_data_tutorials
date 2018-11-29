@@ -48,15 +48,15 @@ A single physical machine gets saturated with its storage capacity as the data g
 
 ![root-files-view](assets/root-files-view.jpg)
 
-4\. Navigate to `/user/maria_dev` directory by clicking on the directory links.
+4\. Navigate to `/tmp/` directory by clicking on the directory links.
 
-5\.  Let's create a data directory to upload the data that we are going to use for this use case.  Click the ![new_folder_icon_lab1](assets/new_folder_icon_lab1.png) button to create the `data` directory inside the `maria_dev` directory. Now navigate into the `data` directory.
+5\.  Let's create a data directory to upload the data that we are going to use for this use case.  Click the ![new_folder_icon_lab1](assets/new_folder_icon_lab1.png) button to create the `data` directory inside the `/tmp` directory. Now navigate into the `data` directory.
 
 ![add-new-folder](assets/add-new-folder.jpg)
 
 ### Upload Geolocation and Trucks CSV Files to data Folder
 
-1\.   If you're not already in your newly created directory path `/user/maria_dev/data`, go to the **data** folder. Then  click on the ![upload_icon_lab1](assets/upload_icon_lab1.png) button to upload the corresponding **geolocation.csv** and **trucks.csv** files into it.
+1\.   If you're not already in your newly created directory path `/tmp/data`, go to the **data** folder. Then  click on the ![upload_icon_lab1](assets/upload_icon_lab1.png) button to upload the corresponding **geolocation.csv** and **trucks.csv** files into it.
 
 2\. An **Upload file** window will appear, click on the cloud symbol.
 
@@ -74,7 +74,7 @@ You can also perform the following operations on a file or folder by clicking on
 
 ### Set Write Permissions to Write to data Folder
 
-1. click on the `data` folder's row, which is contained within the directory path `/user/maria_dev`.
+1. click on the `data` folder's row, which is contained within the directory path `/tmp/`.
 2. Click **Permissions**.
 3. Make sure that the background of all the **write** boxes are checked (**blue**).
 
