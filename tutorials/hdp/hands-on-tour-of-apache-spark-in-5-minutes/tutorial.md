@@ -27,7 +27,7 @@ To make things fun and interesting, we will introduce a film series dataset from
 ## Prerequisites
 
 - Downloaded and Installed latest [Hortonworks Data Platform (HDP) Sandbox](https://hortonworks.com/downloads/#sandbox)
-  - You will need **8GB** of memory dedicated for the virtual machine, meaning that you should have at least **12GB** of memory on your system.
+  - You will need **10GB** of memory dedicated for the virtual machine, meaning that you should have at least **16GB** of memory on your system.
 
 - [Learning the Ropes of the HDP Sandbox](https://hortonworks.com/tutorial/learning-the-ropes-of-the-hortonworks-sandbox/)
 - Basic [Scala syntax](http://www.dhgarrette.com/nlpclass/scala/basics.html)
