@@ -51,11 +51,11 @@ After you spin up the Hortonworks Sandbox, login to Ambari. The Username/Passwor
 
 ![ambari_login](assets/ambari-login.jpg)
 
-After you Login, you will see the Dashboard. This is an unified view of the state of your Sandbox.
+After you Login, you will see the Dashboard. This is a unified view of the state of your Sandbox.
 
 ![ambari_dashboard_rajops](assets/ambari-dashboard-rajops.jpg)
 
-You can drill into specific service dashboard and configuration.
+You can drill into a specific service dashboard and configuration.
 Let’s dive into YARN dashboard by selecting **Yarn** from the left-side bar or the drop down menu.
 
 ![select_yarn](assets/select-yarn.jpg)
@@ -80,7 +80,7 @@ Once in ResourceManager UI select **Queues**, you will see a visual representati
 
 Let’s change the capacity scheduling policy to where we have separate queues and policies for Engineering, Marketing and Support.
 
-Return to YARN Advanced Configs to adjust the Scheduler by nagivating to Ambari Dashboard>YARN>Configs>Advanced>Scheduler.
+Return to YARN Advanced Configs to adjust the Scheduler by navigating to **Ambari Dashboard>YARN>Configs>Advanced>Scheduler**
 
 Replace the content for the configurations shown below in the **Capacity Scheduler** textbox:
 
