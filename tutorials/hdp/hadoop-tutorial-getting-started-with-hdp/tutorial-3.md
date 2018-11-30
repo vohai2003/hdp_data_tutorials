@@ -320,7 +320,7 @@ SE
 SELECT truckid, avg(mpg) avgmpg FROM truck_mileage GROUP BY truckid;
 ~~~
 
-![Lab2_28](assets/Lab2_28.png)
+![Lab2_28](assets/Lab2_28.jpg)
 
 5\.  Click the “**Save As**” button to save the query as “**average-mpg**”:
 
