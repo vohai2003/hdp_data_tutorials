@@ -336,8 +336,6 @@ SELECT truckid, avg(mpg) avgmpg FROM truck_mileage GROUP BY truckid;
 
 Let's explore the various explain features to better _understand the execution of a query_: Visual Explain, Text Explain, and Tez Explain. Click on the **Visual Explain** button:
 
-![visual-explain](assets/visual-explain.jpg)
-
 This visual explain provides a visual summary of the query execution plan. You can see more detailed information by clicking on each plan phase.
 
 ![explain-dag](assets/explain-dag.jpg)
