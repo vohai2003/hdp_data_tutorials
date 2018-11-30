@@ -80,7 +80,7 @@ Complete form as follows:
 
 - Select checkbox: **Is first row Header: True**
 - Select **Upload from HDFS**
-- Set **Enter HDFS Path** to `/tmp/data/trucks.csv`
+- Set **Enter HDFS Path** to `/tmp/data/geolocation.csv`
 - Click **Preview**
 
 ![upload-table-path](assets/upload-table-path.jpg)
@@ -93,9 +93,9 @@ You should see a similar screen:
 
 Click **Create** button to complete table creation.
 
-### Create and Load Geolocation Table
+### Create and Load Trucks Table
 
-Repeat the steps above with the `geolocation.csv` file to create and load the geolocation table.
+Repeat the steps above with the `trucks.csv` file to create and load the trucks table.
 
 ### Behind the Scenes
 
