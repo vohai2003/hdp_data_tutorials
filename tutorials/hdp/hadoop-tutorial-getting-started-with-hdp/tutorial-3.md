@@ -449,12 +449,12 @@ We will use these result to calculate all truck driver's risk factors in the nex
 
 ![select-drivermileage](assets/select-drivermileage.jpg)
 
-and store it at `/tmp/drivermileage`.
+and store it at `/tmp/maria_dev/data/drivermileage`.
 
 Then open your [web shell client](http://sandbox-hdp.hortonworks.com:4200/):
 
 ~~~bash
-sudo -u hdfs hdfs dfs -chown maria_dev:hdfs /tmp/drivermileage.csv
+sudo -u hdfs hdfs dfs -chown maria_dev:hdfs /tmp/maria_dev/data/drivermileage.csv
 ~~~
 
 Next, navigate to HDFS as **maria_dev** and give permission to other users to use this file:
