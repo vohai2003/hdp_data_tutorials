@@ -32,7 +32,7 @@ November 2018
 - Image MD5 Checksums:
   - VirtualBox – **cc17e47c3ada7137edb550d26fe0bd49**
   - VMware – **5114f5731fae0654bcf8f4cd2ca5b827**
-  - Docker – **9cb3c7247e6fd4978ca1c0378f6ae321**
+  - Docker Deploy Script - **fd1a56c3260291818b6eacbc598dfe72**
 
 - HDP Stack and Ambari: The Sandbox uses the following versions of Ambari and HDP stack. Please use the following release note links provided to view Ambari and HDP stack specific information.
 
