@@ -25,22 +25,22 @@ November 2018
 - The VirtualBox and VMWare releases of the HDP sandbox had their OS-level packages updated, including a version update to Docker 18.03.0
 
 - General Availability Sandbox was tested with the following VMWare, VirtualBox, and Docker versions:
-  - **VMWare** Professional Version 10.1.3 (9472307)
+  - **VMWare Fusion** Version 10.1.3 (9472307)
   - **VirtualBox** Version 5.2.22 r126460 (Qt5.6.3)
   - **Docker** _(MAC/LINUX):_ Docker version: 18.06.1-ce. _(WNDOWS):_ Docker version: 18.03.0-ce.
 
 - Image MD5 Checksums:
-  - VirtualBox – **00af979499f183e7c8f8472adf95d5f7**
-  - VMware – **27647270291a839f9ba964c82a86b00c**
-  - Docker – **2936a3b68dee8ef26224f51e53a7d3b7**
+  - VirtualBox – **cc17e47c3ada7137edb550d26fe0bd49**
+  - VMware – **5114f5731fae0654bcf8f4cd2ca5b827**
+  - Docker – **9cb3c7247e6fd4978ca1c0378f6ae321**
 
 - HDP Stack and Ambari: The Sandbox uses the following versions of Ambari and HDP stack. Please use the following release note links provided to view Ambari and HDP stack specific information.
 
   - HDP 3.0.1.0 Version 3.0.1.0-187
     - [HDP 3.0.1 Product Release Notes](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.1/release-notes/content/relnotes.html)
-  - Ambari Version 2.7.1.0
+  - Ambari Version 2.7.1.0-169
     - [Ambari 2.7.1.0 Release Notes](https://docs.hortonworks.com/HDPDocuments/Ambari-2.7.1.0/bk_ambari-release-notes/content/ch_relnotes-ambari-2.7.1.0.html)
-  - Data Analytics Studio Version 1.0.2.0.0
+  - Data Analytics Studio Version 1.0.2.1.0.2.0-6
     - [DAS Release Notes](https://docs.hortonworks.com/HDPDocuments/DAS/DAS-1.1.0/release-notes/das-release-notes.pdf)
 
 ## Behavior Changes
@@ -48,7 +48,6 @@ November 2018
 - Connected Data Architecture is disabled by default, it will remain disabled until further notice
 - Hive View 2.0 has been replaced with Data Analytics Studio
 - UI/UX improvements included in Ambari 2.7.1
-- Kafka is now off by default
 - Ambari Database changed to external PostgreSQL 9.6 as DAS is dependent on PostgreSQL
 - Ambari Infra is now Ambari Infra Solr
 - Pig View has been removed
@@ -72,17 +71,21 @@ This is a list of common limitations along with their workarounds.
 
 ## System Information
 
-Operating System and Java versions that the Sandbox has installed.
+Operating System and Java versions installed on the Sandbox.
 
-- OS Version (docker container)
+- OS Version (HDP container)
   - CentOS release 7.5.1804 (Core)
   - Java Version (docker container)
-  - openJDK version “1.8.0.181”
-  - OpenJDK Runtime Environment (build 1.8.0.181-b13)
-  - OpenJDK 64-Bit Server VM (build 25.181-b13, mixed mode)
-  - Updated from previous version
+  - openJDK version “1.8.0.191”
+  - OpenJDK Runtime Environment (build 1.8.0_191-b12)
+  - OpenJDK 64-Bit Server VM (build 25.191-b12, mixed mode)
+  - Python 2.7.5
+  - PostgreSQL 9.6.11
+  - MySQL server 5.7.24
+  - MySQL connector 5.1.25-3
 - OS Version (Hosting Virtual Machine)
   - CentOS Linux release 7.2.1511 (Core)
+  - Docker Version 18.03.0-ce, build 0520e24
 
 Image File Sizes:
 
