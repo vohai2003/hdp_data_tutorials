@@ -42,7 +42,7 @@ Let’s now open DAS and get introduced to the environment. From Ambari Dashboar
 
 ![open-das](assets/open-das.jpg)
 
- Alternatively, use your favorite browser navigate to [http://sandbox-hdp.hortonworks.com:30800/#/](http://sandbox-hdp.hortonworks.com:30800/#/) while your sandbox is running.
+ Alternatively, use your favorite browser navigate to [http://sandbox-hdp.hortonworks.com:30800/](http://sandbox-hdp.hortonworks.com:30800/) while your sandbox is running.
 
 Now let’s take a closer look at the SQL editing capabilities Data Analytics Studio:
 
