@@ -36,7 +36,7 @@ A single physical machine gets saturated with its storage capacity as the data g
     - **geolocation.csv** – This is the collected geolocation data from the trucks. It contains records showing _truck location, date, time, type of event, speed, etc_.
     - **trucks.csv** – This is data was exported from a relational database and it shows information on _truck models, driverid, truckid, and aggregated mileage info_.
 
-## Load the Sensor Data into HDFS 
+## Load the Sensor Data into HDFS
 
 1\.   Logon to Ambari using: **maria_dev**/**maria_dev**
 
@@ -44,23 +44,23 @@ A single physical machine gets saturated with its storage capacity as the data g
 
 ![files-view](assets/files-view.jpg)
 
-3\.  Start from the top root of the HDFS file system, you will see all the files the logged in user (_maria_dev_ in this case) has access to see:
+3\.  Start from the top root of the HDFS file system, you will see all the files the logged in user (**maria_dev** in this case) has access to see:
 
 ![root-files-view](assets/root-files-view.jpg)
 
 4\. Navigate to `/tmp/` directory by clicking on the directory links.
 
-5\.  Let's create a data directory to upload the data that we are going to use for this use case.  Click the ![new_folder_icon_lab1](assets/new_folder_icon_lab1.png) button to create the `data` directory inside the `/tmp` directory. Now navigate into the `data` directory.
+5\. Create directory `data`. Click the ![new_folder_icon_lab1](assets/new_folder_icon_lab1.png) button to create that directory. Then navigate to it. The directory path you should see: `/tmp/data`
 
 ![add-new-folder](assets/add-new-folder.jpg)
 
 ### Upload Geolocation and Trucks CSV Files to data Folder
 
-1\.   If you're not already in your newly created directory path `/tmp/data`, go to the **data** folder. Then  click on the ![upload_icon_lab1](assets/upload_icon_lab1.png) button to upload the corresponding **geolocation.csv** and **trucks.csv** files into it.
+1\. If you're not already in your newly created directory path `/tmp/data`, go to the **data** folder. Then click on the ![upload_icon_lab1](assets/upload_icon_lab1.png) button to upload the corresponding **geolocation.csv** and **trucks.csv** files into it.
 
 2\. An **Upload file** window will appear, click on the cloud symbol.
 
-![upload_file_lab1](assets/upload_file_lab1.png)
+![upload_file_lab1](assets/upload_file_lab1.jpg)
 
 3\. Another window will appear, navigate to the destination the two csv files were downloaded. Click on one at a time, press open to complete the upload. Repeat the process until both files are uploaded.
 
