@@ -115,7 +115,7 @@ CREATE TABLE <tablename> ... STORED AS ORC ...
 
 Following is a visual representation of the Upload table creation process:
 
-1 The target table is created using ORC file format (i.e. Geolocation)
+1. The target table is created using ORC file format (i.e. Geolocation)
 2. A temporary table is created using TEXTFILE file format to store data from the CSV file
 3. Data is copied from temporary table to the target (ORC) table
 4. Finally, the temporary table is dropped
@@ -184,24 +184,40 @@ Click on the **SAVE AS** button in the **Compose** section, enter the name of yo
 
 Try running commands using the command line interface - Beeline. Beeline uses a JDBC connection to connect to HiveServer2. Use the [built-in SSH Web Client](https://hortonworks.com/tutorial/learning-the-ropes-of-the-hortonworks-sandbox/#shell-web-client-method) (aka Shell-In-A-Box):
 
-1\.  Logon using **maria_dev**/**maria_dev**
+1\. Connect to Beeline **hive**.
 
-2\. Connect to Beeline
+~~~bash
+beeline -u jdbc:hive2://sandbox-hdp.hortonworks.com:10000 -n hive
+~~~
+
+2\. Enter the beeline commands to grant all permission access for maria_dev user:
+
+~~~sql
+grant all on database foodmart to user maria_dev;
+grant all on database default to user maria_dev;
+!quit
+~~~
+
+3\. Connect to Beeline using **maria_dev**.
 
 ~~~bash
 beeline -u jdbc:hive2://sandbox-hdp.hortonworks.com:10000 -n maria_dev
 ~~~
 
-3\. Enter Beeline commands like:
+4\. Enter the beeline commands to view 10 rows from foodmart database customer
+and account tables:
 
-~~~bash
+~~~sql
+select * from foodmart.customer limit 10;
+select * from foodmart.account limit 10;
+select * from trucks;
+show tables;
 !help
 !tables
 !describe trucks
-select count(*) from trucks;
 ~~~
 
-4\. Exit the Beeline shell:
+5\. Exit the Beeline shell:
 
 ~~~bash
 !quit
@@ -449,12 +465,12 @@ We will use these result to calculate all truck driver's risk factors in the nex
 
 ![select-drivermileage](assets/select-drivermileage.jpg)
 
-and store it at `/tmp/maria_dev/data/drivermileage`.
+and store it at `/tmp/data/drivermileage`.
 
 Then open your [web shell client](http://sandbox-hdp.hortonworks.com:4200/):
 
 ~~~bash
-sudo -u hdfs hdfs dfs -chown maria_dev:hdfs /tmp/maria_dev/data/drivermileage.csv
+sudo -u hdfs hdfs dfs -chown maria_dev:hdfs /tmp/data/drivermileage.csv
 ~~~
 
 Next, navigate to HDFS as **maria_dev** and give permission to other users to use this file:
