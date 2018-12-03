@@ -242,7 +242,7 @@ Ouptut should look like:
 
 ~~~
 +---------------------------------------------+
-|         row__id         |
+|                   row__id                   |
 +---------------------------------------------+
 | {"transactionid":1,"bucketid":1,"rowid":0}  |
 | {"transactionid":3,"bucketid":0,"rowid":0}  |
