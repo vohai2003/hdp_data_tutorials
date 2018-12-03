@@ -233,7 +233,7 @@ With that out of the way, this column records:
 You can access this data as follows using beeline:
 
 ~~~bash
-beeline -u 'jdbc:hive2://sandbox.hortonworks.com:2181/;serviceDiscoveryMode=zooKeeper;zooKeeperNamespace=hiveserver2'
+beeline -u jdbc:hive2://sandbox-hdp.hortonworks.com:10000 -n hive
 
 0: jdbc:hive2://sandbox.hortonworks.com:2181/> select row__id from hello_acid;
 ~~~
@@ -242,7 +242,7 @@ Ouptut should look like:
 
 ~~~
 +---------------------------------------------+
-|         row__id         |
+|                   row__id                   |
 +---------------------------------------------+
 | {"transactionid":1,"bucketid":1,"rowid":0}  |
 | {"transactionid":3,"bucketid":0,"rowid":0}  |

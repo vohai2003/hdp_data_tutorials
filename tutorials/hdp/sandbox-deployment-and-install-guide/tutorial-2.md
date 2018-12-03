@@ -21,6 +21,7 @@ This tutorial walks through the general approach for installing the Hortonworks 
 - [Import Hortonworks Sandbox](#import-hortonworks-sandbox)
   - [VMWare Workstation](#vmware-workstation)
   - [VMWare Fusion](#vmware-fusion)
+- [Update Virtual Machine Memory](#update-virtual-machine-version)
 - [Enable Connected Data Architecture (CDA) - Advanced Topic](#enable-connected-data-architecture-cda---advanced-topic)
 - [Further Reading](#further-reading)
 
@@ -78,24 +79,7 @@ Enter the URL into your browser - you're ready to begin using the sandbox.
 
 Welcome to the Hortonworks Sandbox!
 
-## Enable Connected Data Architecture (CDA) - Advanced Topic
-
-**Prerequisite**:
-- A computer with minimum **22 GB of RAM** dedicated to the virtual machine
-- Have already deployed the latest HDP/HDF sandbox
-- Update virtual machine settings to minimum 22 GB (22528 MB)
-
-Hortonworks Connected Data Architecture (CDA) allows you to play with both data-in-motion (HDF) and data-at-rest (HDP) sandboxes simultaneously.
-
-**HDF (Data-In-Motion)**
-
-Data-In-Motion is the idea where data is being ingested from all sorts of different devices into a flow or stream. While the data is moving throughout this flow, components or as NiFi calls them “processors” are performing actions on the data to modify, transform, aggregate and route it. Data-In-Motion covers a lot of the preprocessing stage in building a Big Data Application. For instance, data preprocessing is where Data Engineers work with the raw data to format it into a better schema, so Data Scientists can focus on analyzing and visualizing the data.
-
-**HDP (Data-At-Rest)**
-
-Data-At-Rest is the idea where data is not moving and is stored in a database or robust datastore across a distributed data storage such as Hadoop Distributed File System (HDFS). Instead of sending the data to the queries, the queries are being sent to the data to find meaningful insights. At this stage data, data processing and analysis occurs in building a Big Data Application.
-
-### Update Virtual Machine Memory
+## Update Virtual Machine Memory
 
 Make sure the virtual machine is shutdown before modifying configurations. **Right-click** on virtual machine and select **Settings...**.
 
@@ -114,6 +98,23 @@ next return to "**Show All**" and select **Processors & Memory** and modify memo
 ![vmware-memory-settings](assets/vmware-memory-settings.jpg)
 
 Finally restart the virtual machine for changes to take place.
+
+## Enable Connected Data Architecture (CDA) - Advanced Topic
+
+**Prerequisite**:
+- A computer with minimum **22 GB of RAM** dedicated to the virtual machine
+- Have already deployed the latest HDP/HDF sandbox
+- Update virtual machine settings to minimum 22 GB (22528 MB)
+
+Hortonworks Connected Data Architecture (CDA) allows you to play with both data-in-motion (HDF) and data-at-rest (HDP) sandboxes simultaneously.
+
+**HDF (Data-In-Motion)**
+
+Data-In-Motion is the idea where data is being ingested from all sorts of different devices into a flow or stream. While the data is moving throughout this flow, components or as NiFi calls them “processors” are performing actions on the data to modify, transform, aggregate and route it. Data-In-Motion covers a lot of the preprocessing stage in building a Big Data Application. For instance, data preprocessing is where Data Engineers work with the raw data to format it into a better schema, so Data Scientists can focus on analyzing and visualizing the data.
+
+**HDP (Data-At-Rest)**
+
+Data-At-Rest is the idea where data is not moving and is stored in a database or robust datastore across a distributed data storage such as Hadoop Distributed File System (HDFS). Instead of sending the data to the queries, the queries are being sent to the data to find meaningful insights. At this stage data, data processing and analysis occurs in building a Big Data Application.
 
 ### Run Script to Enable CDA
 
@@ -136,6 +137,6 @@ The script output will be similar to:
 
 ## Further Reading
 
--   [Sandbox Architecture](https://hortonworks.com/tutorial/sandbox-architecture/)
--   Follow-up with the tutorial: [Learning the Ropes of the HDP Sandbox](https://hortonworks.com/tutorial/learning-the-ropes-of-the-hortonworks-sandbox)
--   [Browse available tutorials](https://hortonworks.com/tutorials/)
+- [Sandbox Architecture](https://hortonworks.com/tutorial/sandbox-architecture/)
+- Follow-up with the tutorial: [Learning the Ropes of the HDP Sandbox](https://hortonworks.com/tutorial/learning-the-ropes-of-the-hortonworks-sandbox)
+- [Browse available tutorials](https://hortonworks.com/tutorials/)
