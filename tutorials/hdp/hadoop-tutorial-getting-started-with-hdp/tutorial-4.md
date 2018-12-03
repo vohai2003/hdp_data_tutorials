@@ -185,7 +185,7 @@ Now we can populate `drivermileageSchema` with our CSV files residing in HDFS
 
 ~~~scala
 %spark2
-val drivermileageDataFrame = spark.read.format("csv").option("header", "true").schema(drivermileageSchema)load("hdfs:///tmp/drivermileage.csv")
+val drivermileageDataFrame = spark.read.format("csv").option("header", "true").schema(drivermileageSchema)load("hdfs:///tmp/data/drivermileage.csv")
 ~~~
 
 Finally, let's create a temporary view
