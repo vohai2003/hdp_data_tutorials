@@ -117,11 +117,19 @@ The Ranger UI homepage should look similar to the image below:
 
 ![ranger-homepage-admin](assets/images/ranger-homepage-admin.jpg)
 
-2\. Select **Add New Policy**:
+2\. Select **grant-XXXXXXXXXXX** (policy value will varies per sandbox)
+
+![ranger-maria-dev-permission](assets/images/ranger-maria-dev-permission.jpg)
+
+3\. Ensure that the policy for table **default** is **disabled** as shown in the image below, then **Save** the changes.
+
+![ranger-maria-dev-permission-disabled](assets/images/ranger-maria-dev-permission-disabled.jpg)
+
+4\. Now select **Add New Policy**:
 
 ![new-sandbox-hive-policies](assets/images/new-sandbox-hive-policies.jpg)
 
-3\. In the **Policy Details** field, enter following values:
+5\. In the **Policy Details** field, enter following values:
 
 ~~~text
 Policy Name - Policy to Restrict Employee Data
@@ -131,7 +139,7 @@ Hive Column - ssn, location (NOTE : Do NOT forget to EXCLUDE these columns)
 Description - Any description
 ~~~
 
-4\. In the **Allow Conditions**, it should have the following values:
+6\. In the **Allow Conditions**, it should have the following values:
 
 ~~~text
 Select Group – blank, no input
@@ -145,11 +153,11 @@ You should have your policy configured like this, then click on `Add`.
 
 ![policy-restrict](assets/images/policy-restrict.jpg)
 
-5\. You can see the list of policies that are present in `Sandbox_hive`.
+7\. You can see the list of policies that are present in `Sandbox_hive`.
 
 ![employee-policy-added-admin](assets/images/employee-policy-added-admin.jpg)
 
-6\. Disable the `all - global` Policy to take away `raj_ops` and `maria_dev`
+8\. Disable the `all - global` Policy to take away `raj_ops` and `maria_dev`
 access to the employee table's ssn and location column data.
 
 ![hive-global-policy-admin](assets/images/hive-global-policy-admin.jpg)

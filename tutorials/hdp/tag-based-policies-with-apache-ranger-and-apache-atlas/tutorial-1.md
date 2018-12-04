@@ -65,33 +65,11 @@ Once in Ambari click on the **Ranger** service on the service Stack on the left 
 
 2\. Select the **Configs** tab
 
-3\. Go to the **Ranger Plugin** Tab
+3\. Go to the **Ranger Audit** tab
 
-4\. Turn **OFF** the following Ranger Plugins and then select **Save** the changes. Next click **OK** button on Dependent Configurations window.
-Finally, click **Proceed Anyway** on the **Save Configuration Changes** window, and click **OK**.
+4\. Turn **ON** Ranger's Audit to Solr and SolrCloud features
 
-- HDFS Ranger Plugin
-- YARN Ranger Plugin
-- Hive Ranger Plugin
-- Storm Ranger Plugin
-- Knox Ranger Plugin
-- Kafka Ranger Plugin
-- Atlas Ranger Plugin
-
-![ranger-plugin-turn-off](assets/images/ranger-plugin-turn-off.jpg)
-
-5\. Repeat steps 1-3 and now turn **ON** all the Ranger Plugins that you had turned **OFF** on step 4. **Save** the changes and the click the **OK** button on Dependent Configurations window.
-Finally, click **Proceed Anyway** on the **Save Configuration Changes** window, and click **OK**.
-
-![ranger-plugin-turn-on](assets/images/ranger-plugin-turn-on.jpg)
-
-6\. Now go to **Ranger** > **Configs**
-
-7\. Select the **Ranger Audit** tab
-
-8\. Turn **ON** Ranger's Audit to Solr and SolrCloud features
-
-9\. **Save** this configuration
+5\. **Save** this configuration
 
 In the **Save Configuration** window that appears, write `Enable Audit to Solr and SolrCloud Feature`, then select **Save**, next click **OK** button on Dependent Configurations window.
 Finally, click **Proceed Anyway** on the **Save Configuration Changes** window, and click **OK**.
@@ -102,17 +80,16 @@ Finally, click **Proceed Anyway** on the **Save Configuration Changes** window, 
 
 Before we restart all the services that were affected by enabling the Audit to Solr and SolrCloud, we need to stop services that will not be used as part of the Tag Based Policies tutorial. We do this because we will be starting additional services, our sandbox is meant to have limited resources and might not respond well to having many services on at the same time.
 
-We will start with Oozie. Go to the Oozie service, click on the **Stop** button located in **Service Actions**.
+We will start with Spark2. Go to the Spark2 service, click on the **Stop** button located in **Service Actions**.
 
-![stop-oozie-service](assets/images/stop-oozie-service.jpg)
+![stop-spark2-service](assets/images/stop-spark2-service.jpg)
 
 1\. Stop the following services in this order:
 
-- Oozie
 - Spark2
 - Zeppelin
 
-![stop_services_not_needed](assets/images/stop-services-not-needed.jpg)
+![stop-services-not-needed](assets/images/stop-services-not-needed.jpg)
 
 ## Restart Affected Services
 
@@ -130,7 +107,7 @@ We will start with Oozie. Go to the Oozie service, click on the **Stop** button 
 
 **Background Operation Running** window will appear showing Zookeeper currently is being restarted. This window will appear for other services you perform a service action upon.
 
-![background-operation-running-hdfs](assets/images/background-operation-running-zookeeper.jpg)
+![background-operation-running-zookeeper](assets/images/background-operation-running-zookeeper.jpg)
 
 Click **OK** button in bottom right corner.
 
@@ -150,14 +127,11 @@ Restart the remaining services in this order:
 - Ranger
 - HDFS
 - YARN
-- MapReduce2
-- Tez
 - Hive
 - HBase (Turn Off Maintenance Mode then Restart All HBase)
-- Sqoop
 - Storm (Turn Off Maintenance Mode then Restart All Storm)
 - Atlas (Turn Off Maintenance Mode then Restart All Atlas)
-- Kafka (Turn off Maintenance Mode then Restart All Kakfa)
+- Kafka
 - Knox  (Turn off Maintenance Mode then Restart All Knox)
 
 ![services-left-to-restart](assets/images/services-left-to-restart.jpg)
