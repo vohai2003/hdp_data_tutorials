@@ -89,7 +89,7 @@ We will start with Spark2. Go to the Spark2 service, click on the **Stop** butto
 - Spark2
 - Zeppelin
 
-![stop-servicesnot_needed](assets/images/stop-services-not-needed.jpg)
+![stop-services-not-needed](assets/images/stop-services-not-needed.jpg)
 
 ## Restart Affected Services
 
