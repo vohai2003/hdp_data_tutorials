@@ -10,7 +10,7 @@ technology: Apache Superset
 release: hdp-3.0.1, hdf 3.2
 environment: Sandbox
 product: CDA
-series: CDA > Data Science Applications
+series: CDA > Data Engineers & Scientists > Data Science Applications
 ---
 
 # Superset in Trucking IoT
