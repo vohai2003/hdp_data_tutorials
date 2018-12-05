@@ -19,7 +19,7 @@ For this portion of the project as a Data Engineer, you have the following respo
 - [Approach 1: Manually Setup Development Environment](#approach-1-manually-setup-development-environment)
 - [Approach 2: Auto Setup Development Environment](#approach-2-auto-setup-development-environment)
 - [Summary](#summary)
-- [Further Reading](#further-readings)
+- [Further Reading](#further-reading)
 
 ## Verify Prerequisites Have Been Covered
 
