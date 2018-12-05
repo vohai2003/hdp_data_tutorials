@@ -18,7 +18,7 @@ Our next objective is to build the sentiment classification model using our clea
 ## Outline
 
 - [Approach 1: Implement a Sentiment Classification Model](#approach-1-implement-a-sentiment-classification-model)
-- [Approach 2: Import Zeppelin Notebook via Zeppelin UI](#approach-2-import-zeppelin-notebook-via-ui)
+- [Approach 2: Import Zeppelin Notebook via Zeppelin UI](#approach-2-import-zeppelin-notebook-via-zeppelin-ui)
 - [Summary](#summary)
 - [Further Reading](#further-reading)
 
