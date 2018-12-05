@@ -10,7 +10,7 @@ technology: Apache Ambari, Apache NiFi, Apache Hive, Apache Zeppelin
 release: hdp-3.0.1, hdf-3.2.0
 environment: Sandbox
 product: CDA
-series: CDA > Data Science Applications
+series: CDA > Data Engineers & Scientists > Data Science Applications
 ---
 
 # Building an HVAC System Analysis Application
