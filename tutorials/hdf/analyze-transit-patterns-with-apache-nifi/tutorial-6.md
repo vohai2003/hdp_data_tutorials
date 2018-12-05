@@ -27,7 +27,7 @@ You will build a new process group called **StoreTransitEventsAsJSONToDisk** to 
 - [Approach 2: Import StoreDataAsJSONToDisk Process Group](#approach-2-import-storedataasjsontodisk-process-group)
 - [Summary](#summary)
 
-If you prefer to build the dataflow manually step-by-step, continue on to [Approach 1](#approach-1-manually-build-storetransiteventsasjsontodisk-process-group-pg). Else if you want to see the NiFi flow in action within minutes, refer to [Approach 2](#approach-2-storedataasjsontodisk-process-group).
+If you prefer to build the dataflow manually step-by-step, continue on to [Approach 1](#approach-1-manually-build-storetransiteventsasjsontodisk-process-group-pg). Else if you want to see the NiFi flow in action within minutes, refer to [Approach 2](#approach-2-import-storedataasjsontodisk-process-group).
 
 ### Approach 1: Manually Build StoreTransitEventsAsJSONToDisk Process Group (PG)
 
