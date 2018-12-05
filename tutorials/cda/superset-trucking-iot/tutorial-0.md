@@ -1,7 +1,7 @@
 ---
 title: Superset in Trucking IoT
 author: sandbox-team
-tutorial-id: 809
+tutorial-id: 821
 experience: Beginner
 persona: Data Analyst
 source: Hortonworks
