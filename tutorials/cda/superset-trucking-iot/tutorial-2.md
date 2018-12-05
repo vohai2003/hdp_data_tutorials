@@ -22,7 +22,7 @@ In this tutorial, you will verify your sandbox IP is mapped to your desired host
 
 ## Outline
 
-- [Start up all required services](#start-up-all-required-services)
+- [Started up all required services for HDF and HDP](#started-up-all-required-services-for-hdf-and-hdp)
 - [Setup Druid for Superset](#setup-druid-for-superset)
 - [Summary](#summary)
 - [Further Reading](#further-reading)
