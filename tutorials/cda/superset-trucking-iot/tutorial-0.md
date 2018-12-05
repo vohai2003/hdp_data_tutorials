@@ -7,10 +7,10 @@ persona: Data Analyst
 source: Hortonworks
 use case: Data Visualization
 technology: Apache Superset
-release: hdp-3.0.1
+release: hdp-3.0.1, hdf 3.2
 environment: Sandbox
 product: CDA
-series: CDA > Data Analyst > Superset
+series: CDA > Data Science Applications
 ---
 
 # Superset in Trucking IoT
