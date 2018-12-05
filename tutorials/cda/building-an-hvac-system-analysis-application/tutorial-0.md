@@ -1,7 +1,7 @@
 ---
 title: Building an HVAC System Analysis Application
 author: sandbox-team
-tutorial-id: 310
+tutorial-id: 790
 experience: Intermediate
 persona: Data Engineer, Data Analyst
 source: Hortonworks
@@ -9,8 +9,8 @@ use case: Data Discovery
 technology: Apache Ambari, Apache NiFi, Apache Hive, Apache Zeppelin
 release: hdp-3.0.1, hdf-3.2.0
 environment: Sandbox
-product: HDP
-series: HDP > Hadoop for Data Engineers & Data Scientists > Real World Examples, HDF > Develop Data Flow & Streaming Applications > Real World Examples
+product: CDA
+series: CDA > Data Science Applications
 ---
 
 # Building an HVAC System Analysis Application
