@@ -36,9 +36,9 @@ Superset is a Business Intelligence tool packaged with many features for designi
 
 ## Outline
 
-- **Superset Concepts** - Covers the fundamental concepts of Data Visualization and Superset.
-- **Setting up the Development Environment** - Setup hostname mapping to IP address, setup Ambari admin password, turn on services needed for Superset and turn on Superset.
-- **Visualizing Trucking Data** - Shows how to visualize data using Superset.
+- **[Superset Concepts](https://hortonworks.com/tutorial/superset-in-trucking-iot/section/1/)** - Covers the fundamental concepts of Data Visualization and Superset.
+- **[Setting up the Development Environment](https://hortonworks.com/tutorial/superset-in-trucking-iot/section/2/)** - Setup hostname mapping to IP address, setup Ambari admin password, turn on services needed for Superset and turn on Superset.
+- **[Visualizing Trucking Data](https://hortonworks.com/tutorial/superset-in-trucking-iot/section/3/)** - Shows how to visualize data using Superset.
 
 ## Tutorial Reference Application
 
