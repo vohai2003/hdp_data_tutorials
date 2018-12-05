@@ -1,276 +1,209 @@
 ---
-title: Learning the Ropes of the HDF Sandbox
+title: Getting Started with the HDF Sandbox
 author: sandbox-team
 tutorial-id: 761
 experience: Beginner
 persona: Administrator
 source: Hortonworks
 use case: Single View
-technology: Apache Ambari, Apache Storm, Apache Superset, Apache NiFi, Schema Registry, Streaming Analytics Manager
-release: hdf-3.1.1
+technology:  Apache NiFi, Apache Storm, Apache Kafka, Streaming Analytics Manager, Schema Registry
+release: hdf-3.2.0
 environment: Sandbox
 product: HDF
 series: HDF > Develop Data Flow & Streaming Applications > Hello World
 ---
 
-# Learning the Ropes of the HDF Sandbox
+# Getting Started with the HDF Sandbox
 
 ## Introduction
 
-Building Internet of Things (IOT) related applications is faster and simpler by using the open source data-in-motion framework known as Hortonworks DataFlow (HDF). Learn how to build IOT applications in a virtual test environment that keeps your home computing environment safe. HDF can be learned through an HDF sandbox. Tutorials have been developed and tested against the sandbox to make getting started with Big Data and IOT a smoother process.
-
-By the end of this tutorial, you will be familiar with the data-in-motion tools from the HDF platform that can be used to build your applications.
+In this tutorial, you will learn how to deploy a modern real-time streaming application. This application serves as a reference framework for developing a big data pipeline, complete with a broad range of use cases and powerful reusable core components. You will explore the NiFi Dataflow application, Kafka topics, Schemas and SAM topology.
 
 ## Prerequisites
 
-- Downloaded and deployed the [Hortonworks Data Platform (HDF)](https://hortonworks.com/downloads/#sandbox) Sandbox
+- [Installed Hortonworks DataFlow (HDF) Sandbox](https://hortonworks.com/downloads/#sandbox)
 
 ## Outline
 
 - [Concepts](#concepts)
-- [Environment Setup](#environment-setup)
-- [Terminal Access](#terminal-access)
-- [Welcome Page](#welcome-page)
-- [Explore Ambari](#explore-ambari)
+- [Overview of Trucking IoT Ref App](#overview-of-trucking-iot-ref-app)
+- [Step 1: Explore Dataflow Application](#step-1-explore-dataflow-application)
+- [Step 2: View Schema Registry](#step-2-view-schema-registry)
+- [Step 3: Analyze Stream Analytics Application](#step-3-analyze-stream-analytics-application)
+- [Step 4: View the Storm Engine that Powers SAM](#step-4-view-the-storm-engine-that-powers-sam)
+- [Summary](#summary)
 - [Further Reading](#further-reading)
-- [Appendix A: Reference Sheet](#appendix-a-sandbox-reference-sheet)
-  - [Login Credentials](#login-credentials)
-  - [Sandbox Version](#sandbox-version)
-  - [Admin Password Reset](#admin-password-reset)
-- [Appendix B: Troubleshoot](#appendix-b-troubleshoot)
+- [Appendix A: Trucking IoT GitHub Repo](https://github.com/orendain/trucking-iot/tree/master)
 
 ## Concepts
 
-### What is a Sandbox?
+### Stream Analytics Manager (SAM)
 
-The Sandbox is a straightforward, pre-configured, learning environment that contains the latest developments from Apache Big Data related tools, specifically these tools were assembled together into Hortonworks DataFlow (HDF). The Sandbox comes packaged in a virtual environment that can run in the cloud or on your personal machine. The sandbox allows you to learn to build streaming applications. Supplemental tutorials tested against the latest sandbox environment are provided at [HDF Tutorial Track](https://hortonworks.com/tutorials/?tab=product-hdf).
+Stream Analytics Manager is a drag and drop program that enables stream processing developers to build data topologies within minutes compared to traditional practice of writing several lines of code. A topology is a **directed acyclic graph (DAG)** of processors. Now users can configure and optimize how they want each component or processor to perform computations on the data. They can perform windowing, joining multiple streams together and other data manipulation. SAM currently supports the stream processing engine known as Apache Storm, but it will later support other engines such as Spark and Flink. At that time, it will be the users choice on which stream processing engine they want to choose.
 
-### HDF Standalone Sandbox
+### Apache Storm
 
-The HDF Standalone Sandbox Architecture comes with the following Big Data Tools:
-Zookeeper, Storm, Kafka, NiFi, NiFi Registry, Schema Registry and Stream Analytics Manager (SAM).
+Apache Storm is the current backend computational processing engine for Stream Analytics Manager. After the user builds their SAM topology, all the actual processing of data happens in a Storm topology, which is also a **DAG**, but is comprised of spouts and bolts with streams of tuples representing the edges.
 
-## Environment setup
+A **spout** ingests the data usually from a Kafka Topic into the topology while **bolts** do all the processing. Thus, all the same components from the SAM topology are represented in the Storm topology, but as appropriate spouts and bolts.
 
-This is the administrative section to get started with the Hortonworks Sandbox environment. Generally, this will only be done once.
+Storm is the Open Source distributed, reliable, fault-tolerant system that handles real time analytics, scoring machine learning models, continuous static computations and enforcing Extract, Transform and Load (ETL) paradigms.
 
-### Determine Network Adapter of Your Sandbox
+### Schema Registry
 
-Once the Sandbox VirtualBox VM is installed, it attaches to a virtual network. There are 8 different network modes, but the default network your sandbox will attach to is NAT. We will cover relevant networks for our tutorial use cases: NAT and Bridged Adapter.
+Schema Registry (SR) stores and retrieves Avro Schemas via RESTful interface. SR stores a version history containing all schemas. Serializers are provided to plug into Kafka clients that are responsible for schema storage and retrieve Kafka messages sent in Avro format.
 
-#### Network Address Translation (NAT)
+### Kafka
 
-By default, the VirtualBox VM attaches to Network Address Translation (NAT) network mode. The guest's IP address by default translates over to the host's IP address. NAT allows for the guest system to connect to external devices on external networks, but external devices cannot access the guest system. Alternatively, VirtualBox can make selected services on the guest reachable to the outside world by port forwarding. VirtualBox listens to certain ports on the host, then resends packets that arrive at those ports to the guest on the same port or different port.
+Apache Kafka is an open source publish-subscribe based messaging system responsible for transferring data from one application to another.
 
-We are forwarding all incoming traffic from a specific host interface to the guest in our sandbox is by specifying an IP of that host like the following:
+### Overview of Trucking IoT Ref App
 
-~~~bash
-VBoxManage modifyvm "Hortonworks Sandbox HDF 3.1 Standalone" --natpf1 "Sandbox Splash Page,tcp,127.0.0.1,1080,,1080"
-.
-.
-.
-VBoxManage modifyvm "Hortonworks Sandbox HDF 3.1 Standalone" --natpf1 "Sandbox Host SSH,tcp,127.0.0.1,2122,,22"
-~~~
+The Trucking IoT Reference Application is built using Hortonworks DataFlow Platform.
 
-You can find the set network by opening the VM **settings** and then select the **network** tab.
+The Trucking IoT data comes from a truck events simulator that is ingested by Apache NiFi, NiFi sends the data to Kafka topics which are then ingested by Stream Analytics Manager (SAM). A more in depth explanation of the pipeline will be explained as you explore the NiFi Dataflow application, Schema Registry and SAM.
 
-#### Bridged Networking
+### Step 1: Explore Dataflow Application
 
-In this mode, the guest receives direct access to the network, which the host has been connected. The router assigns an IP address to the guest. On that network, instead of there being just the host IP address visible, now the guest IP address is visible too. Thus, external devices, such as MiNiFi running on a Raspberry Pi, are able to connect to the guest via it's IP address.
+1\. Open the NiFi UI [http://sandbox-hdf.hortonworks.com:9090/nifi/](http://sandbox-hdf.hortonworks.com:9090/nifi/)
 
-When would you need this mode? It is needed for Connected Data Architecture. To configure this mode, first power down your guest vm, click settings, switch to the network tab and change the **attach to** network to be **Bridged Adapter**.
+2\. The NiFi Dataflow application template: `Trucking IoT Demo` will appear on the canvas.
 
-![Bridged Adapter](assets/images/bridged_adapter.jpg)
+4\. Select NiFi configuration icon ![nifi_configuration](assets/images/nifi_configuration.jpg). Click on the Controller Services tab.
 
-> WARNING: first make sure your computer is connected to a router, else this feature will not work cause there is no router to assign an IP address to the guest vm.
+5\. The **HortonworksSchemaRegistry** should be enabled. If it's not enabled then select the lightning bolt symbol next to **HortonworksSchemaRegistry**.
 
-### Determine IP Address of Your Sandbox
+![nifi_controller_services](assets/images/controller-services-en.jpg)
 
-Once the Sandbox VM or container is installed, it settles to the host of your environment, the IP address varies depending on your Virtual Machine (VMware, VirtualBox) or container (Docker). Once the sandbox is running, it will tell you the IP address. An example of typical IP addresses for each supported environment:
+6\. In the "Enable Controller Service" window, under "Scope", select "Service and referencing components". Then click ENABLE.
 
-**Docker**: IP Address = **127.0.0.1**
+![enable_hwx_sr](assets/images/enable_hwx_sr.jpg)
 
-**VirtualBox**: IP Address = **127.0.0.1**
+All controller services referencing **HortonworksSchemaRegistry** will also be enabled. Head back to the NiFi Dataflow.
 
-**VMWare**: IP Address = **192.168.x.x**
+Overview of the **7 processors** in the NiFi Flow:
 
-If you're using **VirtualBox** or **VMWare**, you can confirm the IP address by waiting for the installation to complete and confirmation screen will tell you the IP address your sandbox resolves to. For example:
+- **GetTruckingData** - Simulator generates TruckData and TrafficData in bar-delimited CSV
 
-![Host Address of Sandbox Environment](assets/images/guest_vm_NAT_mode_hdp265_83.jpg)
+- **RouteOnAttribute** - filters the _TrafficData_ and _TruckData_ into separate data feeds
 
-> **Note:** Guest VM Welcome Window for NAT Sandbox
+| Data Name | Data Fields    |
+| :------------- | :------------- |
+| TruckData       | eventTime, truckId, driverId, driverName, routeId, routeName, latitude, longitude, speed, eventType       |
+| TrafficData       | eventTime, routeId, congestionLevel       |
 
-![Host Address of Sandbox Environment](assets/images/guest_vm_BRIDGED_mode_welcome_screen.jpg)
+_TruckData side of Flow_
 
-> **Note:** Guest VM Welcome Window for BRIDGED Sandbox
+- **EnrichTruckData** - tags on three fields to the end of _TruckData_: "foggy","rainy", "windy"
 
-If you're using Azure, your IP address is located on the dashboard, refer to [**Set a Static IP**](https://hortonworks.com/tutorial/sandbox-deployment-and-install-guide/section/4/#settings-form)
+- **ConvertRecord** - reads incoming data with "CSVReader" and writes out Avro data with "AvroRecordSetWriter" embedding a "trucking_data_truck_enriched" schema onto each flowfile.
 
-### Map Sandbox IP to Your Desired Hostname in the Hosts File
+- **PublishKafka_1_0** - stores Avro data into Kafka Topic "trucking_data_truck_enriched" _TrafficData side of Flow_
 
-Mac, Linux and Windows all have a hosts file. This file once configured enables the IP address of the sandbox to be mapped to a hostname that is easier to remember than a number.
+- **ConvertRecord** - converts CSV data into Avro data embedding a "trucking_data_traffic" schema onto each flowfile
 
-**Mac users**:
+- **PublishKafka_1_0** - stores Avro data into Kafka Topic "trucking_data_traffic"
 
-```bash
-echo '{IP-Address} sandbox.hortonworks.com sandbox-hdp.hortonworks.com sandbox-hdf.hortonworks.com' | sudo tee -a /private/etc/hosts
-```
+Overview of **5 controller services** used in the NiFi Flow:
 
-**Linux users**:
+- **AvroRecordSetWriter - Enriched Truck Data** - writes contents of RecordSet in Binary Avro Format (trucking_data_truck_enriched schema)
 
-```bash
-echo '{IP-Address} sandbox.hortonworks.com sandbox-hdp.hortonworks.com sandbox-hdf.hortonworks.com' | sudo tee -a /etc/hosts
-```
+- **AvroRecordSetWriter - Traffic Data** - writes contents of RecordSet in Binary Avro Format (trucking_data_traffic schema)
 
-**Windows users**:
+- **CSVReader - Enriched Truck Data** - returns each row in CSV file as a separate record (trucking_data_truck_enriched schema)
 
-- Run Notepad as **administrator**.
-- Open **hosts** file located in: ```c:\Windows\System32\drivers\etc\hosts```
-- Add `{IP-Address}   localhost   sandbox.hortonworks.com   sandbox-hdp.hortonworks.com   sandbox-hdf.hortonworks.com`
-- Save the file
+- **CSVReader - Traffic Data** - returns each row in CSV file as a separate record (trucking_data_traffic schema)
 
-> IMPORTANT: Replace **{IP-Address}** with [Sandbox IP Address](#determine-ip-address-of-your-sandbox)
+- **HortonworksSchemaRegistry** - provides schema registry service for interaction with Hortonworks Schema Registry
 
-## Terminal Access
+7\. Press `command+A` or `control+A` to select all the processors in the NiFi Dataflow and click on the start button ![nifi_start](assets/images/nifi_start.jpg).
 
- Refer to [Login Credentials](#login-credentials) for list of users and passwords. You can also login using **root**, using password **hadoop**, which may require you to change the password - remember it!
+![nifi-to-2kafka-2schemas](assets/images/nifi-to-2kafka-2schemas.jpg)
 
- If you login using credentials other than **root**, you may be required to use **sudo** before the command. For example:
+8\. To reduce resource consumption and footprint, when the **PublishKafka_1_0** processors reach about 500 input records, click on the stop button ![nifi_stop](assets/images/nifi_stop.jpg). This will take approximately 1 - 2 minutes.
 
-```bash
- sudo ambari-server status
- ```
+9\. Stop **NiFi** service: **Ambari** -> **NiFi** -> **Service Actions** -> **Stop**
 
-#### Secure Shell Method:
+### Step 2: View Schema Registry
 
-Open your terminal (mac/linux) or Git Bash (Windows). Type the following command to access the Sandbox through **ssh user@hostname -p port**. For example: ```ssh root@sandbox-hdf.hortonworks.com -p 2202```
+1\. Open the Schema Registry UI at [http://sandbox-hdf.hortonworks.com:7788/](http://sandbox-hdf.hortonworks.com:7788/)
 
-![Mac Terminal SSH](assets/images/secure_shell_sandbox_hdf.jpg)
+![schema_registry_trucking_data](assets/images/schema_registry_trucking_data.jpg)
 
-#### Shell Web Client Method:
+Overview of the essential **schemas** in the Schema Registry:
 
-The **shell web client** is also known as **shell-in-a-box**. It's an easy way to issue shell commands without needing to install additional software. It uses **port 4200**, for example:  [sandbox-hdf.hortonworks.com:4200](http://sandbox-hdf.hortonworks.com:4200)
+- **trucking_data_joined** - model for truck event originating from a truck's onboard computer (EnrichedTruckAndTrafficData)
 
-#### Send Data Between Sandbox and Local Machine
+- **trucking_data_truck_enriched** - model for truck event originating from a truck's onboard computer (EnrichedTruckData)
 
-Using the terminal of your choice, you can transfer files to/from sandbox and local machine.
+- **trucking_data_traffic** model for eventTime, routeId, congestionLevel (TrafficData)
 
-- Transfer file from local machine to sandbox:
+### Step 3: Analyze Stream Analytics Application
 
-```bash
-scp -P 2202 <local_directory_file> root@sandbox-hdf.hortonworks.com:<sandbox_directory_file>
-```
+1\. Open Stream Analytics Manager (SAM) at [http://sandbox-hdf.hortonworks.com:7777/](http://sandbox-hdf.hortonworks.com:7777/)
 
-- Transfer file from sandbox to local machine:
+2\. Click on the Trucking-IoT_Demo, then the green pencil on the right top corner. This should show an image similar to the one below, click on the **Run** button to deploy the topology:
 
-```bash
-scp -P 2202 root@sandbox-hdf.hortonworks.com:<sandbox_directory_file> <local_directory_file>
-```
+![sam_start](assets/images/sam_start.jpg)
 
-Do you notice the difference between the two commands?
+A window will appear asking if you want to continue deployment, click **Ok**.
 
-To send data from local machine to sandbox, the local machine directory path comes before sandbox directory. To transfer data from sandbox to local machine, the command arguments are reversed.
+3\. You will receive a notification that the SAM topology application deployed successfully and your topology will show Active Status in the bottom right corner.
 
-## Welcome Page
+![trucking_iot_sam_topology](assets/images/trucking_iot_sam_topology.jpg)
 
-The Sandbox Welcome Page is also known as the **Splash Page**. It runs on port number **:1080**. To open it, use your host address and append the port number. For example: [http://sandbox-hdf.hortonworks.com:1080/](http://sandbox-hdf.hortonworks.com:1080/)
+**Overview of the SAM Canvas:**
 
-It looks like this:
+- My Applications: Different Topology Projects
+- 1st Left Sidebar: My Applications, Dashboard, Schema Registry, Model Registry, Configuration
+- 2nd Left Sidebar: Different stream components (source, processor, sink)
+- Gear Icon: Configure topology settings
+- Status Icon: Start or Stop Topology
 
-![hdf_splash_screen_step1](assets/images/hdf_splash_screen_step1.jpg)
+**Overview of SAM topology:**
 
-**Launch Dashboard** opens two browser windows - Ambari interface and beginner tutorial. You should login to Ambari using the username and password based on the tutorial requirements. Most of the tutorials use **admin**. Refer to [Login Credentials](#login-credentials) for list of users and passwords.
+- **TrafficData** is the source component name, which pulls in data from the Kafka topic "trucking_data_traffic".
 
-**Advanced HDF Quick Links** provide quick access to Ambari Services such as NiFi, SAM, Schema Registry, Shell-in-a-box and others.
+- **EnrichedTruckData** is the source component name, which pull is data from the Kafka topic "trucking_data_truck_enriched"
 
-## Explore Ambari
+- **JoinStreams** joins streams "TrafficData" and "EnrichedTruckData" by "routeId".
 
-- Ambari Dashboard runs on port **:8080**. For example, [http://sandbox-hdf.hortonworks.com:8080](http://sandbox-hdf.hortonworks.com:8080)
-- Login to as **admin**, refer to [Admin Password Reset](#admin-password-reset)
-- Select **Manage Ambari**
+- **FilterNormalEvents** checks if non "Normal" eventType's occur, then it  will emit them.
 
-![manage-ambari](assets/images/manage-ambari.jpg)
+- **TimeSeriesAnalysis** computes the average of 10 samples of speed across a 10 second window period, calculates the sum across the same window period as before for foggy, rainy, windy and eventTime individually.
 
-The following screen will be displayed:
+- **ToDriverStats** stores the input from "TimeSeriesAnalysis": driveId, routeId, averageSpeed, totalFog, totalRain, totalWind, and totalViolations into Kafka topic "trucking_data_driverstats".
 
-![Lab0_3](assets/images/ambari_welcome_learning_the_ropes_sandbox.jpg)
+- **ToDataJoined** stores the input from "FilterNormalEvents": eventTime, congestionLevel, truckId, driverId, driverName, routeId, routeName, latitude, longitude, speed, eventType, foggy, rainy, and windy into Kafka topic "trucking_data_joined".
 
-1. “**Operate Your Cluster**” will take you to the Ambari Dashboard which is the primary UI for Hadoop Operators
-2. “**Manage Users + Groups**” allows you to add & remove Ambari users and groups
-3. “**Clusters**” allows you to grant permission to Ambari users and groups
-4. “**Ambari User Views**” list the set of Ambari Users views that are part of the cluster
-5. “**Deploy Views**” provides administration for adding and removing Ambari User Views
+### Step 4: View the Storm Engine that Powers SAM
 
-- Click on **Go to Dashboard** and you should see a similar screen:
+1\. From Ambari, click on **Storm** > **Storm UI**
 
-![Lab0_4](assets/images/Lab0_4.png)
+2\. Click on Topology Name: **streamline-1-Trucking-IoT-Demo** under **Topology Summary**
 
-Explorer by click on:
+![storm_view_dashboard](assets/images/storm_view_dashboard.jpg)
 
-1\.  **Metrics**, **Heatmaps** and **Config History**
+3\.  **Overview of the Storm Topology**
 
-and then on:
+![storm_topology](assets/images/storm_topology.jpg)
 
-2\.  **Dashboard**, **Services**, **Hosts**, **Alerts**, **Admin** and User Views icon (represented by 3×3 matrix ) to become familiar with the Ambari resources available to you.
+You can see the total number of **Emitted** `(1360)` and **Transferred** `(1440)` tuples after `10m 0s` under **TOPOLOGY STATS** for the entire topology. You can also see individual emitted and transferred tuples for each individual Spout and Bolt in the topology increase. If we hover over one of the spouts or bolts on the graph, we can see how much data they process and their latency.
+
+- Topology Summary
+- Topology Stats
+- Topology Static Visualization
+- Spout
+- Bolts
+- Topology Configuration
 
 ## Summary
 
-Congratulations! Now you know about the different features available in the HDF sandbox. You can use these HDF components to begin building your own applications to solve data-in-motion problems. If you want to learn more about HDF, check out the documentation in the Further Reading section below. If you want to explore more in depth how you can use the HDF tools to build applications, visit the Hortonworks HDF Sandbox tutorials.
+Congratulations! You deployed the Trucking IoT demo that processes truck event data by using the NiFi data flow application to separate the data into two flows: _TruckData_ and _TrafficData_. These two flows are then transmitted into two Kafka robust queues tagged with Schema Registry schemas: _trucking_data_traffic_ and _trucking_data_truck_enriched. Stream Analytics Manager's (SAM) topology pulls in this data to join the two streams (or flows) by _routId_, and filter's non-normal events which then get split into two streams. One stream is sent to a Kafka sink directly the other stream is then further filtered with an aggregate processor then sent to a different Kafka sink.
 
 ## Further Reading
 
-- [HDF Documentation](https://docs.hortonworks.com/HDPDocuments/HDF3/HDF-3.1.1/index.html)
-- [HDF Tutorial Track](https://hortonworks.com/tutorials/?tab=product-hdf)
-
-## Appendix A: Sandbox Reference Sheet
-
-The HDF sandbox cheat sheet is a reference of common knowledge and tasks often done in the sandbox.
-
-### Login Credentials:
-
-| User | Password |
-|:------:|----------:|
-| admin | Refer to [Admin Password Reset](#admin-password-reset) |
-
-**OS Level Authorization**
-
-| Name id(s) | HDFS Authorization | Ambari Authorization | Ranger Authorization |
-|:----------:|:------------------:|:--------------------:|:--------------------:|
-| Sam Admin | Max Ops | Ambari Admin | Admin access |
-
-**Other Differences**
-
-| Name id(s) | Sandbox Role | View Configurations | Start/Stop/Restart Service | Modify Configurations | Add/delete services | Install Components | Manage Users/Groups | Manage Ambari Views | Atlas UI Access | [Sample Ranger Policy Access](https://hortonworks.com/tutorial/tag-based-policies-with-apache-ranger-and-apache-atlas/#sample-ranger-policy) |
-|:----------:|:------------:|:-------------------:|:--------------------------:|:---------------------:|:-------------------:|:------------------:|:-------------------:|:-------------------:|:---------------:|:--------------------:|
-| Sam Admin | Ambari Admin | Yes | Yes | Yes | Yes | Yes | Yes | Yes | Yes | NA |
-
-### Sandbox Version
-
-When you run into an issue, one of the first things someone will ask is "_what sandbox version are you using_"? To get this information:
-
-Login using [Shell-In-A-Box](http://sandbox-hdf.hortonworks.com:4200) and execute: `sandbox-version`. The output should look something like:
-
-![sandbox-version](assets/images/sandbox-version.jpg)
-
-> Note: refer to [Login Credentials](#login-credentials)
-
-### Admin Password Reset
-
-Due to possibility of passwords being vulnerable to being hacked, we recommend
-you change your Ambari admin password to be unique.
-
-1. Open [Shell-In-A-Box](http://sandbox-hdf.hortonworks.com:4200):
-
-2. The login using credentials: **root** / **hadoop**
-
-3. Type the following commands:
-
-```bash
-ambari-admin-password-reset
-```
-
-> IMPORTANT: The first time you login as **root**, you may be required to change the password - remember it!
-
-## Appendix B: Troubleshoot
-
-- [Hortonworks Community Connection](https://hortonworks.com/community/forums/) (HCC) is a good resource to find answers to problems you may encounter during your Hadoop journey.
+- [Apache NiFi User Guide](https://nifi.apache.org/docs.html)
+- [Kafka Documentation](https://kafka.apache.org/documentation/)
+- [Schema Registry](https://docs.confluent.io/current/schema-registry/docs/index.html)
+- [Stream Analytics Manager User Guide](https://docs.hortonworks.com/HDPDocuments/HDF3/HDF-3.0.2/bk_streaming-analytics-manager-user-guide/content/ch_sam-manage.html)

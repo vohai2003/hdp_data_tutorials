@@ -12,7 +12,7 @@ NiFi on HDF sandbox via Site-to-Site protocol. Finally, you'll verify that NiFi 
 
 ## Prerequisites
 
-- Completed previous tutorials in the series
+- Deploy IoT Weather Station and Connected Data Architecture
 
 ## Outline
 
@@ -37,9 +37,7 @@ project in 1.1 - 1.6. In 1.7, the full code for the WeatherStation is provided.
 
 Open the HDF Sandbox Web Shell:
 
-~~~
-sandbox-hdf.hortonworks.com:4200
-~~~
+http://sandbox-hdf.hortonworks.com:4200
 
 Create a new file "WeatherStation.py"
 
@@ -113,7 +111,7 @@ as a string.
 ### 1.3: Gather Weather Readings from Sense HAT
 
 Temperature, humidity and barometric pressure are retrieved from the Sense HAT.
-`sense.get_temperature` grabs a temperature reading and stores it into the **temp_c** variable.
+**sense.get_temperature** grabs a temperature reading and stores it into the **temp_c** variable.
 
 ~~~python
 # Attempt to get sensor reading.
@@ -200,7 +198,7 @@ The Public IP address of the Raspberry Pi can be used to determine geographic
 insights, such as the city and state in which that node is logging weather data.
 
 The code extracts the Public IP address via rest call to IPIFY and then parses
-the JSON for `ip` value.
+the JSON for **ip** value.
 
 ~~~python
 # Attempt to get Public IP
@@ -389,11 +387,13 @@ We provide a download link to the WeatherStation.py.
 
 In this section, you will build a NiFi flow on HDF Sandbox node to transport data ingested from MiNiFi node to HDFS on HDP Sandbox node.
 
-1\. Navigate to NiFi UI at `sandbox-hdf.hortonworks.com:9090/nifi/`
+1\. Navigate to NiFi UI at http://sandbox-hdf.hortonworks.com:9090/nifi/
 
 ![nifi_ui](assets/tutorial3/nifi_ui.png)
 
 **Figure 1:** NiFi UI Canvas
+
+> Note: If NiFi canvas has a pre-existing flow, delete it and we will build a completely different flow.
 
 2\. In NiFi, add an Input Port ![input port](assets/tutorial3/input_port.png) onto the canvas and name it `From_MiNiFi`.
 
@@ -413,6 +413,13 @@ In this section, you will build a NiFi flow on HDF Sandbox node to transport dat
 ![puthdfs_hadoop_config](assets/tutorial3/puthdfs_hadoop_config.jpg)
 
 **Figure 3:** PutHDFS Properties Tab
+
+**Note:** Open HDP Web Shell Client at http://sandbox-hdp.hortonworks.com:4200. Create the HDFS directory specified in the Properties table above.
+
+~~~bash
+sudo -u hdfs hdfs dfs -mkdir -p /sandbox/tutorial-files/820/nifi/output/raw-data
+sudo -u hdfs hdfs dfs -chmod -R 777 /sandbox/tutorial-files/820/nifi/output/raw-data
+~~~
 
 In the **Settings** tab, under Automatically Terminate Relationships, check the **failure** and **success** boxes. This relationship will delete flow files whether or not they have been successfully written to HDFS to clean up extra data once it reaches the end of the flow.
 
@@ -493,7 +500,7 @@ Click **Apply**.
 
 > Note: `[host machine ip address]` for linux/mac, can be found with the terminal command: `ifconfig | grep inet`. For Windows, use the command prompt command as an administrator: `ipconfig`, then under "Wireless LAN adapter Wi-Fi," retrieve the value from "IPv4 Address".
 
-![remote_process_group_nifi](assets/tutorial3/remote_process_group_nifi.png)
+![remote_process_group_nifi](assets/tutorial3/remote_process_group_nifi.jpg)
 
 **Figure 10:** Remote Process Group Configuration URL
 
@@ -501,7 +508,7 @@ Click **ADD**.
 
 6\. RPG connects MiNiFi to NiFi by referencing the name of NiFi's input port. Connect the **ExecuteProcess** processor to **RPG**, you will then be asked which input port to connect to, choose **From_MiNiFi**. Click **ADD**.
 
-![from_minifi_to_nifi](assets/tutorial3/from_minifi_to_nifi.png)
+![from_minifi_to_nifi](assets/tutorial3/from_minifi_to_nifi.jpg)
 
 **Figure 11:** Remote Process Group MiNiFi connection to Remote NiFi Node
 
@@ -509,7 +516,7 @@ Click **ADD**.
 
 1\. Now that the flow is built for MiNiFi, go to the Operate Palette. Select the  **Save Template Icon** ![save_template_icon](assets/tutorial3/save_template_icon.png) Name the new flow: `weather-station-node-sj`.
 
-![save_weather_station_node_flow](assets/tutorial3/save_weather_station_node_flow.png)
+![save_weather_station_node_flow](assets/tutorial3/save_weather_station_node_flow.jpg)
 
 **Figure 12:** Create Name for NiFi template used for MiNiFi
 
@@ -525,15 +532,33 @@ You will use the MiNiFi Toolkit to convert the NiFi flow to a MiNiFi flow.
 
 1\. Go to the location where you downloaded MiNiFi Toolkit Converter. Use the command to convert NiFi xml template to MiNiFi yml template:
 
+### MiNiFi Toolkit Steps for Mac Users
+
 ~~~bash
-cd ~/path/to/minifi-toolkit-0.4.0/
-./minifi-toolkit-0.4.0/bin/config.sh transform weather-station-node-sj.xml config.yml
+cd ~/path/to/minifi-toolkit-0.5.0/
+./minifi-toolkit-0.5.0/bin/config.sh transform weather-station-node-sj.xml config.yml
 ~~~
 
 2\. Validate that there are no issues with the new MiNiFi file:
 
 ~~~bash
-./minifi-toolkit-0.4.0/bin/config.sh validate config.yml
+./minifi-toolkit-0.5.0/bin/config.sh validate config.yml
+~~~
+
+### MiNiFi Toolkit Steps for Windows Users
+
+Open Windows Power Shell:
+
+~~~bash
+cd .\Downloads\
+cd .\minifi-toolkit-0.5.0-bin\
+.\minifi-toolkit-0.5.0\bin\config.bat transform ..\weather-station-node-sj.xml config.yml
+~~~
+
+Validate there are no issues with the new MiNifi file:
+
+~~~bash
+.\minifi-toolkit-0.5.0\bin\config.bat validate .\config.yml
 ~~~
 
 > Note: You should receive "no errors were found" while parsing the configuration file.
@@ -549,9 +574,11 @@ Transport the **config.yml** file from your host machine to your Raspberry Pi.
 
 **Figure 15:** Upload MiNiFi config.yml to appropriate MiNiFi directory on Rasbperry Pi
 
+> Note: Windows users, navigate to the directory similar to .\Downloads\minifi-toolkit-0.5.0-bin\ and you should find the config.yml to send to the Raspberry Pi.
+
 4\. Press the **Terminal** button on **Pi Finder**:
 
-5\. Write the following command to move `config.yml` to MiNiFi conf folder and
+5\. Write the following command to move **config.yml** to MiNiFi conf folder and
 replace the default config.yml.
 
 ~~~bash
@@ -561,7 +588,7 @@ mv config.yml /home/pi/minifi-[version num]/conf/config.yml
 
 > Ex command: mv config.yml /home/pi/minifi-0.2.0/conf/config.yml
 
-6\. In MiNiFi `bin` directory on Raspberry Pi, start MiNiFi program with the command:
+6\. In MiNiFi **bin** directory on Raspberry Pi, start MiNiFi program with the command:
 
 ~~~bash
 cd minifi-[version num]
@@ -608,7 +635,7 @@ List of all actions occurring on the FlowFiles. As you can see there are FlowFil
 
 ### 3.5: Check Data is Stored into HDFS via HDP Files View
 
-1\. Login to Ambari UI at `sandbox-hdp.hortonworks.com:8080`
+1\. Login to Ambari UI at http://sandbox-hdp.hortonworks.com:8080
 
 > Note: user/password is maria_dev/maria_dev
 
@@ -642,7 +669,7 @@ Congratulations! You just learned how to build dataflows for MiNiFi through usin
 
 If you do not see data flowing into NiFi, the first place to check is the MiNiFi logs.
 
-1\. From your Raspberry Pi, navigate to the MiNiFi `logs` directory and open the `minifi-app.log`:
+1\. From your Raspberry Pi, navigate to the MiNiFi **logs** directory and open the **minifi-app.log**:
 
 ~~~bash
 cd minifi-0.4.0/logs

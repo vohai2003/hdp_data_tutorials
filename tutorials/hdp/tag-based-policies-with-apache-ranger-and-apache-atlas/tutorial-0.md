@@ -7,7 +7,7 @@ persona: Administrator
 source: Hortonworks
 use case: Security
 technology: Apache Atlas, Apache Ranger
-release: hdp-2.6.5
+release: hdp-3.0.0
 environment: Sandbox
 product: HDP
 series: HDP > Hadoop Administration > Security
@@ -21,7 +21,7 @@ You will explore integration of Apache Atlas and Apache Ranger, and introduced t
 
 ## Prerequisites
 
-- Downloaded and deployed the [Hortonworks Data Platform (HDP)](https://hortonworks.com/downloads/#sandbox) Sandbox
+- Downloaded and Installed the latest [Hortonworks Data Platform (HDP) Sandbox](https://hortonworks.com/downloads/#sandbox)
 - [Learning the Ropes of the HDP Sandbox](https://hortonworks.com/tutorial/learning-the-ropes-of-the-hortonworks-sandbox/)
 
 ## Outline

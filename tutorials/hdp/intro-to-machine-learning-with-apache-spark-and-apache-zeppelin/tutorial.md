@@ -7,7 +7,7 @@ persona: Data Scientist & Analyst
 source: Hortonworks
 use case: Predictive
 technology: Apache Spark, Apache Zeppelin
-release: hdp-2.6.5
+release: hdp-3.0.1
 environment: Sandbox
 product: HDP
 series: HDP > Develop with Hadoop > Apache Spark
