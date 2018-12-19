@@ -54,7 +54,7 @@ After [installing Docker For Windows](https://docs.docker.com/docker-for-windows
 
 ![Docker Settings](assets/docker-windows-settings.jpg)
 
-Select the **Advanced** tab and adjust the dedicated memory to **at least 10240GB of RAM**.
+Select the **Advanced** tab and adjust the dedicated memory to **at least 10GB of RAM**.
 
 ![Configure Docker RAM](assets/docker-windows-configure.jpg)
 
