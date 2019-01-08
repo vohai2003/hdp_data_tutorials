@@ -193,7 +193,7 @@ Open HDP **Zeppelin UI** at http://sandbox-hdp.hortonworks.com:9995.
 Insert the following URL cause we are going to import **Cleaning-Raw-Twitter-Data** notebook:
 
 ~~~bash
-https://raw.githubusercontent.com/james94/data-tutorials/master/tutorials/cda/building-a-sentiment-analysis-application/application/development/zeppelin-notebook/Cleaning-Raw-Twitter-Data.json
+https://raw.githubusercontent.com/hortonworks/data-tutorials/master/tutorials/cda/building-a-sentiment-analysis-application/application/development/zeppelin-notebook/Cleaning-Raw-Twitter-Data.json
 ~~~
 
 Click **Import Note**.

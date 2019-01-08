@@ -241,7 +241,7 @@ Open HDP **Zeppelin UI** at http://sandbox-hdp.hortonworks.com:9995.
 Insert the following URL cause we are going to import **Building-Sentiment-Classification-Model** notebook:
 
 ~~~bash
-https://raw.githubusercontent.com/james94/data-tutorials/master/tutorials/cda/building-a-sentiment-analysis-application/application/development/zeppelin-notebook/Building-Sentiment-Classification-Model.json
+https://raw.githubusercontent.com/hortonworks/data-tutorials/master/tutorials/cda/building-a-sentiment-analysis-application/application/development/zeppelin-notebook/Building-Sentiment-Classification-Model.json
 ~~~
 
 Click **Import Note**.
