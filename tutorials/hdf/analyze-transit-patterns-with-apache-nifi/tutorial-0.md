@@ -37,7 +37,7 @@ The learning objectives of this tutorial are to:
 
 ## Prerequisites
 
-- Downloaded and Installed the [Hortonworks DataFlow (HDF) Sandbox](https://hortonworks.com/products/sandbox/)
+- Downloaded and Installed the [Hortonworks DataFlow (HDF) Sandbox](https://www.cloudera.com/downloads/hortonworks-sandbox/hdf.html)
 - For Windows 10 users, use [Ubuntu bash shell](https://www.windowscentral.com/how-install-bash-shell-command-line-windows-10) or Sandbox Web Shell Client
 
 ## Outline
