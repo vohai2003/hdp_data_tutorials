@@ -21,7 +21,7 @@ In this tutorial, you will learn how to deploy a modern real-time streaming appl
 
 ## Prerequisites
 
-- [Installed Hortonworks DataFlow (HDF) Sandbox](https://hortonworks.com/downloads/#sandbox)
+- [Installed Hortonworks DataFlow (HDF) Sandbox](https://www.cloudera.com/downloads/hortonworks-sandbox/hdf.html)
 
 ## Outline
 
