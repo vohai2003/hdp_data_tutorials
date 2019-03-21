@@ -23,7 +23,7 @@ We will create Kafka Topics (category queues) for handling large volumes of data
 
 ## Prerequisites
 
-- [HDF Sandbox Installed](https://hortonworks.com/downloads/#sandbox)
+- [HDF Sandbox Installed](https://www.cloudera.com/downloads/hortonworks-sandbox/hdf.html)
 
 ## Outline
 
