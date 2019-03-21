@@ -23,7 +23,7 @@ We will create a NiFi DataFlow for transferring data from Internet of Things (Io
 
 ## Prerequisites
 
-- [Installed Hortonworks DataFlow (HDF) Sandbox](https://hortonworks.com/downloads/#sandbox)
+- [Installed Hortonworks DataFlow (HDF) Sandbox](https://www.cloudera.com/downloads/hortonworks-sandbox/hdf.html)
 
 ## Outline
 
