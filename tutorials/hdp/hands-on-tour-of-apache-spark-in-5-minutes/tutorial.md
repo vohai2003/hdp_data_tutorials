@@ -26,7 +26,7 @@ To make things fun and interesting, we will introduce a film series dataset from
 
 ## Prerequisites
 
-- Downloaded and Installed latest [Hortonworks Data Platform (HDP) Sandbox](https://hortonworks.com/downloads/#sandbox)
+- Downloaded and deployed the [Hortonworks Data Platform (HDP)](https://www.cloudera.com/downloads/hortonworks-sandbox/hdp.html) Sandbox
   - You will need **10GB** of memory dedicated for the virtual machine, meaning that you should have at least **16GB** of memory on your system.
 
 - [Learning the Ropes of the HDP Sandbox](https://hortonworks.com/tutorial/learning-the-ropes-of-the-hortonworks-sandbox/)
@@ -180,7 +180,7 @@ See the [Getting Started with HDCloud](https://hortonworks.com/tutorial/getting-
 
 You will need **8GB** of memory dedicated for the virtual machine, meaning that you should have at least **12GB** of memory on your system.
 
-2a. Download and Install [HDP Sandbox](https://hortonworks.com/downloads/#sandbox)
+2a. Downloaded and deployed the [Hortonworks Data Platform (HDP)](https://www.cloudera.com/downloads/hortonworks-sandbox/hdp.html) Sandbox
 
 2b. Review [Learning the Ropes of the HDP Sandbox](https://hortonworks.com/tutorial/learning-the-ropes-of-the-hortonworks-sandbox/)
 
