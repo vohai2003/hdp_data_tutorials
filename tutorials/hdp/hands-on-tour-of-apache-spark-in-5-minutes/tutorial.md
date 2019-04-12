@@ -32,7 +32,7 @@ To make things fun and interesting, we will introduce a film series dataset from
 - [Learning the Ropes of the HDP Sandbox](https://hortonworks.com/tutorial/learning-the-ropes-of-the-hortonworks-sandbox/)
 - Basic [Scala syntax](http://www.dhgarrette.com/nlpclass/scala/basics.html)
 - [Getting Started With Apache Zeppelin](https://hortonworks.com/tutorial/getting-started-with-apache-zeppelin/)
-  - Binded [Zeppelin's Shell Interpreter](https://hortonworks.com/tutorial/getting-started-with-apache-zeppelin/#installing-zeppelin-shell)
+- Binded [Zeppelin's Shell Interpreter](https://hortonworks.com/tutorial/getting-started-with-apache-zeppelin/#binding-an-interpreter)
 
 ## Outline
 
