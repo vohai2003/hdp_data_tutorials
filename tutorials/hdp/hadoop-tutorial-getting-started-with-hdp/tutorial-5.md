@@ -14,7 +14,7 @@ In this tutorial you will be introduced to Apache Zeppelin and teach you to visu
 
 The tutorial is a part of series of hands on tutorial to get you started on HDP using the Hortonworks sandbox. Please ensure you complete the prerequisites before proceeding with this tutorial.
 
-- Downloaded and deployed the [Hortonworks Data Platform (HDP)](https://hortonworks.com/downloads/#sandbox) Sandbox
+- Downloaded and deployed the [Hortonworks Data Platform (HDP)](https://www.cloudera.com/downloads/hortonworks-sandbox/hdp.html) Sandbox
 - [Learning the Ropes of the HDP Sandbox](https://hortonworks.com/tutorial/learning-the-ropes-of-the-hortonworks-sandbox/)
 - [Loading Sensor Data into HDFS](https://hortonworks.com/tutorial/hadoop-tutorial-getting-started-with-hdp/section/2/)
 - [Hive - Data ETL](https://hortonworks.com/tutorial/hadoop-tutorial-getting-started-with-hdp/section/3/)
@@ -145,7 +145,7 @@ You can hover over the highest point to determine which driver has the highest r
 
 ## Summary
 
-Great, now we know how to query and visualize data using Apache Zeppelin. We can leverage Zeppelin—along with our newly gained knowledge of Hive and Spark—to solve real world problems in new creative ways. 
+Great, now we know how to query and visualize data using Apache Zeppelin. We can leverage Zeppelin—along with our newly gained knowledge of Hive and Spark—to solve real world problems in new creative ways.
 
 ## Further Reading
 
