@@ -21,7 +21,7 @@ This tutorial will teach you how to set up a full development environment for de
 
 ## Prerequisites
 
-- Downloaded and deployed the [Hortonworks Data Platform (HDP)](https://www.cloudera.com/downloads/hortonworks-sandbox/hdp.html) Sandbox
+- Downloaded and deployed the [Hortonworks Data Platform (HDP)](https://www.cloudera.com/downloads/hortonworks-sandbox/hdp.html?utm_source=mktg-tutorial) Sandbox
 - Basic [Scala](http://www.dhgarrette.com/nlpclass/scala/basics.html) syntax
 - Installed [IntelliJ](https://www.jetbrains.com/idea/)
 - Installed [Java Development Kit (JDK)](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
