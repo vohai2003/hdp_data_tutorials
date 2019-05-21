@@ -31,7 +31,7 @@ The purpose of this tutorial is to guide you through basic functionalities of Ze
 
 ## Prerequisites
 
-- Downloaded and deployed the [Hortonworks Data Platform (HDP)](https://www.cloudera.com/downloads/hortonworks-sandbox/hdp.html) Sandbox
+- Downloaded and deployed the [Hortonworks Data Platform (HDP)](https://www.cloudera.com/downloads/hortonworks-sandbox/hdp.html?utm_source=mktg-tutorial) Sandbox
 - Ensure Spark version 2.x or later is installed
 
 ## Outline

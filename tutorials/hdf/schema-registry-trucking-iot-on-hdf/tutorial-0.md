@@ -22,7 +22,7 @@ Schema Registry is a centralized repository for schemas and metadata.  In this t
 
 ## Prerequisites
 
-- Downloaded and deployed the [Hortonworks DataFlow (HDF)](https://www.cloudera.com/downloads/hortonworks-sandbox/hdf.html) Sandbox
+- Downloaded and deployed the [Hortonworks DataFlow (HDF)](https://www.cloudera.com/downloads/hortonworks-sandbox/hdf.html?utm_source=mktg-tutorial) Sandbox
 
 ## Outline
 

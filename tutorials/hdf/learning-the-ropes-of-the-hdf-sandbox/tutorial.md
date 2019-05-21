@@ -23,7 +23,7 @@ By the end of this tutorial, you will be familiar with the data-in-motion tools 
 
 ## Prerequisites
 
-- Downloaded and deployed the [Hortonworks DataFlow (HDF)](https://www.cloudera.com/downloads/hortonworks-sandbox/hdf.html) Sandbox
+- Downloaded and deployed the [Hortonworks DataFlow (HDF)](https://www.cloudera.com/downloads/hortonworks-sandbox/hdf.html?utm_source=mktg-tutorial) Sandbox
 
 ## Outline
 

@@ -23,7 +23,7 @@ This tutorial walks through the steps for creating data in Apache Hive through A
 
 ## Prerequisites
 
-- Downloaded and deployed the [Hortonworks Data Platform (HDP)](https://www.cloudera.com/downloads/hortonworks-sandbox/hdp.html) Sandbox
+- Downloaded and deployed the [Hortonworks Data Platform (HDP)](https://www.cloudera.com/downloads/hortonworks-sandbox/hdp.html?utm_source=mktg-tutorial) Sandbox
 - [Learning the Ropes of the HDP Sandbox tutorial](https://hortonworks.com/hadoop-tutorial/learning-the-ropes-of-the-hortonworks-sandbox/)
 - 12 GB of RAM
 
