@@ -209,7 +209,7 @@ _Properties Tab of this Controller Service_
 
 **AvroRecordWriter - Traffic Data**
 
-| Property | Value     |
+| Property | Value |
 | :------------- | :------------- |
 | Schema Write Strategy | HWX Content-Encoded Schema Reference |
 | Schema Access Strategy | Use 'Schema Name' Property |
